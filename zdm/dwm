@@ -1,0 +1,4 @@
+#!/bin/sh
+source $HOME/.config/zdm/Xsession
+xsetroot -solid "#1E242D"
+exec dbus-launch dwm

@@ -1,0 +1,3 @@
+#!/bin/sh
+source $HOME/.config/zdm/Xsession
+exec dbus-launch i3
