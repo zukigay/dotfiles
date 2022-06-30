@@ -1,0 +1,65 @@
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# just spawn
+super + e
+	firefox
+super + shift + e
+	qutebrowser
+super + shift + z
+	rofi-steam.sh
+super + enter # plain terminal 
+	kitty
+# scratchpads
+
+
+super + y # just a plain terminal scratch
+	simplescratchpad.sh class  terminal-scratchpad st -c terminal-scratchpad -g 120x34
+super + a # music scratchpad
+	simplescratchpad.sh class spncmpcpp st -c spncmpcpp -g 120x34 -e ncmpcpp
+super + shift + a # spotify scratchpad
+	simplescratchpad.sh class spncspot st -c spncspot -g 120x34 -e ncspot
+super + control + a # podcast scratchpad
+	simplescratchpad.sh class sppod st -c sppod -g 120x34 -e castero
+super + z # steam scratchpad
+	scratchpad2.sh Steam Steam steam
+super + w # discord scratch
+	simplescratchpad.sh title discordtabbed discordtab bed.sh
+super + x # keepassxc scratchpad for passwords
+	scratchpad2.sh keepassxc NULL keepassxc
+
+
+shift + Pause
+	scratchpad2.sh nyrna Nyrna nyrna
+super + grave
+	Scratchpadfiledynamic.sh 1
+super + shift + grave
+	Scratchpadfiledynamic.sh 0
+
+
+# tools
+Print
+	cd ~/screenshot; \
+	scrot; \
+	cd - 
+super + Print
+	scrot -e 'mv $f ~/screenshot'
+super + Shift_R
+	amixer set Capture toggle
+
+super + m
+	nyrna -t
+
+super + Pause
+	manlock.sh
+Pause
+	nyrna -t
+
+super + r
+	tabc.sh autoadd -n dwmtabbed 
+super + shift + r
+	tabc.sh autoremove -n dwmtabbed 
+super + control + r
+	simplescratchpad.sh title dwmtabbed tabc.sh autoadd -n dwmtabbed
+
