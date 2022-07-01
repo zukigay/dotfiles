@@ -1,0 +1,21 @@
+#enable
+#alias de="devour"
+#alias detoggle='detoggleoff'
+
+
+#disable
+alias de=""
+alias detoggle='detoggleon'
+
+
+
+alias detoggleon='alias de="devour" && alias detoggle="detoggleoff" && echo "detoggled on"'
+alias detoggleoff='alias de="" && alias detoggle="detoggleon" && echo "detoggled off"'
+# devour programs
+devoured () {
+alias $1="de $1"
+}
+devoured mpv
+devoured feh
+devoured goneovim
+devoured pcmanfm

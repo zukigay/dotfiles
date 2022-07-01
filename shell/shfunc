@@ -1,0 +1,25 @@
+#gi() {
+#	/usr/bin/gitui "$@"
+#}
+cdls() {
+        local dir="$1"
+        local dir="${dir:=$HOME}"
+        if [[ -d "$dir" ]]; then
+                cd "$dir" >/dev/null; ls --color=auto
+        else
+                echo "bash: cdls: $dir: Directory not found"
+        fi
+}
+xwm () {
+	~/.xwm
+	read wm
+	exec startx $wm
+}
+
+
+dosu () {
+	doas su
+}
+rootdo() {
+  su -c "$@"
+}

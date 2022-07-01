@@ -1,0 +1,158 @@
+# welcome to zuki's shprofile
+
+### sources
+
+# shell folder
+export shellfol="$HOME/.config/shell"
+
+
+## source shalias for shell alias
+source "$shellfol"/shalias
+## source shex for shell exports to clean up this file
+source "$shellfol"/shex
+## source shell func
+source "$shellfol"/shfunc
+## source devour aliases for deavour to auto start
+source "$shellfol"/devouralias
+
+# https://github.com/lemniskett/archbox.git
+# sudo archbox --create <archlinux tarball download link>
+
+# [[ -e /etc/arch-release ]] && export PS1=" $PS1"
+# [[ -e /etc/archbox.conf ]] || export PS1=" $PS1"
+[[ -e /etc/archbox.conf ]] || archbox="true"
+if [ "$archbox" = "true" ]
+then
+	cdcheckdir=$(pwd)
+	if [ "$cdcheckdir" = "/" ]
+	then
+		cd
+	fi
+else	
+	alias uparc="archbox sudo -S pacman -Syu"
+	alias sarc="archbox --enter"
+	alias arcdo="archbox"
+	alias arcstm="archbox 'steam -no-cef-sandbox'"
+fi
+
+# set PATH so it includes user's private bin if it exists
+#export PATH=$PATH:/opt/scripts/
+#QT_QPA_PLATFORMTHEME=qt5ct
+#export QT_QPA_PLATFORMTHEME=qt5ct
+#export PATH=$PATH:/opt/discordWeb/
+
+
+
+if ! [ "$shexloaded" = "true" ]
+then
+echo "failed to load .shex"
+export PATH=$PATH:/opt/scripts/
+export PATH=$PATH:/opt/scripts/bookmarks/
+export PATH=$PATH:$HOME/.local/bin/
+export GUI_TERM=kitty
+export TERMINAL=kitty
+fi
+
+alias patch1="patch -p1 <"
+alias v=nvim
+alias vim=nvim
+alias gnvim=goneovim
+alias gv=goneovim
+alias la='ls -a'
+alias swayspawn="XDG_SESSION_TYPE=wayland dbus-run-session sway --unsupported-gpu"
+alias rewire="systemctl --user --now disable wireplumber && sleep 1 && systemctl --user --now enable wireplumber"
+alias ya=yay
+alias vconf="nvim ~/.config/nvim/init.vim"
+alias protoncfg="/tmp/proton_run winecfg"
+alias gpush=gitpush
+
+
+
+
+
+#alias gi="gitui"
+
+#alias rm="echo "
+alias rm="rm -i"
+alias rmsafe="rmsafeon"
+alias rmsafeon="alias rm=rm && alias rmsafe='rmsafeoff' && echo 'rm=rm'"
+alias rmsafeoff="alias rm='rm -i' && alias rmsafe='rmsafeon' && echo 'rm=rm -i'"
+alias stx="exec startx"
+#check /etc/security/pam_env.conf for other $PATH uses
+#export | grep gtk
+echo "$(tput setaf 5)TRANS $(tput setaf 4)RIGHTS $(tput setaf 7)HELL YEAH!!"
+
+
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+	#xwm
+	python ~/src/zukidisplay/zdm.py
+
+
+	#~/.xwm
+ 	#read wm
+	#exec startx $wm
+fi
+
+
+change_terminal_background() {
+ local COLOR="$1"
+
+ if [ "$TERM" = "screen-256color" ]; then
+# TMUX
+  echo -ne "\\ePtmux;\\e\\033]11;$COLOR\\007\\e\\\\"
+ else
+#  NOT TMUX
+  echo -ne "\\033]11;$COLOR\\007"
+ fi
+}
+nvim() {
+# Change the terminal's color when Vim starts
+  change_terminal_background "#1c1c1c"
+  /usr/bin/nvim "$@"
+
+# Change it back when it exits
+  change_terminal_background "#000000"
+}
+#put some tips here
+#up to 20% preformace echo 'always' | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
+#
+#
+#
+#
+cacheREfetch () {
+neofetch | grep -v Memory > $neofetchcache 2>&1
+cat $neofetchcache 2>/dev/null    
+}
+cachefetch () {
+	neofetchcache=~/.cache/neofetch
+	#cat $neofetchcache 2>/dev/null || neofetch | grep -v Memory > $neofetchcache 2>&1  
+	cat $neofetchcache 2>/dev/null || cacheREfetch   
+}
+#cachefetch
+pfetch
+bluetoothfix () {
+sudo modprobe -r btusb && sudo modprobe btusb
+}
+rebluetooth () {
+arg1=$1
+echo -e "power on\n" | bluetoothctl
+echo -e "scan on\n" | bluetoothctl
+bluetoothctl -- remove $arg1
+sleep 5
+bluetoothctl -- pair $arg1
+sleep 10
+bluetoothctl -- trust $arg1
+bluetoothctl -- connect $arg1
+sleep 5
+echo -e "scan off\n" | bluetoothctl
+}
+blueconnect () {
+arg1=$1
+echo -e "power on\n" | bluetoothctl
+sleep 1
+bluetoothctl -- connect $arg1
+sleep 1
+echo -e "scan off\n" | bluetoothctl
+}
+#QT_QPA_PLATFORMTHEME=qt5ct
+alias sshbox='ssh zooki@192.168.1.194'

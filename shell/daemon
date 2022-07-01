@@ -1,0 +1,8 @@
+#!/bin/sh
+sxhkd > ~/.log/sxhkdlog
+#sleep 1
+#pipewire & > ~/.log/pipewire
+sleep 1.5
+mpd &
+mpDris2 &
+sleep 1 && mpc volume 50 &

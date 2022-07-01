@@ -1,0 +1,28 @@
+# XDG EXPORTS
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_STATE_HOME=$HOME/.local/state
+export XDG_CACHE_HOME=$HOME/.cache
+# Program XDG exports 
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+# PATH
+export PATH="$PATH:/home/zuki/.cargo/bin"
+export PATH=$PATH:/opt/scripts/
+export PATH=$PATH:/opt/scripts/bookmarks/
+export PATH=$PATH:$HOME/.local/bin/
+export PATH=$PATH:/home/zuki/.local/share/cargo/bin
+# THEME
+#export QT_STYLE_OVERRIDE="qt5ct-style"
+export QT_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export GTK_THEME="Arc-Dark-solid"
+export QT_STYLE_OVERRIDE=kvantum
+
+# TERM
+export GUI_TERM="kitty"
+export TERMINAL="kitty"
+export EDITOR=nvim
+# report script loaded for debuging
+export shexloaded="true"

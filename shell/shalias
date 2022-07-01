@@ -1,0 +1,33 @@
+## ls aliases
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
+
+## git/patch aliases
+alias gpush=gitpush
+alias patch1="patch -p1 <"
+alias gi=gitui
+
+## vim aliases
+alias v=nvim
+alias vi=nvim
+alias vim=nvim
+alias vconf="nvim ~/.config/nvim/init.vim"
+
+## pacman/aur/yay
+alias ya=yay
+alias pik=pikaur
+
+alias rewire="systemctl --user --now disable wireplumber && sleep 1 && systemctl --user --now enable wireplumber"
+
+## rm aliases 
+alias rm="rm -i"
+alias rmsafe="rmsafeon"
+alias rmsafeon="alias rm=rm && alias rmsafe='rmsafeoff' && echo 'rm=rm'"
+alias rmsafeoff="alias rm='rm -i' && alias rmsafe='rmsafeon' && echo 'rm=rm -i'"
+
+## redunent aliases
+## (aliases that are never used)
+alias stx="exec startx"
+alias protoncfg="/tmp/proton_run winecfg"
