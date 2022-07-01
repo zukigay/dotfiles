@@ -8,8 +8,8 @@
 super + Print
 	scrot -e 'mv $f ~/screenshot'
 
-
-
+super + b
+	dm-bluelight
 # time
 super + w
 	dunstify "time" "$(date)" -r 6969
