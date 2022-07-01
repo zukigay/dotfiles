@@ -97,6 +97,6 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.shprofile
+source ~/.config/shprofile
 
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
