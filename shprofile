@@ -105,10 +105,11 @@ change_terminal_background() {
   echo -ne "\\033]11;$COLOR\\007"
  fi
 }
+if [ -z "$nvimpath" ]; then; nvimpath="$(which nvim)"; fi
 nvim() {
 # Change the terminal's color when Vim starts
   change_terminal_background "#1c1c1c"
-  /usr/bin/nvim "$@"
+  $nvimpath "$@"
 
 # Change it back when it exits
   change_terminal_background "#000000"
