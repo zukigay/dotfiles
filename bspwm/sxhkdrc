@@ -1,7 +1,12 @@
 #
 # wm independent hotkeys
 #
-
+# the best keybind
+super + v
+	voice.sh
+	#espeak "$(xclip -o)"
+super + shift + v
+	pkill espeak
 
 ## dumb
 # screen shot
