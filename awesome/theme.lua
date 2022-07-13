@@ -31,7 +31,8 @@ theme.border_focus  = "#535d6c"
 theme.border_marked = "#91231c"
 
 
-theme.gap_single_client  = false
+-- theme.gap_single_client  = false
+theme.gap_single_client  = true
 
 -- There are other variable sets
 -- overriding the default one when
