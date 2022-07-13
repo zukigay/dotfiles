@@ -377,6 +377,15 @@ myscreen.mywibox.visible = not myscreen.mywibox.visible
 end),
 
 
+   awful.key({ modkey }, "v", function ()
+     awful.util.spawn("voice.sh", false) end,
+              {description = "pipe clipboard to espeak", group = "zukihelp"}),
+
+   awful.key({ modkey, "Shift" }, "v", function ()
+     awful.util.spawn("pkill espeak", false) end,
+              {description = "kill espeak", group = "zukihelp"}),
+
+
 	      -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
