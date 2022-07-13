@@ -274,24 +274,6 @@ globalkeys = gears.table.join(
         end,
         {description = "go back", group = "client"}),
 
-    -- scratchpads
-   awful.key({ modkey }, "y", function ()
-     awful.util.spawn("Scratchpad.sh title terminal-scratchpad st -n terminal-scratchpad", false) end,
-              {description = "pain scratchpad", group = "scratchpad"}),
-   awful.key({ modkey }, "a", function ()
-     awful.util.spawn("Scratchpad.sh title spcmus st -n spcmus -e cmus", false) end,
-              {description = "cmus musicplayer", group = "scratchpad"}),
-   awful.key({ modkey, "Shift" }, "a", function ()
-     awful.util.spawn("Scratchpad.sh title spncspot st -n spncspot -e ncspot", false) end,
-              {description = "ncspot spotify", group = "scratchpad"}),
-   awful.key({ modkey, }, "x", function ()
-     awful.util.spawn("Scratchpad.sh title keepassxc keepassxc", false) end,
-              {description = "keepassxc", group = "scratchpad"}),
-
-   awful.key({ modkey }, "z", function ()
-     awful.util.spawn("Scratchpadmutifile.sh class Steam steam", false) end,
-              {description = "steam ", group = "scratchpad"}),
-
      -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
