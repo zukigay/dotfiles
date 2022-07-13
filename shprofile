@@ -123,17 +123,7 @@ nvim() {
 #
 #
 #
-cacheREfetch () {
-neofetch | grep -v Memory > $neofetchcache 2>&1
-cat $neofetchcache 2>/dev/null    
-}
-cachefetch () {
-	neofetchcache=~/.cache/neofetch
-	#cat $neofetchcache 2>/dev/null || neofetch | grep -v Memory > $neofetchcache 2>&1  
-	cat $neofetchcache 2>/dev/null || cacheREfetch   
-}
-#cachefetch
-pfetch
+pfetch | lolcat
 bluetoothfix () {
 sudo modprobe -r btusb && sudo modprobe btusb
 }
