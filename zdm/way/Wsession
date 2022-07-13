@@ -1,9 +1,12 @@
 #!/bin/sh
-export XDG\_SESSION\_TYPE=wayland
-#export XDG\_CURRENT\_DESKTOP=hyperland
-#export GBM\_BACKEND=nvidia-drm
-#export \_\_GLX\_VENDOR\_LIBRARY\_NAME=nvidia
-export WLR\_NO\_HARDWARE\_CURSORS=1
+export XDG_SESSION_TYPE=wayland
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export MOZ_ENABLE_WAYLAND=1
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export WLR_NO_HARDWARE_CURSORS=1
+export WLR_BACKEND=vulkan
 export WLR\_DRM\_NO\_ATOMIC=1
 export MOZ_ENABLE_WAYLAND=1
 export GDK_BACKEND=x11
