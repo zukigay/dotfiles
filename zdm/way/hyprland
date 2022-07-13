@@ -7,6 +7,7 @@ export WLR\_NO\_HARDWARE\_CURSORS=1
 export WLR\_DRM\_NO\_ATOMIC=1  
 export MOZ_ENABLE_WAYLAND=1
 export GDK_BACKEND=x11
+export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
 export QT_QPA_PLATFORM=wayland
