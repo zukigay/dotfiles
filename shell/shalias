@@ -15,9 +15,9 @@ alias vi=nvim
 alias vim=nvim
 alias vconf="nvim ~/.config/nvim/init.vim"
 
-## pacman/aur/yay
-alias ya=yay
-alias pik=pikaur
+## pacman
+alias pacs="pacman -Ss"
+alias pac="pacman"
 
 alias rewire="systemctl --user --now disable wireplumber && sleep 1 && systemctl --user --now enable wireplumber"
 
