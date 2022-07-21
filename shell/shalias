@@ -15,6 +15,9 @@ alias vi=nvim
 alias vim=nvim
 alias vconf="nvim ~/.config/nvim/init.vim"
 
+# sudo/doas
+alias sudo='sudo '
+
 ## pacman
 alias pacs="pacman -Ss"
 alias pac="pacman"
