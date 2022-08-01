@@ -147,7 +147,7 @@ config.set('content.local_content_can_access_remote_urls', True, 'file:///home/z
 config.set('content.local_content_can_access_file_urls', False, 'file:///home/zuki/.local/share/qutebrowser/userscripts/*')
 
 #config.set("colors.webpage.darkmode.enabled", True)
-
+c.content.blocking.adblock.lists = ["https://easylist.to/easylist/easylist.txt", "https://easylist.to/easylist/easyprivacy.txt", "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt" ]
 c.editor.command = ['kitty', '-e', 'nvim', '{file}', '-c', 'normal {line}G{column0}l']
 c.url.searchengines = {
     'DEFAULT':  'https://search.ononoki.org/search?q={}',
@@ -172,6 +172,8 @@ c.url.searchengines = {
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
 c.url.start_pages = ['https://search.ononoki.org/']
+
 config.bind("a", "spawn --detach firefox {url}", mode="normal")
 config.bind("A", "hint links spawn --detach firefox {hint-url}", mode="normal")
 config.bind("<Alt-a>", "spawn --userscript darkreadertoggle.sh", mode="normal")
+
