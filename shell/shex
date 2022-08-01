@@ -31,5 +31,6 @@ export QT_STYLE_OVERRIDE=kvantum
 export GUI_TERM="kitty"
 export TERMINAL="kitty"
 export EDITOR=nvim
+export AUR_PAGER="fff"
 # report script loaded for debuging
 export shexloaded="true"
