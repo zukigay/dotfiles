@@ -80,7 +80,6 @@ alias rmsafeoff="alias rm='rm -i' && alias rmsafe='rmsafeon' && echo 'rm=rm -i'"
 alias stx="exec startx"
 #check /etc/security/pam_env.conf for other $PATH uses
 #export | grep gtk
-echo "$(tput setaf 5)TRANS $(tput setaf 4)RIGHTS $(tput setaf 7)HELL YEAH!!"
 
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
@@ -123,7 +122,7 @@ nvim() {
 #
 #
 #
-pfetch | lolcat
+
 bluetoothfix () {
 sudo modprobe -r btusb && sudo modprobe btusb
 }
@@ -150,3 +149,12 @@ echo -e "scan off\n" | bluetoothctl
 }
 #QT_QPA_PLATFORMTHEME=qt5ct
 alias sshbox='ssh zooki@192.168.1.194'
+
+if [ -z "$shprofileloaded" ]
+then
+	echo "$(tput setaf 5)TRANS $(tput setaf 4)RIGHTS $(tput setaf 7)HELL YEAH!!"
+	pfetch | lolcat
+fi
+
+
+shprofileloaded=1
