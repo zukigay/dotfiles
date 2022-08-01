@@ -19,7 +19,6 @@ alias vconf="nvim ~/.config/nvim/init.vim"
 alias sudo='sudo '
 
 ## pacman
-alias pacs="pacman -Ss"
 alias pac="pacman"
 
 alias rewire="systemctl --user --now disable wireplumber && sleep 1 && systemctl --user --now enable wireplumber"
