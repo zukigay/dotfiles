@@ -152,6 +152,7 @@ c.editor.command = ['kitty', '-e', 'nvim', '{file}', '-c', 'normal {line}G{colum
 c.url.searchengines = {
     'DEFAULT':  'https://search.ononoki.org/search?q={}',
     '!a':       'https://www.amazon.com/s?k={}',
+    '!aur':     'https://aur.archlinux.org/packages?O=0&SeB=nd&K={}',
     '!d':       'https://duckduckgo.com/?ia=web&q={}',
     '!dd':      'https://thefreedictionary.com/{}',
     '!e':       'https://www.ebay.com/sch/i.html?_nkw={}',
