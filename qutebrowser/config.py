@@ -151,4 +151,27 @@ config.set('content.local_content_can_access_file_urls', False, 'file:///home/zu
 
 #config.bind("a", "spawn --detach firefox {url}", mode="normal")
 #config.bind("A", "hint links spawn --detach firefox {hint-url}", mode="normal")
+c.url.searchengines = {
+    'DEFAULT':  'https://search.ononoki.org/search?q={}',
+    '!a':       'https://www.amazon.com/s?k={}',
+    '!d':       'https://duckduckgo.com/?ia=web&q={}',
+    '!dd':      'https://thefreedictionary.com/{}',
+    '!e':       'https://www.ebay.com/sch/i.html?_nkw={}',
+    '!fb':      'https://www.facebook.com/s.php?q={}',
+    '!gh':      'https://github.com/search?o=desc&q={}&s=stars',
+    '!gist':    'https://gist.github.com/search?q={}',
+    '!gi':      'https://www.google.com/search?tbm=isch&q={}&tbs=imgo:1',
+    '!gn':      'https://news.google.com/search?q={}',
+    '!ig':      'https://www.instagram.com/explore/tags/{}',
+    '!m':       'https://www.google.com/maps/search/{}',
+    '!p':       'https://pry.sh/{}',
+    '!r':       'https://www.reddit.com/search?q={}',
+    '!sd':      'https://slickdeals.net/newsearch.php?q={}&searcharea=deals&searchin=first',
+    '!t':       'https://www.thesaurus.com/browse/{}',
+    '!tw':      'https://twitter.com/search?q={}',
+    '!w':       'https://en.wikipedia.org/wiki/{}',
+    '!yelp':    'https://www.yelp.com/search?find_desc={}',
+    '!yt':      'https://www.youtube.com/results?search_query={}'
+}
+c.url.start_pages = ['https://search.ononoki.org/']
 config.bind("<Alt-a>", "spawn --userscript darkreadertoggle.sh", mode="normal")
