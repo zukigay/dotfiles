@@ -10,7 +10,7 @@
 // @grant         none
 // @include       http*
 // @exclude       http://www.example.com/
-// @exclude http://dwm.suckless.org/
+// @exclude https://www.youtube.com/*
 // @exclude https://wiki.greasespot.net/Include_and_exclude_rules
 // @require       https://cdn.jsdelivr.net/npm/darkreader/darkreader.min.js
 // @noframes
