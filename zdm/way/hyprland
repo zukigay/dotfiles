@@ -1,6 +1,6 @@
 #!/bin/bash
 export XDG\_SESSION\_TYPE=wayland  
-#export XDG\_CURRENT\_DESKTOP=hyperland  
+export XDG\_CURRENT\_DESKTOP=hyperland  
 #export GBM\_BACKEND=nvidia-drm  
 #export \_\_GLX\_VENDOR\_LIBRARY\_NAME=nvidia  
 export WLR\_NO\_HARDWARE\_CURSORS=1  
