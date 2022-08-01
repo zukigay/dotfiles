@@ -16,8 +16,8 @@ export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
 # PATH
 export PATH="$PATH:/home/zuki/.cargo/bin"
-export PATH=$PATH:/opt/scripts/
-export PATH=$PATH:/opt/scripts/bookmarks/
+export PATH=$PATH:$HOME/.scripts/
+export PATH=$PATH:$HOME/.scripts/bookmarks/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:/home/zuki/.local/share/cargo/bin
 # THEME
