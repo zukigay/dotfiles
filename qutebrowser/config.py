@@ -173,6 +173,9 @@ c.url.searchengines = {
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
 c.url.start_pages = ['https://search.ononoki.org/']
+# -- java script --
+c.content.javascript.enabled = False
+config.set('content.javascript.enabled',True, '*://www.youtube.com/*')  
 
 config.bind("a", "spawn --detach firefox {url}", mode="normal")
 config.bind("A", "hint links spawn --detach firefox {hint-url}", mode="normal")
