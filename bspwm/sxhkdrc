@@ -7,6 +7,9 @@ super + v
 	#espeak "$(xclip -o)"
 super + shift + v
 	pkill espeak
+# the second best
+super + grave
+	$TERMINAL nvim $HOME/todo
 
 ## dumb
 # screen shot
@@ -119,7 +122,8 @@ super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
-super + {grave,Tab}
+super + {_,shift + }Tab
+#super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
