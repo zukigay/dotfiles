@@ -23,6 +23,8 @@ super + w
 super + u
 	notify-send "loading updates" && pacup="$(checkupdates)" && pacupwc=$(echo "$pacup" | wc -l) && notify-send "UPDATES $pacupwc" "$pacup"
 
+super + e
+        $BROWSER
 # terminal emulator
 super + Return
 	$TERMINAL
