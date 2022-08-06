@@ -13,7 +13,6 @@ if [ "$DKUrlCh" == "" ]
 then
 	DKOut=$(echo "$DKFile" | sed "s!// @exclude       http://www.example.com/!// @exclude       http://www.example.com/\n// @exclude $DKUrl!")
 else
-	#DKOut=$(echo "$DKFile" | grep -v "$DKUrl")
 	DKOut=$(echo "$DKFile" | grep -v "// @exclude $DKUrl")
 fi
 
