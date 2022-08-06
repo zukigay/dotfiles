@@ -148,7 +148,7 @@ config.set('content.local_content_can_access_file_urls', False, 'file:///home/zu
 c.colors.webpage.bg = "gray"
 #config.set("colors.webpage.darkmode.enabled", True)
 c.content.blocking.adblock.lists = ["https://easylist.to/easylist/easylist.txt", "https://easylist.to/easylist/easyprivacy.txt", "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt" ]
-c.editor.command = ['kitty', '-e', 'nvim', '{file}', '-c', 'normal {line}G{column0}l']
+c.editor.command = ['kitty', '-e', 'nvim', '{file}']
 c.url.searchengines = {
     'DEFAULT':  'https://search.ononoki.org/search?q={}',
     '!a':       'https://www.amazon.com/s?k={}',
