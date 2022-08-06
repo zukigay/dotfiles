@@ -23,10 +23,9 @@ super + w
 super + u
 	notify-send "loading updates" && pacup="$(checkupdates)" && pacupwc=$(echo "$pacup" | wc -l) && notify-send "UPDATES $pacupwc" "$pacup"
 
-
 # terminal emulator
 super + Return
-	kitty
+	$TERMINAL
 
 # program launcher
 super + d
