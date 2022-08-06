@@ -20,12 +20,17 @@ export PATH=$PATH:$HOME/.scripts/
 export PATH=$PATH:$HOME/.scripts/bookmarks/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:/home/zuki/.local/share/cargo/bin
+
+
+# zuki pref
 # THEME
 #export QT_STYLE_OVERRIDE="qt5ct-style"
 export QT_PLATFORMTHEME="qt5ct"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK_THEME="Arc-Dark-solid"
 export QT_STYLE_OVERRIDE=kvantum
+# browser
+export BROWSER="qutebrowser"
 
 # TERM
 export GUI_TERM="kitty"
