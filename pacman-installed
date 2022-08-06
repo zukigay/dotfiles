@@ -1024,6 +1024,7 @@ serd 0.30.14-1
 shaderc 2022.1-4
 shadow 4.11.1-1
 shared-mime-info 2.0+144+g13695c7-1
+shellcheck-bin 0.8.0-3
 signon-kwallet-extension 22.04.3-1
 signon-plugin-oauth2 0.25-1
 signon-ui 0.17+20171022-3
