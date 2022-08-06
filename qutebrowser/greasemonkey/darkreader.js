@@ -10,6 +10,16 @@
 // @grant         none
 // @include       http*
 // @exclude       http://www.example.com/
+// @exclude https://www.youtube.com/watch?v=rJtdW50NOQ0
+// @exclude https://search.ononoki.org/
+// @exclude https://github.com/*
+// @exclude https://www.netflix.com/*
+// @exclude https://browserbench.org/JetStream/
+// @exclude https://browserbench.org/Speedometer2.1/
+// @exclude https://browserbench.org/MotionMark1.2/
+// @exclude https://browserbench.org/
+// @exclude https://discord.com/*
+// @exclude https://qutebrowser.org/doc/quickstart.html
 // @exclude https://www.youtube.com/*
 // @exclude https://wiki.greasespot.net/Include_and_exclude_rules
 // @require       https://cdn.jsdelivr.net/npm/darkreader/darkreader.min.js
