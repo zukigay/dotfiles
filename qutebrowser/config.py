@@ -178,7 +178,10 @@ c.url.start_pages = ['https://search.ononoki.org/']
 c.content.javascript.enabled = False
 config.set('content.javascript.enabled',True, '*://www.youtube.com/*')  
 
+config.set('content.javascript.enabled',True, '*://www.discord.com/*')  
+config.set('content.javascript.enabled',True, '*://www.github.com/*')  
+config.set('content.javascript.enabled',True, '*://www.netflix.com/*')  
+# -- java script end --
 config.bind("a", "spawn --detach firefox {url}", mode="normal")
 config.bind("A", "hint links spawn --detach firefox {hint-url}", mode="normal")
 config.bind("<Alt-a>", "spawn --userscript darkreadertoggle.sh", mode="normal")
-
