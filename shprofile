@@ -106,7 +106,7 @@ change_terminal_background() {
 }
 if [ -z "$nvimpath" ]
 then 
-nvimpath="$(which nvim)"
+nvimpath="$(command -v nvim)"
 fi
 nvim() {
 # Change the terminal's color when Vim starts
