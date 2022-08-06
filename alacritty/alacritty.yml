@@ -417,8 +417,8 @@ cursor:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    shape: Block
-    #shape: Beam
+    # shape: Block
+    shape: Beam
 
     # Cursor blinking state
     #
