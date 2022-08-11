@@ -1,3 +1,4 @@
 #!/bin/sh
 xsetroot -cursor_name arrow
 #/usr/lib/kdeconnectd &
+polkit-dumb-agent &
