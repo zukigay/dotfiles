@@ -15,11 +15,16 @@ alias vi=nvim
 alias vim=nvim
 alias vconf="nvim ~/.config/nvim/init.vim"
 
+
+
 # sudo/doas
 alias sudo='sudo '
 
 ## pacman
 alias pac="pacman"
+
+# pulseaudio/pipewire
+alias pamix="pulsemixer"
 
 alias rewire="systemctl --user --now disable wireplumber && sleep 1 && systemctl --user --now enable wireplumber"
 
