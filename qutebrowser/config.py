@@ -180,6 +180,7 @@ c.content.javascript.enabled = False
 config.set('content.javascript.enabled',True, '*://www.youtube.com/*')  
 config.set('content.javascript.enabled',True, '*://www.discord.com/*')  
 config.set('content.javascript.enabled',True, '*://www.github.com/*')  
+config.set('content.javascript.enabled',True, '*://github.com/*')  
 config.set('content.javascript.enabled',True, '*://www.netflix.com/*')  
 # -- java script end --
 config.set('content.autoplay',False)  
