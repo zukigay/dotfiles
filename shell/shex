@@ -32,6 +32,10 @@ export QT_STYLE_OVERRIDE=kvantum
 # browser
 export BROWSER="qutebrowser"
 
+
+# gaming
+export DXVK_ASYNC=1
+
 # TERM
 export GUI_TERM="kitty"
 export TERMINAL="kitty"
