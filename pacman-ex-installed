@@ -30,6 +30,7 @@ coreutils 9.1-1
 cowsay 3.04-2
 cpupower 5.19-1
 dash 0.5.11.5-1
+depotdownloader-git 2.4.6.r2.g4ee9db7-1
 dhcpcd 9.4.1-1
 dialog 1:1.3_20220728-1
 dkms 3.0.6-1
