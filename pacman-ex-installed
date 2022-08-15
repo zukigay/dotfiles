@@ -102,6 +102,7 @@ lib32-libvdpau 1.5-1
 lib32-openal 1.22.2-1
 lib32-pipewire 1:0.3.56-1
 libreoffice-fresh 7.3.5-3
+libstrangle-git r135.0273e31-1
 libtool 2.4.7-3
 licenses 20220125-1
 linux 5.19.1.arch2-1
