@@ -186,6 +186,7 @@ sway 1:1.7-9
 swaybg 1.1.1-1
 sx 2.1.7-2
 sxhkd 0.6.2-2
+syncthing-gtk-python3 1:0.9.4.4-3
 systemd 251.4-1
 systemd-sysvcompat 251.4-1
 tar 1.34-1
