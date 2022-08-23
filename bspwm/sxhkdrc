@@ -9,8 +9,15 @@ super + shift + v
 	pkill espeak
 # the second best
 super + grave
-	$TERMINAL nvim $HOME/todo
+	scratchpad3.sh SPtodo NULL kitty --class "SPtodo" nvim $HOME/todo
+	#$TERMINAL nvim $HOME/todo
 
+# scrachpad
+super + a
+	scratchpad3.sh SPncmpcpp NULL kitty --class "SPncmpcpp" ncmpcpp
+
+super + x
+	scratchpad3.sh keepassxc NULL keepassxc
 ## dumb
 # screen shot
 super + Print
