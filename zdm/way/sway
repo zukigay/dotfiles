@@ -9,6 +9,12 @@ export MOZ_ENABLE_WAYLAND=1
 export GDK_BACKEND=x11
 export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
-export SDL_VIDEODRIVER=wayland
+export SDL_VIDEODRIVER=wayland,X11
 export QT_QPA_PLATFORM=wayland
-dbus-run-session sway --unsupported-gpu  
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+export QT_QPA_PLATFORM=wayland
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
+
+exec dbus-run-session sway --unsupported-gpu  
