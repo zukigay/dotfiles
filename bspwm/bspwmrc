@@ -22,6 +22,9 @@ bspc config focus_follows_pointer true
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a SPncmpcpp sticky=on state=floating center=true
+bspc rule -a KeePassXC sticky=on state=floating center=true
+bspc rule -a SPtodo sticky=on state=floating center=true 
 # zuki rules
 #bspc rule -a Steam desktop='^4'
 #bspc rule -a heroic desktop='^4'
