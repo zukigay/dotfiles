@@ -36,6 +36,9 @@ export BROWSER="qutebrowser"
 # gaming
 export DXVK_ASYNC=1
 
+# DISPLAY
+export __GL_SYNC_DISPLAY_DEVICE=DP-0
+export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-0
 # TERM
 export GUI_TERM="kitty"
 export TERMINAL="kitty"
