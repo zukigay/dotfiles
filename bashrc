@@ -12,8 +12,8 @@ RESET="$(tput sgr0)"
 
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-#PS1='${GREEN}\u \W > ${RESET}'
+#PS1='[\u@\h \W]\$ '
+PS1='${GREEN}\u \W > ${RESET}'
 
 # source shprofile
 source ~/.config/shprofile
