@@ -1,6 +1,5 @@
 #!/bin/bash
 export XDG\_SESSION\_TYPE=wayland  
-export XDG\_CURRENT\_DESKTOP=sway  
 export GBM\_BACKEND=nvidia-drm  
 export \_\_GLX\_VENDOR\_LIBRARY\_NAME=nvidia  
 export WLR\_NO\_HARDWARE\_CURSORS=1  
@@ -11,6 +10,10 @@ export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland,X11
 export QT_QPA_PLATFORM=wayland
+
+source $HOME/.config/zdm/way/Wsession
+
+export XDG\_CURRENT\_DESKTOP=sway  
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORM=wayland
