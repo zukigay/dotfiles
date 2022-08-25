@@ -18,14 +18,6 @@ PS1='${GREEN}\u \W > ${RESET}'
 # source shprofile
 source ~/.config/shprofile
 
-# --- PATH EXPORTS ---
-export path="/home/zooki/.emacs.d/bin:$path"
-# FIXING PIP NOT IN PATH
-export path="$home/.local/bin:$path"
-export path="/home/zooki/applications:$path"
-# --- end of mercy file ---alias suvi='sudo vim'
-
-
 source /usr/share/bash-completion/bash_completion
 
 # BEGIN_KITTY_SHELL_INTEGRATION
