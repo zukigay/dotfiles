@@ -247,6 +247,8 @@ bindsym $mod+$altmod+$right resize shrink width $respeed
 # Scripts:
 #
 bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
+bindsym $mod+p exec zswayice
+
 #
 # Media keys reqires playerctl and volumecontrol script 
 #
