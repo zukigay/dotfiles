@@ -35,8 +35,6 @@ client.focused_inactive $bg     $bg     $fg     $bg       $bg
 client.unfocused        $bg     $bg     $fg     $bg       $bg
 
 
-### scripts
-bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
 
 
 
@@ -245,6 +243,9 @@ bindsym $mod+$altmod+$right resize shrink width $respeed
 # bindsym $mod+r mode "resize"
 
 #
+# Scripts:
+#
+bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
