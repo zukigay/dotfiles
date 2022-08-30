@@ -25,8 +25,8 @@ set $term kitty
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu bemenu-run
 
-set $bg #000000
-set $br #a7a5a5
+set $bg #373b41
+set $br #4b576f
 set $fg #000000
 # class                 border  backgr. text    indicator child_border
 #client.focused          $br     $br     $fg     $bg       $br
