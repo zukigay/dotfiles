@@ -191,6 +191,8 @@ input <identifier> xkb_model "pc101"
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
+    # global fullscreen: across all monitors
+    bindsym $mod+shift+f        fullscreen toggle global
     # Toggle the current focus between tiling and floating mode
     #bindsym $mod+Shift+space floating toggle
     bindsym $mod+s floating toggle
