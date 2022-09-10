@@ -173,7 +173,7 @@ c.url.searchengines = {
     '!yelp':    'https://www.yelp.com/search?find_desc={}',
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
-c.url.start_pages = ['https://search.ononoki.org/']
+c.url.start_pages = ['chrome://gpu']
 c.url.default_page = "https://search.ononoki.org"
 # -- java script --
 c.content.javascript.enabled = False
