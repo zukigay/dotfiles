@@ -16,6 +16,7 @@ alias vim=nvim
 alias vconf="nvim ~/.config/nvim/init.vim"
 
 
+alias mpdc="ncmpcpp"
 alias disown-help="echo command '& disown'"
 
 # sudo/doas
