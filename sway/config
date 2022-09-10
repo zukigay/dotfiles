@@ -23,7 +23,8 @@ set $term kitty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run
+set $menu wofi --show drun
+set $altmenu wofi --show run
 
 set $bg #373b41
 set $br #4b576f
@@ -110,6 +111,7 @@ input <identifier> xkb_model "pc101"
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+Shift+d exec $altmenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
