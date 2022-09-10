@@ -289,7 +289,7 @@ titlebar_border_thickness 0
 titlebar_padding 1
 
 
-#exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 #exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec autotiling
 include /etc/sway/config.d/*
