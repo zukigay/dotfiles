@@ -290,7 +290,7 @@ font pango:monospace 0
 titlebar_border_thickness 0                                                     
 titlebar_padding 1
 
-# for_window [app_id="kitty"] floating enable, exec "sway-move-to top-left"
+# for_window [title="Picture-in-Picture"] floating enable, exec "sway-move-to bottom-right"
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
