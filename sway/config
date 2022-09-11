@@ -25,6 +25,7 @@ set $term kitty
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu wofi --show drun
 set $altmenu wofi --show run
+#set $menu st "compgen -c | sort -u | fzf | xargs -r swaymsg -t command exec"
 
 set $bg #373b41
 set $br #4b576f
@@ -189,7 +190,6 @@ input <identifier> xkb_model "pc101"
     #bindsym $mod+s layout stacking
     bindsym $mod+t layout tabbed
     bindsym $mod+$altmod+t layout toggle split
-
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
     # global fullscreen: across all monitors
@@ -281,6 +281,7 @@ bindsym --locked XF86AudioNext exec playerctl next
 #    }
 #}
 for_window [instance="origin.exe"] floating enable
+# for_window [title="ULTRAKILL"] fullscreen
 default_border pixel 3
 for_window [title="^.*"] title_format ""
 gaps inner 10
@@ -288,6 +289,7 @@ font pango:monospace 0
 titlebar_border_thickness 0                                                     
 titlebar_padding 1
 
+# for_window [app_id="kitty"] floating enable, exec "sway-move-to top-left"
 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 #exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
