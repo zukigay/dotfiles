@@ -31,8 +31,8 @@ alias pamix="pulsemixer"
 alias rewire="systemctl --user --now disable wireplumber && sleep 1 && systemctl --user --now enable wireplumber"
 
 ## rm aliases 
-alias rm="rm -i"
-alias rmsafe="rmsafeon"
+alias rm="rm"
+alias rmsafe="rmsafeoff"
 alias rmsafeon="alias rm=rm && alias rmsafe='rmsafeoff' && echo 'rm=rm'"
 alias rmsafeoff="alias rm='rm -i' && alias rmsafe='rmsafeon' && echo 'rm=rm -i'"
 
