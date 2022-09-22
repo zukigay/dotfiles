@@ -27,7 +27,7 @@ super + z # steam scratchpad
 super + w # discord scratch
 	simplescratchpad.sh title discordtabbed discordtab bed.sh
 super + x # keepassxc scratchpad for passwords
-	scratchpad2.sh keepassxc NULL keepassxc
+	scratchpad3.sh keepassxc NULL keepassxc
 
 
 shift + Pause
