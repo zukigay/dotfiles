@@ -252,6 +252,7 @@ bindsym $mod+$altmod+$right resize shrink width $respeed
 bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
 bindsym $mod+p exec zswayice
 bindsym $mod+r exec steam-fzf bemenu 
+bindsym $mod+x exec voice.sh
 
 #
 # Media keys reqires playerctl and volumecontrol script 
