@@ -12,8 +12,6 @@ source "$shellfol"/shalias
 source "$shellfol"/shex
 ## source shell func
 source "$shellfol"/shfunc
-## source devour aliases for deavour to auto start
-source "$shellfol"/devouralias
 
 # https://github.com/lemniskett/archbox.git
 # sudo archbox --create <archlinux tarball download link>
