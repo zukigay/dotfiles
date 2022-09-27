@@ -23,7 +23,9 @@ set $term kitty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu launchscript bemenu
+#set $menu launchscript bemenu
+set $menuapp tofi
+set $menu launchscript $menuapp
 #set $menu launchscript wofi --show=dmenuv 
 set $altmenu wofi --show run
 #set $menu st "compgen -c | sort -u | fzf | xargs -r swaymsg -t command exec"
@@ -253,7 +255,7 @@ bindsym $mod+$altmod+$right resize shrink width $respeed
 #
 bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
 bindsym $mod+p exec zswayice
-bindsym $mod+r exec steam-fzf bemenu 
+bindsym $mod+r exec steam-fzf $menuapp 
 bindsym $mod+x exec voice.sh
 
 #
