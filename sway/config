@@ -324,6 +324,7 @@ exec wl-paste --primary --watch wl-copy --primary --clear
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec autotiling
+exec swaymsg workspace number 1
 exec noisetorch -i 
 exec_always xrandr --output "XWAYLAND1" --primary
 include /etc/sway/config.d/*
