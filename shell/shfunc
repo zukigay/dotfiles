@@ -31,3 +31,38 @@ scriptv() {
 	script="$(command -v $1)"
 	nvim $script
 }
+
+change_terminal_background() {
+ local COLOR="$1"
+
+ if [ "$TERM" = "screen-256color" ]; then
+# TMUX
+  echo -ne "\\ePtmux;\\e\\033]11;$COLOR\\007\\e\\\\"
+ else
+#  NOT TMUX
+  echo -ne "\\033]11;$COLOR\\007"
+ fi
+}
+
+nvim() {
+# Change the terminal's color when Vim starts
+  change_terminal_background "#1c1c1c"
+  $nvimpath "$@" # run this nvimpath="$(command -v nvim)" before this func
+
+# Change it back when it exits
+  change_terminal_background "#000000"
+}
+
+
+
+
+
+nvim() {
+# Change the terminal's color when Vim starts
+  change_terminal_background "#1c1c1c"
+  $nvimpath "$@"
+
+# Change it back when it exits
+  change_terminal_background "#000000"
+}
+

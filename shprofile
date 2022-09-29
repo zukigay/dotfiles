@@ -13,6 +13,14 @@ source "$shellfol"/shex
 ## source shell func
 source "$shellfol"/shfunc
 
+
+if [ -z "$nvimpath" ]
+then 
+nvimpath="$(command -v nvim)"
+fi
+
+
+
 # https://github.com/lemniskett/archbox.git
 # sudo archbox --create <archlinux tarball download link>
 
@@ -33,113 +41,17 @@ else
 	alias arcstm="archbox 'steam -no-cef-sandbox'"
 fi
 
-# set PATH so it includes user's private bin if it exists
-#export PATH=$PATH:/opt/scripts/
-#QT_QPA_PLATFORMTHEME=qt5ct
-#export QT_QPA_PLATFORMTHEME=qt5ct
-#export PATH=$PATH:/opt/discordWeb/
+
 
 
 
 if ! [ "$shexloaded" = "true" ]
 then
 echo "failed to load .shex"
-export PATH=$PATH:/opt/scripts/
-export PATH=$PATH:/opt/scripts/bookmarks/
-export PATH=$PATH:$HOME/.local/bin/
-export GUI_TERM=kitty
-export TERMINAL=kitty
 fi
 
-alias patch1="patch -p1 <"
-alias v=nvim
-alias vim=nvim
-alias gnvim=goneovim
-alias gv=goneovim
-alias la='ls -a'
-alias swayspawn="XDG_SESSION_TYPE=wayland dbus-run-session sway --unsupported-gpu"
-alias rewire="systemctl --user --now disable wireplumber && sleep 1 && systemctl --user --now enable wireplumber"
-alias ya=yay
-alias vconf="nvim ~/.config/nvim/init.vim"
-alias protoncfg="/tmp/proton_run winecfg"
-alias gpush=gitpush
-
-
-
-
-
-#alias gi="gitui"
-
-#alias rm="echo "
-alias rm="rm -i"
-alias rmsafe="rmsafeon"
-alias rmsafeon="alias rm=rm && alias rmsafe='rmsafeoff' && echo 'rm=rm'"
-alias rmsafeoff="alias rm='rm -i' && alias rmsafe='rmsafeon' && echo 'rm=rm -i'"
-alias stx="exec startx"
-#check /etc/security/pam_env.conf for other $PATH uses
-#export | grep gtk
-
-
-
-
-
-change_terminal_background() {
- local COLOR="$1"
-
- if [ "$TERM" = "screen-256color" ]; then
-# TMUX
-  echo -ne "\\ePtmux;\\e\\033]11;$COLOR\\007\\e\\\\"
- else
-#  NOT TMUX
-  echo -ne "\\033]11;$COLOR\\007"
- fi
-}
-if [ -z "$nvimpath" ]
-then 
-nvimpath="$(command -v nvim)"
-fi
-nvim() {
-# Change the terminal's color when Vim starts
-  change_terminal_background "#1c1c1c"
-  $nvimpath "$@"
-
-# Change it back when it exits
-  change_terminal_background "#000000"
-}
 #put some tips here
 #up to 20% preformace echo 'always' | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
-#
-#
-#
-#
-
-bluetoothfix () {
-sudo modprobe -r btusb && sudo modprobe btusb
-}
-rebluetooth () {
-arg1=$1
-echo -e "power on\n" | bluetoothctl
-echo -e "scan on\n" | bluetoothctl
-bluetoothctl -- remove $arg1
-sleep 5
-bluetoothctl -- pair $arg1
-sleep 10
-bluetoothctl -- trust $arg1
-bluetoothctl -- connect $arg1
-sleep 5
-echo -e "scan off\n" | bluetoothctl
-}
-blueconnect () {
-arg1=$1
-echo -e "power on\n" | bluetoothctl
-sleep 1
-bluetoothctl -- connect $arg1
-sleep 1
-echo -e "scan off\n" | bluetoothctl
-}
-#QT_QPA_PLATFORMTHEME=qt5ct
-alias sshbox='ssh zooki@192.168.1.194'
-
 
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
