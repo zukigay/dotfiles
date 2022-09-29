@@ -5,6 +5,10 @@
 # shell folder
 export shellfol="$HOME/.config/shell"
 
+if [ -z "$nvimpath" ]
+then
+nvimpath="$(command -v nvim)"
+fi
 
 ## source shalias for shell alias
 source "$shellfol"/shalias
@@ -14,10 +18,7 @@ source "$shellfol"/shex
 source "$shellfol"/shfunc
 
 
-if [ -z "$nvimpath" ]
-then 
-nvimpath="$(command -v nvim)"
-fi
+
 
 
 

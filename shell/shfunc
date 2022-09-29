@@ -57,12 +57,3 @@ nvim() {
 
 
 
-nvim() {
-# Change the terminal's color when Vim starts
-  change_terminal_background "#1c1c1c"
-  $nvimpath "$@"
-
-# Change it back when it exits
-  change_terminal_background "#000000"
-}
-
