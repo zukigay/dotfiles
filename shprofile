@@ -3,7 +3,7 @@
 ### sources
 
 # shell folder
-export shellfol="$HOME/.config/shell"
+shellfol="$HOME/.config/shell"
 
 if [ -z "$nvimpath" ]
 then
@@ -11,16 +11,16 @@ nvimpath="$(command -v nvim)"
 fi
 
 ## source shalias for shell alias
-source "$shellfol"/shalias
+. "$shellfol"/shalias
 ## source shex for shell exports to clean up this file
-source "$shellfol"/shex
+. "$shellfol"/shex
 ## source shell func
-source "$shellfol"/shfunc
 
 
 
 
 
+. "$shellfol"/shfunc
 
 # https://github.com/lemniskett/archbox.git
 # sudo archbox --create <archlinux tarball download link>
