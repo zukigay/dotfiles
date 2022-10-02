@@ -15,36 +15,9 @@ fi
 ## source shex for shell exports to clean up this file
 . "$shellfol"/shex
 ## source shell func
-
-
-
-
-
 . "$shellfol"/shfunc
 
 # https://github.com/lemniskett/archbox.git
-# sudo archbox --create <archlinux tarball download link>
-
-# [[ -e /etc/arch-release ]] && export PS1=" $PS1"
-# [[ -e /etc/archbox.conf ]] || export PS1=" $PS1"
-[[ -e /etc/archbox.conf ]] || archbox="true"
-if [ "$archbox" = "true" ]
-then
-	cdcheckdir=$(pwd)
-	if [ "$cdcheckdir" = "/" ]
-	then
-		cd
-	fi
-else	
-	alias uparc="archbox sudo -S pacman -Syu"
-	alias sarc="archbox --enter"
-	alias arcdo="archbox"
-	alias arcstm="archbox 'steam -no-cef-sandbox'"
-fi
-
-
-
-
 
 if ! [ "$shexloaded" = "true" ]
 then
@@ -56,22 +29,12 @@ fi
 
 
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	#xwm
 	python ~/src/zukidisplay/zdm.py
-
-
-	#~/.xwm
- 	#read wm
-	#exec startx $wm
 else
-
-
 if [ -z "$shprofileloaded" ]
 then
 	echo "$(tput setaf 5)TRANS $(tput setaf 4)RIGHTS $(tput setaf 7)HELL YEAH!!"
 	pfetch | lolcat
 fi
-
-
 shprofileloaded=1
 fi
