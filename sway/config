@@ -308,7 +308,7 @@ bindsym $mod+Print mode "$screenshot"
 #    }
 #}
 for_window [instance="origin.exe"] floating enable
-for_window [class="Godot"] max_render_time off
+# for_window [class="Godot"] max_render_time off
 for_window [class="Steam"] max_render_time off
 # for_window [title="ULTRAKILL"] fullscreen
 default_border pixel 3
