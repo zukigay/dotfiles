@@ -29,6 +29,8 @@ alias pac="pacman"
 alias pamix="pulsemixer"
 
 alias rewire="systemctl --user --now disable wireplumber && sleep 1 && systemctl --user --now enable wireplumber"
+# bluetooth
+alias blue="bluetoothctl"
 
 ## rm aliases 
 alias rm="rm"
@@ -38,7 +40,7 @@ alias rmsafeoff="alias rm='rm -i' && alias rmsafe='rmsafeon' && echo 'rm=rm -i'"
 
 ## redunent aliases
 ## (aliases that are never used)
-alias stx="exec startx"
+#alias stx="exec startx"
 alias protoncfg="/tmp/proton_run winecfg"
 
 
