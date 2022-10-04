@@ -68,6 +68,7 @@ workspace 7 output $secmon
 workspace 8 output $secmon
 workspace 9 output $secmon
 workspace 10 output $secmon
+workspace 11 output $secmon
 
 ### Idle configuration
 #
