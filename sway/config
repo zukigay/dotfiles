@@ -19,6 +19,12 @@ set $respeed 20px
 # Your preferred terminal emulator
 #set $term foot
 set $term kitty
+set $gaps 10px
+set $gapsset0 gaps inner all set 0 ; gaps inner 0
+set $gapssetnorm gaps inner all set $gaps ; gaps inner $gaps
+set $border 3px
+set $borderset0 exec swaymsg '[app_id=".*"]' border pixel 0; default_border pixel 0
+set $bordersetnorm exec swaymsg '[app_id=".*"]' border pixel $border; default_border pixel $border
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -203,6 +209,11 @@ input <identifier> xkb_model "pc101"
     bindsym $mod+s floating toggle
     
     bindsym $mod+z sticky toggle
+    #bindsym $mod+m gaps inner all set 0
+    # monicale 
+    bindsym $mod+m $gapsset0 ; $borderset0
+    bindsym $mod+Control+m $gapsset0 ; $bordersetnorm
+    bindsym $mod+Shift+m $gapssetnorm ; $bordersetnorm
     #bindsym $mod+z sticky enable
     #bindsym $mod+Shift+z sticky disable
     # Swap focus between the tiling area and the floating area
@@ -313,11 +324,11 @@ for_window [instance="origin.exe"] floating enable
 # for_window [class="Godot"] max_render_time off
 for_window [class="Steam"] max_render_time off
 # for_window [title="ULTRAKILL"] fullscreen
-default_border pixel 3
 for_window [title="^.*"] title_format ""
-gaps inner 10
 font pango:monospace 0
-titlebar_border_thickness 0                                                     
+default_border pixel $border
+gaps inner 10
+titlebar_border_thickness 1                                                     
 titlebar_padding 1
 
 
