@@ -212,9 +212,9 @@ input <identifier> xkb_model "pc101"
     bindsym $mod+z sticky toggle
     #bindsym $mod+m gaps inner all set 0
     # monicale 
-    bindsym $mod+m $gapsset0 ; $borderset0
+    bindsym $mod+m $gapssetnorm ; $bordersetnorm
     bindsym $mod+Control+m $gapsset0 ; $bordersetnorm
-    bindsym $mod+Shift+m $gapssetnorm ; $bordersetnorm
+    bindsym $mod+Shift+m $gapsset0 ; $borderset0
     #bindsym $mod+z sticky enable
     #bindsym $mod+Shift+z sticky disable
     # Swap focus between the tiling area and the floating area
