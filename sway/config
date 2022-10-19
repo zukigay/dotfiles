@@ -194,8 +194,8 @@ input <identifier> xkb_model "pc101"
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    #bindsym $mod+b splith
+    #bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
     #bindsym $mod+s layout stacking
@@ -267,11 +267,17 @@ bindsym $mod+$altmod+$right resize shrink width $respeed
 #
 # Scripts:
 #
+
+bindsym --release $mod+v exec amixer set Capture nocap
+bindsym  $mod+v exec amixer set Capture cap
+bindsym  $mod+Shift+v exec amixer set Capture cap
+
+
+
 bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
 bindsym $mod+p exec zswayice
 bindsym $mod+r exec steam-fzf $menuapp 
 bindsym $mod+x exec voice.sh
-
 #
 # Media keys reqires playerctl and volumecontrol script 
 #
