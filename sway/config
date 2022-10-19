@@ -24,8 +24,8 @@ set $gapsset0 gaps inner all set 0 ; gaps inner 0
 set $gapssetnorm gaps inner all set $gaps ; gaps inner $gaps
 set $border 3px
 set $ipctool swaymsg
-set $borderset0 exec $ipctool '[title=".*"]' border pixel 0; default_border pixel 0
-set $bordersetnorm exec $ipctool '[title=".*"]' border pixel $border; default_border pixel $border 
+set $borderset0 [title=".*"] border pixel 0; default_border pixel 0
+set $bordersetnorm [title=".*"] border pixel $border; default_border pixel $border 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
