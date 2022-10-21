@@ -279,6 +279,7 @@ bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
 bindsym $mod+p exec zswayice
 bindsym $mod+r exec steam-fzf $menuapp 
 bindsym $mod+x exec voice.sh
+bindsym $mod+Shift+x exec xfix
 bindsym $mod+Control+x exec "swaymsg workspace 5 && swaymsg workspace 6"  
 #
 # Media keys reqires playerctl and volumecontrol script 
