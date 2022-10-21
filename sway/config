@@ -329,9 +329,10 @@ bindsym $mod+Print mode "$screenshot"
 #}
 for_window [instance="origin.exe"] floating enable
 # for_window [class="Godot"] max_render_time off
-for_window [class="Steam"] max_render_time off
+ # for_window [class="Steam"] max_render_time off
 # for_window [title="ULTRAKILL"] fullscreen
-for_window [title="^.*"] title_format ""
+ for_window [title="^.*"] title_format ""
+for_window [class="Slay the Spire"] floating disable, border pixel 0
 font pango:monospace 0
 default_border pixel $border
 gaps inner 10
@@ -341,6 +342,8 @@ titlebar_padding 1
 
 # for_window [title="Picture-in-Picture"] floating enable, exec "sway-move-to bottom-right", sticky enable
 for_window [title="Picture-in-Picture"] floating enable, sticky enable
+for_window [class="overwatch.exe"] workspace 6, move container to workspace 6
+for_window [title="Wine System Tray"] kill
 exec wl-paste --primary --watch wl-copy --primary --clear
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
