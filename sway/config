@@ -31,7 +31,8 @@ set $bordersetnorm [title=".*"] border pixel $border; default_border pixel $bord
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #set $menu launchscript bemenu
-set $menuapp tofi
+#set $menuapp tofi
+set $menuapp bemenu
 set $menu launchscript $menuapp
 #set $menu launchscript wofi --show=dmenuv 
 set $altmenu wofi --show run
