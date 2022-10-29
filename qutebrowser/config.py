@@ -173,7 +173,8 @@ c.url.searchengines = {
     '!yelp':    'https://www.yelp.com/search?find_desc={}',
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
-c.url.start_pages = ['chrome://gpu']
+#c.url.start_pages = ['chrome://gpu']
+c.url.start_pages = ['https://search.ononoki.org']
 c.url.default_page = "https://search.ononoki.org"
 # -- java script --
 c.content.javascript.enabled = False
@@ -193,6 +194,9 @@ config.set('content.autoplay',True, '*://www.netflix.com/*')
 config.bind("a", "spawn --detach firefox {url}", mode="normal")
 config.bind("A", "hint links spawn --detach firefox {hint-url}", mode="normal")
 config.bind("<Alt-a>", "spawn --userscript darkreaderedit.sh", mode="normal")
+config.bind("<Control-Tab>", "tab-next")
+config.bind("<Control-Shift-Tab>", "tab-prev")
+config.bind("b", "back", mode="normal")
 #config.bind("<Alt-a>", "spawn --userscript darkreadertoggle.sh", mode="normal")
 
 
