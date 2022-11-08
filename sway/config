@@ -224,7 +224,7 @@ input <identifier> xkb_model "pc101"
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    #bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
@@ -237,6 +237,8 @@ input <identifier> xkb_model "pc101"
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+    bindsym $mod+a exec $ipctool '[app_id="Electron" title="WebCord"] scratchpad show; move position center' || webcord
 #
 # Resizing containers:
 #
