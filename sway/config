@@ -39,7 +39,9 @@ set $altmenu wofi --show run
 #set $menu st "compgen -c | sort -u | fzf | xargs -r swaymsg -t command exec"
 
 set $bg #373b41
+set $bg #280040
 set $br #4b576f
+set $br #760091
 set $fg #000000
 # class                 border  backgr. text    indicator child_border
 #client.focused          $br     $br     $fg     $bg       $br
