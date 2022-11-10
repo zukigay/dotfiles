@@ -41,7 +41,7 @@ set $altmenu wofi --show run
 set $bg #373b41
 set $bg #280040
 set $br #4b576f
-set $br #760091
+set $br #6040a0
 set $fg #000000
 # class                 border  backgr. text    indicator child_border
 #client.focused          $br     $br     $fg     $bg       $br
