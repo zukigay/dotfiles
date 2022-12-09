@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "$@" > /tmp/Xwaylandargs
+exec /usr/bin/Xwayland -shm "$@"
