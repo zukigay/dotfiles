@@ -1,4 +1,4 @@
 #!/bin/sh
-xsetroot -cursor_name arrow
+xsetroot -cursor_name left_ptr
 #/usr/lib/kdeconnectd &
 polkit-dumb-agent &
