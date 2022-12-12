@@ -7,6 +7,10 @@ alias ls='ls --color=auto'
 alias at="atool"
 alias atx="atool -x"
 
+
+## mpv alias
+alias mpvi="mpv --keep-open --osc=no"
+
 ## git/patch aliases
 alias gpush=gitpush
 alias patch1="patch -p1 <"
