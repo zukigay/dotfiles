@@ -21,13 +21,15 @@ set $respeed 20px
 #set $term foot
 set $term kitty
 set $gaps 10px
-set $gapsset0 gaps inner all set 0 ; gaps inner 0
-set $gapssetnorm gaps inner all set $gaps ; gaps inner $gaps
-set $border 3px
-set $borderset0 [title=".*"] border pixel 0; default_border pixel 0
-set $bordersetnorm [title=".*"] border pixel $border; default_border pixel $border
+set $gapsset0 gaps inner all set 0 ; gaps inner current set 0
+set $gapssetnorm gaps inner all set $gaps ; gaps inner  current set $gaps
+#set $border 3px
+set $border 3
+set $borderset0 [title=".*"] border pixel 0 ; default_border pixel 0
+set $bordersetnorm [title=".*"] border pixel $border ; default_border pixel $border
 #set $GAMEFULL border pixel 0,floating off,fullscreen off,gaps inner current set 0,gaps outer current set 0
-set $GAMEFULL border pixel 0,floating off,fullscreen off,gaps inner current set 0,gaps outer current set 0
+#set $GAMEFULL border pixel 0,floating off,fullscreen off,gaps inner current set 0,gaps outer current set 0
+set $GAMEFULL border pixel 0,floating disable,fullscreen disable,gaps inner current set 0,gaps outer current set 0
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -227,7 +229,8 @@ workspace 11 output $steamdeck
     bindsym $mod+z sticky toggle
     # monicale
     bindsym $mod+m $GAMEFULL
-    bindsym $mod+Shift+m $gapssetnorm ; $bordersetnorm
+    bindsym $mod+Shift+m gaps inner all set $gaps ; gaps inner  current set $gaps ; [title=".*"] border pixel $border 
+
     #bindsym $mod+m $gapssetnorm ; $bordersetnorm
     #bindsym $mod+Control+m $gapsset0 ; $bordersetnorm
     #bindsym $mod+Shift+m $gapsset0 ; $borderset0
