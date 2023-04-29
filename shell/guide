@@ -1,0 +1,44 @@
+# what is this file
+A guide to the shell folder and mostly tips and fixes for bugs and other stuff my system I have to deal with.
+
+# What is this shell folder and how does it work?
+first off we have "[config folder]/shprofile"
+this file is not in the shell folder I forget why but it loads all the files in the shell folder.
+
+The first one to be loaded is "[config folder]/shell/shalias"
+this file loads all the aliases its quite self explanitory.
+
+After loading the last one this file is loaded "[config folder]/shell/shex"
+it exporteds all the environment veriables to fix problems, add stuff to path or force programs to follow xdg desktop standards.
+
+Lastly we have "[config folder]/shell/shfunc"
+it loads funcutions that I can't be asked to make into script files also most of these i haven't used in a very long time.
+
+
+#STEAM/STEAM GAMES fixes/tips
+
+# launching steam causes frequent frezzes till xorg is restarted
+try some off the following
+factory reset bios
+reinstall all packages from repo
+downgrade nvidia/linux-lts
+
+# LUFTRAUSERS insta-crash
+rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu/libstdc++.so.6
+rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/lib/i386-linux-gnu/libgcc_s.so.1
+rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/amd64/lib/x86_64-linux-gnu/libgcc_s.so.1
+rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/amd64/usr/lib/x86_64-linux-gnu/libstdc++.so.6
+
+# some valve games not launching 
+add this command to launch options
+"SDL_VIDEODRIVER=x11 %command% -vulkan"
+without quotes
+or for portal reloaded or other games with this problem add
+"LD_PRELOAD='/usr/$LIB/libstdc++.so.6'"
+without qoutes to launch options
+
+# Brotato not saving/loading cloud save
+"unset XDG_CONFIG_HOME; unset XDG_DATA_HOME; %command%"
+add this to launch options without quotes
+
+# tip add "-offline" to far cry 3 blood dragon launch options
