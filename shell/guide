@@ -19,9 +19,10 @@ it loads funcutions that I can't be asked to make into script files also most of
 
 # launching steam causes frequent frezzes till xorg is restarted
 try some off the following
+downgrade nvidia/linux-lts(sometimes going to the ver before the last working one helps)
+rerun grub install????????
 factory reset bios
 reinstall all packages from repo
-downgrade nvidia/linux-lts
 
 # LUFTRAUSERS insta-crash
 rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu/libstdc++.so.6
