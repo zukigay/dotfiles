@@ -1,0 +1,19 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+menuentry 'Arch Linux lts gpu pass' --class arch --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-de7de9f4-6ae2-43ea-b4b0-51b8065b977b' {
+	load_video
+	set gfxpayload=keep
+	insmod gzio
+	insmod part_gpt
+	insmod fat
+	search --no-floppy --fs-uuid --set=root 463E-8554
+	echo	'Loading Linux linux-lts ...'
+	#linux	/vmlinuz-linux-lts root=UUID=de7de9f4-6ae2-43ea-b4b0-51b8065b977b rw  nvidia-drm.modeset=1 nomodeset loglevel=3 intel_iommu=off acpi=force
+	linux	/vmlinuz-linux-lts root=UUID=de7de9f4-6ae2-43ea-b4b0-51b8065b977b rw  loglevel=3 intel_iommu=on acpi=force vfio-pci.ids=10de:2486,10de:228b iommu=pt modprobe.blacklist=nvidia 
+	echo	'Loading initial ramdisk ...'
+	#initrd	/intel-ucode.img /initramfs-linux-lts.img
+	initrd	/intel-ucode.img /initramfs-virt.img
+}
