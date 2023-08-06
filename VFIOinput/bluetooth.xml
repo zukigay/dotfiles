@@ -3,5 +3,5 @@
     <vendor id="0x8087"/>
     <product id="0x0026"/>
   </source>
-  <address type="usb" bus="0" port="1"/>
+  <address type="usb" bus="0" port="4"/>
 </hostdev>
