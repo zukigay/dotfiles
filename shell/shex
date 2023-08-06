@@ -21,7 +21,6 @@ export PATH=$PATH:$HOME/.scripts/
 export PATH=$PATH:$HOME/.scripts/bookmarks/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:/home/zuki/.local/share/cargo/bin
-
 export PATH=$PATH:$HOME/Applications
 
 # zuki pref
@@ -44,10 +43,12 @@ export DXVK_ASYNC=1
 # DISPLAY
 export __GL_SYNC_DISPLAY_DEVICE=DP-0
 export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-0
+
 # TERM
 export GUI_TERM="kitty"
 export TERMINAL="kitty"
 export EDITOR=nvim
 export AUR_PAGER="fff"
+export VFIOVM="win10-clone"
 # report script loaded for debuging
 export shexloaded="true"
