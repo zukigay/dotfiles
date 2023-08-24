@@ -396,6 +396,7 @@ for_window [class="^.*"] border pixel $border
 # titlebar_padding 1
 for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 0
 for_window [class="overwatch.exe"] workspace 6, move container to workspace 6
+for_window [class="steam_app_242680"] fullscreen disable, floating disable
 for_window [title="Wine System Tray"] kill
 # for_window [app_id="Electron" title="WebCord"] move to scratchpad
 # for_window [app_id="Electron" title="WebCord"] scratchpad show
