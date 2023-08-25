@@ -13,12 +13,38 @@ input * {
 }
 
 input <identifier> xkb_model "pc101"
+seat * xcursor_theme default 30
 
 #LOCKSYNTAX
 set $locksyntax --locked
 set $secmontoggle output $secmon toggle
 
+
+
+
+
+
 include ~/.config/i3sway/config
+
+
+#
+# Screen capture (source https://www.reddit.com/r/swaywm/comments/pdyx0w/comment/hau6yck/?utm_source=share&utm_medium=web2x&context=3)
+#
+set $screenshot 1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy
+mode "$screenshot" {
+    bindsym 1 exec 'grim -g "$(slurp)" ~/screenshot/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 2 exec 'grim ~/screenshot/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 3 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
+    bindsym 4 exec 'grim - | wl-copy', mode "default"
+    bindsym 5 exec 'grim -g "$(slurp)" - | swappy -f -', mode "default"
+    bindsym 6 exec 'ripdrag ~/screenshot/ps_*', mode "default"
+
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+Print mode "default"
+}
+
 floating_modifier $mod normal
 
 for_window [app_id="^chrome-.*"] shortcuts_inhibitor disable
