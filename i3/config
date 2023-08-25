@@ -12,4 +12,5 @@ exec picom
 #LOCKSYNTAX
 set $locksyntax
 set $secmontoggle exec X11togglemon HDMI-0 && sleep 2 && hsetroot -solid "#1E242D"
+set $clipboard exec clipmenu
 include ~/.config/i3sway/config
