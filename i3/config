@@ -1,6 +1,7 @@
 set $ipctool i3-msg
 
 #DISPLAY
+exec "systemctl --user import-environment XDG_CURRENT_DESKTOP DISPLAY XAUTHORITY"
 set $mainmon DP-0
 set $secmon HDMI-0
 #WALLPAPER
