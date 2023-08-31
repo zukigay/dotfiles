@@ -303,7 +303,8 @@ bindsym $mod+$altmod+w exec notify-send "$(sway-prop-notify)"
 bindsym $mod+c exec bluelighter
 bindsym $mod+v exec $clipboard
 bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
-bindsym $mod+p exec zswayice
+#bindsym $mod+p exec zswayice
+bindsym $mod+p exec zukice
 bindsym $mod+r exec steam-fzf $menuapp 
 bindsym $mod+x exec voice.sh
 bindsym $mod+Shift+x exec xfix
