@@ -396,6 +396,7 @@ for_window [title="Nuclear Throne"] floating disable, fullscreen disable
 
 ##for_window [class="overwatch.exe"] workspace 6, move container to workspace 6
 for_window [title="Wine System Tray"] kill
+for_window [class="ripdrag" ] floating enable
 # for_window [app_id="Electron" title="WebCord"] move to scratchpad
 # for_window [app_id="Electron" title="WebCord"] scratchpad show
 # exec wl-paste --primary --watch wl-copy --primary --clear
