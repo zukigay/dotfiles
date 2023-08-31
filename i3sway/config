@@ -299,7 +299,6 @@ bindsym $mod+$altmod+$right resize shrink width $respeed
 #bindsym  $mod+Shift+v exec amixer set Capture cap
 
 bindsym $mod+$altmod+w exec notify-send "$(sway-prop-notify)"
-
 bindsym $mod+c exec bluelighter
 bindsym $mod+v exec $clipboard
 bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
@@ -382,7 +381,7 @@ for_window [instance="origin.exe"] floating enable
 # for_window [class="^Steam$"] floating enable
 # for_window [title="^Steam$"] floating disable, border pixel 0
 # for_window [class="Slay the Spire"] floating disable, border pixel 0
-font pango 0
+#font pango 0
 default_border pixel $border
 gaps inner 10
 for_window [title="^.*"] title_format ""
