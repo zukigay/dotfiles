@@ -28,7 +28,7 @@ fi
 #up to 20% preformace echo 'always' | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
 
 
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+if [ -z "$WAYLAND_DISPLAY" ] && [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 	python ~/src/zukidisplay/zdm.py
 else
 if [ -z "$shprofileloaded" ]
