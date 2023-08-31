@@ -15,6 +15,9 @@ input * {
 input <identifier> xkb_model "pc101"
 seat * xcursor_theme default 30
 
+
+set $zukice exec zswayice
+
 #LOCKSYNTAX
 set $locksyntax --locked
 set $secmontoggle output $secmon toggle
