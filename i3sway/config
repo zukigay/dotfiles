@@ -390,7 +390,7 @@ for_window [title="Wine System Tray"] kill
 exec autotiling
 #  exec sleep 0.5 && swaymsg workspace number 1
 exec $ipctool workspace number 1
-exec noisetorch -i 
+exec sleep 5; noisetorch -i 
 #exec swayxfix
 #exec feh --bg-fill ~/wallpapers/linuxPRIDE1080.png
 
