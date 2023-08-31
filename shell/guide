@@ -30,6 +30,10 @@ rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/lib/i386-linux-gnu/libgcc
 rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/amd64/lib/x86_64-linux-gnu/libgcc_s.so.1
 rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/amd64/usr/lib/x86_64-linux-gnu/libstdc++.so.6
 
+# opencl freezing/clinfo freezing /davinci-resolve freezing
+# remove the intel oneapi stuff(can be installed with blender sometimes uninstall blender first then reinstall it)
+sudo pacman -R intel-oneapi-compiler-shared-runtime intel-oneapi-compiler-shared-opencl-cpu intel-oneapi-compiler-dpcpp-cpp-runtime intel-oneapi-openmp 
+
 # some valve games not launching 
 add this command to launch options
 "SDL_VIDEODRIVER=x11 %command% -vulkan"
