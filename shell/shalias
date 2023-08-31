@@ -31,7 +31,8 @@ alias sudo='sudo '
 
 ## pacman
 alias pac="pacman"
-
+alias downgrade-nvidia="sudo downgrade nvidia-open-dkms nvidia-utils lib32-nvidia-utils"
+alias splitgatefix="sudo downgrade lib32-libx11=1.8.2-2"
 # pulseaudio/pipewire
 alias pamix="pulsemixer"
 
