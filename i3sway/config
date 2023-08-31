@@ -294,9 +294,9 @@ bindsym $mod+$altmod+$right resize shrink width $respeed
 # Scripts:
 #
 
-bindsym --release $mod+v exec amixer set Capture nocap
-bindsym  $mod+v exec amixer set Capture cap
-bindsym  $mod+Shift+v exec amixer set Capture cap
+#bindsym --release $mod+v exec amixer set Capture nocap
+#bindsym  $mod+v exec amixer set Capture cap
+#bindsym  $mod+Shift+v exec amixer set Capture cap
 
 bindsym $mod+$altmod+w exec notify-send "$(sway-prop-notify)"
 
