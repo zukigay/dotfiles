@@ -15,6 +15,7 @@ Lastly we have "[config folder]/shell/shfunc"
 it loads funcutions that I can't be asked to make into script files also most of these i haven't used in a very long time.
 
 
+#remember /var/log/pacman.log its a log of all pacman installs
 
 #STEAM/STEAM GAMES fixes/tips
 
