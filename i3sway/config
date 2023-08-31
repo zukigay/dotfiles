@@ -326,6 +326,10 @@ bindsym $locksyntax XF86AudioNext exec playerctl next
 
 
 bindsym XF86Calculator exec qalculate-qt
+bindsym $mod+g exec "input_attach.sh"
+bindsym $mod+shift+g exec "input_detach.sh"
+bindsym $mod+control+g exec "blue_attach.sh"
+bindsym $mod+control+shift+g exec "blue_detach.sh"
 
 
 set $mousekey arrow key's move mouse
