@@ -51,4 +51,6 @@ alias rmsafeoff="alias rm='rm -i' && alias rmsafe='rmsafeon' && echo 'rm=rm -i'"
 alias protoncfg="/tmp/proton_run winecfg"
 
 
+alias upvirtio="sudo mkinitcpio --config /etc/mkinitcpiovirt.conf --generate /boot/initramfs-virt.img"
 alias pacup="echo 'you topup you stupid'"
+alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
