@@ -81,6 +81,9 @@ client.unfocused        $bg     $bg     $fg     $bg       $bg
 #output $mainmon mode 1920x1080@160Hz position 0,0
 #output $steamdeck mode 1200x800@60hz position 3840,0
 # bindsym $mod+grave output $secmon toggle swayism
+# (Prior)=page up (Next)=page down
+bindsym $mod+Prior exec --no-startup-id pkill picom
+bindsym $mod+Next exec --no-startup-id $XDG_CONFIG_HOME/i3/picom.sh
 bindsym $mod+grave $secmontoggle
 workspace 1 output $mainmon
 workspace 2 output $mainmon
