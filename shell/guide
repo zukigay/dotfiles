@@ -30,10 +30,11 @@ This includes vampires survivors set launch options to 'SDL_VIDEODRIVER="" %comm
 
 # launching steam causes frequent frezzes till xorg is restarted
 try some off the following
+reinstall all packages from repo(this one seems to work most offen try it before the other things then after if it doesn't work)
 downgrade nvidia/linux-lts(sometimes going to the ver before the last working one helps)
 rerun grub install????????
 factory reset bios
-reinstall all packages from repo
+check hdmi/display port wires unplug any unused cables
 
 # LUFTRAUSERS insta-crash
 rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu/libstdc++.so.6
