@@ -15,7 +15,17 @@ Lastly we have "[config folder]/shell/shfunc"
 it loads funcutions that I can't be asked to make into script files also most of these i haven't used in a very long time.
 
 
+
 #STEAM/STEAM GAMES fixes/tips
+
+# unable to join game via friends list because windows disapears
+move your mouse off the right click menu to the left then move it back on to the gray part and click join.
+
+#WTF ADDING MANGOHUD TO LAUNCH OPTIONS ON STEAM MAKES GAMES WORK ON PROTON 7+(TRUE FIX UNINSTALL STEAM VR beta)
+
+Games complaining about SDL_VIDEODRIVER set SDL_VIDEODRIVER to "windows" for proton and "X11"/"wayland" for linux
+This includes vampires survivors set launch options to 'SDL_VIDEODRIVER="" %command%'
+
 
 # launching steam causes frequent frezzes till xorg is restarted
 try some off the following
