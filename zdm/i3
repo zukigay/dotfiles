@@ -1,3 +1,5 @@
 #!/bin/sh
 source $HOME/.config/zdm/Xsession
+export XDG_CURRENT_DESKTOP=i3
+#systemctl --user import-environment XDG_CURRENT_DESKTOP DISPLAY XAUTHORITY
 exec dbus-launch i3
