@@ -36,6 +36,14 @@ rerun grub install????????
 factory reset bios
 check hdmi/display port wires unplug any unused cables
 
+#Nuclear Throne
+
+#60fps
+switch to the openbeta_win64 or if on a 32bit system the openbeta
+
+Use proton to get the game to launch on linux since it uses outdated libs
+The game may be extremly slow when fullscreen'ed on the windows build if so unfullscreen in game or add a window rule in your wm
+
 # LUFTRAUSERS insta-crash
 rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/usr/lib/i386-linux-gnu/libstdc++.so.6
 rm ~/.local/share/Steam/ubuntu12_32/steam-runtime/i386/lib/i386-linux-gnu/libgcc_s.so.1
