@@ -84,6 +84,7 @@ client.unfocused        $bg     $bg     $fg     $bg       $bg
 # (Prior)=page up (Next)=page down
 bindsym $mod+Prior exec --no-startup-id pkill picom
 bindsym $mod+Next exec --no-startup-id $XDG_CONFIG_HOME/i3/picom.sh
+#bindsym $mod+Next exec --no-startup-id picom
 bindsym $mod+grave $secmontoggle
 workspace 1 output $mainmon
 workspace 2 output $mainmon
