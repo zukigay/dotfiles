@@ -28,13 +28,18 @@ Games complaining about SDL_VIDEODRIVER set SDL_VIDEODRIVER to "windows" for pro
 This includes vampires survivors set launch options to 'SDL_VIDEODRIVER="" %command%'
 
 
+Games and apps freezing/going at 0fps when fullscreened. fix disable "Force Comp PIPELINE" in nvidia settings.
+
 # launching steam causes frequent frezzes till xorg is restarted
 try some off the following
+THE NUMBER ONE THING TO CHECK "check hdmi/display port wires unplug any unused cables"
+
+
 reinstall all packages from repo(this one seems to work most offen try it before the other things then after if it doesn't work)
 downgrade nvidia/linux-lts(sometimes going to the ver before the last working one helps)
 rerun grub install????????
 factory reset bios
-check hdmi/display port wires unplug any unused cables
+rewite xorg config/use mon toggle script?
 
 #Nuclear Throne
 
@@ -42,8 +47,7 @@ check hdmi/display port wires unplug any unused cables
 switch to the openbeta_win64 or if on a 32bit system the openbeta
 
 Use proton to get the game to launch on linux since it uses outdated libs
-The game may be extremly slow when fullscreen'ed on the windows build if so unfullscreen in game or add a window rule in your wm
-
+The game may be extremly slow(1fps) when fullscreen'ed on the windows build if so unfullscreen in game(if you can), add a window rule in your wm or add --windowed to the launch options
 #minecraft(prismmc)
 better then adventure vsync slows down the rest of the system very hard
 
@@ -68,5 +72,6 @@ without qoutes to launch options
 # Brotato not saving/loading cloud save
 "unset XDG_CONFIG_HOME; unset XDG_DATA_HOME; %command%"
 add this to launch options without quotes
+
 
 # tip add "-offline" to far cry 3 blood dragon launch options
