@@ -47,6 +47,8 @@ alias rmsafeon="alias rm=rm && alias rmsafe='rmsafeoff' && echo 'rm=rm'"
 alias rmsafeoff="alias rm='rm -i' && alias rmsafe='rmsafeon' && echo 'rm=rm -i'"
 
 ## redunent aliases
+#can't be bothered to add to path aliases
+alias sxi="~/src/zukidisplay/zdm.py"
 ## (aliases that are never used)
 #alias stx="exec startx"
 alias protoncfg="/tmp/proton_run winecfg"
