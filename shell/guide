@@ -41,6 +41,12 @@ rerun grub install????????
 factory reset bios
 rewite xorg config/use mon toggle script?
 
+
+#ELDEN RING
+# if the game crashes/gives error at launch rename/copy eldenring.exe to start_protected_game.exe
+cp eldenring.exe start_protected_game.exe
+#this game requares EasyAntiCheat Proton Runtime to be installed unless you use no anti cheat mode
+#may requare proton exmermental/proton-ge
 #Nuclear Throne
 
 #60fps
