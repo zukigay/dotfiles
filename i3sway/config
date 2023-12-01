@@ -393,11 +393,35 @@ for_window [class="^.*"] border pixel $border
 for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 0
 # nuclear throne
 for_window [class="steam_app_242680"] fullscreen disable, floating disable
+#for_window [class="steam_app_1337520"] fullscreen disable
+
 for_window [title="Nuclear Throne"] floating disable, fullscreen disable
 
+for_window [class="steam_app_960090"] fullscreen disable
+for_window [class="steam_app_1217060"] fullscreen disable
 ##for_window [class="overwatch.exe"] workspace 6, move container to workspace 6
 for_window [title="Wine System Tray"] kill
 for_window [class="ripdrag" ] floating enable
+
+
+# https://github.com/ValveSoftware/steam-for-linux/issues/1040
+#for_window [class="steam" title="Friends"] floating enable
+#for_window [class="steam" title="Steam - News"] floating enable
+#for_window [class="steam" title=".* - Chat"] floating enable
+#for_window [class="steam" title="^Settings$"] floating enable
+#for_window [class="steam" title=".* - event started"] floating enable
+#for_window [class="steam" title=".* CD key"] floating enable
+#for_window [class="steam" title="^Steam - Self Updater$"] floating enable
+#for_window [class="steam" title="^Screenshot Uploader$"] floating enable
+#for_window [class="steam" title="^Steam Guard - Computer Authorization Required$"] floating enable
+#for_window [title="^Steam Keyboard$"] floating enable
+#for_window [class="steam" title="Steam Settings" ] floating enable
+for_window [class="^steam$" ] floating enable
+for_window [class="^steam$" title="^Steam$" ] floating disable,fullscreen disable
+#for_window [class="steam_app_"] exec bash ~/.scripts/picomclosewith
+for_window [class="steam_app_"] exec bash picomsteam
+for_window [class="kitty"] exec 
+for_window [window_role="GtkFileChooserDialog"] floating enable
 # for_window [app_id="Electron" title="WebCord"] move to scratchpad
 # for_window [app_id="Electron" title="WebCord"] scratchpad show
 # exec wl-paste --primary --watch wl-copy --primary --clear
