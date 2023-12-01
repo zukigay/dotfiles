@@ -47,6 +47,12 @@ rewite xorg config/use mon toggle script?
 cp eldenring.exe start_protected_game.exe
 #this game requares EasyAntiCheat Proton Runtime to be installed unless you use no anti cheat mode
 #may requare proton exmermental/proton-ge
+
+#risk of rain 2
+# edit profile save data
+vim ~/.steam/steam/userdata/[steamprofilenumber]/632360/remote/UserProfiles/021476bc-243c-4102-a9be-a642eb51408f.xml   
+
+
 #Nuclear Throne
 
 #60fps
