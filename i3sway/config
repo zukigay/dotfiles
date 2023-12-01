@@ -36,6 +36,7 @@ set $GAMEFULL border pixel 0,floating disable,fullscreen disable,gaps inner curr
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #set $menu launchscript bemenu
 #set $menuapp tofi
+#set $menuapp pkill -x "bemenu";exec bemenu
 set $menuapp bemenu
 #set $menuapp dmenu
 #set $menu launchscript $menuapp
@@ -86,6 +87,9 @@ bindsym $mod+Prior exec --no-startup-id pkill picom
 bindsym $mod+Next exec --no-startup-id $XDG_CONFIG_HOME/i3/picom.sh
 #bindsym $mod+Next exec --no-startup-id picom
 bindsym $mod+grave $secmontoggle
+bindsym $mod+Shift+grave exec xrandr --output DP-0 --pos 0x0  --mode 2560x1440 -r 165,exec sleep 1 && hsetroot -solid "#1E242D"  #i3
+bindsym $mod+Control+Shift+grave exec xrandr --auto,exec sleep 1 && hsetroot -solid "#1E242D" #i3
+bindsym $mod+Control+grave exec xrandr --output DP-0 --mode 2560x1440 -r 165,exec sleep 1 && hsetroot -solid "#1E242D"
 workspace 1 output $mainmon
 workspace 2 output $mainmon
 workspace 3 output $mainmon
