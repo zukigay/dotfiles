@@ -4,8 +4,10 @@ set $mainmon DP-1
 set $secmon HDMI-A-1
 set $togglemonsyntax output $secmon toggle
 #DISPLAY + WALLPAPER
-output $secmon resolution 1920x1080 position 1920,0
-output $mainmon mode 1920x1080@160Hz position 0,0
+#output $mainmon mode 2560x1440 position 0,0
+#output $mainmon  mode 2560x1440@160Hz position 0,0
+output $mainmon  mode 2560x1440@164.938Hz position 0,0
+output $secmon resolution 1920x1080 position 2560,0
 output * bg  #1E242D solid_color
 #INPUT
 input * {
