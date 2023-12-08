@@ -357,6 +357,8 @@ mode "$mousekey" {
 
 
 
+bindsym $mod+Print exec flameshot screen
+bindsym $mod+Shift+Print exec flameshot gui
 
 #bindsym $mod+Print exec scrot --file ~/screenshot/ps_$(date +"%Y%m%d%H%M%S").png
 #bindsym --whole-window button1 exec notify-send "w"
