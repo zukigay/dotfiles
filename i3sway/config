@@ -358,6 +358,7 @@ mode "$mousekey" {
 
 
 bindsym $mod+Print exec flameshot screen
+bindsym $mod+Control+Print exec flameshot gui
 bindsym $mod+Shift+Print exec flameshot gui
 
 #bindsym $mod+Print exec scrot --file ~/screenshot/ps_$(date +"%Y%m%d%H%M%S").png
