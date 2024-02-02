@@ -158,7 +158,7 @@ workspace 11 output $steamdeck
     # floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+Escape exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -303,7 +303,10 @@ bindsym $mod+$altmod+$right resize shrink width $respeed
 #bindsym  $mod+Shift+v exec amixer set Capture cap
 
 bindsym $mod+$altmod+w exec notify-send "$(sway-prop-notify)"
-bindsym $mod+c exec bluelighter
+#bindsym $mod+c exec bluelighter
+bindsym $mod+c exec sct 3000
+bindsym $mod+Shift+c exec sct 2500
+bindsym $mod+Control+c exec sct 0
 bindsym $mod+v exec $clipboard
 bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
 #bindsym $mod+p exec zswayice
