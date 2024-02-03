@@ -83,8 +83,8 @@ client.unfocused        $bg     $bg     $fg     $bg       $bg
 #output $steamdeck mode 1200x800@60hz position 3840,0
 # bindsym $mod+grave output $secmon toggle swayism
 # (Prior)=page up (Next)=page down
-bindsym $mod+Prior exec --no-startup-id pkill picom
-bindsym $mod+Next exec --no-startup-id $XDG_CONFIG_HOME/i3/picom.sh
+bindsym $mod+Prior exec --no-startup-id pkill picom, exec notify-send "killed picom"
+bindsym $mod+Next exec --no-startup-id $XDG_CONFIG_HOME/i3/picom.sh, exec notify-send "launched picom"
 #bindsym $mod+Next exec --no-startup-id picom
 bindsym $mod+grave $secmontoggle
 bindsym $mod+Shift+grave exec xrandr --output DP-0 --pos 0x0  --mode 2560x1440 -r 165,exec sleep 1 && hsetroot -solid "#1E242D"  #i3
