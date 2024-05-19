@@ -87,3 +87,7 @@ add this to launch options without quotes
 
 
 # tip add "-offline" to far cry 3 blood dragon launch options
+
+# how to fix bottles being light mode run these in the terminal back to back
+flatpak run --command=bash com.usebottles.bottles
+gsettings set com.usebottles.bottles dark-theme true
