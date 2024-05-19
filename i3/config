@@ -3,18 +3,22 @@ set $ipctool i3-msg
 #DISPLAY
 exec "systemctl --user import-environment XDG_CURRENT_DESKTOP DISPLAY XAUTHORITY"
 set $mainmon DP-0
+#set $mainmon DP-2
+#set $mainmon DP-1
 set $secmon HDMI-0
+#set $secmon HDMI-2
 #WALLPAPER
 #exec xsetroot -solid "#1E242D"
 exec_always hsetroot -solid "#1E242D"
 exec X11fixmouse
-exec picom
+#exec picom
 #LOCKSYNTAX
 exec xss-lock --transfer-sleep-lock -- i3lock -i ~/.config/i3sway/lockscreen.png --nofork
 set $lockprogram i3lock -i ~/.config/i3sway/lockscreen.png;exec sleep 3 && xset dpms force standby
 set $locksyntax
 set $lockscreen
 set $secmontoggle exec X11togglemon HDMI-0 && sleep 2 && hsetroot -solid "#1E242D"
+#set $secmontoggle exec X11togglemon HDMI-2 && sleep 2 && hsetroot -solid "#1E242D"
 set $clipboard exec clipmenu
 set $zukice exec zukice
 #
