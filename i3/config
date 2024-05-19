@@ -10,10 +10,12 @@ exec_always hsetroot -solid "#1E242D"
 exec X11fixmouse
 exec picom
 #LOCKSYNTAX
+exec xss-lock --transfer-sleep-lock -- i3lock -i ~/.config/i3sway/lockscreen.png --nofork
+set $lockprogram i3lock -i ~/.config/i3sway/lockscreen.png;exec sleep 3 && xset dpms force standby
 set $locksyntax
+set $lockscreen
 set $secmontoggle exec X11togglemon HDMI-0 && sleep 2 && hsetroot -solid "#1E242D"
 set $clipboard exec clipmenu
-
 set $zukice exec zukice
 #
 # Screen capture (source https://www.reddit.com/r/swaywm/comments/pdyx0w/comment/hau6yck/?utm_source=share&utm_medium=web2x&context=3)
