@@ -403,10 +403,10 @@ for_window [class="^.*"] border pixel $border
 # titlebar_padding 1
 for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 0
 # nuclear throne
-for_window [class="steam_app_242680"] fullscreen disable, floating disable
+#for_window [class="steam_app_242680"] fullscreen disable, floating disable
 #for_window [class="steam_app_1337520"] fullscreen disable
 
-for_window [title="Nuclear Throne"] floating disable, fullscreen disable
+#for_window [title="Nuclear Throne"] floating disable, fullscreen disable
 
 for_window [class="steam_app_960090"] fullscreen disable
 for_window [class="steam_app_1217060"] fullscreen disable
