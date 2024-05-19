@@ -135,6 +135,16 @@ bindsym $mod+control+l exec $lockprogram
 
 # input <identifier> xkb_model "pc101"
 
+#custom profile 
+#bindsym $mod+$altmod+1 exec ratbagfakeprofile profile1
+#bindsym $mod+$altmod+2 exec ratbagfakeprofile profile2
+#bindsym $mod+$altmod+3 exec ratbagfakeprofile profile3
+#bindsym $mod+$altmod+4 exec ratbagfakeprofile profile4
+#bindsym $mod+$altmod+5 exec ratbagfakeprofile profile5
+#bindsym $mod+$altmod+6 exec ratbagfakeprofile profile6
+#bindsym $mod+$altmod+7 exec ratbagfakeprofile profile7
+#bindsym $mod+$altmod+8 exec ratbagfakeprofile profile8
+#bindsym $mod+$altmod+9 exec ratbagfakeprofile profile9
 
 ### Key bindings
 #
@@ -338,8 +348,10 @@ bindsym $mod+shift+g exec "input_detach.sh"
 bindsym $mod+control+g exec "blue_attach.sh"
 bindsym $mod+control+shift+g exec "blue_detach.sh"
 
-bindsym $mod+e exec "rofi -modi emoji -show emoji"
 
+
+bindsym $mod+e exec "rofi -modi emoji -show emoji"
+bindsym $mod+Tab exec "rofi -show window -show-icons"
 
 set $mousekey arrow key's move mouse
 set $Keymousepx 100
