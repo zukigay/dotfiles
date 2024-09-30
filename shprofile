@@ -34,7 +34,8 @@ else
 if [ -z "$shprofileloaded" ]
 then
 	echo "$(tput setaf 5)TRANS $(tput setaf 4)RIGHTS $(tput setaf 7)HELL YEAH!!"
-	pfetch | lolcat
+	#pfetch | lolcat
+	fastfetch -l small
 fi
 shprofileloaded=1
 fi
