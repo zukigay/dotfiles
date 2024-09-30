@@ -1,0 +1,8 @@
+
+if [ -n "$(command -v ripdragw)" ]
+then
+alias rdrag="ripdrag"
+elif [ -n "$(command -v dragon-drop)" ]
+then
+alias rdrag="dragon-drop"
+fi
