@@ -42,6 +42,7 @@ export BROWSER="firefox"
 
 # gaming
 export DXVK_ASYNC=1
+export LIBVA_DRIVER_NAME=nvidia
 
 # DISPLAY
 export __GL_SYNC_DISPLAY_DEVICE=DP-0
