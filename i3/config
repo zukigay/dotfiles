@@ -42,4 +42,5 @@ set $zukice exec zukice
 #bindsym Mod4+Print exec scrot --file ~/screenshot/ps_$(date +"%Y%m%d%H%M%S").png
 #bindsym Mod4+Shift+Print exec flameshot gui
 
+bindsym Mod4+Shift+s exec xset dpms force standby
 include ~/.config/i3sway/config
