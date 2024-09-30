@@ -118,3 +118,8 @@ mangohud %command%
 
 Turbo overkill
 mangohud %command%
+
+Balotro (native verison)
+love Balatro.exe; echo %command%
+
+#note run "ln -s /wherebalotro is installed/SteamLibrary/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro /home/zuki/.local/share/love/Balatro" to allow cloud saves to work
