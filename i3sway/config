@@ -408,7 +408,7 @@ for_window [instance="origin.exe"] floating enable
 # for_window [class="Slay the Spire"] floating disable, border pixel 0
 #font pango 0
 default_border pixel $border
-gaps inner 10
+gaps inner $gaps
 for_window [title="^.*"] title_format ""
 for_window [class="^.*"] border pixel $border
 # titlebar_border_thickness 1                                                    
