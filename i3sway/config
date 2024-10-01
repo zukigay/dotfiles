@@ -315,9 +315,10 @@ bindsym $mod+$altmod+$right resize shrink width $respeed
 
 bindsym $mod+$altmod+w exec notify-send "$(sway-prop-notify)"
 #bindsym $mod+c exec bluelighter
-bindsym $mod+c exec sct 3000
-bindsym $mod+Shift+c exec sct 2500
-bindsym $mod+Control+c exec sct 0
+bindsym $locksyntax $mod+c exec sct 3000
+bindsym $locksyntax $mod+Shift+c exec sct 2500
+bindsym $locksyntax $mod+Control+Shift+c exec sct 2300
+bindsym $locksyntax $mod+Control+c exec sct 0
 bindsym $mod+v exec $clipboard
 bindsym $mod+w exec dunstify "time" "$(date)" -r 6969
 #bindsym $mod+p exec zswayice
