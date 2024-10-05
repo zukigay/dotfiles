@@ -187,10 +187,12 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+	"on-click-middle": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+	"on-click-right": "wpctl set-mute @DEFAULT_SINK@ toggle"
     },
     "custom/media": {
-        "format": "{icon} {}",
+        "format": "{icon} {text}",
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
