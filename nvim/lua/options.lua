@@ -20,6 +20,16 @@ vim.opt.splitright = true           -- open new horizontal splits right
 -- vim.opt.termguicolors = true        -- enabl 24-bit RGB color in the TUI
 vim.opt.showmode = false            -- we are experienced, wo don't need the "-- INSERT --" mode hint
 
+-- vim-netrw
+vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 0
+
+-- extra vim-netrw options to make it a full nerd tree like setup
+-- credit it to https://shapeshed.com/vim-netrw/
+vim.g.netrw_browse_split = 4
+vim.g.netrw_altv = 1
+vim.g.netrw_winsize = 25
+
 
 -- Searching
 vim.opt.incsearch = true            -- search as characters are entered
