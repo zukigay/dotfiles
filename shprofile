@@ -29,7 +29,8 @@ fi
 
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	python ~/src/zukidisplay/zdm.py
+	#python ~/src/zukidisplay/zdm.py
+	exec Hyprland
 else
 if [ -z "$shprofileloaded" ]
 then
