@@ -16,7 +16,8 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "mpd",
+        //"mpd",
+        "mpris",
         "idle_inhibitor",
         "pulseaudio",
         "network",
@@ -93,6 +94,20 @@
         "format": " ",
         "tooltip": false,
         "on-click": "shutdown now"
+    },
+    "mpris": {
+	"format": "DEFAULT: {player_icon} {dynamic}",
+	"format-paused": "DEFAULT: {status_icon} <i>{dynamic}</i>",
+    "interval": 9,
+	"player-icons": {
+		"default": "▶",
+        //"youtube": " "
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+	// "ignored-players": ["firefox"]
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
