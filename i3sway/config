@@ -37,7 +37,12 @@ set $GAMEFULL border pixel 0,floating disable,fullscreen disable,gaps inner curr
 #set $menu launchscript bemenu
 #set $menuapp tofi
 #set $menuapp pkill -x "bemenu";exec bemenu
-set $menuapp bemenu
+
+
+#set $menuapp bemenu
+set $menuapp bemenu -c -l 10 -W 0.15 -B 4
+
+
 #set $menuapp dmenu
 #set $menu launchscript $menuapp
 #set $menu launchscript dmenu
@@ -158,7 +163,7 @@ bindsym $mod+control+l exec $lockprogram
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym $mod+d exec launchscript $menuapp
+    bindsym $mod+d exec launchscript $menuapp 
     bindsym $mod+Shift+d exec $altmenu
 
     # Drag floating windows by holding down $mod and left mouse button.
