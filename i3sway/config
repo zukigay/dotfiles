@@ -20,7 +20,8 @@ set $respeed 20px
 # Your preferred terminal emulator
 #set $term foot
 set $term kitty
-set $gaps 10px
+#set $gaps 10px
+set $gaps 8px
 set $gapsset0 gaps inner all set 0 ; gaps inner current set 0
 set $gapssetnorm gaps inner all set $gaps ; gaps inner  current set $gaps
 #set $border 3px
