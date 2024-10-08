@@ -29,6 +29,9 @@ alias disown-help="echo command '& disown'"
 # sudo/doas
 alias sudo='sudo '
 
+# nix
+alias ns="nix search nixpkgs"
+
 ## pacman
 alias pac="pacman"
 alias downgrade-nvidia="sudo downgrade nvidia-open-dkms nvidia-utils lib32-nvidia-utils"
