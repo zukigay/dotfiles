@@ -1,0 +1,19 @@
+# toml document
+[options]
+launcher = "bemenu -c -l 10 -W 0.15 -B 4"
+
+[itemcreate] #creates entry in launchscript.py
+virtual-piano = "$BROWSER https://www.onlinepianist.com/virtual-piano"
+panel-attack = "love $HOME/src/panel-attack"
+
+[itemmodify] # modifys entry in launchscript.py
+
+# args to make programs work better under wayland and still work on xorg
+heroic = "heroic --ozone-platform-hint=auto $arg2"
+vesktop = "vesktop --ozone-platform-hint=auto $arg2"
+signal-desktop = "signal-desktop --ozone-platform-hint=auto $arg2"
+dolphin-emu = "env QT_QPA_PLATFORM=xcb dolphin-emu $arg2"
+
+# r2modman is broken with sandbox enabled
+r2modman = "r2modman --no-sandbox"
+
