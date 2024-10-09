@@ -44,13 +44,15 @@ change_terminal_background() {
  fi
 }
 
-nvim() {
-# Change the terminal's color when Vim starts
-  change_terminal_background "#1c1c1c"
-  $nvimpath "$@" # run this nvimpath="$(command -v nvim)" before this func
+#nvim() {
+## Change the terminal's color when Vim starts
+#  change_terminal_background "#1c1c1c"
+#  $nvimpath "$@" # run this nvimpath="$(command -v nvim)" before this func
+#
+## Change it back when it exits
+#  change_terminal_background "#000000"
+#}
 
-# Change it back when it exits
-  change_terminal_background "#000000"
 }
 
 
