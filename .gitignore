@@ -44,6 +44,9 @@
 !yazi/
 !fastfetch
 !gammastep
+!waybar
+!launchscript.toml
+!ranger
 qutebrowser/greasemonkey/disable/deadname.js
 git/credentials
 SideQuest
