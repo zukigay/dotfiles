@@ -26,9 +26,9 @@ vim.g.netrw_banner = 0
 
 -- extra vim-netrw options to make it a full nerd tree like setup
 -- credit it to https://shapeshed.com/vim-netrw/
-vim.g.netrw_browse_split = 4
-vim.g.netrw_altv = 1
-vim.g.netrw_winsize = 25
+--vim.g.netrw_browse_split = 4
+-- vim.g.netrw_altv = 1
+--vim.g.netrw_winsize = 25
 
 
 -- Searching
