@@ -16,26 +16,43 @@
         "hyprland/window"
     ],
     "modules-right": [
-        //"mpd",
-        "mpris",
+       // "mpd",
         "idle_inhibitor",
         "pulseaudio",
-        "network",
+     //   "network", //unused can just use network systray applet
         "power-profiles-daemon",
         "cpu",
+     //   "temperature",
         "memory",
-        "temperature",
         "backlight",
         "keyboard-state",
-    //    "hyprland/language",
+    //    "hyprland/language", //unused only one keyboard layout
         "battery",
         "battery#bat2",
-        "clock",
         "tray",
+        "clock",
         "group/group-power"
         //"custom/power"
     ],
     // Modules configuration
+    "hyprland/window": {
+        //"icon":true,
+        //"icon-size":30,
+        //"format":"{class} - {title}"
+        "format":"{title}"
+        //"format":"{class}"
+        //"format":"{class} - {title}"
+    
+    },
+    "hyprland/workspaces": {
+         "format": "{name}",
+         /* "format": "{name}: {icon}",
+         "format-icons": {
+             "urgent": "",
+             "active": "",
+             "default": ""
+        } */
+    },
     // "sway/workspaces": {
     //     "disable-scroll": true,
     //     "all-outputs": true,
@@ -96,9 +113,9 @@
         "on-click": "shutdown now"
     },
     "mpris": {
-	"format": "DEFAULT: {player_icon} {dynamic}",
-	"format-paused": "DEFAULT: {status_icon} <i>{dynamic}</i>",
-    "interval": 9,
+	//"format": "DEFAULT: {player_icon} {dynamic}",
+	"format": "mpris: {player_icon} {dynamic}",
+	"format-paused": "mpris: {status_icon} <i>{dynamic}</i>",
 	"player-icons": {
 		"default": "▶",
         //"youtube": " "
