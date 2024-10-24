@@ -40,15 +40,13 @@
     ],
     // Modules configuration
     "custom/mullvad": {
-    "format": "mull {}",
-    "tooltip-format": "connection status: {}",
-    "exec": "mull_waybar.sh 1", // make sure the inputed number is the same as the signal value set bellow
-    "signal": 1,
-    //"on-click": "mullvad connect",
-    "on-click": "mull_waybar.sh 1 command 'mullvad connect'",
-    "on-click-right": "mull_waybar.sh 1 command 'mullvad disconnect'",
+    //"format": "mull {}",
+    //"tooltip-format": "connection status: {}",
+    "exec": "mullvad_waybar.py", // make sure the inputed number is the same as the signal value set bellow
+    "on-click": "mullvad connect",
+    "on-click-right": "mullvad disconnect",
     //"exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
-    "interval": 60 
+    "interval": 2 
     },
    "custom/wl-gammarelay-temperature": {
         "format": "{} ",
