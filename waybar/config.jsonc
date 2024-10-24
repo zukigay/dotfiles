@@ -21,6 +21,7 @@
         "pulseaudio",
      //   "network", //unused can just use network systray applet
         "power-profiles-daemon",
+        "custom/mullvad",
         "cpu",
      //   "temperature",
         "memory",
@@ -35,6 +36,17 @@
         //"custom/power"
     ],
     // Modules configuration
+    "custom/mullvad": {
+    "format": "mull {}",
+    "tooltip-format": "connection status: {}",
+    "exec": "mull_waybar.sh 1", // make sure the inputed number is the same as the signal value set bellow
+    "signal": 1,
+    //"on-click": "mullvad connect",
+    "on-click": "mull_waybar.sh 1 command 'mullvad connect'",
+    "on-click-right": "mull_waybar.sh 1 command 'mullvad disconnect'",
+    //"exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "interval": 60 
+    },
     "hyprland/window": {
         //"icon":true,
         //"icon-size":30,
