@@ -55,7 +55,7 @@
     "exec": "mullvad_waybar.py", // make sure the inputed number is the same as the signal value set bellow
     "on-click": "mullvad connect",
     "on-click-right": "mullvad disconnect",
-    //"exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "exec-if": "which mullvad_waybar.py",
     "interval": 2 
     },
     "custom/mullvad_locale": {
