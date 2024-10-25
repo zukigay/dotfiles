@@ -24,7 +24,8 @@
         "pulseaudio",
      //   "network", //unused can just use network systray applet
         "power-profiles-daemon",
-        "custom/mullvad",
+        //"custom/mullvad",
+        "group/mullvad",
         "cpu",
      //   "temperature",
         "memory",
@@ -39,6 +40,15 @@
 
     ],
     // Modules configuration
+    "group/mullvad": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-power",
+            "transition-left-to-right": false,
+        },
+        "modules": [ "custom/mullvad","custom/mullvad_locale" ]
+    },
     "custom/mullvad": {
     //"format": "mull {}",
     //"tooltip-format": "connection status: {}",
@@ -48,6 +58,18 @@
     //"exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
     "interval": 2 
     },
+    "custom/mullvad_locale": {
+    "format": "locale: {} ",
+    //"tooltip-format": "connection status: {}",
+    "exec": "mullvad_locale_switcher_waybar.sh", // make sure the inputed number is the same as the signal value set bellow
+    "on-scroll-up": "mullvad_locale_switcher_waybar.sh +",
+    "on-scroll-down": "mullvad_locale_switcher_waybar.sh -",
+    "on-click": "mullvad_locale_switcher_waybar.sh set",
+    "exec-if": "which mullvad_locale_switcher_waybar.sh",
+    "interval": 1000 
+    },
+
+
    "custom/wl-gammarelay-temperature": {
         "format": "{} ",
         "exec": "wl-gammarelay-rs watch {t}",
