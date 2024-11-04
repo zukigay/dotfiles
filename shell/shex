@@ -29,12 +29,15 @@ export PATH=$PATH:$HOME/Applications
 # zuki pref
 # THEME
 #export QT_STYLE_OVERRIDE="qt5ct-style"
-export QT_PLATFORMTHEME="qt5ct"
+#export QT_PLATFORMTHEME="qt5ct"
 #export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
 export GTK_USE_PORTAL=1
-export QT_QPA_PLATFORMTHEME="gtk3" # fix bug with flatpak "https://github.com/flatpak/flatpak/issues/4444" can use var gtk3/kde
 export GTK_THEME="Arc-Dark-solid"
-export QT_STYLE_OVERRIDE=kvantum
+#export QT_STYLE_OVERRIDE=kvantum
+
+
+#export QT_QPA_PLATFORMTHEME="gtk3" # fix bug with flatpak "https://github.com/flatpak/flatpak/issues/4444" can use var gtk3/kde
 
 # browser
 export BROWSER="firefox"
