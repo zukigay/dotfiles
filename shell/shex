@@ -25,6 +25,7 @@ export PATH=$PATH:$HOME/.scripts/bookmarks/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:/home/zuki/.local/share/cargo/bin
 export PATH=$PATH:$HOME/Applications
+export PATH=$PATH:$HOME/.nix-profile/bin
 
 # zuki pref
 # THEME
