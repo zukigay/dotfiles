@@ -1,0 +1,19 @@
+[options]
+launcher = "bemenu -c -l 10 -W 0.15 -B 4"
+browser_launch = "firefox {url}"
+use_site_names = true
+
+
+
+[[bf]]
+name = "nixos"
+[[bf.urls]]
+"https://mynixos.com/" = "mynixos"
+"https://mynixos.com/123" = "mynixos123"
+
+[[bf]]
+name = "fanfic"
+[[bf.urls]]
+"https://archiveofourown.org/users/DaggerOfDamocles/pseuds/DaggerOfDamocles" = "DaggerOfDamocles | Archive of Our Own"
+"https://archiveofourown.org/works/54101050/chapters/136974598" = "the chokehold of a broken family bond - Chapter 1 - ronzcaby - In Stars And Time (Video Game) [Archive of Our Own]"
+
