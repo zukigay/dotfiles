@@ -13,7 +13,7 @@ panel-attack = "love $HOME/src/panel-attack"
 heroic = "heroic --ozone-platform-hint=auto $arg2"
 vesktop = "vesktop --ozone-platform-hint=auto $arg2"
 signal-desktop = "signal-desktop --ozone-platform-hint=auto $arg2"
-dolphin-emu = "env QT_QPA_PLATFORM=xcb dolphin-emu $arg2"
+dolphin-emu = "env QT_QPA_PLATFORM=xcb dolphin-emu"
 
 # r2modman is broken with sandbox enabled
 r2modman = "r2modman --no-sandbox"
