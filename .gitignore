@@ -13,7 +13,7 @@
 !zdm/
 !xdg-desktop-portal-wlr/
 !wofi/
-!wallpaper/
+!wallpaper
 !tofi/
 !sxhkd/
 !sway/
@@ -46,7 +46,10 @@
 !gammastep
 !waybar
 !launchscript.toml
+!bookmarks.toml
 !ranger
+!home-manager
 qutebrowser/greasemonkey/disable/deadname.js
+
 git/credentials
 SideQuest
