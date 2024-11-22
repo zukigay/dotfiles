@@ -5,7 +5,7 @@ launcher = "bemenu -c -l 10 -W 0.15 -B 4 -i"
 [itemcreate] #creates entry in launchscript.py
 virtual-piano = "$BROWSER https://www.onlinepianist.com/virtual-piano"
 panel-attack = "love $HOME/src/panel-attack"
-
+vesktop = "flatpak run dev.vencord.Vesktop"
 
 [itemmodify] # modifys entry in launchscript.py
 
