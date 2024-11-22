@@ -171,12 +171,12 @@
     "custom/reboot": {
         "format": "󰜉 ",
         "tooltip": false,
-        "on-click": "reboot"
+        "on-click": "loginctl reboot"
     },
     "custom/power": {
         "format": " ",
         "tooltip": false,
-        "on-click": "shutdown now"
+        "on-click": "loginctl poweroff"
     },
     "mpris": {
 	//"format": "DEFAULT: {player_icon} {dynamic}",
