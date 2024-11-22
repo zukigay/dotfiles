@@ -17,6 +17,9 @@ fi
 ## source shell func
 . "$shellfol"/shfunc
 
+# check if gentoo and source the shellvars if so
+. "$HOME/.config/gentoo_only/shell_vars"
+
 # https://github.com/lemniskett/archbox.git
 
 if ! [ "$shexloaded" = "true" ]
