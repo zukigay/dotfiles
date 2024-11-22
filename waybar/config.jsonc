@@ -49,10 +49,21 @@
         },
         "modules": [ "custom/mullvad","custom/mullvad_locale" ]
     },
+    /*
+    "custom/mullvad_locale": {
+    //"format": "mull {}",
+    //"tooltip-format": "connection status: {}",
+    "exec": "mullvad_waybar.py l", // make sure the inputed number is the same as the signal value set bellow
+    "on-click": "mullvad connect",
+    "on-click-right": "mullvad disconnect",
+    //"exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "interval": 2 
+    }, */
     "custom/mullvad": {
     //"format": "mull {}",
     //"tooltip-format": "connection status: {}",
     "exec": "mullvad_waybar.py", // make sure the inputed number is the same as the signal value set bellow
+    //"exec": "notify-send {} ", // make sure the inputed number is the same as the signal value set bellow
     "on-click": "mullvad connect",
     "on-click-right": "mullvad disconnect",
     "exec-if": "which mullvad_waybar.py",
