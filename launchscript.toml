@@ -6,12 +6,14 @@ launcher = "bemenu -c -l 10 -W 0.15 -B 4 -i"
 virtual-piano = "$BROWSER https://www.onlinepianist.com/virtual-piano"
 panel-attack = "love $HOME/src/panel-attack"
 vesktop = "flatpak run dev.vencord.Vesktop"
+prismlaunchermc ="flatpak run org.prismlauncher.PrismLauncher"
+flatseal = "flatpak run com.github.tchx84.Flatseal"
 
 [itemmodify] # modifys entry in launchscript.py
 
 # args to make programs work better under wayland and still work on xorg
 heroic = "heroic --ozone-platform-hint=auto $arg2"
-vesktop = "vesktop --ozone-platform-hint=auto $arg2"
+#vesktop = "vesktop --ozone-platform-hint=auto $arg2"
 signal-desktop = "signal-desktop --ozone-platform-hint=auto $arg2"
 dolphin-emu = "env QT_QPA_PLATFORM=xcb dolphin-emu"
 
