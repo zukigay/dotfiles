@@ -32,8 +32,9 @@ fi
 
 
 if [ -z "$WAYLAND_DISPLAY" ] && [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	#python ~/src/zukidisplay/zdm.py
-	exec Hyprland
+    #python ~/src/zukidisplay/zdm.py
+	#exec Hyprland
+    exec dbus-launch --exit-with-session Hyprland
 else
 if [ -z "$shprofileloaded" ]
 then
