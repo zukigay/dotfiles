@@ -49,6 +49,7 @@
 !bookmarks.toml
 !ranger
 !home-manager
+!gentoo_only
 qutebrowser/greasemonkey/disable/deadname.js
 
 git/credentials
