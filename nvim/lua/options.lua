@@ -29,7 +29,10 @@ vim.g.netrw_banner = 0
 --vim.g.netrw_browse_split = 4
 -- vim.g.netrw_altv = 1
 --vim.g.netrw_winsize = 25
-
+vim.cmd("noremap <Up> <Nop>")
+vim.cmd("noremap <Down> <Nop>")
+vim.cmd("noremap <Left> <Nop>")
+vim.cmd("noremap <Right> <Nop>")
 
 -- Searching
 vim.opt.incsearch = true            -- search as characters are entered
