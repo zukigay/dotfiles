@@ -37,6 +37,12 @@ alias pac="pacman"
 alias mkpkg='PKGDEST="$HOME/aur/pkgs" makepkg -si'
 alias downgrade-nvidia="sudo downgrade nvidia-open-dkms nvidia-utils lib32-nvidia-utils"
 alias splitgatefix="sudo downgrade lib32-libx11=1.8.2-2"
+
+#emerge
+alias em="emerge"
+alias emup="emerge -avuDN @world" # same as emerge --ask --verbose --update --deep --newuse @world
+alias emsync="emaint -a sync"
+
 # pulseaudio/pipewire
 alias pamix="pulsemixer"
 
