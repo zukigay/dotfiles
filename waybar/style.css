@@ -81,6 +81,7 @@ button:hover {
 #clock,
 #battery,
 #cpu,
+#custom-wl-gammarelay-temperature,
 #memory,
 #disk,
 #temperature,
@@ -112,6 +113,13 @@ button:hover {
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
+}
+
+#custom-wl-gammarelay-temperature {
+    background-color: #fc9905;
+    /* background-color: #d17f04; */
+    /* color: #ffffff; */
+    color: #000000;
 }
 
 #clock {
