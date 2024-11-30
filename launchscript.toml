@@ -7,7 +7,11 @@ virtual-piano = "$BROWSER https://www.onlinepianist.com/virtual-piano"
 panel-attack = "love $HOME/src/panel-attack"
 vesktop = "flatpak run dev.vencord.Vesktop"
 prismlaunchermc ="flatpak run org.prismlauncher.PrismLauncher"
+signal-desktop = "flatpak run org.signal.Signal"
+torbrowser = "flatpak run org.torproject.torbrowser-launcher"
 flatseal = "flatpak run com.github.tchx84.Flatseal"
+kcc = "flatpak run io.github.ciromattia.kcc"
+calibre = "flatpak run com.calibre_ebook.calibre"
 
 [itemmodify] # modifys entry in launchscript.py
 
