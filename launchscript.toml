@@ -14,7 +14,7 @@ flatseal = "flatpak run com.github.tchx84.Flatseal"
 # args to make programs work better under wayland and still work on xorg
 heroic = "heroic --ozone-platform-hint=auto $arg2"
 #vesktop = "vesktop --ozone-platform-hint=auto $arg2"
-signal-desktop = "signal-desktop --ozone-platform-hint=auto $arg2"
+#signal-desktop = "signal-desktop --ozone-platform-hint=auto $arg2"
 dolphin-emu = "env QT_QPA_PLATFORM=xcb dolphin-emu"
 
 # r2modman is broken with sandbox enabled
