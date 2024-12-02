@@ -68,9 +68,3 @@ alias upvirtio="sudo mkinitcpio --config /etc/mkinitcpiovirt.conf --generate /bo
 alias quit="exit"
 alias pacup="echo 'you topup you stupid'"
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-
-
-alias gen_mount="sudo mount -o compress=zstd,subvol=@genroot /dev/nvme0n1p3 /mnt/gentoo"
-alias gen_umount="sudo umount -R /mnt/gentoo"
-alias arch_mount="sudo mount -o compress=zstd,subvol=@ /dev/nvme0n1p3 /mnt/archlinux/"
-alias arch_umount="sudo umount -R /mnt/archlinux"
