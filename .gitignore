@@ -50,6 +50,7 @@
 !ranger
 !home-manager
 !gentoo_only
+!fuzzel/
 qutebrowser/greasemonkey/disable/deadname.js
 
 git/credentials
