@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     "tanvirtin/monokai.nvim",
+    "https://github.com/gentoo/gentoo-syntax",
 })
 
 -- require("lazy").setup({
