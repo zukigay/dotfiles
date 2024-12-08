@@ -74,3 +74,9 @@ alias vhypr="nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
 ### cpu pref setting
 alias intel_turbo_mode="sudo bash -c 'echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo'"
 alias intel_no_turbo_mode="sudo bash -c 'echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo'"
+
+alias cpu_low_pref="sudo bash -c 'echo 15 | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias'"
+alias cpu_less_pref="sudo bash -c 'echo 15 | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias'"
+alias cpu_mid_pref="sudo bash -c 'echo 6 | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias'"
+alias cpu_high_pref="sudo bash -c 'echo 4 | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias'"
+alias cpu_extreme_pref="sudo bash -c 'echo 0 | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias'"
