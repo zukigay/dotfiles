@@ -71,6 +71,8 @@ alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
 
 alias vhypr="nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
+alias sv="sudoedit "
+
 ### cpu pref setting
 alias intel_turbo_mode="sudo bash -c 'echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo'"
 alias intel_no_turbo_mode="sudo bash -c 'echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo'"
