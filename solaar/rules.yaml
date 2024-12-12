@@ -1,0 +1,25 @@
+%YAML 1.3
+---
+- Key: [Forward Button, pressed]
+- KeyPress:
+  - XF86_Forward
+  - depress
+...
+---
+- Key: [Forward Button, released]
+- KeyPress:
+  - XF86_Forward
+  - release
+...
+---
+- Key: [Back Button, released]
+- KeyPress:
+  - XF86_Back
+  - release
+...
+---
+- Key: [Back Button, pressed]
+- KeyPress:
+  - XF86_Back
+  - depress
+...
