@@ -84,3 +84,8 @@ alias cpu_less_pref="sudo bash -c 'echo 8 | tee /sys/devices/system/cpu/cpu*/pow
 alias cpu_mid_pref="sudo bash -c 'echo 6 | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias'"
 alias cpu_high_pref="sudo bash -c 'echo 4 | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias'"
 alias cpu_extreme_pref="sudo bash -c 'echo 0 | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias'"
+
+# source https://commandmasters.com/commands/ddcutil-linux/
+# note a command such as `ddcutil -d 1 setvcp 12 + 5` can be used to increment contrast vaule by 5.
+alias dis_bright='ddcutil --display 1 setvcp 10'
+alias dis_contrast='ddcutil -d 1 setvcp 12'
