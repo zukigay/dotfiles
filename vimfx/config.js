@@ -5,6 +5,9 @@
 // source https://github.com/lydell/dotfiles/blob/1213fc092006586164ad777203958aa55b94c62d/.vimfx/config.js#L8
 const {Preferences} = Cu.import('resource://gre/modules/Preferences.jsm', {}
 
+// log startup to check confirm confing loaded.
+console.log("loading zuki's vimfx config :", vimfx)
+
 // blacklist vimfx from running on neflix and google docs since they don't play nice with vimfx
 vimfx.set('blacklist', '*www.netflix.com* *docs.google.com*')
 
