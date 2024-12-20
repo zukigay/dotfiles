@@ -10,7 +10,7 @@ console.log("loading zuki's vimfx config :", vimfx)
 
 // blacklist vimfx from running on neflix and google docs since they don't play nice with vimfx
 //vimfx.set('blacklist', '*www.netflix.com* *docs.google.com*')
-vimfx.set('blacklist', '*docs.google.com*')
+vimfx.set('blacklist', '*docs.google.com/spreadsheets*')
 
 // source https://github.com/lydell/dotfiles/blob/1213fc092006586164ad777203958aa55b94c62d/.vimfx/config.js#L63
 // Set firefox prefs, note this is a array.
