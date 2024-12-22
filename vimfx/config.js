@@ -27,7 +27,7 @@ vimfx.addKeyOverrides(
 )
 // override a few video sites to passthough space+f rather then pass it to vimfx
 vimfx.addKeyOverrides(
-  [ location => location.hostname === 'www.netflix.com' || 'www.youtube.com',
+  [ location => location.hostname === 'www.netflix.com',
     ['<space>','f']
   ]
 )
