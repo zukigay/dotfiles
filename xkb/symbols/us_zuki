@@ -31,14 +31,14 @@ xkb_symbols "basic" {
 
   // 1 key
   // make AltGr + 1 = `
-  key <AE01> { [ 1, exclam, grave ] };
+  key <AE01> { [ 1, exclam, grave,grave ] };
 
   // 2 key 
   // make AltGr + 2 = ~
-  key <AE02> { [ 2, serial, asciitilde ] };
+  key <AE02> { [ 2, serial, asciitilde, asciitilde] };
   // 3 Key
   // make AltGr + 3 = £ 
-  key <AE03> { [ 3, numbersign, sterling ] };
+  key <AE03> { [ 3, numbersign, sterling, sterling ] };
 
   // next/prior
   //key <PGUP> { [ grave ] };
