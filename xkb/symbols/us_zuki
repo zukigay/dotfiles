@@ -30,6 +30,8 @@ xkb_symbols "basic" {
   //key <ESC> { [ ESC, ESC, sterling ] };
 
   // 3 Key
+  // make AltGr + 3 = £ 
   key <AE03> { [ 3, numbersign, sterling ] };
+
 };
 
