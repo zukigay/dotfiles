@@ -33,6 +33,9 @@ xkb_symbols "basic" {
   // make AltGr + 1 = `
   key <AE01> { [ 1, exclam, grave ] };
 
+  // 2 key 
+  // make AltGr + 2 = ~
+  key <AE02> { [ 2, serial, asciitilde ] };
   // 3 Key
   // make AltGr + 3 = £ 
   key <AE03> { [ 3, numbersign, sterling ] };
