@@ -29,6 +29,10 @@ xkb_symbols "basic" {
   // ESC Key
   //key <ESC> { [ ESC, ESC, sterling ] };
 
+  // 1 key
+  // make AltGr + 1 = `
+  key <AE01> { [ 1, exclam, grave ] };
+
   // 3 Key
   // make AltGr + 3 = £ 
   key <AE03> { [ 3, numbersign, sterling ] };
