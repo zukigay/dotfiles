@@ -2,6 +2,7 @@
 !solaar/rules.yaml
 !pipewire
 !vimfx
+!xkb
 !flameshot
 !git
 !.gitmodules
