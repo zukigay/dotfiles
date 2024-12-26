@@ -40,5 +40,9 @@ xkb_symbols "basic" {
   // make AltGr + 3 = £ 
   key <AE03> { [ 3, numbersign, sterling ] };
 
+  // next/prior
+  //key <PGUP> { [ grave ] };
+  //key <PGDN> { [ asciitilde ] };
+  //key <PGDN> { [ asciitilde, grave ] };
 };
 
