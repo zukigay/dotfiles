@@ -10,10 +10,10 @@ then
 nvimpath="$(command -v nvim)"
 fi
 
-## source shalias for shell alias
-. "$shellfol"/shalias
 ## source shex for shell exports to clean up this file
 . "$shellfol"/shex
+## source shalias for shell alias
+. "$shellfol"/shalias
 ## source shell func
 . "$shellfol"/shfunc
 
