@@ -21,6 +21,10 @@ alias v=nvim
 alias vi=nvim
 alias vim=nvim
 alias vconf="nvim ~/.config/nvim/init.vim"
+alias vhypr="nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
+alias sv="sudoedit "
+alias vt='nvim "-c Telescope find_files"'
+
 
 
 alias mpdc="ncmpcpp"
@@ -70,9 +74,6 @@ alias quit="exit"
 alias pacup="echo 'you topup you stupid'"
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
-
-alias vhypr="nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
-alias sv="sudoedit "
 
 ### cpu pref setting
 # source https://wiki.archlinux.org/title/CPU_frequency_scaling#Setting_via_sysfs_(intel_pstate)
