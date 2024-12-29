@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-hyprland_lock="swaylock -i ~/.config/wallpaper"
+#hyprland_lock="swaylock -i ~/.config/wallpaper"
+hyprland_lock="hyprlock"
 $hyprland_lock; exit
 
 
