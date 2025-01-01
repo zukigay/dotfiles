@@ -166,7 +166,7 @@
     "custom/lock": {
         "format": "󰍁 ",
         "tooltip": false,
-        "on-click": "sh ~/.config/hypr/hyprland_lock.sh"
+        "on-click": "hyprlock"
     },
     "custom/reboot": {
         "format": "󰜉 ",
