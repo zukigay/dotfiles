@@ -34,9 +34,10 @@ vimfx.addKeyOverrides(
 
 const {classes: Cc, interfaces: Ci} = Components
 
+
 const mpv_path = '/usr/bin/mpv'
-const mpv_options = '--video-unscaled=no'
-//const mpv_options = '--video-unscaled=yes'
+const mpv_options = '--video-unscaled=no --force-window=immediate'
+
 
 vimfx.addCommand({
   name: 'play_with_mpv',
