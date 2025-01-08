@@ -159,17 +159,17 @@
         ]
     },
     "custom/quit": {
-        "format": "󰗼 ",
+        "format": " 󰗼 ",
         "tooltip": false,
         "on-click": "hyprctl dispatch exit"
     },
     "custom/lock": {
-        "format": "󰍁 ",
+        "format": " 󰍁 ",
         "tooltip": false,
         "on-click": "$XDG_LOCKER"
     },
     "custom/reboot": {
-        "format": "󰜉 ",
+        "format": " 󰜉 ",
         "tooltip": false,
         "on-click": "loginctl reboot"
     },
