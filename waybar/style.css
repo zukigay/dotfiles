@@ -41,8 +41,8 @@ button:hover {
 }
 /* set tray right click menu colors */
 #tray menu {
-    color: purple;
-    background: gray;
+    color: pink; 
+    background: #452c63; /* Hallmark Purple */
 }
 /* set tray menu item colors when hovering over a item */
 #tray menu menuitem:hover {
