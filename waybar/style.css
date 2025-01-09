@@ -49,6 +49,10 @@ button:hover {
     background: black;
     color: pink;
 }
+#tray > .needs-attention {
+    border-bottom: 3px solid red;
+}
+
 /* add hover effects for power menu buttons to better indecate which one is selected */
 #custom-lock:hover {
     border-bottom: 3px solid pink;
