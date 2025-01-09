@@ -39,6 +39,16 @@ button:hover {
 #tray {
     padding-right: 4px;
 }
+/* set tray right click menu colors */
+#tray menu {
+    color: purple;
+    background: gray;
+}
+/* set tray menu item colors when hovering over a item */
+#tray menu menuitem:hover {
+    background: black;
+    color: pink;
+}
 /* add hover effects for power menu buttons to better indecate which one is selected */
 #custom-lock:hover {
     border-bottom: 3px solid pink;
