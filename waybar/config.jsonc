@@ -159,6 +159,7 @@
             "custom/power", // First element is the "group leader" and won't ever be hidden
             "custom/quit",
             "custom/lock",
+            "custom/suspend",
             "custom/reboot",
         ]
     },
@@ -176,6 +177,11 @@
         "format": " 󰜉 ",
         "tooltip": false,
         "on-click": "loginctl reboot"
+    },
+    "custom/suspend": {
+        "format": "󰒲 ",
+        "tooltip": false,
+        "on-click": "way_suspend"
     },
     "custom/power": {
         "format": " ",

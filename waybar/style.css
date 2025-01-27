@@ -57,6 +57,9 @@ button:hover {
 #custom-lock:hover {
     border-bottom: 3px solid pink;
 }
+#custom-suspend:hover {
+    border-bottom: 3px solid pink;
+}
 #custom-reboot:hover {
     border-bottom: 3px solid pink;
 }
