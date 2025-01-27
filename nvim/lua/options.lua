@@ -34,6 +34,10 @@ vim.cmd("noremap <Down> <Nop>")
 vim.cmd("noremap <Left> <Nop>")
 vim.cmd("noremap <Right> <Nop>")
 
+
+-- add syntax highlighting to pico8 games
+vim.cmd("au BufRead,BufNewFile *.p8 set filetype=lua")
+
 -- Searching
 vim.opt.incsearch = true            -- search as characters are entered
 vim.opt.hlsearch = false            -- do not highlight matches
