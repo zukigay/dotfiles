@@ -14,7 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     "tanvirtin/monokai.nvim",
     "https://github.com/gentoo/gentoo-syntax",
-    "nvim-telescope/telescope.nvim", tag='0.1.8'
+    "nvim-telescope/telescope.nvim", tag='0.1.8',
+    "https://github.com/tpope/vim-fugitive",
+    "https://github.com/preservim/nerdtree",
+    "https://github.com/Xuyuanp/nerdtree-git-plugin",
 })
 
 local builtin = require('telescope.builtin')
@@ -23,6 +26,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
+vim.keymap.set('n', '<leader>a', ':NERDTreeToggle<CR>', {desc = 'nerdtree sidebar toggle'})
 
 -- require("lazy").setup({
     -- LSP manager
