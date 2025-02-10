@@ -94,3 +94,6 @@ alias dis_contrast='ddcutil -d 1 setvcp 12'
 
 alias flatup="flatpak update && flatpak uninstall --unused"
 alias flatclean="flatpak uninstall --unused"
+
+
+alias emcalc="emup -p | sudo genlop -p"
