@@ -11,14 +11,45 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local detail = false
 require("lazy").setup({
     "tanvirtin/monokai.nvim",
     "https://github.com/gentoo/gentoo-syntax",
     "nvim-telescope/telescope.nvim", tag='0.1.8',
     "https://github.com/tpope/vim-fugitive",
-    "https://github.com/preservim/nerdtree",
+    -- "https://github.com/preservim/nerdtree",
     "https://github.com/Xuyuanp/nerdtree-git-plugin",
     "https://github.com/ThePrimeagen/vim-be-good",
+    {
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
+    }
+    },
+    {
+      'stevearc/oil.nvim',
+      ---@module 'oil'
+      ---@type oil.SetupOpts
+      opts = {
+      
+        keymaps = {["<leader>w"] = "actions.select", ["gd"] = {
+      desc = "Toggle file detail view",
+      callback = function()
+        detail = not detail
+        if detail then
+          require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+        else
+          require("oil").set_columns({ "icon" })
+        end
+      end,
+    },}
+      },
+      -- Optional dependencies
+      dependencies = { { "echasnovski/mini.icons", opts = {} } },
+      -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+      -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+      lazy = false,
+    }
 })
 
 local builtin = require('telescope.builtin')
@@ -27,7 +58,19 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
-vim.keymap.set('n', '<leader>a', ':NERDTreeToggle<CR>', {desc = 'nerdtree sidebar toggle'})
+
+-- propably don't need to make it a function but fuck it.
+vim.keymap.set('n', '<leader>a', function()
+    require("oil").toggle_float()end)
+
+-- this is a handy keymap since it doubles as a go up a folder 
+-- keybind
+--
+-- note <leader>w goes though a folder
+vim.keymap.set('n', '<leader>q', '<cmd>Oil<CR>')
+
+
+-- vim.keymap.set('n', '<leader>a', ':NERDTreeToggle<CR>', {desc = 'nerdtree sidebar toggle'})
 
 -- require("lazy").setup({
     -- LSP manager
