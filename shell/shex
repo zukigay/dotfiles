@@ -52,6 +52,8 @@ export GTK_USE_PORTAL=1
 export BROWSER="firefox"
 
 
+export BEMOJI_PICKER_CMD="fuzzel -d"
+
 # gaming
 export DXVK_ASYNC=1
 
