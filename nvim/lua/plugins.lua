@@ -18,6 +18,7 @@ require("lazy").setup({
     "https://github.com/tpope/vim-fugitive",
     "https://github.com/preservim/nerdtree",
     "https://github.com/Xuyuanp/nerdtree-git-plugin",
+    "https://github.com/ThePrimeagen/vim-be-good",
 })
 
 local builtin = require('telescope.builtin')

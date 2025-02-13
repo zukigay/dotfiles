@@ -34,3 +34,9 @@ vim.g.mapleader = " "
 -- Hint: start visual mode with the same area as the previous area and the same mode
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
+
+-- source https://youtu.be/KfENDDEpCsI?si=nLggFVp-upIw9s5h&t=214
+vim.keymap.set('n', "<C-d>", "<C-d>zz", opts)
+vim.keymap.set('n', "<C-u>", "<C-u>zz", opts)
+vim.keymap.set('v', "<C-d>", "<C-d>zz", opts)
+vim.keymap.set('v', "<C-u>", "<C-u>zz", opts)
