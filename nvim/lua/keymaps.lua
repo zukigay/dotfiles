@@ -43,3 +43,5 @@ vim.keymap.set('v', "<C-u>", "<C-u>zz", opts)
 
 vim.keymap.set('n', "n", "nzz", opts)
 vim.keymap.set('v', "n", "nzz", opts)
+vim.keymap.set('n', "<S-n>", "<S-n>zz", opts)
+vim.keymap.set('v', "<S-n>", "<S-n>zz", opts)
