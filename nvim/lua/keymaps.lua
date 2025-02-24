@@ -45,3 +45,21 @@ vim.keymap.set('n', "n", "nzz", opts)
 vim.keymap.set('v', "n", "nzz", opts)
 vim.keymap.set('n', "<S-n>", "<S-n>zz", opts)
 vim.keymap.set('v', "<S-n>", "<S-n>zz", opts)
+--vim.keymap.set('n', "<leader>r", ':shell ')
+
+
+--vim.keymap.set('n','<leader>r', function()  end)
+
+
+-- tab support
+--vim.keymap.set('n','<C-h>', ':tabNext<CR>', opts)
+--vim.keymap.set('n','<C-l>', ':tabnext<CR>', opts)
+-- vim.keymap.set('n','<C-j>', ':tabclose<CR>', opts)
+-- vim.keymap.set('n','<C-k>', ':tabnew<CR>', opts)
+
+-- vim.keymap.set('n','<leader>j', ':tabNext<CR>', opts)
+-- vim.keymap.set('n','<leader>k', ':tabnext<CR>', opts)
+vim.keymap.set('n','<C-j>', ':tabNext<CR>', opts)
+vim.keymap.set('n','<C-k>', ':tabnext<CR>', opts)
+vim.keymap.set('n','<leader>j', ':tabclose<CR>', opts)
+vim.keymap.set('n','<leader>k', ':tabnew<CR>', opts)
