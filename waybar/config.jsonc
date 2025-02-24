@@ -39,8 +39,8 @@
     //  //  "hyprland/language", //unused only one keyboard layout
         //"battery",
         //"battery#bat2",
-        "clock",
-        "group/group-power"
+        "clock"
+        //"group/group-power"
 
     ],
     // Modules configuration
