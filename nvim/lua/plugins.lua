@@ -16,15 +16,32 @@ require("lazy").setup({
     "tanvirtin/monokai.nvim",
     "https://github.com/gentoo/gentoo-syntax",
     "nvim-telescope/telescope.nvim", tag='0.1.8',
-    "https://github.com/tpope/vim-fugitive",
+    -- "https://github.com/tpope/vim-fugitive",
     -- "https://github.com/preservim/nerdtree",
     "https://github.com/Xuyuanp/nerdtree-git-plugin",
     "https://github.com/ThePrimeagen/vim-be-good",
+    {
+      "CRAG666/betterTerm.nvim",
+      opts = {
+        position = "bot",
+        size = 15,
+      },
+    },
     {
     'numToStr/Comment.nvim',
     opts = {
         -- add any options here
     }
+    },
+    {
+        "S1M0N38/love2d.nvim",
+        cmd = "LoveRun",
+        opts = { },
+        keys = {
+          { "<leader>v", ft = "lua", desc = "LÖVE" },
+          { "<leader>vv", "<cmd>LoveRun<cr>", ft = "lua", desc = "Run LÖVE" },
+          { "<leader>vs", "<cmd>LoveStop<cr>", ft = "lua", desc = "Stop LÖVE" },
+        },
     },
     {
       'stevearc/oil.nvim',
@@ -49,7 +66,20 @@ require("lazy").setup({
       -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
       -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
       lazy = false,
-    }
+    },
+    {
+  "NeogitOrg/neogit",
+  dependencies = {
+    "nvim-lua/plenary.nvim",         -- required
+    "sindrets/diffview.nvim",        -- optional - Diff integration
+
+    -- Only one of these is needed.
+    "nvim-telescope/telescope.nvim", -- optional
+    "ibhagwan/fzf-lua",              -- optional
+    "echasnovski/mini.pick",         -- optional
+  },
+  config = true
+}
 })
 
 local builtin = require('telescope.builtin')
@@ -58,6 +88,8 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
+--require("oil.actions").refresh = false
+--require("oil.actions").select = false
 
 -- propably don't need to make it a function but fuck it.
 vim.keymap.set('n', '<leader>a', function()
@@ -69,37 +101,9 @@ vim.keymap.set('n', '<leader>a', function()
 -- note <leader>w goes though a folder
 vim.keymap.set('n', '<leader>q', '<cmd>Oil<CR>')
 
+local betterTerm = require('betterTerm')
+-- toggle firts term
+-- vim.keymap.set({"n", "t"}, "<C-;>", betterTerm.open, { desc = "Open terminal"})
+vim.keymap.set({"n", "t"}, "<leader>t", betterTerm.open, { desc = "Open terminal"})
 
--- vim.keymap.set('n', '<leader>a', ':NERDTreeToggle<CR>', {desc = 'nerdtree sidebar toggle'})
 
--- require("lazy").setup({
-    -- LSP manager
---	"williamboman/mason.nvim",
---	"williamboman/mason-lspconfig.nvim",
---	"neovim/nvim-lspconfig",
-	-- Vscode-like pictograms
---	{
---		"onsails/lspkind.nvim",
---		event = { "VimEnter" },
---	},
-	-- Auto-completion engine
---	{
---		"hrsh7th/nvim-cmp",
---		dependencies = {
---			"lspkind.nvim",
---			"hrsh7th/cmp-nvim-lsp", -- lsp auto-completion
---			"hrsh7th/cmp-buffer", -- buffer auto-completion
---			"hrsh7th/cmp-path", -- path auto-completion
---			"hrsh7th/cmp-cmdline", -- cmdline auto-completion
---		},
---		config = function()
---			require("config.nvim-cmp")
---		end,
---	},
-	-- Code snippet engine
---	{
---		"L3MON4D3/LuaSnip",
---		version = "v2.*",
---	},
-  --  "tanvirtin/monokai.nvim",
---})
