@@ -63,20 +63,8 @@ end)
 ------------------------------- SCREEN SETUP ------------------------------------
 cwc.connect_signal("screen::new", function(screen)
     -- screen settings
-    if screen.name == "DP-1" then
-        screen:set_position(0, 0)
-
-        screen:set_mode(1920, 1080, 60) -- width, height, refresh rate
-        screen:set_adaptive_sync(true)
-        screen:set_scale(1.2)
-        screen:set_transform(enum.output_transform.TRANSFORM_NORMAL)
-
-        -- by default the screen is not allowed to tear
-        screen.allow_tearing = true
-    end
-
-    if screen.name == "DP-2" then
-        screen:set_position(1920, 0)
+    if screen.name == "DP-4" then
+        screen:set_position(0,0)
     end
 
     -- don't apply if restored since it will reset whats manually changed
