@@ -45,6 +45,12 @@ vim.keymap.set('n', "n", "nzz", opts)
 vim.keymap.set('v', "n", "nzz", opts)
 vim.keymap.set('n', "<S-n>", "<S-n>zz", opts)
 vim.keymap.set('v', "<S-n>", "<S-n>zz", opts)
+vim.keymap.set('n', '<Up', "<Nop>", opts)
+vim.keymap.set('n', '<Down>', "<Nop>", opts)
+vim.keymap.set('n', '<Left>', "<Nop>", opts)
+vim.keymap.set('n', '<Right>', "<Nop>", opts)
+
+
 --vim.keymap.set('n', "<leader>r", ':shell ')
 
 
