@@ -8,6 +8,8 @@
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
 
+mode=$1
+
 # Vars
 cursorSize=30
 iconTheme='Arc'
@@ -24,15 +26,21 @@ export HYPRCURSOR_SIZE=$cursorSize
 
 riverctl xcursor-theme $cursorTheme $cursorSize
 
+if [ mode != "reload" ] ; then
+# set display res
 wlr-randr --output DP-4 --mode 2560x1440@164.938004 &
+fi
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
-# Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
+# Super+Return to start an instance of kitty
 riverctl map normal Super Return spawn kitty
 
 # Super+D to spawn fuzzel
 riverctl map normal Super D spawn fuzzel
+
+# Super+Shift+R to shody reload
+riverctl map normal Super+Shift R spawn .config/river/init reload
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -183,4 +191,6 @@ riverctl set-cursor-warp on-focus-change
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
+if [ mode != "reload" ] ; then
 rivertile -view-padding 6 -outer-padding 6 &
+fi
