@@ -46,6 +46,12 @@ riverctl map normal Super Return spawn kitty
 # Super+D to spawn fuzzel
 riverctl map normal Super D spawn fuzzel
 
+# screenshot Binds
+# Super+C to screenshot
+riverctl map normal Super C spawn grim
+# Super+Shift+C to screenshot a portion of the screen
+riverctl map normal Super+Shift C spawn grimSlurp
+
 # Super+Shift+R to shody reload
 riverctl map normal Super+Shift R spawn "~/.config/river/init"
 
