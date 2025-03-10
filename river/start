@@ -11,6 +11,16 @@ XCURSORTHEME=$cursorTheme
 export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
 export MOZ_ENABLE_WAYLAND=1 
 export XDG_CURRENT_DESKTOP=river
+
+# this is optional and probably pointless
+export XDG_SESSION_TYPE=wayland
+
+#nvidia
+export LIBVA_DRIVER_NAME=nvidia
+export GBM_BACKEND=nvidia-drm
+export NVD_BACKEND=direct
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
 # export XCURSORTHEME=$cursorTheme
 # export XCURSOR_SIZE=$cursorSize
 # export HYPRCURSOR_SIZE=$cursorSize
