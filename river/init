@@ -19,16 +19,19 @@ XCURSORTHEME=$cursorTheme
 
 # Exports
 export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
+export HUH_THIS_WORKS=true
 # export XCURSORTHEME=$cursorTheme
 # export XCURSOR_SIZE=$cursorSize
 # export XCURSOR_SIZE=30
 export HYPRCURSOR_SIZE=$cursorSize
 
 riverctl xcursor-theme $cursorTheme $cursorSize
+riverctl keyboard-layout us_zuki
 
 if [ mode != "reload" ] ; then
 # set display res
 wlr-randr --output DP-4 --mode 2560x1440@164.938004 &
+.config/gentoo_only/init &
 fi
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
@@ -66,7 +69,7 @@ riverctl map normal Super+Shift Period send-to-output next
 riverctl map normal Super+Shift Comma send-to-output previous
 
 # Super+Return to bump the focused view to the top of the layout stack
-# riverctl map normal Super Return zoom
+riverctl map normal Super W zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
@@ -127,6 +130,7 @@ riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
 # Super+Space to toggle float
+# riverctl map normal Super S toggle-float
 riverctl map normal Super Space toggle-float
 
 # Super+F to toggle fullscreen
@@ -177,7 +181,7 @@ riverctl border-color-focused 0x93a1a1
 riverctl border-color-unfocused 0x586e75
 
 # Set keyboard repeat rate
-riverctl set-repeat 35 500
+riverctl set-repeat 35 700
 
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 # riverctl rule-add -app-id 'float*' -title 'foo' float

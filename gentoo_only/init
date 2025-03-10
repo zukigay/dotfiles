@@ -3,9 +3,11 @@ if [ -n "$(uname -a | grep "gentoo")" ];then
 
 #prep "wireplumber" || gentoo-pipewire-launcher &
 gentoo-pipewire-launcher restart &
+sleep 2
 
 /usr/libexec/xdg-desktop-portal-gtk -r &
-/usr/libexec/xdg-desktop-portal-hyprland &
+# /usr/libexec/xdg-desktop-portal-hyprland &
+/usr/libexec/xdg-desktop-portal-wlr &
 /usr/libexec/flatpak-portal -r &
 sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'
 
