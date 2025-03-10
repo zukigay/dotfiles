@@ -24,14 +24,6 @@ gtkTheme='Arc-Dark'
 cursorTheme='Adwaita'
 XCURSORTHEME=$cursorTheme
 
-# Exports
-export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
-export HUH_THIS_WORKS=true
-# export XCURSORTHEME=$cursorTheme
-# export XCURSOR_SIZE=$cursorSize
-# export XCURSOR_SIZE=30
-export HYPRCURSOR_SIZE=$cursorSize
-
 riverctl xcursor-theme $cursorTheme $cursorSize
 riverctl keyboard-layout us_zuki
 
