@@ -8,7 +8,14 @@
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
 
-mode=$1
+if [ "$(pgrep rivertile)" != "" ] 
+then
+    echo "rivertile running"
+    mode="reload"
+else
+    echo "rivertile not running"
+    mode="init"
+fi
 
 # Vars
 cursorSize=30
@@ -28,7 +35,7 @@ export HYPRCURSOR_SIZE=$cursorSize
 riverctl xcursor-theme $cursorTheme $cursorSize
 riverctl keyboard-layout us_zuki
 
-if [ mode != "reload" ] ; then
+if [ $mode == "init" ] ; then
 # set display res
 wlr-randr --output DP-4 --mode 2560x1440@164.938004 &
 .config/gentoo_only/init &
@@ -48,7 +55,7 @@ riverctl map normal Super Return spawn kitty
 riverctl map normal Super D spawn fuzzel
 
 # Super+Shift+R to shody reload
-riverctl map normal Super+Shift R spawn "~/.config/river/init" reload
+riverctl map normal Super+Shift R spawn "~/.config/river/init"
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -213,6 +220,4 @@ riverctl set-cursor-warp on-focus-change
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-if [ mode != "reload" ] ; then
 rivertile -view-padding 6 -outer-padding 6 &
-fi
