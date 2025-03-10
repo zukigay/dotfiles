@@ -32,7 +32,11 @@ if [ mode != "reload" ] ; then
 # set display res
 wlr-randr --output DP-4 --mode 2560x1440@164.938004 &
 .config/gentoo_only/init &
+
+# startup apps
 dunst &
+waybar &
+
 fi
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
