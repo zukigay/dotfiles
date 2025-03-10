@@ -36,6 +36,7 @@ wlr-randr --output DP-4 --mode 2560x1440@164.938004 &
 # startup apps
 dunst &
 waybar &
+hyprpaper &
 
 fi
 
