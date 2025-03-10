@@ -14,6 +14,7 @@ window#waybar {
 }
 #tags button {
     color: transparent;
+    border-bottom: 3px transparent;
 }
 #tags button.occupied{
     color: #ffffff;
