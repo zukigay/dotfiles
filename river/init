@@ -215,9 +215,12 @@ riverctl rule-add ssd
 riverctl border-color-focused 0x742ffc
 riverctl border-color-unfocused 0x542aa8
 
+riverctl default-attach-mode bottom
+# riverctl default-attach-mode below
 
+# window cursor focus 
 riverctl focus-follows-cursor normal
-riverctl set-cursor-warp on-focus-change
+riverctl set-cursor-warp disabled
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
