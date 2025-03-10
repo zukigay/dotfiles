@@ -35,7 +35,9 @@ if [ -z "$WAYLAND_DISPLAY" ] && [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; 
     #python ~/src/zukidisplay/zdm.py
 	#exec Hyprland
     #hyprconf_make > /tmp/hyprland.conf
-    exec dbus-launch --exit-with-session Hyprland
+    # exec dbus-launch --exit-with-session Hyprland
+    # exec dbus-launch --exit-with-session river
+    exec ~/.config/river/start
 else
 if [ -z "$shprofileloaded" ]
 then
