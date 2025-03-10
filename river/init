@@ -49,7 +49,7 @@ riverctl map normal Super Return spawn kitty
 riverctl map normal Super D spawn fuzzel
 
 # Super+Shift+R to shody reload
-riverctl map normal Super+Shift R spawn .config/river/init reload
+riverctl map normal Super+Shift R spawn "~/.config/river/init" reload
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
