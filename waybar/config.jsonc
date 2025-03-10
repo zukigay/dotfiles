@@ -7,6 +7,7 @@
     "spacing": 8, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
+        "river/tags",
         "hyprland/workspaces",
         "hyprland/submap",
     //    "hyprland/scratchpad",
