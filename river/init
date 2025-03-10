@@ -203,6 +203,8 @@ riverctl set-repeat 35 700
 riverctl rule-add -app-id 'steam' -title '*' float
 riverctl rule-add -app-id 'steam' -title 'Steam' no-float
 
+riverctl rule-add -app-id 'org.gnome.Calculator' float
+
 # Make all views with app-id "bar" and any title use client-side decorations
 # riverctl rule-add -app-id "bar" csd
 
