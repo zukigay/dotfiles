@@ -39,7 +39,6 @@ waybar &
 hyprpaper &
 
 fi
-
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
 # Super+Return to start an instance of kitty
@@ -194,6 +193,14 @@ riverctl set-repeat 35 700
 
 # Make all views with app-id "bar" and any title use client-side decorations
 # riverctl rule-add -app-id "bar" csd
+
+# require all apps to use server side decorations
+riverctl rule-add ssd
+    
+# border colors
+riverctl border-color-focused 0x742ffc
+riverctl border-color-unfocused 0x542aa8
+
 
 riverctl focus-follows-cursor normal
 riverctl set-cursor-warp on-focus-change
