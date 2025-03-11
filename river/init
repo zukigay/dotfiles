@@ -116,15 +116,20 @@ riverctl map normal Super Space enter-mode script
 # add binds for every key that upon release of any key switch from script mode to normal mode
 rvCatchAll script normal rel
 
+# fix up this later
+
 # create scratchpad with id "tuith"
-riverctl map script None B spawn "$RiverPad bluetuithpad kitty --class 'bluetuithpad' -o background_opacity=0.4 -e bluetuith"
-rvre script None B
-riverctl map script None V spawn "$RiverPad ncpamixerpad kitty --class 'ncpamixerpad' -o background_opacity=0.4 -e ncpamixer"
-rvre script None V
-riverctl map script None N spawn "$RiverPad iwctlpad     kitty --class 'iwctlpad'     -o background_opacity=0.4 -e iwctl"
-rvre script None N
+pad="$RiverPad bluetuithpad kitty --class 'bluetuithpad' -o background_opacity=0.4 -e bluetuith"
+riverctl map script None B spawn "$pad" ; set -- $pad ; riverctl rule-add -app-id "$2" dimensions 1600 900
+# rvre script None B
+pad="$RiverPad ncpamixerpad kitty --class 'ncpamixerpad' -o background_opacity=0.4 -e ncpamixer"
+riverctl map script None V spawn "$pad" ; set -- $pad ; riverctl rule-add -app-id "$2" dimensions 1600 900
+# rvre script None V
+pad="$RiverPad iwctlpad     kitty --class 'iwctlpad'     -o background_opacity=0.4 -e iwctl"
+riverctl map script None N spawn "$pad" ; set -- $pad ; riverctl rule-add -app-id "$2" dimensions 1600 900
+# rvre script None N
 riverctl map script None E spawn bemoji
-rvre script None E
+# rvre script None E
 riverctl map script None Escape enter-mode normal
 
 # Super+P to spawn powermenu
