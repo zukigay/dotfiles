@@ -20,6 +20,8 @@ export WINEPREFIX="$XDG_DATA_HOME"/wine
 export CRAWL_DIR=$XDG_DATA_HOME/crawl/
 
 
+export GRIM_DEFAULT_DIR=$HOME/screenshots/
+
 #export CRAWL_DIR="$XDG_DATA_HOME"/crawl/
 
 # Program XDG exports 
