@@ -1,0 +1,23 @@
+#!/bin/sh
+mkdir -p /tmp/riverPad/
+# class="$1"
+# program="${*:2}"
+class="$(echo "$@" | awk '{print $1}')"
+program="$(echo "$@" | awk '{$1=""; print}')"
+
+runApp() {
+    $program & echo $! > "/tmp/riverPad/$class"
+}
+
+programState=1
+programid="$(cat "/tmp/riverPad/$class")" || programState=0
+if [ "$programState" == 0 ] || [ "$programid" == "" ] ; then
+    # if program not running start it up
+    # not sure if this should be globed
+    runApp
+else
+    if [ "$programid" != "" ] ; then 
+        kill "$programid" || runApp
+    fi
+    rm "/tmp/riverPad/$class"
+fi

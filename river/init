@@ -17,12 +17,16 @@ else
     mode="init"
 fi
 
+
+
 # Vars
 cursorSize=30
 iconTheme='Arc'
 gtkTheme='Arc-Dark'
 cursorTheme='Adwaita'
 XCURSORTHEME=$cursorTheme
+RiverScriptDir="$XDG_CONFIG_HOME/river/scripts"
+RiverPad="$RiverScriptDir/riverPad"
 
 riverctl xcursor-theme $cursorTheme $cursorSize
 riverctl keyboard-layout us_zuki
@@ -46,6 +50,11 @@ riverctl map normal Super Return spawn kitty
 # Super+D to spawn fuzzel
 riverctl map normal Super D spawn fuzzel
 
+riverctl declare-mode script
+riverctl map normal Super Space enter-mode script
+# create scratchpad with id "tuith"
+riverctl map script None B spawn "$RiverPad tuith kitty -o background_opacity=0.4 -e bluetuith"
+riverctl map script None Escape enter-mode normal
 # screenshot Binds
 # Super+C to screenshot
 riverctl map normal Super C spawn grim
