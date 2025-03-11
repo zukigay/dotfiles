@@ -29,7 +29,7 @@ RiverScriptDir="$XDG_CONFIG_HOME/river/scripts"
 RiverPad="$RiverScriptDir/riverPad"
 
 riverctl xcursor-theme $cursorTheme $cursorSize
-riverctl keyboard-layout us_zuki
+riverctl keyboard-layout us
 
 if [ $mode == "init" ] ; then
 # set display res
@@ -54,7 +54,12 @@ riverctl declare-mode script
 riverctl map normal Super Space enter-mode script
 # create scratchpad with id "tuith"
 riverctl map script None B spawn "$RiverPad tuith kitty -o background_opacity=0.4 -e bluetuith"
+riverctl map script None E spawn bemoji
 riverctl map script None Escape enter-mode normal
+
+# Super+P to spawn powermenu
+riverctl map normal Super P spawn fuzzelHyprPowerMenu
+
 # screenshot Binds
 # Super+C to screenshot
 riverctl map normal Super C spawn grim
@@ -211,6 +216,7 @@ riverctl rule-add -app-id 'steam' -title '*' float
 riverctl rule-add -app-id 'steam' -title 'Steam' no-float
 
 riverctl rule-add -app-id 'org.gnome.Calculator' float
+riverctl rule-add -app-id 'xdg-desktop-portal-gtk' float
 
 # Make all views with app-id "bar" and any title use client-side decorations
 # riverctl rule-add -app-id "bar" csd
