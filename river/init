@@ -117,7 +117,12 @@ riverctl map normal Super C spawn grim
 riverctl map normal Super+Shift C spawn grimSlurp
 
 # Super+Shift+R to shody reload
-riverctl map normal Super+Shift R spawn "~/.config/river/init"
+# riverctl map normal Super+Shift R spawn " kitty --hold -o shell='sh -c read' --class 'kitty-config-reload-river' -e $rivercfg"
+
+# R to shody reload
+riverctl map script None R spawn "kitty --hold -o shell='sh -c read' --class 'kitty-config-reload-river' -e $rivercfg"
+riverctl rule-add -app-id "kitty-config-reload-river" float
+riverctl rule-add -app-id "kitty-config-reload-river" dimensions 1600 900
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
