@@ -6,6 +6,7 @@ class="$(echo "$@" | awk '{print $1}')"
 program="$(echo "$@" | awk '{$1=""; print}')"
 
 runApp() {
+    # actually launch the program
     $program & echo $! > "/tmp/riverPad/$class"
 }
 
