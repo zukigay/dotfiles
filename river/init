@@ -30,6 +30,22 @@ rivercfg="$XDG_CONFIG_HOME/river/init"
 RiverScriptDir="$XDG_CONFIG_HOME/river/scripts"
 RiverPad="$RiverScriptDir/riverPad"
 
+rvCatchAll() {
+    # function takes two modes as arguments
+    # maps every letter key as a enter-mode
+    local mode1=$1
+    local mode2=$2
+    local rel=$3
+    if [ "$rel" == "rel" ] ; then
+        local rel="-release"
+    fi
+    local key1="None"
+    for letter in q w e r t y u i o p a s d f g h j k l z x c v b n m 
+    do
+        riverctl map $rel $mode1 $key1 $letter enter-mode $mode2
+    done
+}
+
 rvre() {
     local mode="$1"
     local key1="$2"
@@ -96,6 +112,10 @@ riverctl map normal Super D spawn fuzzel
 
 riverctl declare-mode script
 riverctl map normal Super Space enter-mode script
+
+# add binds for every key that upon release of any key switch from script mode to normal mode
+rvCatchAll script normal rel
+
 # create scratchpad with id "tuith"
 riverctl map script None B spawn "$RiverPad bluetuithpad kitty --class 'bluetuithpad' -o background_opacity=0.4 -e bluetuith"
 rvre script None B
