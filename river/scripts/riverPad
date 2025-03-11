@@ -17,8 +17,8 @@ if [ "$programState" == 0 ] || [ "$programid" == "" ] ; then
     # not sure if this should be globed
     runApp
 else
+    rm "/tmp/riverPad/$class"
     if [ "$programid" != "" ] ; then 
         kill "$programid" || runApp
     fi
-    rm "/tmp/riverPad/$class"
 fi
