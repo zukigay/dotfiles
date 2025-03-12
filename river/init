@@ -117,16 +117,21 @@ riverctl map normal Super Space enter-mode script
 rvCatchAll script normal rel
 
 # fix up this later
+padrules() {
+local appid="$2"
+riverctl rule-add -app-id "$appid" dimensions 1600 900
+riverctl rule-add -app-id "$appid" float
+}
 
 # create scratchpad with id "tuith"
 pad="$RiverPad bluetuithpad kitty --class 'bluetuithpad' -o background_opacity=0.4 -e bluetuith"
-riverctl map script None B spawn "$pad" ; set -- $pad ; riverctl rule-add -app-id "$2" dimensions 1600 900
+riverctl map script None B spawn "$pad" ; padrules $pad
 # rvre script None B
 pad="$RiverPad ncpamixerpad kitty --class 'ncpamixerpad' -o background_opacity=0.4 -e ncpamixer"
-riverctl map script None V spawn "$pad" ; set -- $pad ; riverctl rule-add -app-id "$2" dimensions 1600 900
+riverctl map script None V spawn "$pad" ; padrules $pad
 # rvre script None V
 pad="$RiverPad iwctlpad     kitty --class 'iwctlpad'     -o background_opacity=0.4 -e iwctl"
-riverctl map script None N spawn "$pad" ; set -- $pad ; riverctl rule-add -app-id "$2" dimensions 1600 900
+riverctl map script None N spawn "$pad" ; padrules $pad
 # rvre script None N
 riverctl map script None E spawn bemoji
 # rvre script None E
