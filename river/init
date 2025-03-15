@@ -306,6 +306,8 @@ riverctl set-repeat 35 700
 riverctl rule-add -app-id 'steam' -title '*' float
 riverctl rule-add -app-id 'steam' -title 'Steam' no-float
 
+riverctl rule-add -app-id 'abaddon' -title '"Abaddon*' float
+
 riverctl rule-add -app-id 'org.gnome.Calculator' float
 riverctl rule-add -app-id 'xdg-desktop-portal-gtk' float
 
