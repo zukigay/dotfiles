@@ -245,6 +245,8 @@ do
     tags=$((1 << ($i - 1)))
     # Super+[1-9] to focus tag [0-8]
     riverctl map normal Super $i set-focused-tags $(($sticky_tag + $tags))
+    # Super+Shift+[1-9] to tag focused view with tag [0-8]
+    riverctl map normal Super+Shift $i set-view-tags $tags
 done
 
 
@@ -326,6 +328,7 @@ riverctl rule-add -app-id 'abaddon' -title '"Abaddon*' float
 
 riverctl rule-add -app-id 'org.gnome.Calculator' float
 riverctl rule-add -app-id 'xdg-desktop-portal-gtk' float
+riverctl rule-add -app-id 'Zenity' float
 
 # Make all views with app-id "bar" and any title use client-side decorations
 # riverctl rule-add -app-id "bar" csd
