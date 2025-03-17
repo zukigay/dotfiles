@@ -24,4 +24,8 @@ export __GLX_VENDOR_LIBRARY_NAME=nvidia
 # export XCURSORTHEME=$cursorTheme
 # export XCURSOR_SIZE=$cursorSize
 # export HYPRCURSOR_SIZE=$cursorSize
+
+# uncomment these two lines to get a headless virtual display
+# export WLR_BACKENDS=drm,libinput,headless 
+# export WLR_HEADLESS_OUTPUTS=1 
 exec dbus-launch --exit-with-session river
