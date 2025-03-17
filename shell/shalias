@@ -99,3 +99,4 @@ alias flatclean="flatpak uninstall --unused"
 
 alias emcalc="emup -p | sudo genlop -p"
 alias ccp="clang -std=c99 -Wall -Werror -fsanitize=address"
+alias ncdu2="sudo ncdu --exclude-kernfs --exclude /mnt /"
