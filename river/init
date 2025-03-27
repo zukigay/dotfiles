@@ -99,6 +99,7 @@ wlr-randr --output DP-4 --mode 2560x1440@164.938004 &
 dunst &
 waybar &
 hyprpaper &
+autogamma -nt 3300 -dt 6500 -mh 9 -mm 30 -nh 21 &
 rm -r /tmp/riverPad
 
 fi
