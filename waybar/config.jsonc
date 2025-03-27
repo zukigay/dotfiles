@@ -85,6 +85,10 @@
     "interval": 1000 
     },
 
+    "river/tags": {
+	    // "num-tags": 9
+        "disable-click":true
+    },
 
    "custom/wl-gammarelay-temperature": {
         "format": "{} ",
