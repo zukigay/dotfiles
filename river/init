@@ -93,6 +93,7 @@ riverctl keyboard-layout us
 if [ $mode == "init" ] ; then
 # set display res
 wlr-randr --output DP-4 --mode 2560x1440@164.938004 &
+wlr-randr --output HDMI-A-4 --pos -1920,200 &
 .config/gentoo_only/init &
 
 # startup apps
@@ -177,6 +178,10 @@ riverctl map normal Super Comma focus-output previous
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
 riverctl map normal Super+Shift Period send-to-output next
 riverctl map normal Super+Shift Comma send-to-output previous
+
+# output binds but for escape
+riverctl map normal Super Escape focus-output next
+riverctl map normal Super+Shift Escape send-to-output next
 
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super W zoom
@@ -346,7 +351,7 @@ riverctl default-attach-mode bottom
 
 # window cursor focus 
 riverctl focus-follows-cursor normal
-riverctl set-cursor-warp disabled
+riverctl set-cursor-warp on-output-change
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
