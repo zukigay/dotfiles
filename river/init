@@ -238,6 +238,38 @@ riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 #     riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
 # done
 
+# source: https://codeberg.org/river/wiki/src/branch/master/pages/Scratchpad-and-Sticky.md
+# The scratchpad will live on an unused tag. Which tags are used depends on your
+# config, but rivers default uses the first 9 tags.
+scratch_tag=$((1 << 20 ))
+
+# Toggle the scratchpad with Super+P
+riverctl map normal Super E toggle-focused-tags ${scratch_tag}
+
+# Send windows to the scratchpad with Super+Shift+P
+riverctl map normal Super+Shift E set-view-tags ${scratch_tag}
+
+padrules2() {
+local appid="$1"
+riverctl rule-add -app-id "$appid" dimensions 1600 900
+riverctl rule-add -app-id "$appid" float
+riverctl rule-add -app-id "$appid" tags $scratch_tag
+}
+
+# STAG=21
+
+
+# spawn="kitty --class 'bluetuithpad' -o background_opacity=0.4 -e bluetuith" ; scratch_tag=$((1 << $STAG ))
+# riverctl map script None B spawn "riverctl toggle-focused-tags ${scratch_tag}" ; STAG=$((STAG+1))
+# padrules2 bluetuithpad
+
+
+
+# Set spawn tagmask to ensure new windows don't have the scratchpad tag unless
+# explicitly set.
+all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
+riverctl spawn-tagmask ${all_but_scratch_tag}
+
 all_tags=$(((1 << 32) - 1))
 sticky_tag=$((1 << 31))
 all_but_sticky_tag=$(( $all_tags ^ $sticky_tag ))
