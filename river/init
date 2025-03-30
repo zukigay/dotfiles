@@ -90,10 +90,16 @@ rvre() {
 riverctl xcursor-theme $cursorTheme $cursorSize
 riverctl keyboard-layout us
 
+setdisplay(){
+sleep 3
+wlr-randr --output DP-4 --mode 2560x1440@164.938004 --pos 0,0
+wlr-randr --output HDMI-A-4 --pos -1920,200
+# wlr-randr --output HDMI-A-4 --pos -100,200
+}
+# setdisplay &
 if [ $mode == "init" ] ; then
 # set display res
-wlr-randr --output DP-4 --mode 2560x1440@164.938004 --pos 0,0 &
-wlr-randr --output HDMI-A-4 --pos -1920,200 &
+setdisplay & 
 .config/gentoo_only/init &
 
 # startup apps
