@@ -38,6 +38,10 @@ function handle_layout(args)
     local layouts = { normalTile=function()
         local outer_gap = outer_gap
         local inner_gap = inner_gap
+        local main_count = main_count
+        if count < main_count then
+            main_count = count
+        end
         if count < 2 and smart_gaps == true then
                 outer_gap = 0
                 inner_gap = 0
