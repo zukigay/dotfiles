@@ -27,6 +27,7 @@
 !shell/
 !root/
 !river/
+!river-luatile/
 !qutebrowser/
 !qtile/
 !nvim/
