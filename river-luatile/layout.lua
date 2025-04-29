@@ -151,8 +151,12 @@ end
 
 function monocleFocus(focusorder)
     if currentLayout == 'monocle' then
+        local focusorderReplcements = {
+            next = function() focusorder = 'left' end,
+            previous = function() focusorder = 'left' end,
+        }
+        focusorderReplcements[focusorder]()
         os.execute("riverctl swap "..focusorder)
-        os.execute("riverctl focus-view "..focusorder)
     end
     os.execute("riverctl focus-view "..focusorder)
 end
