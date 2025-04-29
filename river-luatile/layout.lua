@@ -10,12 +10,13 @@ local main_count = 1
 local main_ratio = 0.50
 local outer_gap = 4
 local inner_gap = 5
+local borderSize = 3 
 local smart_gaps = false
 local smart_border = false
 local location_horizontal = "left"
 local location_vertical = "top"
-local currentLayout = 'normalTile'
 local currentLayout = 'monocle'
+local currentLayout = 'normalTile'
 local count = 0
 
 --- Layout generator
@@ -156,6 +157,7 @@ function monocleFocus(focusorder)
     os.execute("riverctl focus-view "..focusorder)
 end
 function switchLayout(newLayout)
+    setBorder(borderSize)
     currentLayout = newLayout
 
 end
