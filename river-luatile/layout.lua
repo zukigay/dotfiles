@@ -203,7 +203,8 @@ function switchLayout(newLayout,targetOutput)
         setBorder(borderSize)
     end
     -- os.execute('notify-send targetOuput:' .. targetOutput .. " thisOutput:" .. thisOutput)
-    monitorLayouts[targetOutput] = newLayout
+    -- monitorLayouts[targetOutput] = newLayout
+    monitorLayouts[CMD_OUTPUT] = newLayout
 end
 
 function flip()
