@@ -103,6 +103,7 @@ wlr-randr --output HDMI-A-4 --pos -1920,200
 sleep 3
 wlr-randr --output DP-3 --mode 2560x1440@164.938004 --pos 0,0
 wlr-randr --output HDMI-A-4 --pos -1920,200
+riverctl focus-output DP-3
 # wlr-randr --output HDMI-A-4 --pos -100,200
 }
 # setdisplay &
