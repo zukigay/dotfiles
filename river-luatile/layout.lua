@@ -155,6 +155,10 @@ function monocleFocus(focusorder)
     end
     os.execute("riverctl focus-view "..focusorder)
 end
+function switchLayout(newLayout)
+    currentLayout = 'normalTile'
+
+end
 
 function flip()
     for _ = 0, count do

@@ -208,8 +208,16 @@ riverctl map normal Super K send-layout-cmd luatile "monocleFocus('previous')"
 riverctl map normal Super H send-layout-cmd luatile "decrease_main()"
 riverctl map normal Super L send-layout-cmd luatile "increase_main()"
 
-riverctl map normal Super+Shift H send-layout-cmd rivertile "increase_count()"
-riverctl map normal Super+Shift L send-layout-cmd rivertile "decgease_count()"
+riverctl map normal Super+Shift H send-layout-cmd luatile "increase_count()"
+riverctl map normal Super+Shift L send-layout-cmd luatile "decrease_count()"
+
+riverctl declare-mode layoutpick
+rvCatchAll layoutpick normal rel
+riverctl map normal Super Hyper_L enter-mode layoutpick
+riverctl map layoutpick None 1 send-layout-cmd luatile "switchLayout('normalTile')"
+riverctl map layoutpick None 2 send-layout-cmd luatile "switchLayout('monocle')"
+riverctl map -release layoutpick None 1 enter-mode normal
+riverctl map -release layoutpick None 2 enter-mode normal
 
 elif [ "$tiler"  ==  "rivertile" ] ; then
 # Super+J and Super+K to focus the next/previous view in the layout stack
@@ -350,7 +358,7 @@ riverctl map passthrough Super F11 enter-mode normal
 
 # Various media key mapping examples for both normal and locked mode which do
 # not have a modifier
-for mode in normal locked
+for mode in normal locked layoutPick
 do
     # riverctl map $mode None Caps_Lock spawn kitty
     # riverctl map $mode None Caps_Lock spawn 'playerctl play-pause'
