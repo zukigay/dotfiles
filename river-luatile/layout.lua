@@ -11,6 +11,7 @@ local main_ratio = 0.50
 local outer_gap = 4
 local inner_gap = 5
 local borderSize = 3 
+local curBorderSize = 3
 local smart_gaps = false
 -- local smart_border = false
 local location_horizontal = "left"
@@ -19,6 +20,8 @@ local currentLayout = 'monocle'
 local currentLayout = 'normalTile'
 local thisOutput = ''
 local monitorLayouts = {}
+local barHeight = 30
+local barActive = false
 -- local activeOutput = false
 local count = 0
 
@@ -141,9 +144,12 @@ function handle_layout(args)
     end,
     monocle = function()
         -- setBorder(0)
+        local barHeight = barHeight
+        if barActive == false then
+            barHeight = 0
+        end
         for i = 1,count do
-            -- table.insert(layout,{0,0,0,0})
-            table.insert(layout,{0,0,args.width,args.height})
+            table.insert(layout,{0-curBorderSize,0-(curBorderSize+barHeight),args.width+(curBorderSize*2),args.height+(curBorderSize*2+barHeight)})
         end
     end
     
@@ -151,11 +157,35 @@ function handle_layout(args)
     layouts[currentLayout]()
     return layout
 end
+function onload()
+    if os.execute('pgrep waybar') ~= '0' then
+        barActive = true
+    end
+end
+
+function toggleBorderWidth()
+    if curBorderSize == borderSize then
+        curBorderSize = 0
+    else
+        curBorderSize = borderSize
+    end
+    setBorder(curBorderSize)
+end
+function toggleWaybar()
+    if barActive == false then
+        -- this signal resets the bar
+        os.execute("killall -SIGUSR2 waybar")
+    elseif barActive == true then
+        -- this signal hides the bar
+        os.execute("killall -SIGUSR1 waybar")
+    end
+    barActive = not barActive
+end
 
 
 function switchLayout(newLayout,targetOutput)
     if newLayout == "monocle" then
-        setBorder(0)
+        -- setBorder(0)
     else
         setBorder(borderSize)
     end
@@ -203,5 +233,3 @@ function decrease_count()
         main_count = main_count - 1
     end
 end
-
-

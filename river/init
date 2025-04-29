@@ -215,6 +215,9 @@ riverctl declare-mode layoutpick
 rvCatchAll layoutpick normal rel
 riverctl map normal Super Hyper_L enter-mode layoutpick
 
+riverctl map layoutpick None b send-layout-cmd luatile "toggleBorderWidth()"
+riverctl map layoutpick None w send-layout-cmd luatile 'toggleWaybar()'
+# riverctl map layoutpick None w spawn 'killall -SIGUSR1 waybar'
 
 counter=1
 # for output in HDMI-A-4 DP-3  ; do
@@ -443,11 +446,10 @@ if [ "$tiler" == "luatile" ] ; then
     # riverctl default-layout river-luatile
     riverctl default-layout luatile
     if [ $mode == "init" ] ; then
-        river-luatile -view-padding 6 -outer-padding 6 &
-        # riverctl spawn river-luatile &
+        riverctl spawn river-luatile && riverctl send-layout-cmd luatile "oninit()" && riverctl send-layout-cmd luatile "onload()"
     else
         pkill river-luatile
-        riverctl spawn river-luatile
+        riverctl spawn river-luatile && riverctl send-layout-cmd luatile "onload()"
     fi
 elif [ "$tiler"  ==  "rivertile" ] ; then
     # Set the default layout generator to be rivertile and start it.
