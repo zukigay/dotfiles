@@ -24,7 +24,7 @@ RiverPad="$RiverScriptDir/riverPad"
 tiler="luatile"
 # tiler="rivertile"
 
-if [ "$(pgrep rivertile)" != "" ] || [ "$(pgrep river-luatile)" != "" ] 
+if [ "$(pgrep rivertile)" != "" ] || [ "$(pgrep river-luatile)" != "" ] || [ "$(pgrep hyprpaper)" ] 
 then
     echo "rivertile running"
     mode="reload"
