@@ -15,7 +15,6 @@ local curBorderSize = 3
 local smart_gaps = false
 local location_horizontal = "left"
 local location_vertical = "top"
-local thisOutput = ''
 local monitorData = {}
 local barHeight = 30
 local barActive = true
@@ -26,22 +25,26 @@ local count = 0
 function handle_layout(args)
     local layout = {}
 
-    local thisOutput = args.output
+    -- local args.output = args.output
 
-    -- currentLayout = monitorLayouts[thisOutput] or 'normalTile'
-    if monitorData[thisOutput] == nil then
-        monitorData[thisOutput] = {layout='normalTile',main_ratio=0.50,main_count=1}
+    -- currentLayout = monitorLayouts[args.output] or 'normalTile'
+    if monitorData[args.output] == nil then
+        monitorData[args.output] = {layout='normalTile',main_ratio=0.50,main_count=1}
     end
-    local currentLayout = monitorData[thisOutput].layout
-    local main_ratio = monitorData[thisOutput].main_ratio
-    local main_count = monitorData[thisOutput].main_count
+    local currentLayout = monitorData[args.output].layout
+    local main_ratio = monitorData[args.output].main_ratio
+    local main_count = monitorData[args.output].main_count
     -- local main_ratio 
     count = args.count
+    -- if count < main_count then
+    --     monitorData[args.output].main_count = count
+    --     main_count = count
+    -- end
 
     local layouts = { normalTile=function()
         local outer_gap = outer_gap
         local inner_gap = inner_gap
-        local main_count = main_count
+        -- local main_count = main_count
         if count < main_count then
             main_count = count
         end
@@ -205,7 +208,7 @@ function switchLayout(newLayout)
     else
         setBorder(borderSize)
     end
-    -- os.execute('notify-send targetOuput:' .. targetOutput .. " thisOutput:" .. thisOutput)
+    -- os.execute('notify-send targetOuput:' .. targetOutput .. " args.output:" .. thisOutput)
     -- monitorLayouts[targetOutput] = newLayout
     monitorData[CMD_OUTPUT].layout = newLayout
 end
