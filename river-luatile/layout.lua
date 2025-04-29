@@ -158,8 +158,12 @@ function handle_layout(args)
     return layout
 end
 function onload()
-    if os.execute('pgrep waybar') ~= '0' then
+    -- print(os.execute('pgrep waybar'))
+    if os.execute('pgrep waybar') == 0 then
         barActive = true
+        os.execute("killall -SIGUSR2 waybar")
+    else
+        barActive = false
     end
 end
 
