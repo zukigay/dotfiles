@@ -13,6 +13,7 @@ local main_count = 1
 local main_ratio = 0.50
 local outer_gap = 4
 local inner_gap = 5
+local smart_gaps = false
 local location_horizontal = "left"
 local location_vertical = "top"
 local count = 0
@@ -23,6 +24,12 @@ function handle_layout(args)
     local layout = {}
 
     count = args.count
+    local outer_gap = outer_gap
+    local inner_gap = inner_gap
+    if count < 2 and smart_gaps == true then
+        outer_gap = 0
+        inner_gap = 0
+    end
     local secondary_count = args.count - main_count
     local usable_width, usable_height
     local location
