@@ -13,15 +13,11 @@ local inner_gap = 5
 local borderSize = 3 
 local curBorderSize = 3
 local smart_gaps = false
--- local smart_border = false
 local location_horizontal = "left"
 local location_vertical = "top"
-local currentLayout = 'monocle'
-local currentLayout = 'normalTile'
 local thisOutput = ''
-local monitorLayouts = {}
+local monitorData = {}
 local barHeight = 30
--- local activeOutput = false
 local barActive = true
 local count = 0
 
@@ -30,9 +26,16 @@ local count = 0
 function handle_layout(args)
     local layout = {}
 
-    thisOutput = args.output
+    local thisOutput = args.output
 
-    currentLayout = monitorLayouts[thisOutput] or 'normalTile'
+    -- currentLayout = monitorLayouts[thisOutput] or 'normalTile'
+    if monitorData[thisOutput] == nil then
+        monitorData[thisOutput] = {layout='normalTile',main_ratio=0.50,main_count=1}
+    end
+    local currentLayout = monitorData[thisOutput].layout
+    local main_ratio = monitorData[thisOutput].main_ratio
+    local main_count = monitorData[thisOutput].main_count
+    -- local main_ratio 
     count = args.count
 
     local layouts = { normalTile=function()
@@ -204,7 +207,7 @@ function switchLayout(newLayout)
     end
     -- os.execute('notify-send targetOuput:' .. targetOutput .. " thisOutput:" .. thisOutput)
     -- monitorLayouts[targetOutput] = newLayout
-    monitorLayouts[CMD_OUTPUT] = newLayout
+    monitorData[CMD_OUTPUT].layout = newLayout
 end
 
 function flip()
@@ -221,29 +224,35 @@ end
 --- Increases main ratio
 -- Run with `riverctl send-layout-cmd luatile "increase_main()"`
 function increase_main()
-    if main_ratio < 0.9 then
-        main_ratio = main_ratio + 0.05
+    -- if main_ratio < 0.9 then
+    if monitorData[CMD_OUTPUT].main_ratio < 0.9 then
+        monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio + 0.05
+        -- main_ratio = main_ratio + 0.05
     end
 end
 
 --- Decreases main ratio
 -- Run with `riverctl send-layout-cmd luatile "decrease_main()"`
 function decrease_main()
-    if main_ratio > 0.1 then
-        main_ratio = main_ratio - 0.05
+    if monitorData[CMD_OUTPUT].main_ratio > 0.1 then
+        monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio - 0.05
+        -- main_ratio = main_ratio - 0.05
     end
 end
 
 --- Increases main count
 -- Run with `riverctl send-layout-cmd luatile "increase_count()"`
 function increase_count()
-    main_count = main_count + 1
+    -- main_count = main_count + 1
+    monitorData[CMD_OUTPUT].main_count = monitorData[CMD_OUTPUT].main_count + 1
 end
 
 --- Decreases main count
 -- Run with `riverctl send-layout-cmd luatile "decrease_count()"`
 function decrease_count()
-    if main_count >= 2 then
-        main_count = main_count - 1
+    -- if main_count >= 2 then
+    if monitorData[CMD_OUTPUT].main_count >= 2 then
+        -- main_count = main_count - 1
+        monitorData[CMD_OUTPUT].main_count = monitorData[CMD_OUTPUT].main_count - 1
     end
 end
