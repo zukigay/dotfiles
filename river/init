@@ -418,12 +418,17 @@ riverctl set-cursor-warp on-output-change
 
 
 if [ "$tiler" == "luatile" ] ; then
-# riverctl default-layout river-luatile
-riverctl default-layout luatile
-river-luatile -view-padding 6 -outer-padding 6 &
+    # riverctl default-layout river-luatile
+    riverctl default-layout luatile
+    if [ $mode == "init" ] ; then
+        river-luatile -view-padding 6 -outer-padding 6 &
+        # riverctl spawn river-luatile &
+    else
+        pkill river-luatile && riverctl spawn river-luatile
+    fi
 elif [ "$tiler"  ==  "rivertile" ] ; then
-# Set the default layout generator to be rivertile and start it.
-# River will send the process group of the init executable SIGTERM on exit.
-riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+    # Set the default layout generator to be rivertile and start it.
+    # River will send the process group of the init executable SIGTERM on exit.
+    riverctl default-layout rivertile
+    rivertile -view-padding 6 -outer-padding 6 &
 fi
