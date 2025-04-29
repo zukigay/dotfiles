@@ -180,6 +180,10 @@ riverctl map normal Super Q close
 # Super+Shift+E to exit river
 riverctl map normal Super+Shift E exit
 
+# Super+J and Super+K to focus the next/previous view in the layout stack
+riverctl map normal Super J focus-view next
+riverctl map normal Super K focus-view previous
+
 # Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
 # view in the layout stack
 riverctl map normal Super+Shift J swap next
@@ -201,10 +205,6 @@ riverctl map normal Super+Shift Escape send-to-output next
 riverctl map normal Super W zoom
 
 if [ "$tiler" == "luatile" ] ; then
-# Super+J and Super+K to focus the next/previous view in the layout stack
-riverctl map normal Super J send-layout-cmd luatile "monocleFocus('next')"
-riverctl map normal Super K send-layout-cmd luatile "monocleFocus('previous')"
-
 riverctl map normal Super H send-layout-cmd luatile "decrease_main()"
 riverctl map normal Super L send-layout-cmd luatile "increase_main()"
 
@@ -220,9 +220,7 @@ riverctl map -release layoutpick None 1 enter-mode normal
 riverctl map -release layoutpick None 2 enter-mode normal
 
 elif [ "$tiler"  ==  "rivertile" ] ; then
-# Super+J and Super+K to focus the next/previous view in the layout stack
-riverctl map normal Super J focus-view next
-riverctl map normal Super K focus-view previous
+
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"

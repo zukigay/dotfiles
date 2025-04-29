@@ -38,7 +38,7 @@ function handle_layout(args)
                 setBorder(0)
             end
         elseif smart_border == true then
-                setBorder(3)
+                setBorder(borderSize)
         end
         local secondary_count = args.count - main_count
         local usable_width, usable_height
@@ -136,12 +136,10 @@ function handle_layout(args)
     end,
     monocle = function()
         setBorder(0)
-        if count > 1 then
-            for i = 2,count do
-                table.insert(layout,{0,0,0,0})
-            end
+        for i = 1,count do
+            -- table.insert(layout,{0,0,0,0})
+            table.insert(layout,{0,0,args.width,args.height})
         end
-        table.insert(layout,{0,0,args.width,args.height})
     end
     
     }
@@ -149,17 +147,7 @@ function handle_layout(args)
     return layout
 end
 
-function monocleFocus(focusorder)
-    if currentLayout == 'monocle' then
-        local focusorderReplcements = {
-            next = function() focusorder = 'left' end,
-            previous = function() focusorder = 'left' end,
-        }
-        focusorderReplcements[focusorder]()
-        os.execute("riverctl swap "..focusorder)
-    end
-    os.execute("riverctl focus-view "..focusorder)
-end
+
 function switchLayout(newLayout)
     setBorder(borderSize)
     currentLayout = newLayout
