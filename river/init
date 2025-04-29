@@ -8,14 +8,6 @@
 # See the river(1), riverctl(1), and rivertile(1) man pages for complete
 # documentation.
 
-if [ "$(pgrep rivertile)" != "" ] 
-then
-    echo "rivertile running"
-    mode="reload"
-else
-    echo "rivertile not running"
-    mode="init"
-fi
 
 
 
@@ -29,6 +21,17 @@ rivercfgdir="$XDG_CONFIG_HOME/river"
 rivercfg="$XDG_CONFIG_HOME/river/init"
 RiverScriptDir="$XDG_CONFIG_HOME/river/scripts"
 RiverPad="$RiverScriptDir/riverPad"
+tiler="luatile"
+# tiler="rivertile"
+
+if [ "$(pgrep rivertile)" != "" ] || [ "$(pgrep river-luatile)" != "" ] 
+then
+    echo "rivertile running"
+    mode="reload"
+else
+    echo "rivertile not running"
+    mode="init"
+fi
 
 rvCatchAll() {
     # function takes two modes as arguments
@@ -88,11 +91,17 @@ rvre() {
 
 
 riverctl xcursor-theme $cursorTheme $cursorSize
-riverctl keyboard-layout us
+# riverctl keyboard-layout us
+# riverctl keyboard-layout -options ctrl:nocaps us
+riverctl keyboard-layout -options caps:hyper us
+# riverctl keyboard-layout -options caps:backspace us
+# riverctl keyboard-layout -options caps:super us
 
 setdisplay(){
+wlr-randr --output DP-3 --mode 2560x1440@164.938004 --pos 0,0
+wlr-randr --output HDMI-A-4 --pos -1920,200
 sleep 3
-wlr-randr --output DP-4 --mode 2560x1440@164.938004 --pos 0,0
+wlr-randr --output DP-3 --mode 2560x1440@164.938004 --pos 0,0
 wlr-randr --output HDMI-A-4 --pos -1920,200
 # wlr-randr --output HDMI-A-4 --pos -100,200
 }
@@ -106,6 +115,7 @@ setdisplay &
 dunst &
 waybar &
 hyprpaper &
+/usr/libexec/hyprpolkitagent &
 autogamma -nt 3300 -dt 6500 -mh 9 -mm 30 -nh 21 &
 rm -r /tmp/riverPad
 
@@ -147,6 +157,8 @@ riverctl map script None Escape enter-mode normal
 
 # Super+P to spawn powermenu
 riverctl map normal Super P spawn fuzzelHyprPowerMenu
+
+# riverctl map normal Super F12 spawn "riverctl focus-follows-cursor always "
 
 # screenshot Binds
 # Super+C to screenshot
@@ -192,6 +204,14 @@ riverctl map normal Super+Shift Escape send-to-output next
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super W zoom
 
+if [ "$tiler" == "luatile" ] ; then
+riverctl map normal Super H send-layout-cmd luatile "decrease_main()"
+riverctl map normal Super L send-layout-cmd luatile "increase_main()"
+
+riverctl map normal Super+Shift H send-layout-cmd rivertile "increase_count()"
+riverctl map normal Super+Shift L send-layout-cmd rivertile "decgease_count()"
+
+elif [ "$tiler"  ==  "rivertile" ] ; then
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
 riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
@@ -199,6 +219,7 @@ riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
 # Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
 riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
 riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+fi
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -327,6 +348,8 @@ riverctl map passthrough Super F11 enter-mode normal
 # not have a modifier
 for mode in normal locked
 do
+    # riverctl map $mode None Caps_Lock spawn kitty
+    # riverctl map $mode None Caps_Lock spawn 'playerctl play-pause'
     # Eject the optical drive (well if you still have one that is)
     riverctl map $mode None XF86Eject spawn 'eject -T'
 
@@ -374,6 +397,7 @@ riverctl rule-add -app-id 'org.gnome.Calculator' float
 riverctl rule-add -app-id 'xdg-desktop-portal-gtk' float
 riverctl rule-add -app-id 'Zenity' float
 
+riverctl rule-add -app-id 'windowkill' -title 'windowkill' csd
 # Make all views with app-id "bar" and any title use client-side decorations
 # riverctl rule-add -app-id "bar" csd
 
@@ -391,7 +415,15 @@ riverctl default-attach-mode bottom
 riverctl focus-follows-cursor normal
 riverctl set-cursor-warp on-output-change
 
+
+
+if [ "$tiler" == "luatile" ] ; then
+# riverctl default-layout river-luatile
+riverctl default-layout luatile
+river-luatile -view-padding 6 -outer-padding 6 &
+elif [ "$tiler"  ==  "rivertile" ] ; then
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
+fi
