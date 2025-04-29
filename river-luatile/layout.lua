@@ -188,6 +188,9 @@ end
 
 
 function switchLayout(newLayout,targetOutput)
+    if os.execute('pgrep waybar') ~= 0 then
+        barActive = false
+    end
     if newLayout == "monocle" then
         -- setBorder(0)
     else
