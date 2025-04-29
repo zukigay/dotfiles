@@ -152,9 +152,8 @@ function monocleFocus(focusorder)
     if currentLayout == 'monocle' then
         os.execute("riverctl swap "..focusorder)
         os.execute("riverctl focus-view "..focusorder)
-    else
-        os.execute("riverctl focus-view "..focusorder)
     end
+    os.execute("riverctl focus-view "..focusorder)
 end
 
 function flip()
