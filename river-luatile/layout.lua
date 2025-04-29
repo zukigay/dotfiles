@@ -191,7 +191,7 @@ function toggleWaybar()
 end
 
 
-function switchLayout(newLayout,targetOutput)
+function switchLayout(newLayout)
     if barActive == true then
         if os.execute('pgrep waybar') ~= 0 then
             barActive = false
