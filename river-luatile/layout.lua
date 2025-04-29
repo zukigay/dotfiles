@@ -10,9 +10,9 @@
 
 -- globals
 local main_count = 1
-local main_ratio = 0.60
+local main_ratio = 0.50
 local outer_gap = 4
-local inner_gap = 3
+local inner_gap = 5
 local location_horizontal = "left"
 local location_vertical = "top"
 local count = 0
