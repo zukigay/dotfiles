@@ -156,7 +156,7 @@ function monocleFocus(focusorder)
     os.execute("riverctl focus-view "..focusorder)
 end
 function switchLayout(newLayout)
-    currentLayout = 'normalTile'
+    currentLayout = newLayout
 
 end
 
