@@ -440,16 +440,17 @@ riverctl default-attach-mode bottom
 riverctl focus-follows-cursor normal
 riverctl set-cursor-warp on-output-change
 
+riverctl border-width 3
 
 
 if [ "$tiler" == "luatile" ] ; then
     # riverctl default-layout river-luatile
     riverctl default-layout luatile
     if [ $mode == "init" ] ; then
-        riverctl spawn river-luatile && riverctl send-layout-cmd luatile "oninit()" && riverctl send-layout-cmd luatile "onload()"
+        riverctl spawn river-luatile && sleep 1 && riverctl send-layout-cmd luatile "oninit()" && riverctl send-layout-cmd luatile "onload()"
     else
         pkill river-luatile
-        riverctl spawn river-luatile && riverctl send-layout-cmd luatile "onload()"
+        riverctl spawn river-luatile && sleep 1 && riverctl send-layout-cmd luatile "onload()"
     fi
 elif [ "$tiler"  ==  "rivertile" ] ; then
     # Set the default layout generator to be rivertile and start it.
