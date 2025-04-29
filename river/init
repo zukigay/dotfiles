@@ -214,10 +214,22 @@ riverctl map normal Super+Shift L send-layout-cmd luatile "decrease_count()"
 riverctl declare-mode layoutpick
 rvCatchAll layoutpick normal rel
 riverctl map normal Super Hyper_L enter-mode layoutpick
-riverctl map layoutpick None 1 send-layout-cmd luatile "switchLayout('normalTile')"
-riverctl map layoutpick None 2 send-layout-cmd luatile "switchLayout('monocle')"
-riverctl map -release layoutpick None 1 enter-mode normal
-riverctl map -release layoutpick None 2 enter-mode normal
+
+
+counter=1
+# for output in HDMI-A-4 DP-3  ; do
+for output in $(wlr-randr --json | jq -r '.[] | .name') ; do
+    for layout in normalTile monocle ; do
+        riverctl map layoutpick None $counter send-layout-cmd luatile "switchLayout('$layout','$output')"
+        echo riverctl map layoutpick None $counter send-layout-cmd luatile "switchLayout('$layout','$output')"
+        counter=$(($counter+1))
+    done
+done
+
+for i in $(seq 1 9) ; do
+    riverctl map -release layoutpick None $i enter-mode normal
+done
+
 
 elif [ "$tiler"  ==  "rivertile" ] ; then
 

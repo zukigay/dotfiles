@@ -12,11 +12,14 @@ local outer_gap = 4
 local inner_gap = 5
 local borderSize = 3 
 local smart_gaps = false
-local smart_border = false
+-- local smart_border = false
 local location_horizontal = "left"
 local location_vertical = "top"
 local currentLayout = 'monocle'
 local currentLayout = 'normalTile'
+local thisOutput = ''
+local monitorLayouts = {}
+-- local activeOutput = false
 local count = 0
 
 --- Layout generator
@@ -24,21 +27,23 @@ local count = 0
 function handle_layout(args)
     local layout = {}
 
+    thisOutput = args.output
+
+    currentLayout = monitorLayouts[thisOutput] or 'normalTile'
     count = args.count
-    local outer_gap = outer_gap
-    local inner_gap = inner_gap
 
     local layouts = { normalTile=function()
-        if count < 2 then 
-            if smart_gaps == true then
+        local outer_gap = outer_gap
+        local inner_gap = inner_gap
+        if count < 2 and smart_gaps == true then
                 outer_gap = 0
                 inner_gap = 0
-            end
-            if smart_border == true then
-                setBorder(0)
-            end
-        elseif smart_border == true then
-                setBorder(borderSize)
+            -- end
+            -- if smart_border == true then
+            --     setBorder(0)
+            -- end
+        -- elseif smart_border == true then
+        --         setBorder(borderSize)
         end
         local secondary_count = args.count - main_count
         local usable_width, usable_height
@@ -135,7 +140,7 @@ function handle_layout(args)
         end
     end,
     monocle = function()
-        setBorder(0)
+        -- setBorder(0)
         for i = 1,count do
             -- table.insert(layout,{0,0,0,0})
             table.insert(layout,{0,0,args.width,args.height})
@@ -148,10 +153,14 @@ function handle_layout(args)
 end
 
 
-function switchLayout(newLayout)
-    setBorder(borderSize)
-    currentLayout = newLayout
-
+function switchLayout(newLayout,targetOutput)
+    if newLayout == "monocle" then
+        setBorder(0)
+    else
+        setBorder(borderSize)
+    end
+    -- os.execute('notify-send targetOuput:' .. targetOutput .. " thisOutput:" .. thisOutput)
+    monitorLayouts[targetOutput] = newLayout
 end
 
 function flip()
