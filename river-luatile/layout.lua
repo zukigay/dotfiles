@@ -21,8 +21,8 @@ local currentLayout = 'normalTile'
 local thisOutput = ''
 local monitorLayouts = {}
 local barHeight = 30
-local barActive = false
 -- local activeOutput = false
+local barActive = true
 local count = 0
 
 --- Layout generator
@@ -188,8 +188,10 @@ end
 
 
 function switchLayout(newLayout,targetOutput)
-    if os.execute('pgrep waybar') ~= 0 then
-        barActive = false
+    if barActive == true then
+        if os.execute('pgrep waybar') ~= 0 then
+            barActive = false
+        end
     end
     if newLayout == "monocle" then
         -- setBorder(0)
