@@ -1,462 +1,295 @@
-#!/bin/sh
-
-# This is the example configuration file for river.
-#
-# If you wish to edit this, you will probably want to copy it to
-# $XDG_CONFIG_HOME/river/init or $HOME/.config/river/init first.
-#
-# See the river(1), riverctl(1), and rivertile(1) man pages for complete
-# documentation.
-
-
-
-
-# Vars
-cursorSize=30
-iconTheme='Arc'
-gtkTheme='Arc-Dark'
-cursorTheme='Adwaita'
-XCURSORTHEME=$cursorTheme
-rivercfgdir="$XDG_CONFIG_HOME/river"
-rivercfg="$XDG_CONFIG_HOME/river/init"
-RiverScriptDir="$XDG_CONFIG_HOME/river/scripts"
-RiverPad="$RiverScriptDir/riverPad"
-tiler="luatile"
-# tiler="rivertile"
-
-if [ "$(pgrep rivertile)" != "" ] || [ "$(pgrep river-luatile)" != "" ] || [ "$(pgrep hyprpaper)" ] 
-then
-    echo "rivertile running"
-    mode="reload"
-else
-    echo "rivertile not running"
-    mode="init"
-fi
-
-rvCatchAll() {
-    # function takes two modes as arguments
-    # maps every letter key as a enter-mode
-    local mode1=$1
-    local mode2=$2
-    local rel=$3
-    if [ "$rel" == "rel" ] ; then
-        local rel="-release"
-    fi
-    local key1="None"
-    for letter in q w e r t y u i o p a s d f g h j k l z x c v b n m 
-    do
-        riverctl map $rel $mode1 $key1 $letter enter-mode $mode2
-    done
-}
-
-rvre() {
-    local mode="$1"
-    local key1="$2"
-    local key2="$3"
-    local run="riverctl map -release $mode $key1 $key2 enter-mode normal"
-    $run
-}
-# scrapped scripts
-#rvRelease() {
-#    set -- $allArgs
-#    local arg1="$1" #riverctl
-#    local arg2="$2" #map
-#    local arg3="$3" #mode
-#    local arg4="$4" #None
-#    local arg5="$5" #Key
-#    shift
-#    shift
-#    shift
-#    shift
-#    shift
-#    set -- "$arg1 $arg2 -release $arg3 $arg4 $arg5 enter-mode normal"
-#    $@
-#}
-#
-#rvPad() {
-#    local mode="$1"
-#    local key="$2"
-#    local padArgs="$3"
-#    # local class="$(echo "$2" | awk '{print $2}')"
-#    # local app="$(echo "$2" | awk '{$1=$2=""; print}')"
-#    local class="$(echo "$padArgs" | awk '{print $1}')"
-#    local app="$(echo "$padArgs" | awk '{$1=""; print}')"
-#    riverctl map "$mode" None "$key" spawn "$(echo "'$RiverPad $class $app'")"
-#    echo riverctl map "$mode" None "$key" spawn "$(echo "'$RiverPad $class $app'")"
-#    # if [ "$mode" == "init" ] ; then
-#    riverctl rule-add -app-id "$class" float
-#    riverctl rule-add -app-id "$class" dimensions 1600 900
-#    # fi
-#}
-
-
-riverctl xcursor-theme $cursorTheme $cursorSize
-# riverctl keyboard-layout us
-# riverctl keyboard-layout -options ctrl:nocaps us
-riverctl keyboard-layout -options caps:hyper us
-# riverctl keyboard-layout -options caps:backspace us
-# riverctl keyboard-layout -options caps:super us
-
-setdisplay(){
-wlr-randr --output DP-3 --mode 2560x1440@164.938004 --pos 0,0
-wlr-randr --output HDMI-A-4 --pos -1920,200
-sleep 3
-wlr-randr --output DP-3 --mode 2560x1440@164.938004 --pos 0,0
-wlr-randr --output HDMI-A-4 --pos -1920,200
-# wlr-randr --output HDMI-A-4 --pos -100,200
-}
-# setdisplay &
-if [ $mode == "init" ] ; then
-# set display res
-setdisplay & 
-.config/gentoo_only/init &
-
-# startup apps
-dunst &
-waybar &
-hyprpaper &
-/usr/libexec/hyprpolkitagent &
-autogamma -nt 3300 -dt 6500 -mh 9 -mm 30 -nh 21 &
-rm -r /tmp/riverPad
-
-fi
-# Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
-
-# Super+Return to start an instance of kitty
-riverctl map normal Super Return spawn kitty
-
-# Super+D to spawn fuzzel
-riverctl map normal Super D spawn fuzzel
-
-riverctl declare-mode script
-riverctl map normal Super Space enter-mode script
-
-# add binds for every key that upon release of any key switch from script mode to normal mode
-rvCatchAll script normal rel
-
-# fix up this later
-padrules() {
-local appid="$2"
-riverctl rule-add -app-id "$appid" dimensions 1600 900
-riverctl rule-add -app-id "$appid" float
-}
-
-# create scratchpad with id "tuith"
-pad="$RiverPad bluetuithpad kitty --class 'bluetuithpad' -o background_opacity=0.4 -e bluetuith"
-riverctl map script None B spawn "$pad" ; padrules $pad
-# rvre script None B
-pad="$RiverPad ncpamixerpad kitty --class 'ncpamixerpad' -o background_opacity=0.4 -e ncpamixer"
-riverctl map script None V spawn "$pad" ; padrules $pad
-# rvre script None V
-pad="$RiverPad iwctlpad     kitty --class 'iwctlpad'     -o background_opacity=0.4 -e iwctl"
-riverctl map script None N spawn "$pad" ; padrules $pad
-# rvre script None N
-riverctl map script None E spawn bemoji
-# rvre script None E
-riverctl map script None Escape enter-mode normal
-
-# Super+P to spawn powermenu
-riverctl map normal Super P spawn fuzzelHyprPowerMenu
-
-# riverctl map normal Super F12 spawn "riverctl focus-follows-cursor always "
-
-# screenshot Binds
-# Super+C to screenshot
-riverctl map normal Super C spawn grim
-# Super+Shift+C to screenshot a portion of the screen
-riverctl map normal Super+Shift C spawn grimSlurp
-
-# Super+Shift+R to shody reload
-# riverctl map normal Super+Shift R spawn " kitty --hold -o shell='sh -c read' --class 'kitty-config-reload-river' -e $rivercfg"
-
-# R to shody reload
-riverctl map script None R spawn "kitty --hold -o shell='sh -c read' --class 'kitty-config-reload-river' -e $rivercfg"
-riverctl rule-add -app-id "kitty-config-reload-river" float
-riverctl rule-add -app-id "kitty-config-reload-river" dimensions 1600 900
-
-# Super+Q to close the focused view
-riverctl map normal Super Q close
-
-# Super+Shift+E to exit river
-riverctl map normal Super+Shift E exit
-
-# Super+J and Super+K to focus the next/previous view in the layout stack
-riverctl map normal Super J focus-view next
-riverctl map normal Super K focus-view previous
-
-# Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
-# view in the layout stack
-riverctl map normal Super+Shift J swap next
-riverctl map normal Super+Shift K swap previous
-
-# Super+Period and Super+Comma to focus the next/previous output
-riverctl map normal Super Period focus-output next
-riverctl map normal Super Comma focus-output previous
-
-# Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-riverctl map normal Super+Shift Period send-to-output next
-riverctl map normal Super+Shift Comma send-to-output previous
-
-# output binds but for escape
-riverctl map normal Super Escape focus-output next
-riverctl map normal Super+Shift Escape send-to-output next
-
-# Super+Return to bump the focused view to the top of the layout stack
-riverctl map normal Super W zoom
-
-if [ "$tiler" == "luatile" ] ; then
-riverctl map -repeat normal Super H send-layout-cmd luatile "decrease_main()"
-riverctl map -repeat normal Super L send-layout-cmd luatile "increase_main()"
-
-
-riverctl map normal Super+Shift H send-layout-cmd luatile "increase_count()"
-riverctl map normal Super+Shift L send-layout-cmd luatile "decrease_count()"
-
-riverctl declare-mode layoutpick
-rvCatchAll layoutpick normal rel
-riverctl map normal Super Hyper_L enter-mode layoutpick
-
-riverctl map layoutpick None b send-layout-cmd luatile "toggleBorderWidth()"
-riverctl map layoutpick None w send-layout-cmd luatile 'toggleWaybar()'
-# riverctl map layoutpick None w spawn 'killall -SIGUSR1 waybar'
-
-counter=1
-# for output in HDMI-A-4 DP-3  ; do
-# for output in $(wlr-randr --json | jq -r '.[] | .name') ; do
-    for layout in normalTile monoclefull monocle monocleGaps paperwm ; do
-        riverctl map layoutpick None $counter send-layout-cmd luatile "switchLayout('$layout')"
-        echo riverctl map layoutpick None $counter send-layout-cmd luatile "switchLayout('$layout')"
-        counter=$(($counter+1))
-    done
-# done
-
-for i in $(seq 1 9) ; do
-    riverctl map -release layoutpick None $i enter-mode normal
-done
-
-
-elif [ "$tiler"  ==  "rivertile" ] ; then
-
-
-# Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
-
-# Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
-riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
-fi
-
-# Super+Alt+{H,J,K,L} to move views
-riverctl map normal Super+Alt H move left 100
-riverctl map normal Super+Alt J move down 100
-riverctl map normal Super+Alt K move up 100
-riverctl map normal Super+Alt L move right 100
-
-# Super+Alt+Control+{H,J,K,L} to snap views to screen edges
-riverctl map normal Super+Alt+Control H snap left
-riverctl map normal Super+Alt+Control J snap down
-riverctl map normal Super+Alt+Control K snap up
-riverctl map normal Super+Alt+Control L snap right
-
-# Super+Alt+Shift+{H,J,K,L} to resize views
-riverctl map normal Super+Alt+Shift H resize horizontal -100
-riverctl map normal Super+Alt+Shift J resize vertical 100
-riverctl map normal Super+Alt+Shift K resize vertical -100
-riverctl map normal Super+Alt+Shift L resize horizontal 100
-
-# Super + Left Mouse Button to move views
-riverctl map-pointer normal Super BTN_LEFT move-view
-
-# Super + Right Mouse Button to resize views
-riverctl map-pointer normal Super BTN_RIGHT resize-view
-
-# Super + Middle Mouse Button to toggle float
-riverctl map-pointer normal Super BTN_MIDDLE toggle-float
-
-# for i in $(seq 1 9)
-# do
-#     tags=$((1 << ($i - 1)))
-#
-#     # Super+[1-9] to focus tag [0-8]
-#     riverctl map normal Super $i set-focused-tags $tags
-#
-#     # Super+Shift+[1-9] to tag focused view with tag [0-8]
-#     riverctl map normal Super+Shift $i set-view-tags $tags
-#
-#     # Super+Control+[1-9] to toggle focus of tag [0-8]
-#     riverctl map normal Super+Control $i toggle-focused-tags $tags
-#
-#     # Super+Shift+Control+[1-9] to toggle tag [0-8] of focused view
-#     riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
-# done
-
-# source: https://codeberg.org/river/wiki/src/branch/master/pages/Scratchpad-and-Sticky.md
-# The scratchpad will live on an unused tag. Which tags are used depends on your
-# config, but rivers default uses the first 9 tags.
-scratch_tag=$((1 << 20 ))
-
-# Toggle the scratchpad with Super+P
-riverctl map normal Super E toggle-focused-tags ${scratch_tag}
-
-# Send windows to the scratchpad with Super+Shift+P
-riverctl map normal Super+Shift E set-view-tags ${scratch_tag}
-
-padrules2() {
-local appid="$1"
-riverctl rule-add -app-id "$appid" dimensions 1600 900
-riverctl rule-add -app-id "$appid" float
-riverctl rule-add -app-id "$appid" tags $scratch_tag
-}
-
-# STAG=21
-
-
-# spawn="kitty --class 'bluetuithpad' -o background_opacity=0.4 -e bluetuith" ; scratch_tag=$((1 << $STAG ))
-# riverctl map script None B spawn "riverctl toggle-focused-tags ${scratch_tag}" ; STAG=$((STAG+1))
-# padrules2 bluetuithpad
-
-
-
-# Set spawn tagmask to ensure new windows don't have the scratchpad tag unless
-# explicitly set.
-all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
-riverctl spawn-tagmask ${all_but_scratch_tag}
-
-all_tags=$(((1 << 32) - 1))
-sticky_tag=$((1 << 31))
-all_but_sticky_tag=$(( $all_tags ^ $sticky_tag ))
-
-riverctl map normal Super Z toggle-view-tags $sticky_tag
-riverctl spawn-tagmask ${all_but_sticky_tag}
-
-# modify the normal keybind to always select the sticky tag
-for i in $(seq 1 9)
-do
-    tags=$((1 << ($i - 1)))
-    # Super+[1-9] to focus tag [0-8]
-    riverctl map normal Super $i set-focused-tags $(($sticky_tag + $tags))
-    # Super+Shift+[1-9] to tag focused view with tag [0-8]
-    riverctl map normal Super+Shift $i set-view-tags $tags
-done
-
-
-# Super+0 to focus all tags
-# Super+Shift+0 to tag focused view with all tags
-all_tags=$(((1 << 32) - 1))
-riverctl map normal Super 0 set-focused-tags $all_tags
-riverctl map normal Super+Shift 0 set-view-tags $all_tags
-
-# Super+Space to toggle float
-riverctl map normal Super S toggle-float
-# riverctl map normal Super Space toggle-float
-
-# Super+F to toggle fullscreen
-riverctl map normal Super F toggle-fullscreen
-
-# Super+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
-riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
-
-# Declare a passthrough mode. This mode has only a single mapping to return to
-# normal mode. This makes it useful for testing a nested wayland compositor
-riverctl declare-mode passthrough
-
-# Super+F11 to enter passthrough mode
-riverctl map normal Super F11 enter-mode passthrough
-
-# Super+F11 to return to normal mode
-riverctl map passthrough Super F11 enter-mode normal
-
-# Various media key mapping examples for both normal and locked mode which do
-# not have a modifier
-for mode in normal locked layoutPick
-do
-    # riverctl map $mode None Caps_Lock spawn kitty
-    # riverctl map $mode None Caps_Lock spawn 'playerctl play-pause'
-    # Eject the optical drive (well if you still have one that is)
-    riverctl map $mode None XF86Eject spawn 'eject -T'
-
-    # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
-    # riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
-    # riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
-    # riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
-
-    # control pipewire audio volume with wpctl
-    riverctl map $mode None XF86AudioRaiseVolume  spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'
-    riverctl map $mode None XF86AudioLowerVolume  spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'
-    riverctl map $mode None XF86AudioMute         spawn 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
-
-    # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
-    riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
-    riverctl map $mode None XF86AudioPlay  spawn 'playerctl play'
-    riverctl map $mode None XF86AudioPause  spawn 'playerctl pause'
-    riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
-    riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
-
-    # Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
-    riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set +5%'
-    riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
-done
-
-# Set background and border color
-riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
-
-# Set keyboard repeat rate
-riverctl set-repeat 35 700
-
-# Make all views with an app-id that starts with "float" and title "foo" start floating.
-# riverctl rule-add -app-id 'float*' -title 'foo' float
-
-# more procise rules take priority
-# these rules are so all non main steam windows float
-riverctl rule-add -app-id 'steam' -title '*' float
-riverctl rule-add -app-id 'steam' -title 'Steam' no-float
-
-riverctl rule-add -app-id 'abaddon' -title '"Abaddon*' float
-
-riverctl rule-add -app-id 'org.gnome.Calculator' float
-riverctl rule-add -app-id 'xdg-desktop-portal-gtk' float
-riverctl rule-add -app-id 'Zenity' float
-
-riverctl rule-add -app-id 'windowkill' -title 'windowkill' csd
-# Make all views with app-id "bar" and any title use client-side decorations
-# riverctl rule-add -app-id "bar" csd
-
-# require all apps to use server side decorations
-riverctl rule-add ssd
+#!/usr/bin/env lua
+local config_dir='~/.config' -- change this to use xdg
+
+-- note os.execute will halt the script till the program has completely
+-- using & will run the os.execute command in async
+
+-- just a list of all modes
+local modes={'normal','locked','layoutpick','script'}
+-- just a list of modes that use the global keys
+local gk_modes={'normal','locked','layoutpick'}
+-- just a list of modes that return back to normal mode upon any key press
+local oneshotModes={'layoutpick','script'}
+
+local all_tags = (1 << 32) -1
+local sticky_tag=(1 << 31)
+-- add scratchpads
+local all_but_sticky_tag=all_tags ~ sticky_tag ~ (1 << 20) ~ (1 << 23) ~ (1 << 24) ~ (1 << 25)
+
+
+function main()
+    print("starting lua init")
+
+    -- keyboard things
+    riverctl('keyboard-layout -options caps:hyper us')
+    riverctl('set-repeat 35 700')
+
+    riverctl('default-attach-mode bottom')
+
+    -- more precise rules take priority
+    -- these rules are so all non main steam windows float
+    riverctl("rule-add -app-id 'steam' -title '*' float")
+    riverctl("rule-add -app-id 'steam' -title 'Steam' no-float")
+    riverctl('rule-add -app-id abaddon -title "Abaddon*" float')
+    riverctl("rule-add -app-id 'org.gnome.Calculator' float")
+    riverctl("rule-add -app-id 'xdg-desktop-portal-gtk' float")
+    riverctl("rule-add -app-id 'Zenity' float")
+    -- require all apps to use server side decorations')
+    riverctl('rule-add ssd')
+    -- except windowkill
+    riverctl("rule-add -app-id 'windowkill' -title 'windowkill' csd ")
+    -- border colors
+    riverctl('border-color-focused 0x742ffc')
+    riverctl('border-color-unfocused 0x542aa8')
+    riverctl('border-width 3')
+    -- set cursor focus
+    riverctl('focus-follows-cursor normal')
+    riverctl('set-cursor-warp on-output-change')
+    riverctl('focus-output DP-3')
+
+    declareModes()
+    handleOneshotModes()
+    keybinds()
+    luatile()
+    globalkeys()
+    os.execute("pkill river-luatile")
+    riverctl(" spawn river-luatile")
+end
+function luatile()
+    riverctl(" map -repeat normal Super H send-layout-cmd luatile 'decrease_main()'")
+    riverctl(" map -repeat normal Super L send-layout-cmd luatile 'increase_main()'")
+    riverctl(" map normal Super+Shift H send-layout-cmd luatile 'increase_count()'")
+    riverctl(" map normal Super+Shift L send-layout-cmd luatile 'decrease_count()'")
+    riverctl(" map normal Super Hyper_L enter-mode layoutpick")
+    riverctl(" map layoutpick None b send-layout-cmd luatile 'toggleBorderWidth()'")
+    riverctl(" map layoutpick None w send-layout-cmd luatile 'toggleWaybar()'")
+
+    -- luatile layouts
+    riverctl(" map layoutpick None t send-layout-cmd luatile 'switchlayout('normalTile')'")
+    riverctl(" map layoutpick None p send-layout-cmd luatile 'switchlayout('paperwm')'")
+    riverctl(" map layoutpick None 1 send-layout-cmd luatile 'switchlayout('monocle')'")
+    riverctl(" map layoutpick None 2 send-layout-cmd luatile 'switchlayout('monoclefull')'")
+    riverctl(" map layoutpick None 3 send-layout-cmd luatile 'switchlayout('monocleGaps')'")
+end
+function keybinds()
+
+    -- the bread a butter of this whole operation
+    riverctl(" map normal Super Return spawn kitty")
+    riverctl(" map normal Super D spawn fuzzel")
+    riverctl(" map normal Super J focus-view next")
+    riverctl(" map normal Super K focus-view previous")
+    riverctl(" map normal Super+Shift J swap next")
+    riverctl(" map normal Super+Shift K swap previous")
+    riverctl(" map normal Super Q close")
+    riverctl(" map normal Super+Shift E exit")
+
+    -- should use this more
+    riverctl(" map normal Super W zoom")
     
-# border colors
-riverctl border-color-focused 0x742ffc
-riverctl border-color-unfocused 0x542aa8
+    -- mouse binds
+    -- Super + Left Mouse Button to move views
+    riverctl(" map-pointer normal Super BTN_LEFT move-view")
+    
+    -- Super + Right Mouse Button to resize views
+    riverctl(" map-pointer normal Super BTN_RIGHT resize-view")
+    
+    -- Super + Middle Mouse Button to toggle float
+    riverctl(" map-pointer normal Super BTN_MIDDLE toggle-float")
+    -- i don't really use these binds but don't really need the bind space soo...
+    riverctl(" map normal Super Period focus-output next")
+    riverctl(" map normal Super Comma focus-output previous")
+    riverctl(" map normal Super+Shift Period send-to-output next")
+    riverctl(" map normal Super+Shift Comma send-to-output previous")
 
-riverctl default-attach-mode bottom
-# riverctl default-attach-mode below
+    -- switch output that i use
+    riverctl(" map normal Super Escape focus-output next")
+    riverctl(" map normal Super+Shift Escape send-to-output next")
+    
 
-# window cursor focus 
-riverctl focus-follows-cursor normal
-riverctl set-cursor-warp on-output-change
-riverctl focus-output DP-3
+    riverctl(" map normal Super S toggle-float")
+    riverctl(" map normal Super F toggle-fullscreen")
+    
+    -- power menu
+    riverctl(" map normal Super P spawn fuzzelHyprPowerMenu")
 
-riverctl border-width 3
+    -- script mode
+    riverctl(" map normal Super Space enter-mode script")
+
+    riverctl(" map script None E spawn bemoji")
+
+    local bluetuithpadTAG=1 << 23
+    riverpad({appid='bluetuithpad',tag=bluetuithpadTAG})
+    riverctl(" map script None b toggle-focused-tags " .. bluetuithpadTAG)
+    riverctl(" map -release script None b spawn 'pgrep -x bluetuith || kitty --class 'bluetuithpad' -o background_opacity=0.4 -e bluetuith'")
+
+    local iwctlpadTAG=1 << 24
+    riverpad({appid='iwctlpad',tag=iwctlpadTAG})
+    riverctl(" map script None n toggle-focused-tags " .. iwctlpadTAG)
+    riverctl(" map -release script None n spawn 'pgrep -x iwctl || kitty --class iwctlpad -o background_opacity=0.4 -e iwctl'")
+
+    local ncpamixerpadTAG=1 << 25
+    -- riverctl("toggle-focused-tags " .. ncpamixerpadTAG)
+    riverpad({appid='ncpamixerpad',tag=ncpamixerpadTAG})
+    riverctl(" map script None v toggle-focused-tags " .. ncpamixerpadTAG)
+    riverctl(" map -release script None v spawn 'pgrep -x ncpamixer || kitty --class 'ncpamixerpad' -o background_opacity=0.4 -e ncpamixer'")
 
 
-if [ "$tiler" == "luatile" ] ; then
-    # riverctl default-layout river-luatile
-    riverctl default-layout luatile
-    if [ $mode == "init" ] ; then
-        riverctl spawn river-luatile 
-    else
-        pkill river-luatile
-        riverctl spawn river-luatile 
-    fi
-elif [ "$tiler"  ==  "rivertile" ] ; then
-    # Set the default layout generator to be rivertile and start it.
-    # River will send the process group of the init executable SIGTERM on exit.
-    riverctl default-layout rivertile
-    rivertile -view-padding 6 -outer-padding 6 &
-fi
+    -- Super+F11 to toggle passthrough mode
+    riverctl(" map normal Super F11 enter-mode passthrough")
+    riverctl(" map passthrough Super F11 enter-mode normal")
+    
+    -- screenshot Binds
+    riverctl(" map normal Super C spawn grim")
+    riverctl(" map normal Super+Shift C spawn grimSlurp")
+    -- add reload bind
+
+    riverctl(" map normal Super Z toggle-view-tags " .. sticky_tag)
+    riverctl(" spawn-tagmask " .. all_but_sticky_tag)
+    for i=1,9 do
+        tags=(1 << (i - 1))
+        riverctl(" map normal Super " .. i .. " set-focused-tags " .. (sticky_tag + tags))
+        riverctl(" map normal Super+Shift " .. i .. " set-view-tags " .. tags)
+    end
+    riverctl(" map normal Super 0 set-focused-tags" .. all_tags)
+    riverctl(" map normal Super+Shift 0 set-view-tags " .. all_tags)
+
+    local scratch_tag=(1 << 20 )
+    riverctl(" map normal Super E toggle-focused-tags " .. scratch_tag)
+    riverctl(" map normal Super+Shift E set-view-tags " .. scratch_tag)
+
+
+
+    -- Super+Alt+{H,J,K,L} to move views
+    riverctl(" map normal Super+Alt H move left 100")
+    riverctl(" map normal Super+Alt J move down 100")
+    riverctl(" map normal Super+Alt K move up 100")
+    riverctl(" map normal Super+Alt L move right 100")
+    
+    -- Super+Alt+Control+{H,J,K,L} to snap views to screen edges
+    riverctl(" map normal Super+Alt+Control H snap left")
+    riverctl(" map normal Super+Alt+Control J snap down")
+    riverctl(" map normal Super+Alt+Control K snap up")
+    riverctl(" map normal Super+Alt+Control L snap right")
+    
+    -- Super+Alt+Shift+{H,J,K,L} to resize views
+    riverctl(" map normal Super+Alt+Shift H resize horizontal -100")
+    riverctl(" map normal Super+Alt+Shift J resize vertical 100")
+    riverctl(" map normal Super+Alt+Shift K resize vertical -100")
+    riverctl(" map normal Super+Alt+Shift L resize horizontal 100")
+
+
+end
+function riverpad(args)
+    local id = ""
+    -- local scratchtag = (1 << args.tag)
+    local scratchtag = args.tag
+    if args.appid ~= nil then
+        id = id .. " -app-id " .. args.appid
+    end
+    if args.title ~= nil then
+        id = id .. " -title " .. args.title
+    end
+    if id ~= ""  then
+        rules = {
+            "float",
+            "dimensions 1600 900",
+            "tags " .. scratchtag,
+        }
+        for _,rule in ipairs(rules) do
+            riverctl("rule-add "  .. id .. " " .. rule)
+        end
+    end
+end
+function globalkeys()
+    for _,mode in ipairs(gk_modes) do
+        riverctl(" map " .. mode .. " None XF86Eject spawn 'eject -T'")
+        -- control pipewire audio volume with wpctl
+        riverctl(" map " .. mode .. " None XF86AudioRaiseVolume  spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'")
+        riverctl(" map " .. mode .. " None XF86AudioLowerVolume  spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'")
+        riverctl(" map " .. mode .. " None XF86AudioMute         spawn 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'")
+        
+        -- Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
+        riverctl(" map " .. mode .. " None XF86AudioMedia spawn 'playerctl play-pause'")
+        riverctl(" map " .. mode .. " None XF86AudioPlay  spawn 'playerctl play'")
+        riverctl(" map " .. mode .. " None XF86AudioPause  spawn 'playerctl pause'")
+        riverctl(" map " .. mode .. " None XF86AudioPrev  spawn 'playerctl previous'")
+        riverctl(" map " .. mode .. " None XF86AudioNext  spawn 'playerctl next'")
+        -- Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
+        riverctl(" map " .. mode .. " None XF86MonBrightnessUp   spawn 'brightnessctl set +5%'")
+        riverctl(" map " .. mode .. " None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'")
+    end
+end
+function declareModes()
+    -- this is a little silly since normal and locked modes
+    -- are defualt and don't need to be declared
+    for _,mode in ipairs(modes) do
+        riverctl('declare-mode '..mode)
+    end
+end
+function handleOneshotModes()
+    local keys = {
+        "q",
+        "w",
+        "e",
+        "r",
+        "t",
+        "y",
+        "u",
+        "i",
+        "o",
+        "p",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        -- "space",
+        "escape",
+        "return",
+        "Super_L",
+        "Control_L",
+    }
+    for _,mode in ipairs(oneshotModes) do
+        for _,key in ipairs(keys) do
+            riverctl('map -release ' .. mode .. " None " .. key .. " enter-mode normal")
+        end
+    end
+end
+
+
+function init()
+    os.execute(config_dir..'/gentoo_only/init &')
+    os.execute('dunst &')
+    os.execute('waybar &')
+    os.execute('hyprpaper &')
+    os.execute('/usr/libexec/hyprpolkitagent &')
+    -- os.execute('rm -r /tmp/riverPad') -- riverpad has been replaced for me by rivers own scratch pad system and some fancy binds
+    
+
+    -- and finally start river-luatile
+    riverctl(" spawn river-luatile")
+end
+function setDisplay()
+    os.execute('wlr-randr --output DP-3 --mode 2560x1440@164.938004 --pos 0,0')
+    os.execute('wlr-randr --output HDMI-A-4 --pos -1920,200')
+end
+function riverctl(args)
+    -- print(args)
+    os.execute("riverctl "..args)
+end
+main()
+_,_,exitCode = os.execute("pgrep hyprpaper")
+if exitCode ~= 0 then
+    init()
+end
