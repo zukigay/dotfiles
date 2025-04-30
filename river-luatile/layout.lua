@@ -152,7 +152,7 @@ function handle_layout(args)
             end
         end
     end,
-    monocle = function()
+    monoclefull = function()
         -- setBorder(0)
         local barHeight = barHeight
         if barActive == false then
@@ -161,7 +161,17 @@ function handle_layout(args)
         for i = 1,count do
             table.insert(layout,{0-curBorderSize,0-(curBorderSize+barHeight),args.width+(curBorderSize*2),args.height+(curBorderSize*2+barHeight)})
         end
-    end
+    end,
+    monocle = function()
+        for i = 1,count do
+            table.insert(layout,{0,0,args.width,args.height})
+        end
+    end,
+    monocleGaps = function()
+        for i = 1,count do
+            table.insert(layout,{outer_gap,outer_gap,args.width-outer_gap*2,args.height-outer_gap*2})
+        end
+    end,
     
     }
     layouts[currentLayout]()

@@ -222,7 +222,7 @@ riverctl map layoutpick None w send-layout-cmd luatile 'toggleWaybar()'
 counter=1
 # for output in HDMI-A-4 DP-3  ; do
 # for output in $(wlr-randr --json | jq -r '.[] | .name') ; do
-    for layout in normalTile monocle ; do
+    for layout in normalTile monoclefull monocle monocleGaps ; do
         riverctl map layoutpick None $counter send-layout-cmd luatile "switchLayout('$layout')"
         echo riverctl map layoutpick None $counter send-layout-cmd luatile "switchLayout('$layout')"
         counter=$(($counter+1))
