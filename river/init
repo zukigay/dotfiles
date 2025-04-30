@@ -205,8 +205,9 @@ riverctl map normal Super+Shift Escape send-to-output next
 riverctl map normal Super W zoom
 
 if [ "$tiler" == "luatile" ] ; then
-riverctl map normal Super H send-layout-cmd luatile "decrease_main()"
-riverctl map normal Super L send-layout-cmd luatile "increase_main()"
+riverctl map -repeat normal Super H send-layout-cmd luatile "decrease_main()"
+riverctl map -repeat normal Super L send-layout-cmd luatile "increase_main()"
+
 
 riverctl map normal Super+Shift H send-layout-cmd luatile "increase_count()"
 riverctl map normal Super+Shift L send-layout-cmd luatile "decrease_count()"
@@ -222,7 +223,7 @@ riverctl map layoutpick None w send-layout-cmd luatile 'toggleWaybar()'
 counter=1
 # for output in HDMI-A-4 DP-3  ; do
 # for output in $(wlr-randr --json | jq -r '.[] | .name') ; do
-    for layout in normalTile monoclefull monocle monocleGaps ; do
+    for layout in normalTile monoclefull monocle monocleGaps paperwm ; do
         riverctl map layoutpick None $counter send-layout-cmd luatile "switchLayout('$layout')"
         echo riverctl map layoutpick None $counter send-layout-cmd luatile "switchLayout('$layout')"
         counter=$(($counter+1))

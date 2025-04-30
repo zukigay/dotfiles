@@ -29,11 +29,12 @@ function handle_layout(args)
 
     -- currentLayout = monitorLayouts[args.output] or 'normalTile'
     if monitorData[args.output] == nil then
-        monitorData[args.output] = {layout='normalTile',main_ratio=0.50,main_count=1}
+        monitorData[args.output] = {layout='normalTile',main_ratio=0.50,main_count=1,scroll=0}
     end
     local currentLayout = monitorData[args.output].layout
     local main_ratio = monitorData[args.output].main_ratio
     local main_count = monitorData[args.output].main_count
+    local scroll = monitorData[args.output].scroll
     -- local main_ratio 
     count = args.count
     -- if count < main_count then
@@ -172,6 +173,16 @@ function handle_layout(args)
             table.insert(layout,{outer_gap,outer_gap,args.width-outer_gap*2,args.height-outer_gap*2})
         end
     end,
+    paperwm = function() -- a bit silly made worse by the fact that i can't find out how to map the mouse wheel to a riverctl bind
+        local winCount = math.min(main_count,count)
+        local width = args.width/winCount
+        local x,y = width*scroll*-1,0
+        for i = 1,count do
+            table.insert(layout,{x,y,width,args.height})
+            x = x + width
+            -- y = y + args.height
+        end
+    end
     
     }
     layouts[currentLayout]()
@@ -238,7 +249,9 @@ end
 -- Run with `riverctl send-layout-cmd luatile "increase_main()"`
 function increase_main()
     -- if main_ratio < 0.9 then
-    if monitorData[CMD_OUTPUT].main_ratio < 0.9 then
+    if monitorData[CMD_OUTPUT].layout == "paperwm" then
+        monitorData[CMD_OUTPUT].scroll = monitorData[CMD_OUTPUT].scroll + 0.01
+    elseif monitorData[CMD_OUTPUT].main_ratio < 0.9 then
         monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio + 0.05
         -- main_ratio = main_ratio + 0.05
     end
@@ -247,7 +260,9 @@ end
 --- Decreases main ratio
 -- Run with `riverctl send-layout-cmd luatile "decrease_main()"`
 function decrease_main()
-    if monitorData[CMD_OUTPUT].main_ratio > 0.1 then
+    if monitorData[CMD_OUTPUT].layout == "paperwm" then
+        monitorData[CMD_OUTPUT].scroll = math.max(monitorData[CMD_OUTPUT].scroll - 0.01,0)
+    elseif monitorData[CMD_OUTPUT].main_ratio > 0.1 then
         monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio - 0.05
         -- main_ratio = main_ratio - 0.05
     end
