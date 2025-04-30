@@ -449,10 +449,10 @@ if [ "$tiler" == "luatile" ] ; then
     # riverctl default-layout river-luatile
     riverctl default-layout luatile
     if [ $mode == "init" ] ; then
-        riverctl spawn river-luatile && sleep 1 && riverctl send-layout-cmd luatile "oninit()" && riverctl send-layout-cmd luatile "onload()"
+        riverctl spawn river-luatile 
     else
         pkill river-luatile
-        riverctl spawn river-luatile && sleep 1 && riverctl send-layout-cmd luatile "onload()"
+        riverctl spawn river-luatile 
     fi
 elif [ "$tiler"  ==  "rivertile" ] ; then
     # Set the default layout generator to be rivertile and start it.
