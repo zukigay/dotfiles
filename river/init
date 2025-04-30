@@ -133,6 +133,7 @@ function keybinds()
     riverctl(" map script None v toggle-focused-tags " .. ncpamixerpadTAG)
     riverctl(" map -release script None v spawn 'pgrep -x ncpamixer || kitty --class 'ncpamixerpad' -o background_opacity=0.4 -e ncpamixer'")
 
+    riverctl("map script None r spawn ~/.config/river/init") -- change to xdg config
 
     -- Super+F11 to toggle passthrough mode
     riverctl(" map normal Super F11 enter-mode passthrough")
