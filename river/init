@@ -53,6 +53,7 @@ function main()
     luatile()
     globalkeys()
     os.execute("pkill river-luatile")
+    riverctl(" default-layout luatile")
     riverctl(" spawn river-luatile")
 end
 function luatile()
@@ -65,11 +66,11 @@ function luatile()
     riverctl(" map layoutpick None w send-layout-cmd luatile 'toggleWaybar()'")
 
     -- luatile layouts
-    riverctl(" map layoutpick None t send-layout-cmd luatile 'switchlayout('normalTile')'")
-    riverctl(" map layoutpick None p send-layout-cmd luatile 'switchlayout('paperwm')'")
-    riverctl(" map layoutpick None 1 send-layout-cmd luatile 'switchlayout('monocle')'")
-    riverctl(" map layoutpick None 2 send-layout-cmd luatile 'switchlayout('monoclefull')'")
-    riverctl(" map layoutpick None 3 send-layout-cmd luatile 'switchlayout('monocleGaps')'")
+    riverctl(" map layoutpick None t send-layout-cmd luatile 'switchLayout('normalTile')'")
+    riverctl(" map layoutpick None p send-layout-cmd luatile 'switchLayout('paperwm')'")
+    riverctl(" map layoutpick None 1 send-layout-cmd luatile 'switchLayout('monocle')'")
+    riverctl(" map layoutpick None 2 send-layout-cmd luatile 'switchLayout('monoclefull')'")
+    riverctl(" map layoutpick None 3 send-layout-cmd luatile 'switchLayout('monocleGaps')'")
 end
 function keybinds()
 
@@ -279,7 +280,8 @@ function init()
     
 
     -- and finally start river-luatile
-    riverctl(" spawn river-luatile")
+    -- riverctl(" spawn river-luatile")
+    -- riverctl(" default-layout luatile")
 end
 function setDisplay()
     os.execute('wlr-randr --output DP-3 --mode 2560x1440@164.938004 --pos 0,0')
@@ -290,7 +292,8 @@ function riverctl(args)
     os.execute("riverctl "..args)
 end
 main()
-_,_,exitCode = os.execute("pgrep hyprpaper")
+-- in lua 5.3 they made os.execute return 3 args rather then just the exit code which is now the third returned argument.
+local _,_,exitCode = os.execute("pgrep hyprpaper")
 if exitCode ~= 0 then
     init()
 end
