@@ -42,10 +42,14 @@ function main()
     riverctl('border-color-focused 0x742ffc')
     riverctl('border-color-unfocused 0x542aa8')
     riverctl('border-width 3')
+
     -- set cursor focus
     riverctl('focus-follows-cursor normal')
     riverctl('set-cursor-warp on-output-change')
     riverctl('focus-output DP-3')
+
+    -- add cursor type
+    riverctl(" xcursor-theme Adwaita 30")
 
     declareModes()
     handleOneshotModes()
