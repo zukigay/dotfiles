@@ -30,6 +30,8 @@ function main()
     -- these rules are so all non main steam windows float
     riverctl("rule-add -app-id 'steam' -title '*' float")
     riverctl("rule-add -app-id 'steam' -title 'Steam' no-float")
+    riverctl("rule-add -app-id 'info.mumble.Mumble' -title '*' float")
+    riverctl("rule-add -app-id 'info.mumble.Mumble' -title 'Mumble' no-float")
     riverctl('rule-add -app-id abaddon -title "Abaddon*" float')
     riverctl("rule-add -app-id 'org.gnome.Calculator' float")
     riverctl("rule-add -app-id 'xdg-desktop-portal-gtk' float")
@@ -300,4 +302,6 @@ main()
 local _,_,exitCode = os.execute("pgrep hyprpaper")
 if exitCode ~= 0 then
     init()
+else
+    os.execute("notify-send river-reloaded")
 end
