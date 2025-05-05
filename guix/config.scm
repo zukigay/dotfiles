@@ -10,12 +10,14 @@
 ;; Indicate which modules to import to access the variables
 ;; used in this configuration.
 (use-modules (gnu)
+             (guix transformations)
              (gnu services xorg)
              (nongnu packages game-client)
              (nongnu packages nvidia)
              (nongnu services nvidia)
              (nongnu system linux-initrd)
              (nongnu packages linux)
+             (guix packages)
              ;; imports that come from jank
              (gnu packages package-management)
              (gnu packages zig-xyz)
@@ -28,6 +30,38 @@
 (use-service-modules cups desktop networking ssh xorg)
 ;; (use-service-modules networking ssh)
 ;; (use-service-modules desktop networking)
+
+(define zig-wayland-3
+  (package
+    (inherit zig-wayland)
+    (version "0.3.0")
+    )
+  )
+(define zig-wlroots-0.18.2
+  (package
+    (inherit zig-wlroots)
+    (version "0.18.2")))
+
+(define river-0.3.9
+  (package
+    (inherit river)
+    (version "0.3.9")
+    (inputs (modify-inputs (package-inputs river)
+                           
+                           (replace "zig" (specification->package "zig@0.14.0"))
+                           (replace "zig-wlroots" zig-wlroots-0.18.2)
+                           (replace "zig-wayland" zig-wayland-3)
+                           ))
+    ))
+
+;; (define latest-river
+;; (options->transformation
+;;  '((with-latest . "river")
+;;    (inputs (modify-inputs (package-inputs river)
+;;                           ;; (delete zig)
+;;                           (prepend zig@0.14.0)
+;;                           ;; (append zig@0.14.0)
+;;                           )))))
 
 (operating-system
   (kernel linux)
@@ -70,7 +104,8 @@
           ;; packages that use mesa instead of nvidia
         (map replace-mesa (cons* btop
                                        git ;; doesn't need to be here but whocares
-                                       river
+                                       ;; (latest-river river)
+                                       river-0.3.9
                                        obs
                                        flatpak
                                        ;; awesome
