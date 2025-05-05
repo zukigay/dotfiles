@@ -19,6 +19,7 @@
              ;; imports that come from jank
              (gnu packages package-management)
              (gnu packages zig-xyz)
+             (gnu packages video)
              (gnu packages admin)
              (gnu packages vim)
              (gnu packages terminals)
@@ -70,6 +71,7 @@
         (map replace-mesa (cons* btop
                                        git ;; doesn't need to be here but whocares
                                        river
+                                       obs
                                        flatpak
                                        ;; awesome
                                        neovim ;; also doesn't need to have its mesa replaced
