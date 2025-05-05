@@ -11,10 +11,19 @@
 ;; used in this configuration.
 (use-modules (gnu)
              (gnu services xorg)
+             (nongnu packages game-client)
              (nongnu packages nvidia)
              (nongnu services nvidia)
              (nongnu system linux-initrd)
-             (nongnu packages linux))
+             (nongnu packages linux)
+             ;; imports that come from jank
+             (gnu packages package-management)
+             (gnu packages zig-xyz)
+             (gnu packages admin)
+             (gnu packages vim)
+             (gnu packages terminals)
+             (gnu packages version-control)
+             )
 (use-service-modules cups desktop networking ssh xorg)
 ;; (use-service-modules networking ssh)
 ;; (use-service-modules desktop networking)
@@ -44,11 +53,34 @@
   ;; Packages installed system-wide.  Users can also install packages
   ;; under their own account: use 'guix search KEYWORD' to search
   ;; for packages and 'guix install PACKAGE' to install a package.
-  (packages (append (list (specification->package "awesome")
-                          (specification->package "neovim")
-                          (specification->package "kitty"))
-;;                          (specification->package "nss-certs"))
-                    %base-packages))
+
+      (packages 
+        (append 
+          ;; packages that don't need a nvidia override
+          (list steam-nvidia
+                      (specification->package "font-google-noto-sans-cjk")
+                      (specification->package "font-google-noto-emoji")
+                      (specification->package "font-google-noto")
+                      ;; xdg portal stuff
+                      ;; (specification->package "xdg-desktop-portal")
+                      ;; (specification->package "xdg-desktop-portal-gtk")
+                      ;; (specification->package "xdg-desktop-portal-wlr")
+                      )
+          ;; packages that use mesa instead of nvidia
+        (map replace-mesa (cons* btop
+                                       git ;; doesn't need to be here but whocares
+                                       river
+                                       flatpak
+                                       ;; awesome
+                                       neovim ;; also doesn't need to have its mesa replaced
+                                       kitty
+                                       %base-packages))))
+                ;; steam-nvidia))
+
+  ;; (packages (append (list (specification->package "awesome")
+  ;;                         (specification->package "neovim")
+  ;;                         (specification->package "kitty"))
+  ;;                   %base-packages))
 
   ;; Below is the list of system services.  To search for available
   ;; services, run 'guix system search KEYWORD' in a terminal.
@@ -76,6 +108,7 @@
                 (bootloader grub-bootloader)
                 (targets (list "/dev/nvme0n1p1"))
                 (keyboard-layout keyboard-layout)))
+
   ;; (swap-devices (list (swap-space
   ;;                       (target (uuid
                                  ;; "1112-6E28")))))
