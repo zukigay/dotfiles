@@ -105,9 +105,16 @@
         (map replace-mesa (cons* btop
                                        git ;; doesn't need to be here but whocares
                                        ;; (latest-river river)
-                                       river-custom
                                        obs
                                        flatpak
+
+                                       ;; adding wm setup stuff
+                                       river-custom
+                                       dunst
+                                       waybar
+                                       wlr-randr
+                                       polkit-kde-agent
+
                                        ;; awesome
                                        neovim ;; also doesn't need to have its mesa replaced
                                        kitty
