@@ -209,6 +209,6 @@
                          (mount-point "/mnt/harddrive")
                          (device (uuid
                                    "08d01f59-dee1-4c01-b1c3-0200d5ec8264"))
-                         (type "ext4"))
+                         (type "ext4")
                          (needed-for-boot? #f))
                        %base-file-systems)))
