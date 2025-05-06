@@ -286,6 +286,7 @@ function init()
     
 
     -- and finally start river-luatile
+    -- riverctl("spawn 'guix shell --network --container --emulate-fhs which gcc-toolchain bash coreutils curl grep git gtk+ pango atk glib nss-certs luajit pkg-config --share=$HOME/Documents/rustHome=$HOME --share=/tmp --preserve='^WAYLAND_DISPLAY$' --preserve='^XDG_RUNTIME_DIR$' --share=$XDG_CONFIG_HOME/river-luatile/=$HOME/.config/river-luatile/ --share=$XDG_RUNTIME_DIR/=$XDG_RUNTIME_DIR -- ./river-luatile' ")
     -- riverctl(" spawn river-luatile")
     -- riverctl(" default-layout luatile")
 end
