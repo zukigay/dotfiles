@@ -158,5 +158,40 @@
                          (device (uuid
                                   "d1873cb5-ddb1-49c1-ab58-4e9763938acd"
                                   'btrfs))
-                         (options "subvol=/@guixroot")
-                         (type "btrfs")) %base-file-systems)))
+                         (options "subvol=/@guixroot,subvolid=904,compress=zstd:3")
+                         (needed-for-boot #t)
+                         (type "btrfs")) 
+                       ;; shared home between gentoo and guix
+                       ;;
+                       ;; also this should probably be set to mount after root 
+                       ;; but since its fucking ROOT it will be mounted first anyway
+                       (file-system
+                         (mount-point "/home")
+                         (device (uuid
+                                   "d1873cb5-ddb1-49c1-ab58-4e9763938acd"
+                                   'btrfs))
+                         (options "subvol=/@home,subvolid=257,compress=zstd:3")
+                         (needed-for-boot #t)
+                         (type "btrfs")) 
+                       ;; ssd for games and other stuff
+                       (file-system
+                         (mount-point "/mnt/uberdrive")
+                         (device (file-system-label "uberdrive"))
+                         (type "ext4")
+                         (needed-for-boot #f)
+                         )
+                       ;; a laptop harddrive taking on a new life
+                       (file-system
+                         (mount-point "/mnt/ssddrive")
+                         (device (file-system-label "exlapdrive"))
+                         (type "ext4")
+                         (needed-for-boot #f)
+                         )
+                       ;; extra harddrive used for backups and steam games
+                       (file-system
+                         (mount-point "/mnt/harddrive")
+                         (device (uuid
+                                   "08d01f59-dee1-4c01-b1c3-0200d5ec8264"))
+                         (type "ext4")
+                         (needed-for-boot #f))
+                       %base-file-systems)))
