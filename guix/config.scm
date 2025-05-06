@@ -224,8 +224,9 @@
                    ;; %desktop-services)
             ))
   (bootloader (bootloader-configuration
-                (bootloader grub-bootloader)
-                (targets (list "/dev/nvme0n1p1"))
+                (bootloader grub-efi-bootloader)
+                ;; (targets (list "/dev/nvme0n1p1"))
+                (targets (list "/efi"))
                 (keyboard-layout keyboard-layout)))
 
   ;; (swap-devices (list (swap-space
