@@ -127,6 +127,12 @@
                 (xorg-configuration
                   (modules (cons nvda %default-xorg-modules))
                   (drivers '("nvidia"))))
+              (service screen-locker-service-type
+                (screen-locker-configuration
+                  (name "hyprlock")
+                  (program (file-append river-custom "/bin/river"))
+                  (using-pam? #t)
+                  (using-setuid? #f)))
               ;; (service gnome-desktop-service-type)
                    ;; (service xfce-desktop-service-type)
     (modify-services %desktop-services
@@ -159,7 +165,7 @@
                                   "d1873cb5-ddb1-49c1-ab58-4e9763938acd"
                                   'btrfs))
                          (options "subvol=/@guixroot,subvolid=904,compress=zstd:3")
-                         (needed-for-boot #t)
+                         (needed-for-boot? #t)
                          (type "btrfs")) 
                        ;; shared home between gentoo and guix
                        ;;
@@ -171,27 +177,38 @@
                                    "d1873cb5-ddb1-49c1-ab58-4e9763938acd"
                                    'btrfs))
                          (options "subvol=/@home,subvolid=257,compress=zstd:3")
-                         (needed-for-boot #t)
+                         (needed-for-boot? #t)
+                         (type "btrfs")) 
+                       ;; genroot
+                       (file-system
+                         (mount-point "/mnt/genroot")
+                         (device (uuid
+                                   "d1873cb5-ddb1-49c1-ab58-4e9763938acd"
+                                   'btrfs))
+                         (options "subvol=/@genroot,subvolid=903,compress=zstd:3")
+                         (mount? #f)
                          (type "btrfs")) 
                        ;; ssd for games and other stuff
                        (file-system
                          (mount-point "/mnt/uberdrive")
+                         ;; to lazy to use uuid's
                          (device (file-system-label "uberdrive"))
                          (type "ext4")
-                         (needed-for-boot #f)
+                         (needed-for-boot? #f)
                          )
                        ;; a laptop harddrive taking on a new life
                        (file-system
                          (mount-point "/mnt/ssddrive")
+                         ;; to lazy to use uuid's
                          (device (file-system-label "exlapdrive"))
                          (type "ext4")
-                         (needed-for-boot #f)
+                         (needed-for-boot? #f)
                          )
                        ;; extra harddrive used for backups and steam games
                        (file-system
                          (mount-point "/mnt/harddrive")
                          (device (uuid
                                    "08d01f59-dee1-4c01-b1c3-0200d5ec8264"))
-                         (type "ext4")
-                         (needed-for-boot #f))
+                         (type "ext4"))
+                         (needed-for-boot? #f))
                        %base-file-systems)))
