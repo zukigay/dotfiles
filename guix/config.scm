@@ -31,26 +31,26 @@
 ;; (use-service-modules networking ssh)
 ;; (use-service-modules desktop networking)
 
-(define zig-wayland-3
+(define zig-wayland-custom
   (package
     (inherit zig-wayland)
     (version "0.3.0")
     )
   )
-(define zig-wlroots-0.18.2
+(define zig-wlroots-custom
   (package
     (inherit zig-wlroots)
     (version "0.18.2")))
 
-(define river-0.3.9
+(define river-custom
   (package
     (inherit river)
     (version "0.3.9")
     (inputs (modify-inputs (package-inputs river)
                            
                            (replace "zig" (specification->package "zig@0.14.0"))
-                           (replace "zig-wlroots" zig-wlroots-0.18.2)
-                           (replace "zig-wayland" zig-wayland-3)
+                           (replace "zig-wlroots" zig-wlroots-custom)
+                           (replace "zig-wayland" zig-wayland-custom)
                            ))
     ))
 
@@ -105,7 +105,7 @@
         (map replace-mesa (cons* btop
                                        git ;; doesn't need to be here but whocares
                                        ;; (latest-river river)
-                                       river-0.3.9
+                                       river-custom
                                        obs
                                        flatpak
                                        ;; awesome
