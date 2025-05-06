@@ -18,7 +18,12 @@
              (nongnu system linux-initrd)
              (nongnu packages linux)
              (guix packages)
+             (guix build-system cargo)
+             (guix git-download)
+             (guix licenses)
              ;; imports that come from jank
+             (gnu packages wm)
+             (gnu packages kde-plasma) ;; importing kde just to use polkit lmao
              (gnu packages package-management)
              (gnu packages zig-xyz)
              (gnu packages video)
@@ -53,6 +58,69 @@
                            (replace "zig-wayland" zig-wayland-custom)
                            ))
     ))
+;; (define rust-river-layout-toolkit
+;;   (package
+;;     (name "rust-river-layout-toolkit")
+;;     (version "0.1.7")
+;;     (source (origin
+;;               (method git-fetch)
+;;               ;; (sha256
+;;               ;;   (base32 "8001acf"))
+;;               (hash "1xbkskgnchrjpa7b083nj1dfvj1nlayg494w710c5rxm0w7sklaf")
+;;               ;; (sha256
+;;               ;;   (base32 "1xbkskgnchrjpa7b083nj1dfvj1nlayg494w710c5rxm0w7sklaf"))
+;;               (uri (git-reference
+;;                 (url "https://github.com/MaxVerevkin/river-layout-toolkit")
+;;                 ;; (commit "0.1.7")
+;;                 ;; (commit (string-append "v" version))
+;;                 (commit "8001acf")
+;;                 )
+;;                 )))
+;;     ;; (inputs (list rust-log rust-thiserror rust-wayrs-client))
+;;     (build-system cargo-build-system)
+;;     (arguments 
+;;       `(#:install-source? #t
+;;         #:cargo-inputs (("rust-log" ,rust-log-0.4)
+;;          ;; ("thiserror",rust-thiserror-2.0)
+;;          ;; ("wayrs-client",rust-wayrs-client-1.2)
+;;          ;; ("mlua")
+;;          ))
+;;         )
+;;     (license expat)
+;;     ;; (license MIT)
+;;     (synopsis "a river layout library")
+;;     (description "This package simplifies writing a river layout generator in rust.")
+;;     (home-page "https://github.com/MaxVerevkin/river-layout-toolkit")
+;;   ))
+
+;; (define rust-river-luatile
+;;   (package
+;;     (name "rust-river-luatile")
+;;     (version "0.1.4")
+;;     (source (origin
+;;               (method url-fetch)
+;;               ;; no idea if guix has a nix style github only fetch option
+;;               (uri (string-append "https://github.com/MaxVerevkin/river-luatile/archive/refs/tags/v" version ".tar.gz"))
+;;               (sha256
+;;                 (base32
+;;                   "b0751192d484d6a418009eea5f2f84a05574c3ba00a51e0b82254fa3778de80e"))))
+;;     ;; (inputs (list rust-log )
+;;     (build-system cargo-build-system)
+;;     (arguments 
+;;       `(#:install-source? #f
+;;         #:cargo-inputs
+;;         (
+;;          ("log",rust-log-0.4)
+;;          ("river-layout-toolkit",river-layout-toolkit)
+;;           )))
+;;     (license gpl3)
+;;     (synopsis "a river layout library")
+;;     (description "This package simplifies writing a river layout generator in rust.")
+;;     (home-page "https://github.com/MaxVerevkin/river-layout-toolkit")
+;;
+;;     ))
+
+
 
 ;; (define latest-river
 ;; (options->transformation
@@ -96,6 +164,7 @@
                       (specification->package "font-google-noto-sans-cjk")
                       (specification->package "font-google-noto-emoji")
                       (specification->package "font-google-noto")
+                      rust-river-layout-toolkit
                       ;; xdg portal stuff
                       ;; (specification->package "xdg-desktop-portal")
                       ;; (specification->package "xdg-desktop-portal-gtk")
