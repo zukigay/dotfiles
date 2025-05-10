@@ -282,6 +282,7 @@ function init()
     os.execute('waybar &')
     os.execute('hyprpaper &')
     os.execute('/usr/libexec/hyprpolkitagent &')
+    os.execute('bluetoothctl power on &') -- guix won't turn bluetooth on automaticly so this is a dumb hack to get around that.
     -- os.execute('rm -r /tmp/riverPad') -- riverpad has been replaced for me by rivers own scratch pad system and some fancy binds
     
 
