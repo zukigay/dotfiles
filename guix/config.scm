@@ -12,22 +12,26 @@
 (use-modules (gnu)
              (guix transformations)
              (gnu services xorg)
-             (nongnu packages game-client)
+             (nongnu packages linux)
              (nongnu packages nvidia)
              (nongnu services nvidia)
+             (nongnu packages game-client)
+             (nongnu packages mozilla)
              (nongnu system linux-initrd)
-             (nongnu packages linux)
              (guix packages)
              (guix build-system cargo)
              (guix git-download)
              (guix licenses)
              ;; imports that come from jank
+             (gnu packages xdisorg)
              (gnu packages wm)
              (gnu packages kde-plasma) ;; importing kde just to use polkit lmao
              (gnu packages package-management)
+             (gnu packages qt)
              (gnu packages zig-xyz)
              (gnu packages video)
              (gnu packages admin)
+             (gnu packages password-utils)
              (gnu packages vim)
              (gnu packages terminals)
              (gnu packages version-control)
@@ -130,6 +134,7 @@
 ;;                           (prepend zig@0.14.0)
 ;;                           ;; (append zig@0.14.0)
 ;;                           )))))
+(define %steam-controller-udev-rules (file->udev-rule "60-sc.rules" (local-file "./60-sc.rules")))
 
 (operating-system
   (kernel linux)
@@ -150,7 +155,7 @@
                   (comment "Zuki")
                   (group "users")
                   (home-directory "/home/zuki")
-                  (supplementary-groups '("wheel" "netdev" "audio" "video")))
+                  (supplementary-groups '("wheel" "netdev" "audio" "video" "input")))
                 %base-user-accounts))
 
   ;; Packages installed system-wide.  Users can also install packages
@@ -161,14 +166,26 @@
         (append 
           ;; packages that don't need a nvidia override
           (list steam-nvidia
+                      ;; fonts
                       (specification->package "font-google-noto-sans-cjk")
                       (specification->package "font-google-noto-emoji")
                       (specification->package "font-google-noto")
-                      rust-river-layout-toolkit
+
+                      ;; bluetooth
+                      (specification->package "bluez")
+                      (specification->package "bluez-alsa")
+                      (specification->package "adwaita-icon-theme")
+
                       ;; xdg portal stuff
                       ;; (specification->package "xdg-desktop-portal")
                       ;; (specification->package "xdg-desktop-portal-gtk")
                       ;; (specification->package "xdg-desktop-portal-wlr")
+
+                      ;; idk man it looks cool
+                      (specification->package "fastfetch")
+
+                      ;; make controllers work with steam
+                      (specification->package "steam-devices-udev-rules")
                       )
           ;; packages that use mesa instead of nvidia
         (map replace-mesa (cons* btop
@@ -179,10 +196,19 @@
 
                                        ;; adding wm setup stuff
                                        river-custom
+                                       fuzzel
+                                       firefox
                                        dunst
                                        waybar
+                                       hyprlock
+                                       hyprpaper
                                        wlr-randr
                                        polkit-kde-agent
+                                       
+                                       ;; configeration
+                                       qt5ct
+                                       qt6ct
+                                       keepassxc
 
                                        ;; awesome
                                        neovim ;; also doesn't need to have its mesa replaced
@@ -198,11 +224,14 @@
   ;; Below is the list of system services.  To search for available
   ;; services, run 'guix system search KEYWORD' in a terminal.
   (services (cons* 
+              (udev-rules-service 'steam-controller-udev-rules
+                          %steam-controller-udev-rules)
+              (service bluetooth-service-type)
               (service nvidia-service-type)
-              (set-xorg-configuration
-                (xorg-configuration
-                  (modules (cons nvda %default-xorg-modules))
-                  (drivers '("nvidia"))))
+              ;; (set-xorg-configuration
+              ;;   (xorg-configuration
+              ;;     (modules (cons nvda %default-xorg-modules))
+              ;;     (drivers '("nvidia"))))
               (service screen-locker-service-type
                 (screen-locker-configuration
                   (name "hyprlock")
@@ -212,7 +241,7 @@
               ;; (service gnome-desktop-service-type)
                    ;; (service xfce-desktop-service-type)
     (modify-services %desktop-services
-             (delete gdm-service-type)
+                     (delete gdm-service-type)
              (guix-service-type config => (guix-configuration
                (inherit config)
                (substitute-urls
@@ -227,6 +256,14 @@
                 (bootloader grub-efi-bootloader)
                 ;; (targets (list "/dev/nvme0n1p1"))
                 (targets (list "/efi"))
+                (terminal-outputs '(console))
+                (timeout 15)
+                (menu-entries
+                  (list
+                    (menu-entry
+                      (label "gentoo grub")
+                      (device (uuid "1112-6E28" 'fat))
+                      (chain-loader "/EFI/GENITAL2/grubx64.efi"))))
                 (keyboard-layout keyboard-layout)))
 
   ;; (swap-devices (list (swap-space
@@ -247,7 +284,7 @@
                        ;; shared home between gentoo and guix
                        ;;
                        ;; also this should probably be set to mount after root 
-                       ;; but since its fucking ROOT it will be mounted first anyway
+                       ;; but since its ROOT it will be mounted first anyway
                        (file-system
                          (mount-point "/home")
                          (device (uuid
@@ -256,6 +293,11 @@
                          (options "subvol=/@home,subvolid=257,compress=zstd:3")
                          (needed-for-boot? #t)
                          (type "btrfs")) 
+                       (file-system
+                         (mount-point "/efi")
+                         (device "/dev/nvme0n1p1")
+                         (type "vfat"))
+                         
                        ;; genroot
                        (file-system
                          (mount-point "/mnt/genroot")
