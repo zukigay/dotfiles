@@ -30,6 +30,7 @@
              (gnu packages qt)
              (gnu packages zig-xyz)
              (gnu packages video)
+             (gnu packages image)
              (gnu packages admin)
              (gnu packages password-utils)
              (gnu packages vim)
@@ -204,6 +205,10 @@
                                        hyprpaper
                                        wlr-randr
                                        polkit-kde-agent
+
+                                       ;; the classic wayland combo
+                                       slurp
+                                       grim
                                        
                                        ;; configeration
                                        qt5ct
