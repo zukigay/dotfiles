@@ -1,6 +1,13 @@
 #check if gentoo
 if [ -n "$(uname -a | grep "gentoo")" ];then
 
+export GUIX_PROFILE="${HOME}/.guix-profile"
+export GUIX_LOCPATH="${GUIX_PROFILE}/lib/locale"
+export PATH="$HOME/.config/guix/current/bin:$PATH"
+export INFOPATH="$HOME/.config/guix/current/share/info:$INFOPATH"
+export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
+source "${GUIX_PROFILE}/etc/profile"
+
 if test -z "$XDG_RUNTIME_DIR"; then
     export XDG_RUNTIME_DIR=$(mktemp -d /tmp/$(id -u)-runtime-dir.xxx)
 fi
