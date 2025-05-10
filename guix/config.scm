@@ -135,7 +135,7 @@
 ;;                           (prepend zig@0.14.0)
 ;;                           ;; (append zig@0.14.0)
 ;;                           )))))
-(define %steam-controller-udev-rules (file->udev-rule "60-sc.rules" (local-file "./60-sc.rules")))
+;; (define %steam-controller-udev-rules (file->udev-rule "60-sc.rules" (local-file "./60-sc.rules")))
 
 (operating-system
   (kernel linux)
@@ -186,7 +186,7 @@
                       (specification->package "fastfetch")
 
                       ;; make controllers work with steam
-                      (specification->package "steam-devices-udev-rules")
+                      ;; (specification->package "steam-devices-udev-rules")
                       )
           ;; packages that use mesa instead of nvidia
         (map replace-mesa (cons* btop
@@ -229,8 +229,10 @@
   ;; Below is the list of system services.  To search for available
   ;; services, run 'guix system search KEYWORD' in a terminal.
   (services (cons* 
-              (udev-rules-service 'steam-controller-udev-rules
-                          %steam-controller-udev-rules)
+              ;; (udev-rules-service 'steam-controller-udev-rules
+              ;;             %steam-controller-udev-rules)
+              (udev-rules-service 'steam-devices-udev-rules (specification->package "steam-devices-udev-rules"))
+              ;; (udev-rules-service 'pipewire-add-udev-rules pipewire)
               (service bluetooth-service-type)
               (service nvidia-service-type)
               ;; (set-xorg-configuration
