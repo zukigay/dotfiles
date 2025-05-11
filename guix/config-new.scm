@@ -1,0 +1,593 @@
+;; This is an operating system configuration generated
+;; by the graphical installer.
+;;
+;; Once installation is complete, you can learn and modify
+;; this file to tweak the system configuration, and pass it
+;; to the 'guix system reconfigure' command to effect your
+;; changes.
+
+
+;; Indicate which modules to import to access the variables
+;; used in this configuration.
+(use-modules (gnu)
+             (guix transformations)
+             (gnu services xorg)
+             (nongnu packages linux)
+             (nongnu packages nvidia)
+             (nongnu services nvidia)
+             (nongnu packages game-client)
+             (nongnu packages mozilla)
+             (nongnu system linux-initrd)
+             (guix packages)
+             (guix build-system cargo)
+             (guix git-download)
+             ;; (guix licenses)
+             ((guix licenses) #:prefix license:)
+
+             ;; kitty
+             ;; (gnu packages fontutils)
+             ;; (guix build-system gnu)
+             ;; (gnu packages gtk)
+             ;; (gnu packages golang)
+             ;; (gnu packages ghostscript)
+             ;; (gnu packages libcanberra)
+             ;; (gnu packages python-xyz)
+             ;; (gnu packages python)
+             ;; (gnu packages freedesktop)
+             ;; (gnu packages glib)
+             ;; (gnu packages gl)
+             ;; (gnu packages xorg)
+             ;; (gnu packages ncurses)
+             ;; (gnu packages pkg-config)
+             ;; (gnu packages sphinx)
+             ;; (gnu packages compression)
+
+             ;; imports that come from jank
+             (gnu services sound)
+             (gnu packages pulseaudio) 
+             (gnu packages linux) ;; pipewire
+             (gnu packages xdisorg)
+             (gnu packages wm)
+             (gnu packages kde-plasma) ;; importing kde just to use polkit lmao
+             (gnu packages package-management)
+             (gnu packages qt)
+             (gnu packages zig-xyz)
+             (gnu packages video)
+             (gnu packages image)
+             (gnu packages admin)
+             (gnu packages password-utils)
+             (gnu packages vim)
+             (gnu packages terminals)
+             (gnu packages version-control)
+             )
+(use-service-modules cups desktop networking ssh xorg)
+(use-service-modules nix)
+(use-package-modules package-management)
+;; (use-service-modules networking ssh)
+;; (use-service-modules desktop networking)
+
+;; (define extest
+;;   (package
+;;     (name "extest")
+;;     (version "1.0.3")
+;;     ;; (build-system )
+;;     (source
+;;      (origin
+;;        (method git-fetch)
+;;        (uri (git-reference
+;;              (url "https://github.com/Supreeeme/extest")
+;;              (commit (string-append "Set version to " version))))
+;;        ))))
+       ;; (sha256
+       ;;  (base32 "0y0mg8rr18mn0wzym7v48x6kl0ixd5q387kr5jhbdln55ph2jk9d"))
+
+
+;; (define kitty-custom
+;;   (package
+;;     (inherit kitty)
+;;     (version "0.42.0")
+;;     (name "kitty")
+;;     (source
+;;      (origin
+;;        (method git-fetch)
+;;        (uri (git-reference
+;;              (url "https://github.com/kovidgoyal/kitty")
+;;              (commit (string-append "version " version))))
+;;        (file-name (git-file-name name version))
+;;        (sha256
+;;         (base32 "0y0mg8rr18mn0wzym7v48x6kl0ixd5q387kr5jhbdln55ph2jk9d"))
+;;        (patches (search-patches "kitty-fix-wayland-protocols.patch"))
+;;        (modules '((guix build utils)))
+;;        (snippet
+;;         '(begin
+;;            ;; patch needed as sphinx-build is used as a python script
+;;            ;; whereas the guix package uses a bash script launching the
+;;            ;; python script
+;;            (substitute* "docs/conf.py"
+;;              (("(from kitty.constants import str_version)" kitty-imp)
+;;               (string-append "sys.path.append(\"..\")\n" kitty-imp)))
+;;            (substitute* "docs/Makefile"
+;;              (("^SPHINXBUILD[[:space:]]+= (python3.*)$")
+;;               "SPHINXBUILD = sphinx-build\n"))
+;;            #t))))
+;;
+;;
+;;     ))
+;;
+;; (define mpv-custom
+;;   (package
+;;     (inherit mpv)
+;;     ))
+(define zig-wayland-custom
+  (options->transformation
+   '((with-latest . "zig-wayland"))))
+(define zig-wlroots-custom
+  (options->transformation
+   '((with-latest . "zig-wlroots"))))
+
+;;
+;; (define kitty-custom
+;;   (options->transformation
+;;    '((with-latest . "kitty"))))
+
+
+
+;; (define kitty-custom2
+;;   (package
+;;     (name "kitty")
+;;     (version "0.42.0")
+;;     (home-page "https://sw.kovidgoyal.net/kitty/")
+;;     (source
+;;      (origin
+;;        (method git-fetch)
+;;        (uri (git-reference
+;;              (url "https://github.com/kovidgoyal/kitty")
+;;              (commit (string-append "version " version))))
+;;        (file-name (git-file-name name version))
+;;        (sha256
+;;         (base32 "0y0mg8rr18mn0wzym7v48x6kl0ixd5q387kr5jhbdln55ph2jk9d"))
+;;        (patches (search-patches "kitty-fix-wayland-protocols.patch"))
+;;        (modules '((guix build utils)))
+;;        (snippet
+;;         '(begin
+;;            ;; patch needed as sphinx-build is used as a python script
+;;            ;; whereas the guix package uses a bash script launching the
+;;            ;; python script
+;;            (substitute* "docs/conf.py"
+;;              (("(from kitty.constants import str_version)" kitty-imp)
+;;               (string-append "sys.path.append(\"..\")\n" kitty-imp)))
+;;            (substitute* "docs/Makefile"
+;;              (("^SPHINXBUILD[[:space:]]+= (python3.*)$")
+;;               "SPHINXBUILD = sphinx-build\n"))
+;;            #t))))
+;;     (build-system gnu-build-system)
+;;     (native-inputs
+;;      (list dbus
+;;            mesa
+;;            go
+;;            libxcursor
+;;            libxi
+;;            libxinerama
+;;            libxkbcommon
+;;            libxrandr
+;;            ncurses ;; for tic command
+;;            pkg-config
+;;            python-sphinx
+;;            wayland-protocols))
+;;     (inputs
+;;      (list fontconfig
+;;            freetype
+;;            harfbuzz
+;;            go
+;;            lcms
+;;            libcanberra
+;;            libpng
+;;            python-pygments
+;;            python-wrapper
+;;            wayland
+;;            zlib))
+;;     (arguments
+;;      (list
+;;       #:phases
+;;       #~(modify-phases %standard-phases
+;;           (delete 'configure)   ;no configure script
+;;           (replace 'build
+;;             (lambda* (#:key inputs #:allow-other-keys)
+;;               ;; Don't fail on deprecation warnings from GCC
+;;               (setenv "CFLAGS" "-Wno-error=deprecated-declarations")
+;;               ;; The "kitty" sub-directory must be writable prior to
+;;               ;; configuration (e.g., un-setting updates).
+;;               (for-each make-file-writable (find-files "kitty"))
+;;               (invoke "dev.sh" "build")))
+;;               ;; (invoke "python3" "setup.py" "linux-package"
+;;               ;;         ;; Do not phone home.
+;;               ;;         "--update-check-interval=0"
+;;               ;;         ;; Wayland backend requires EGL, which isn't
+;;               ;;         ;; found out-of-the-box for some reason.
+;;               ;;         (string-append "--egl-library="
+;;               ;;                        (search-input-file inputs "/lib/libEGL.so.1")))))
+;;           (replace 'check
+;;             (lambda* (#:key tests? #:allow-other-keys)
+;;               (when tests?
+;;                 ;; Fix "cannot find kitty executable" error when running
+;;                 ;; tests.
+;;                 (setenv "PATH" (string-append "linux-package/bin:"
+;;                                               (getenv "PATH")))
+;;                 ;; Don't fail on deprecation warnings from Python
+;;                 (substitute* "test.py"
+;;                   (("'error'") "'ignore'"))
+;;                 ;; Fails: No writable cache directories
+;;                 (substitute* "kitty_tests/fonts.py"
+;;                   (("    def test_box_drawing")
+;;                    (string-append
+;;                     "    @unittest.skip('No writable cache directories')\n"
+;;                     "    def test_box_drawing")))
+;;                 ;; Fails: Permission denied
+;;                 (substitute* "kitty_tests/parser.py"
+;;                   (("import time")
+;;                    "import time\nimport unittest\n")
+;;                   (("    def test_graphics_command")
+;;                    (string-append
+;;                     "    @unittest.skip('Permission denied')\n"
+;;                     "    def test_graphics_command")))
+;;                 ;; TypeError: expected bytes, str found
+;;                 (substitute* "kitty_tests/tui.py"
+;;                   (("from . import BaseTest")
+;;                    "from . import BaseTest\nimport unittest\n")
+;;                   (("    def test_multiprocessing_spawn")
+;;                    (string-append
+;;                     "    @unittest.skip('TypeError: expected bytes, str found')\n"
+;;                     "    def test_multiprocessing_spawn")))
+;;                 (invoke "python3" "test.py"))))
+;;           (add-before 'install 'rm-pycache
+;;             ;; created python cache __pycache__ are non deterministic
+;;             (lambda _
+;;               (let ((pycaches (find-files "linux-package/"
+;;                                           "__pycache__"
+;;                                           #:directories? #t)))
+;;                 (for-each delete-file-recursively pycaches))))
+;;           (replace 'install
+;;             (lambda _
+;;               (let* ((obin (string-append #$output "/bin"))
+;;                      (olib (string-append #$output "/lib"))
+;;                      (oshare (string-append #$output "/share")))
+;;                 (copy-recursively "linux-package/bin" obin)
+;;                 (copy-recursively "linux-package/share" oshare)
+;;                 (copy-recursively "linux-package/lib" olib)))))))
+;;     (synopsis "Fast, featureful, GPU based terminal emulator")
+;;     (description "Kitty")
+;;     (license license:gpl3+)))
+
+;; (define river-custom
+;;   (options->transformation
+;;    '((with-latest . "river")
+;;     (inputs (modify-inputs (package-inputs river)
+;;                            (replace "zig" (specification->package "zig@0.14.0"))
+;;                            (replace "zig-wlroots" zig-wlroots-custom)
+;;                            (replace "zig-wayland" zig-wayland-custom)))
+;;
+;;      )))
+;;
+;;
+(define river-custom
+  (package
+    (inherit river)
+    ;; (version "0.3.9")
+    ;; (inputs (modify-inputs (package-inputs river)
+    ;;                        
+    ;;                        (replace "zig" (specification->package "zig@0.14.0"))
+    ;;                        (replace "zig-wlroots" zig-wlroots-custom)
+    ;;                        (replace "zig-wayland" zig-wayland-custom)
+    ;;                        ))
+    ))
+;; (define rust-river-layout-toolkit
+;;   (package
+;;     (name "rust-river-layout-toolkit")
+;;     (version "0.1.7")
+;;     (source (origin
+;;               (method git-fetch)
+;;               ;; (sha256
+;;               ;;   (base32 "8001acf"))
+;;               (hash "1xbkskgnchrjpa7b083nj1dfvj1nlayg494w710c5rxm0w7sklaf")
+;;               ;; (sha256
+;;               ;;   (base32 "1xbkskgnchrjpa7b083nj1dfvj1nlayg494w710c5rxm0w7sklaf"))
+;;               (uri (git-reference
+;;                 (url "https://github.com/MaxVerevkin/river-layout-toolkit")
+;;                 ;; (commit "0.1.7")
+;;                 ;; (commit (string-append "v" version))
+;;                 (commit "8001acf")
+;;                 )
+;;                 )))
+;;     ;; (inputs (list rust-log rust-thiserror rust-wayrs-client))
+;;     (build-system cargo-build-system)
+;;     (arguments 
+;;       `(#:install-source? #t
+;;         #:cargo-inputs (("rust-log" ,rust-log-0.4)
+;;          ;; ("thiserror",rust-thiserror-2.0)
+;;          ;; ("wayrs-client",rust-wayrs-client-1.2)
+;;          ;; ("mlua")
+;;          ))
+;;         )
+;;     (license expat)
+;;     ;; (license MIT)
+;;     (synopsis "a river layout library")
+;;     (description "This package simplifies writing a river layout generator in rust.")
+;;     (home-page "https://github.com/MaxVerevkin/river-layout-toolkit")
+;;   ))
+
+;; (define rust-river-luatile
+;;   (package
+;;     (name "rust-river-luatile")
+;;     (version "0.1.4")
+;;     (source (origin
+;;               (method url-fetch)
+;;               ;; no idea if guix has a nix style github only fetch option
+;;               (uri (string-append "https://github.com/MaxVerevkin/river-luatile/archive/refs/tags/v" version ".tar.gz"))
+;;               (sha256
+;;                 (base32
+;;                   "b0751192d484d6a418009eea5f2f84a05574c3ba00a51e0b82254fa3778de80e"))))
+;;     ;; (inputs (list rust-log )
+;;     (build-system cargo-build-system)
+;;     (arguments 
+;;       `(#:install-source? #f
+;;         #:cargo-inputs
+;;         (
+;;          ("log",rust-log-0.4)
+;;          ("river-layout-toolkit",river-layout-toolkit)
+;;           )))
+;;     (license gpl3)
+;;     (synopsis "a river layout library")
+;;     (description "This package simplifies writing a river layout generator in rust.")
+;;     (home-page "https://github.com/MaxVerevkin/river-layout-toolkit")
+;;
+;;     ))
+
+
+;; (define latest-kitty
+;;   (options->transformation
+;;    '((with-latest . "kitty"))))
+
+;; (define latest-atop
+;;   (options->transformation
+;;    '((with-latest . "atop"))))
+
+;; (define latest-kitty
+;;  (options->transformation
+;;   '((with-latest . "kitty"))))
+;;    (inputs (modify-inputs (package-inputs river)
+;;                           ;; (delete zig)
+;;                           (prepend zig@0.14.0)
+;;                           ;; (append zig@0.14.0)
+;;                           )))))
+;; (define %steam-controller-udev-rules (file->udev-rule "60-sc.rules" (local-file "./60-sc.rules")))
+
+(operating-system
+  (kernel linux)
+  (kernel-arguments '("modprobe.blacklist=nouveau"
+                      ;; Set this if the card is not used for displaying or
+                      ;; you're using Wayland:
+                      "nvidia_drm.modeset=1"))
+  (initrd microcode-initrd)
+  (firmware (list linux-firmware))
+  (locale "en_GB.utf8")
+  (timezone "Europe/London")
+  (keyboard-layout (keyboard-layout "us"))
+  (host-name "zukiguix")
+
+  ;; The list of user accounts ('root' is implicit).
+  (users (cons* (user-account
+                  (name "zuki")
+                  (comment "Zuki")
+                  (group "users")
+                  (home-directory "/home/zuki")
+                  (supplementary-groups '("wheel" "netdev" "audio" "video" "input")))
+                %base-user-accounts))
+
+  ;; Packages installed system-wide.  Users can also install packages
+  ;; under their own account: use 'guix search KEYWORD' to search
+  ;; for packages and 'guix install PACKAGE' to install a package.
+
+      (packages 
+        (append 
+          ;; packages that don't need a nvidia override
+          (list steam-nvidia
+                      ;; fonts
+                      (specification->package "font-google-noto-sans-cjk")
+                      (specification->package "font-google-noto-emoji")
+                      (specification->package "font-google-noto")
+
+                      ;; bluetooth
+                      (specification->package "bluez")
+                      (specification->package "bluez-alsa")
+
+                      ;; theming
+                      (specification->package "adwaita-icon-theme")
+                      (specification->package "arc-theme")
+                      (specification->package "arc-icon-theme")
+
+                      ;; pipewire
+                      pipewire
+                      nix
+                      (specification->package "wireplumber")
+
+                      ;; xdg portal stuff
+                      (specification->package "xdg-desktop-portal")
+                      (specification->package "xdg-desktop-portal-gtk")
+                      (specification->package "xdg-desktop-portal-wlr")
+                      
+                      (specification->package "sof-firmware")
+
+                      ;; idk man it looks cool
+                      (specification->package "fastfetch")
+
+                      ;; make controllers work with steam
+                      ;; (specification->package "steam-devices-udev-rules")
+                      )
+          ;; packages that use mesa instead of nvidia
+        (map replace-mesa (cons* btop
+                                       git ;; doesn't need to be here but whocares
+                                       ;; (latest-river river)
+                                       obs
+                                       flatpak
+
+                                       ;; adding wm setup stuff
+                                       ;; (river-custom river)
+                                       river-custom
+                                       fuzzel
+                                       firefox
+                                       dunst
+                                       waybar
+                                       hyprlock
+                                       hyprpaper
+                                       wlr-randr
+                                       polkit-kde-agent
+
+                                       ;; the classic wayland combo
+                                       slurp
+                                       grim
+                                       
+                                       ;; configeration
+                                       qt5ct
+                                       qt6ct
+
+                                       ;; mpv
+                                       keepassxc
+
+                                       ;; awesome
+                                       neovim ;; also doesn't need to have its mesa replaced
+                                       ;; (kitty-custom kitty)
+                                       kitty
+                                       ;; kitty-custom2
+                                       ;; kitty-custom
+                                       ;; latest-kitty
+                                       %base-packages))))
+                ;; steam-nvidia))
+
+  ;; (packages (append (list (specification->package "awesome")
+  ;;                         (specification->package "neovim")
+  ;;                         (specification->package "kitty"))
+  ;;                   %base-packages))
+
+  ;; Below is the list of system services.  To search for available
+  ;; services, run 'guix system search KEYWORD' in a terminal.
+  (services (cons* 
+              ;; (udev-rules-service 'steam-controller-udev-rules
+              ;;             %steam-controller-udev-rules)
+              (udev-rules-service 'steam-devices-udev-rules (specification->package "steam-devices-udev-rules"))
+              (udev-rules-service 'pipewire-add-udev-rules pipewire)
+              (service bluetooth-service-type)
+              (service nvidia-service-type)
+              (service nix-service-type)
+              ;; (service nix-service-type)
+              ;; (set-xorg-configuration
+              ;;   (xorg-configuration
+              ;;     (modules (cons nvda %default-xorg-modules))
+              ;;     (drivers '("nvidia"))))
+              (service screen-locker-service-type
+                (screen-locker-configuration
+                  (name "hyprlock")
+                  (program (file-append river-custom "/bin/river"))
+                  (using-pam? #t)
+                  (using-setuid? #f)))
+              ;; (service gnome-desktop-service-type)
+                   ;; (service xfce-desktop-service-type)
+    (modify-services %desktop-services
+                     ;; (alsa-service-type 
+                     ;;   (alsa-configuration 
+                     ;;     (pulseaudio? #f)
+                     ;;     ))
+                     (delete gdm-service-type)
+                     (delete pulseaudio-service-type)
+                     (alsa-service-type
+                      config => (alsa-configuration
+                                 (inherit config)
+                                 (pulseaudio? #f)))
+             (guix-service-type config => (guix-configuration
+               (inherit config)
+               (substitute-urls
+                (append (list "https://substitutes.nonguix.org")
+                  %default-substitute-urls))
+               (authorized-keys
+                (append (list (local-file "./signing-key.pub"))
+                  %default-authorized-guix-keys)))))
+                   ;; %desktop-services)
+            ))
+  (bootloader (bootloader-configuration
+                (bootloader grub-efi-bootloader)
+                ;; (targets (list "/dev/nvme0n1p1"))
+                (targets (list "/efi"))
+                (terminal-outputs '(console))
+                (timeout 15)
+                (menu-entries
+                  (list
+                    (menu-entry
+                      (label "gentoo grub")
+                      (device (uuid "1112-6E28" 'fat))
+                      (chain-loader "/EFI/GENITAL2/grubx64.efi"))))
+                (keyboard-layout keyboard-layout)))
+
+  ;; (swap-devices (list (swap-space
+  ;;                       (target (uuid
+                                 ;; "1112-6E28")))))
+
+  ;; The list of file systems that get "mounted".  The unique
+  ;; file system identifiers there ("UUIDs") can be obtained
+  ;; by running 'blkid' in a terminal.
+  (file-systems (cons* (file-system
+                         (mount-point "/")
+                         (device (uuid
+                                  "d1873cb5-ddb1-49c1-ab58-4e9763938acd"
+                                  'btrfs))
+                         (options "subvol=/@guixroot,subvolid=904,compress=zstd:3")
+                         (needed-for-boot? #t)
+                         (type "btrfs")) 
+                       ;; shared home between gentoo and guix
+                       ;;
+                       ;; also this should probably be set to mount after root 
+                       ;; but since its ROOT it will be mounted first anyway
+                       (file-system
+                         (mount-point "/home")
+                         (device (uuid
+                                   "d1873cb5-ddb1-49c1-ab58-4e9763938acd"
+                                   'btrfs))
+                         (options "subvol=/@home,subvolid=257,compress=zstd:3")
+                         (needed-for-boot? #t)
+                         (type "btrfs")) 
+                       (file-system
+                         (mount-point "/efi")
+                         (device "/dev/nvme0n1p1")
+                         (type "vfat"))
+                         
+                       ;; genroot
+                       (file-system
+                         (mount-point "/mnt/genroot")
+                         (device (uuid
+                                   "d1873cb5-ddb1-49c1-ab58-4e9763938acd"
+                                   'btrfs))
+                         (options "subvol=/@genroot,subvolid=903,compress=zstd:3")
+                         (mount? #f)
+                         (type "btrfs")) 
+                       ;; ssd for games and other stuff
+                       (file-system
+                         (mount-point "/mnt/uberdrive")
+                         ;; to lazy to use uuid's
+                         (device (file-system-label "uberdrive"))
+                         (type "ext4")
+                         (needed-for-boot? #f)
+                         )
+                       ;; a laptop harddrive taking on a new life
+                       (file-system
+                         (mount-point "/mnt/ssddrive")
+                         ;; to lazy to use uuid's
+                         (device (file-system-label "exlapdrive"))
+                         (type "ext4")
+                         (needed-for-boot? #f)
+                         )
+                       ;; extra harddrive used for backups and steam games
+                       (file-system
+                         (mount-point "/mnt/harddrive")
+                         (device (uuid
+                                   "08d01f59-dee1-4c01-b1c3-0200d5ec8264"))
+                         (type "ext4")
+                         (needed-for-boot? #f))
+                       %base-file-systems)))
