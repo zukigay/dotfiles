@@ -1,0 +1,3 @@
+if [ -n "$(uname -a | grep "guix")" ];then
+export XDG_DATA_DIRS=$XDG_DATA_DIRS:$HOME/.local/share/flatpak/exports/share
+fi
