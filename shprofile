@@ -19,6 +19,8 @@ fi
 
 # check if gentoo and source the shellvars if so
 . "$HOME/.config/gentoo_only/shell_vars"
+# check if guix and source the shellvars if so
+. "$HOME/.config/guix_only/shell_vars"
 
 # https://github.com/lemniskett/archbox.git
 
