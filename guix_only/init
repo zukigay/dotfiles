@@ -4,6 +4,10 @@ if [ -n "$(uname -a | grep "guix")" ];then
 
 shepherd &
 bluetoothctl power on &
+if [ -n "$(pgrep river)" ]; then
+# come up with something cleaner later
+~/Applications/RIVER-LUATILE-GIT_r41.27a4ac9-1-archimage4.3-x86_64.AppImage
+fi
 
 libexec=~/.guix-profile/libexec
 sleep 2
