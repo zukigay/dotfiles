@@ -1,0 +1,17 @@
+#check if gentoo
+if [ -n "$(uname -a | grep "guix")" ];then
+
+
+shepherd &
+bluetoothctl power on &
+
+libexec=~/.guix-profile/libexec
+sleep 2
+$libexec/xdg-desktop-portal -r &
+echo "starting gtk"
+$libexec/xdg-desktop-portal-gtk -r &
+echo "starting wlr"
+$libexec/xdg-desktop-portal-wlr &
+sh -c "sleep 5;exec $libexec/xdg-desktop-portal -r"
+
+fi
