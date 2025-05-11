@@ -75,5 +75,7 @@ export EDITOR=nvim
 export AUR_PAGER="fff"
 export VFIOVM="win10-clone"
 
+export GUIX_SANDBOX_EXTRA_SHARES="/mnt/ssddrive:/mnt/harddrive:/mnt/uberdrive"
+
 # report script loaded for debuging
 export shexloaded="true"
