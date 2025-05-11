@@ -5,10 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
-GREEN="\[$(tput setaf 2)\]"
-RESET="\[$(tput sgr0)\]"
-GREEN="$(tput setaf 2)"
-RESET="$(tput sgr0)"
+# GREEN="\[$(tput setaf 2)\]"
+# RESET="\[$(tput sgr0)\]"
+# GREEN="$(tput setaf 2)"
+# RESET="$(tput sgr0)"
 
 HISTFILE="$HOME/.cache/bashhist"
 if [ ! -f "$HISTFILE" ]; then # if bashhist file not found
