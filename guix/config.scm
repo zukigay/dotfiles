@@ -23,6 +23,9 @@
              (guix git-download)
              (guix licenses)
              ;; imports that come from jank
+             (gnu services sound)
+             (gnu packages pulseaudio) 
+             (gnu packages linux) ;; pipewire
              (gnu packages xdisorg)
              (gnu packages wm)
              (gnu packages kde-plasma) ;; importing kde just to use polkit lmao
@@ -41,6 +44,10 @@
 ;; (use-service-modules networking ssh)
 ;; (use-service-modules desktop networking)
 
+(define mpv-custom
+  (package
+    (inherit mpv)
+    ))
 (define zig-wayland-custom
   (package
     (inherit zig-wayland)
@@ -175,12 +182,22 @@
                       ;; bluetooth
                       (specification->package "bluez")
                       (specification->package "bluez-alsa")
+
+                      ;; theming
                       (specification->package "adwaita-icon-theme")
+                      (specification->package "arc-theme")
+                      (specification->package "arc-icon-theme")
+
+                      ;; pipewire
+                      pipewire
+                      (specification->package "wireplumber")
 
                       ;; xdg portal stuff
-                      ;; (specification->package "xdg-desktop-portal")
-                      ;; (specification->package "xdg-desktop-portal-gtk")
-                      ;; (specification->package "xdg-desktop-portal-wlr")
+                      (specification->package "xdg-desktop-portal")
+                      (specification->package "xdg-desktop-portal-gtk")
+                      (specification->package "xdg-desktop-portal-wlr")
+                      
+                      (specification->package "sof-firmware")
 
                       ;; idk man it looks cool
                       (specification->package "fastfetch")
@@ -213,6 +230,8 @@
                                        ;; configeration
                                        qt5ct
                                        qt6ct
+
+                                       ;; mpv
                                        keepassxc
 
                                        ;; awesome
@@ -232,7 +251,7 @@
               ;; (udev-rules-service 'steam-controller-udev-rules
               ;;             %steam-controller-udev-rules)
               (udev-rules-service 'steam-devices-udev-rules (specification->package "steam-devices-udev-rules"))
-              ;; (udev-rules-service 'pipewire-add-udev-rules pipewire)
+              (udev-rules-service 'pipewire-add-udev-rules pipewire)
               (service bluetooth-service-type)
               (service nvidia-service-type)
               ;; (set-xorg-configuration
@@ -248,7 +267,16 @@
               ;; (service gnome-desktop-service-type)
                    ;; (service xfce-desktop-service-type)
     (modify-services %desktop-services
+                     ;; (alsa-service-type 
+                     ;;   (alsa-configuration 
+                     ;;     (pulseaudio? #f)
+                     ;;     ))
                      (delete gdm-service-type)
+                     (delete pulseaudio-service-type)
+                     (alsa-service-type
+                      config => (alsa-configuration
+                                 (inherit config)
+                                 (pulseaudio? #f)))
              (guix-service-type config => (guix-configuration
                (inherit config)
                (substitute-urls
