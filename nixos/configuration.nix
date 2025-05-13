@@ -127,7 +127,7 @@
     # xrandr for setting a monitor as --primary
     # so that steam games won't cap the res
     # at the lowist active monitor.
-    xrandr
+    xorg.xrandr
   ];
 
   # List packages installed in system profile. To search, run:
