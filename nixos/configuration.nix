@@ -114,7 +114,7 @@
 
   programs.firefox.enable = true;
   programs.river.enable = true;
-  programs.river.extraPackages = with pkgs; [ kitty waybar fuzzel lua5_3 river-luatile hyprpaper ];
+  programs.river.extraPackages = with pkgs; [ kitty waybar fuzzel lua5_3 river-luatile hyprpaper slurp grim ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
