@@ -99,9 +99,12 @@
     ranger
     lazygit
     fastfetch
+    keepassxc
 
     bluetuith
     ncpamixer
+    adwaita-icon-theme
+
     # waybar
     ];
   };
