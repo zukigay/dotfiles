@@ -7,6 +7,11 @@ let
   # helloBar = pkgs.hello.overrideAttrs (finalAttrs: previousAttrs: {
   #   pname = previousAttrs.pname + "-bar";
   # });
+
+  # create a custom "vesktopShare" package with a custom "obs-share" patch
+  # the patch is from this pull request
+  # https://github.com/Vencord/Vesktop/pull/195
+  # the patch just allows using any webcam/mic as a screenshare source.
   vesktopShare = pkgs.vesktop.overrideAttrs (finalAttrs: previousAttrs: {
     patches = previousAttrs.patches ++ [ ./vesktop-obs-share.patch ];
   });
