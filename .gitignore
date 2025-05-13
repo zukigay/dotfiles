@@ -1,4 +1,6 @@
 /*
+!nixos/
+nixos/result
 !guix/
 !guix_only/
 !fontconfig/
