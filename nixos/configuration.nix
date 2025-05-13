@@ -111,6 +111,7 @@
     bluetuith
     ncpamixer
     adwaita-icon-theme
+    wl-clipboard
 
     # waybar
     ];
