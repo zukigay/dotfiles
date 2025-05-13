@@ -98,6 +98,7 @@
     # groups my gentoo instal user is in
     # lp wheel cron audio video libvirt users pipewire zuki
     packages = with pkgs; [
+    arc-theme
     kitty
     # fuzzel
     keepassxc
