@@ -105,6 +105,7 @@
     lazygit
     fastfetch
     keepassxc
+    rnnoise-plugin
 
     bluetuith
     ncpamixer
