@@ -28,4 +28,11 @@ export XCURSOR_SIZE=$cursorSize
 # uncomment these two lines to get a headless virtual display
 # export WLR_BACKENDS=drm,libinput,headless 
 # export WLR_HEADLESS_OUTPUTS=1 
-exec dbus-launch --exit-with-session river
+
+# for gentoo with openrc
+# exec dbus-launch --exit-with-session river
+
+# for nixos with systemd
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+exec river
