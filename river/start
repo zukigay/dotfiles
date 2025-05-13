@@ -1,7 +1,7 @@
 #!/bin/sh
 # this file sets vars then starts river.
 # Vars
-cursorSize=34
+cursorSize=30
 iconTheme='Arc'
 gtkTheme='Arc-Dark'
 cursorTheme='Adwaita'
@@ -21,8 +21,8 @@ export GBM_BACKEND=nvidia-drm
 export NVD_BACKEND=direct
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
-# export XCURSORTHEME=$cursorTheme
-# export XCURSOR_SIZE=$cursorSize
+export XCURSORTHEME=$cursorTheme
+export XCURSOR_SIZE=$cursorSize
 # export HYPRCURSOR_SIZE=$cursorSize
 
 # uncomment these two lines to get a headless virtual display
