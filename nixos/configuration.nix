@@ -15,6 +15,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   mod-font.enable = true;
+  mod-steam.enable = true;
 
   networking.hostName = "zuki"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -113,7 +114,7 @@
 
   programs.firefox.enable = true;
   programs.river.enable = true;
-  programs.river.extraPackages = with pkgs; [ kitty waybar fuzzel lua5_3 river-luatile ];
+  programs.river.extraPackages = with pkgs; [ kitty waybar fuzzel lua5_3 river-luatile hyprpaper ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
