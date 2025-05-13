@@ -16,7 +16,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/d1873cb5-ddb1-49c1-ab58-4e9763938acd";
       fsType = "btrfs";
-      options = [ "subvol=@nixos" ];
+      options = [ "subvol=@nixos" "compress=zstd:3" ];
     };
 
   fileSystems."/boot" =
@@ -28,7 +28,7 @@
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/d1873cb5-ddb1-49c1-ab58-4e9763938acd";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=@home" "compress=zstd:3" ];
     };
 
   swapDevices =
