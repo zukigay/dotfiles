@@ -128,6 +128,9 @@
     # so that steam games won't cap the res
     # at the lowist active monitor.
     xorg.xrandr
+
+    qt6ct
+    libsForQt5.qt5ct
   ];
 
   # List packages installed in system profile. To search, run:
