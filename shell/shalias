@@ -35,7 +35,8 @@ alias disown-help="echo command '& disown'"
 alias sudo='sudo '
 
 # nix
-alias ns="nix search nixpkgs"
+alias nr="sudo nixos-rebuild switch"
+alias ns="nix-search"
 
 ## pacman
 alias pac="pacman"
