@@ -1,0 +1,210 @@
+From ed6044160b00e63acfd461d6e3f4fa49605947f3 Mon Sep 17 00:00:00 2001
+From: Ryan Cao <70191398+ryanccn@users.noreply.github.com>
+Date: Mon, 25 Nov 2024 14:05:10 +0800
+Subject: [PATCH] feat: allow patching video & audio devices into screen share
+
+---
+ src/renderer/components/ScreenSharePicker.tsx | 59 ++++++++++++++
+ src/renderer/patches/screenShareFixes.ts      | 81 +++++++++++++++----
+ 2 files changed, 124 insertions(+), 16 deletions(-)
+
+diff --git a/src/renderer/components/ScreenSharePicker.tsx b/src/renderer/components/ScreenSharePicker.tsx
+index dbecfc6..dd23e11 100644
+--- a/src/renderer/components/ScreenSharePicker.tsx
++++ b/src/renderer/components/ScreenSharePicker.tsx
+@@ -21,6 +21,7 @@ import {
+ } from "@vencord/types/webpack/common";
+ import { Node } from "@vencord/venmic";
+ import type { Dispatch, SetStateAction } from "react";
++import { patchOverrideDevices } from "renderer/patches/screenShareFixes";
+ import { addPatch } from "renderer/patches/shared";
+ import { State, useSettings, useVesktopState } from "renderer/settings";
+ import { classNameFactory, isLinux, isWindows } from "renderer/utils";
+@@ -47,6 +48,8 @@ interface AudioItem {
+ 
+ interface StreamSettings {
+     audio: boolean;
++    overrideAudioDevice?: string;
++    overrideVideoDevice?: string;
+     contentHint?: string;
+     includeSources?: AudioSources;
+     excludeSources?: AudioSources;
+@@ -141,6 +144,11 @@ export function openScreenSharePicker(screens: Source[], skipPicker: boolean) {
+                             }
+                         }
+ 
++                        patchOverrideDevices({
++                            audio: v.overrideAudioDevice,
++                            video: v.overrideVideoDevice
++                        });
++
+                         resolve(v);
+                     }}
+                     close={() => {
+@@ -365,6 +373,16 @@ function StreamSettingsUi({
+         }
+     );
+ 
++    const [audioDevices, , audioDevicesPending] = useAwaiter(
++        () => navigator.mediaDevices.enumerateDevices().then(g => g.filter(d => d.kind === "audioinput")),
++        { fallbackValue: [] }
++    );
++
++    const [videoDevices, , videoDevicesPending] = useAwaiter(
++        () => navigator.mediaDevices.enumerateDevices().then(g => g.filter(d => d.kind === "videoinput")),
++        { fallbackValue: [] }
++    );
++
+     const openSettings = () => {
+         const key = openModal(props => (
+             <AudioSettingsModal
+@@ -427,6 +445,47 @@ function StreamSettingsUi({
+                                 </p>
+                             </div>
+                         </div>
++
++                        <div>
++                            <Forms.FormTitle>
++                                {audioDevicesPending ? "Loading audio devices..." : "Audio devices"}
++                            </Forms.FormTitle>
++                            <Select
++                                options={audioDevices.map(({ label, deviceId }) => ({
++                                    label,
++                                    value: deviceId
++                                }))}
++                                isSelected={d => settings.overrideAudioDevice === d}
++                                select={d => {
++                                    setSettings(v => ({ ...v, overrideAudioDevice: d }));
++                                }}
++                                serialize={String}
++                                popoutPosition="top"
++                                closeOnSelect={true}
++                                isDisabled={audioDevicesPending}
++                            />
++                        </div>
++
++                        <div>
++                            <Forms.FormTitle>
++                                {videoDevicesPending ? "Loading video devices..." : "Video devices"}
++                            </Forms.FormTitle>
++                            <Select
++                                options={videoDevices.map(({ label, deviceId }) => ({
++                                    label,
++                                    value: deviceId
++                                }))}
++                                isSelected={d => settings.overrideVideoDevice === d}
++                                select={d => {
++                                    setSettings(v => ({ ...v, overrideVideoDevice: d }));
++                                }}
++                                serialize={String}
++                                popoutPosition="top"
++                                closeOnSelect={true}
++                                isDisabled={videoDevicesPending}
++                            />
++                        </div>
++
+                         {isWindows && (
+                             <Switch
+                                 value={settings.audio}
+diff --git a/src/renderer/patches/screenShareFixes.ts b/src/renderer/patches/screenShareFixes.ts
+index 5a78bbd..d3dd9f2 100644
+--- a/src/renderer/patches/screenShareFixes.ts
++++ b/src/renderer/patches/screenShareFixes.ts
+@@ -11,21 +11,70 @@ import { isLinux } from "renderer/utils";
+ 
+ const logger = new Logger("VesktopStreamFixes");
+ 
+-if (isLinux) {
+-    const original = navigator.mediaDevices.getDisplayMedia;
+-
+-    async function getVirtmic() {
+-        try {
+-            const devices = await navigator.mediaDevices.enumerateDevices();
+-            const audioDevice = devices.find(({ label }) => label === "vencord-screen-share");
+-            return audioDevice?.deviceId;
+-        } catch (error) {
+-            return null;
+-        }
++const original = navigator.mediaDevices.getDisplayMedia;
++
++interface OverrideDevices {
++    audio: string | undefined;
++    video: string | undefined;
++}
++
++let overrideDevices: OverrideDevices = { audio: undefined, video: undefined };
++
++export const patchOverrideDevices = (newOverrideDevices: OverrideDevices) => {
++    overrideDevices = newOverrideDevices;
++};
++
++async function getVirtmic() {
++    try {
++        const devices = await navigator.mediaDevices.enumerateDevices();
++        const audioDevice = devices.find(({ label }) => label === "vencord-screen-share");
++        return audioDevice?.deviceId;
++    } catch (error) {
++        return null;
++    }
++}
++
++navigator.mediaDevices.getDisplayMedia = async function (opts) {
++    const stream = await original.call(this, opts);
++
++    if (overrideDevices.audio) {
++        const audio = await navigator.mediaDevices.getUserMedia({
++            audio: {
++                deviceId: { exact: overrideDevices.audio },
++                autoGainControl: false,
++                echoCancellation: false,
++                noiseSuppression: false
++            }
++        });
++
++        stream.getAudioTracks().forEach(t => {
++            t.stop();
++            stream.removeTrack(t);
++        });
++
++        audio.getAudioTracks().forEach(t => {
++            stream.addTrack(t);
++        });
+     }
+ 
+-    navigator.mediaDevices.getDisplayMedia = async function (opts) {
+-        const stream = await original.call(this, opts);
++    if (overrideDevices.video) {
++        const video = await navigator.mediaDevices.getUserMedia({
++            video: {
++                deviceId: { exact: overrideDevices.video }
++            }
++        });
++
++        stream.getVideoTracks().forEach(t => {
++            t.stop();
++            stream.removeTrack(t);
++        });
++
++        video.getVideoTracks().forEach(t => {
++            stream.addTrack(t);
++        });
++    }
++
++    if (isLinux) {
+         const id = await getVirtmic();
+ 
+         const frameRate = Number(State.store.screenshareQuality?.frameRate ?? 30);
+@@ -64,7 +113,7 @@ if (isLinux) {
+             });
+             audio.getAudioTracks().forEach(t => stream.addTrack(t));
+         }
++    }
+ 
+-        return stream;
+-    };
+-}
++    return stream;
++};
+-- 
+2.47.2
+

@@ -3,7 +3,14 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 { config, lib, pkgs, ... }:
-
+let
+  # helloBar = pkgs.hello.overrideAttrs (finalAttrs: previousAttrs: {
+  #   pname = previousAttrs.pname + "-bar";
+  # });
+  vesktopShare = pkgs.vesktop.overrideAttrs (finalAttrs: previousAttrs: {
+    patches = previousAttrs.patches ++ [ ./vesktop-obs-share.patch ];
+  });
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -98,7 +105,7 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     # groups my gentoo instal user is in
     # lp wheel cron audio video libvirt users pipewire zuki
-    packages = with pkgs; [
+    packages = (with pkgs; [
     arc-theme
     kitty
     # fuzzel
@@ -114,9 +121,13 @@
     adwaita-icon-theme
     wl-clipboard
 
+    # vesktop
+
     # waybar
-    ];
+    ]) ++ ([vesktopShare]);
   };
+
+
 
   programs.firefox.enable = true;
   programs.river.enable = true;
