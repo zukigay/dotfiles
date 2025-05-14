@@ -158,6 +158,8 @@ in
 
     # to set monitors up
     wlr-randr
+    kanshi
+    jq
 
     qt6ct
     libsForQt5.qt5ct
