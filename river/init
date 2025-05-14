@@ -72,11 +72,15 @@ function luatile()
     riverctl(" map layoutpick None w send-layout-cmd luatile 'toggleWaybar()'")
 
     -- luatile layouts
-    riverctl(" map layoutpick None t send-layout-cmd luatile 'switchLayout('normalTile')'")
-    riverctl(" map layoutpick None p send-layout-cmd luatile 'switchLayout('paperwm')'")
-    riverctl(" map layoutpick None 1 send-layout-cmd luatile 'switchLayout('monocle')'")
-    riverctl(" map layoutpick None 2 send-layout-cmd luatile 'switchLayout('monoclefull')'")
-    riverctl(" map layoutpick None 3 send-layout-cmd luatile 'switchLayout('monocleGaps')'")
+    riverctl(" map layoutpick None t send-layout-cmd luatile " .. '"switchLayout(' .. "'normalTile'" .. ')"')
+    riverctl(" map layoutpick None p send-layout-cmd luatile " .. '"switchLayout(' .. "'paperwm'" .. ')"')
+    riverctl(" map layoutpick None 1 send-layout-cmd luatile " .. '"switchLayout(' .. "'monocle'" .. ')"')
+    riverctl(" map layoutpick None 2 send-layout-cmd luatile " .. '"switchLayout(' .. "'monoclefull'" .. ')"')
+    riverctl(" map layoutpick None 3 send-layout-cmd luatile " .. '"switchLayout(' .. "'monocleGaps'" .. ')"')
+    -- riverctl(" map layoutpick None p send-layout-cmd luatile " .. '"switchLayout('paperwm')'")
+    -- riverctl(" map layoutpick None 1 send-layout-cmd luatile " .. '"switchLayout('monocle')'")
+    -- riverctl(" map layoutpick None 2 send-layout-cmd luatile " .. '"switchLayout('monoclefull')'")
+    -- riverctl(" map layoutpick None 3 send-layout-cmd luatile " .. '"switchLayout('monocleGaps')'")
 end
 function keybinds()
 
