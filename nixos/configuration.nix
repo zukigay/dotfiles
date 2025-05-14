@@ -146,12 +146,18 @@ in
     hyprpaper 
     slurp 
     grim 
+
     # xrandr for setting a monitor as --primary
     # so that steam games won't cap the res
     # at the lowist active monitor.
     xorg.xrandr
+
+    # for notifcations
     dunst
     libnotify
+
+    # to set monitors up
+    wlr-randr
 
     qt6ct
     libsForQt5.qt5ct
