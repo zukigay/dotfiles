@@ -48,7 +48,11 @@ function main()
     -- set cursor focus
     riverctl('focus-follows-cursor normal')
     riverctl('set-cursor-warp on-output-change')
-    riverctl('focus-output DP-5')
+    riverctl('focus-output DP-1 &')
+    riverctl('focus-output DP-2 &')
+    riverctl('focus-output DP-3 &')
+    riverctl('focus-output DP-4 &')
+    riverctl('focus-output DP-5 &')
 
     -- add cursor type
     riverctl(" xcursor-theme Adwaita 30")
