@@ -19,6 +19,7 @@ let
   cdwl = pkgs.dwl.overrideAttrs (oldAttrs: {
     name = "cdwl";
     src = ./src/dwl;
+    patches = [ ./src/dwl-p/warpcursor-nix.patch ];
     # src = /home/zuki/.config/nixos/src/dwl;
   });
 in
