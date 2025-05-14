@@ -48,7 +48,7 @@ function main()
     -- set cursor focus
     riverctl('focus-follows-cursor normal')
     riverctl('set-cursor-warp on-output-change')
-    riverctl('focus-output DP-3')
+    riverctl('focus-output DP-5')
 
     -- add cursor type
     riverctl(" xcursor-theme Adwaita 30")
@@ -299,12 +299,12 @@ function init()
     -- riverctl(" default-layout luatile")
 end
 function setDisplay()
-    os.execute('wlr-randr --output DP-3 --mode 2560x1440@164.938004 --pos 0,0')
+    os.execute('wlr-randr --output DP-5 --mode 2560x1440@164.938004 --pos 0,0')
     os.execute('wlr-randr --output HDMI-A-4 --pos -1920,200')
 
     -- this uses xrandr to set a output as primary since even though its wayland
     -- games still use the xorg primary setting to determine the max resolution
-    os.execute('xrandr --output DP-3 --primary')
+    os.execute('xrandr --output DP-5 --primary')
 end
 function riverctl(args)
     -- print(args)
