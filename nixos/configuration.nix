@@ -113,6 +113,7 @@ in
     packages = (with pkgs; [
     arc-theme
     kitty
+    mpv
     # fuzzel
     keepassxc
     ranger
