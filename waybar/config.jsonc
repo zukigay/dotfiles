@@ -8,23 +8,25 @@
     // Choose the order of the modules
     "modules-left": [
         "river/tags",
+        // "river/layout",
         "hyprland/workspaces",
         "hyprland/submap",
     //    "hyprland/scratchpad",
         "custom/media"
     ],
-    //"modules-center": [
+    "modules-center": [
+        "river/mode"
     //    //"hyprland/window"
     //    "idle_inhibitor",
     //    "custom/wl-gammarelay-temperature", 
     //    "pulseaudio"
     //    //"mpris"
-    //],
+    ],
     "modules-right": [
        // "mpd",
         "tray",
         "idle_inhibitor",
-        "custom/wl-gammarelay-temperature", 
+        // "custom/wl-gammarelay-temperature", 
         ////"custom/wl-gammarelay-brightness",
         ////"custom/wl-gammarelay-gamma",
         "pulseaudio",
@@ -87,7 +89,11 @@
 
     "river/tags": {
 	    // "num-tags": 9
+        "hide-vacant":true,
         "disable-click":true
+    },
+    "river/mode": {
+        "format": "{}"
     },
 
    "custom/wl-gammarelay-temperature": {

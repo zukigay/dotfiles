@@ -98,7 +98,9 @@ button:hover {
     padding-right: 1px;
     padding-left: 4px;
 }
-
+#mode.normal {
+    opacity: 0;
+}
 
 box.horizontal.modules-right {
     padding-right: 0px;
