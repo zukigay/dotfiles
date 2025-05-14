@@ -15,6 +15,12 @@ let
   vesktopShare = pkgs.vesktop.overrideAttrs (finalAttrs: previousAttrs: {
     patches = previousAttrs.patches ++ [ ./vesktop-obs-share.patch ];
   });
+
+  cdwl = pkgs.dwl.overrideAttrs (oldAttrs: {
+    name = "cdwl";
+    src = ./src/dwl;
+    # src = /home/zuki/.config/nixos/src/dwl;
+  });
 in
 {
   imports =
@@ -125,13 +131,14 @@ in
     bluetuith
     ncpamixer
     adwaita-icon-theme
+
     wl-clipboard
     thunderbird
 
     # vesktop
 
     # waybar
-    ]) ++ ([vesktopShare]);
+    ]) ++ ([vesktopShare cdwl]);
   };
 
 
