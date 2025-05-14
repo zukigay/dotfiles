@@ -1,0 +1,24 @@
+From 79cfae7e2da279290f1983722eaca26d62f51b19 Mon Sep 17 00:00:00 2001
+From: Zuki Air <zukirust@gmail.com>
+Date: Wed, 14 May 2025 23:06:40 +0000
+Subject: [PATCH] sedfix
+
+---
+ configure | 3 +++
+ 1 files changed, 4 insertions(+)
+ create mode 100755 configure
+
+diff --git a/configure b/configure
+new file mode 100755
+index 0000000..8158f39
+--- /dev/null
++++ b/configure
+@@ -0,0 +1,5 @@
++#!/bin/sh
++PREFIX=$(echo "$1" | sed 's/--prefix=//')
++echo $PREFIX
++cp dwl.c dwl.cd
++sed "s|/usr/local/share/lib|$PREFIX/lib|g" dwl.cd > dwl.c
+-- 
+2.47.2
+
