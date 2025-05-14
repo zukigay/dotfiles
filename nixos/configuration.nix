@@ -150,6 +150,8 @@ in
     # so that steam games won't cap the res
     # at the lowist active monitor.
     xorg.xrandr
+    dunst
+    libnotify
 
     qt6ct
     libsForQt5.qt5ct
