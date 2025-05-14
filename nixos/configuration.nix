@@ -126,6 +126,7 @@ in
     ncpamixer
     adwaita-icon-theme
     wl-clipboard
+    thunderbird
 
     # vesktop
 
