@@ -1,0 +1,70 @@
+From edd7cf5eaff820f077489bab37ad64c02eb5a8bd Mon Sep 17 00:00:00 2001
+From: Zuki Air <zukirust@gmail.com>
+Date: Wed, 14 May 2025 21:44:25 +0000
+Subject: [PATCH] patch
+
+---
+ nixos/src/dwl/dwl.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/nixos/src/dwl/dwl.c b/nixos/src/dwl/dwl.c
+index a2711f6..3502591 100644
+--- a/nixos/src/dwl/dwl.c
++++ b/nixos/src/dwl/dwl.c
+@@ -351,6 +351,7 @@ static void urgent(struct wl_listener *listener, void *data);
+ static void view(const Arg *arg);
+ static void virtualkeyboard(struct wl_listener *listener, void *data);
+ static void virtualpointer(struct wl_listener *listener, void *data);
++static void warpcursor(const Client *c);
+ static Monitor *xytomon(double x, double y);
+ static void xytonode(double x, double y, struct wlr_surface **psurface,
+ 		Client **pc, LayerSurface **pl, double *nx, double *ny);
+@@ -519,6 +520,7 @@ arrange(Monitor *m)
+ 		m->lt[m->sellt]->arrange(m);
+ 	motionnotify(0, NULL, 0, 0, 0, 0);
+ 	checkidleinhibitor(NULL);
++    warpcursor(focustop(selmon));
+ }
+ 
+ void
+@@ -1347,6 +1349,9 @@ focusclient(Client *c, int lift)
+ 	if (locked)
+ 		return;
+ 
++	if (lift)
++		warpcursor(c);
++
+ 	/* Raise client in stacking order if requested */
+ 	if (c && lift)
+ 		wlr_scene_node_raise_to_top(&c->scene->node);
+@@ -2983,6 +2988,27 @@ virtualpointer(struct wl_listener *listener, void *data)
+ 		wlr_cursor_map_input_to_output(cursor, device, event->suggested_output);
+ }
+ 
++void
++warpcursor(const Client *c) {
++	if (cursor_mode != CurNormal) {
++		return;
++	}
++	if (!c && selmon) {
++		wlr_cursor_warp_closest(cursor,
++			  NULL,
++			  selmon->w.x + selmon->w.width / 2.0 ,
++			  selmon->w.y + selmon->w.height / 2.0);
++	}
++	else if ( c && (cursor->x < c->geom.x ||
++		cursor->x > c->geom.x + c->geom.width ||
++		cursor->y < c->geom.y ||
++		cursor->y > c->geom.y + c->geom.height))
++		wlr_cursor_warp_closest(cursor,
++			  NULL,
++			  c->geom.x + c->geom.width / 2.0,
++			  c->geom.y + c->geom.height / 2.0);
++}
++
+ Monitor *
+ xytomon(double x, double y)
+ {
+-- 
+2.47.2
+

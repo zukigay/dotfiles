@@ -1,0 +1,8 @@
+patches made with 
+`git format-patch -1 HEAD`
+use /nixos/src/dwl/dwl.c instead of /dwl.c
+this sed command fixes that.
+
+sed 's/\/nixos\/src\/dwl//g' patchfile.patch
+
+note warpcursor patch isn't made by me i just fixed the patch to work on v0.7
