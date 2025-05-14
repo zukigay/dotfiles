@@ -11,6 +11,7 @@ XCURSORTHEME=$cursorTheme
 export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
 export MOZ_ENABLE_WAYLAND=1 
 export XDG_CURRENT_DESKTOP=river
+# export ELECTRON_OZONE_PLATFORM_HINT=auto
 
 # this is optional and probably pointless
 export XDG_SESSION_TYPE=wayland
@@ -19,7 +20,10 @@ export XDG_SESSION_TYPE=wayland
 export LIBVA_DRIVER_NAME=nvidia
 export GBM_BACKEND=nvidia-drm
 export NVD_BACKEND=direct
-export ELECTRON_OZONE_PLATFORM_HINT=auto
+# somehow I get graphical bugs with electron apps when running with pure wayland but none when running them in xorg mode
+# weird.
+export ELECTRON_OZONE_PLATFORM_HINT=x11
+
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export XCURSORTHEME=$cursorTheme
 export XCURSOR_SIZE=$cursorSize
