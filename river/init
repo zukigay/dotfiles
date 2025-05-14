@@ -115,6 +115,8 @@ function keybinds()
 
     riverctl(" map normal Super S toggle-float")
     riverctl(" map normal Super F toggle-fullscreen")
+
+    riverctl(" map normal Super T spawn 'cd ~/src/todoLuist && ./todoLuist' ")
     
     -- power menu
     riverctl(" map normal Super P spawn fuzzelHyprPowerMenu")
@@ -279,6 +281,9 @@ end
 function init()
     os.execute(config_dir..'/gentoo_only/init &')
     os.execute(config_dir..'/guix_only/init &')
+    -- systemd moment
+    os.execute('systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP')
+    os.execute("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river")
     os.execute('dunst &')
     os.execute('waybar &')
     os.execute('hyprpaper &')
