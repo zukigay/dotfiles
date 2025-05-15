@@ -19,6 +19,7 @@ let
   cdwl = pkgs.dwl.overrideAttrs (oldAttrs: {
     name = "cdwl";
     src = ./src/dwl;
+    passthru.providedSessions = [ "dwl" ];
     patches = [ 
     ./src/dwl-p/warpcursor-nix.patch
     ./src/dwl-p/attachbottom.patch
@@ -155,7 +156,8 @@ in
     ]) ++ ([vesktopShare cdwl]);
   };
 
-
+  services.displayManager.ly.enable = true;
+  services.displayManager.sessionPackages = [ cdwl ];
 
   programs.firefox.enable = true;
   programs.river.enable = true;
