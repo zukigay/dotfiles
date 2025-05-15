@@ -6,6 +6,7 @@
  ./steam.nix
  ./wayenv.nix
  ./waynvidiaenv.nix
+ ./theme.nix
  ];
 }
 

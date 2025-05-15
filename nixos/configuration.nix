@@ -50,6 +50,7 @@ in
   mod-font.enable = true;
   mod-steam.enable = true;
   mod-wayenv.enable = true;
+  mod-theme.enable = true;
   mod-waynvidiaenv.enable = true;
 
   networking.hostName = "zuki"; # Define your hostname.
@@ -145,7 +146,6 @@ in
 
     bluetuith
     ncpamixer
-    adwaita-icon-theme
 
     wl-clipboard
     thunderbird
@@ -185,8 +185,6 @@ in
     kanshi
     jq
 
-    qt6ct
-    libsForQt5.qt5ct
   ];
 
   # List packages installed in system profile. To search, run:
