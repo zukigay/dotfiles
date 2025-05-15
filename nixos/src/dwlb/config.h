@@ -11,7 +11,7 @@ static bool hidden = false;
 // initially draw all bars at the bottom
 static bool bottom = false;
 // hide vacant tags
-static bool hide_vacant = false;
+static bool hide_vacant = true;
 // vertical pixel padding above and below text
 static uint32_t vertical_padding = 1;
 // allow in-line color commands in status text
@@ -21,7 +21,7 @@ static bool center_title = true;
 // use title space as status text element
 static bool custom_title = false;
 // title color use active colors
-static bool active_color_title = true;
+static bool active_color_title = false;
 // scale
 static uint32_t buffer_scale = 1;
 // font
