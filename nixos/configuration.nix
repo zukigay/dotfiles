@@ -36,6 +36,7 @@ let
     ./src/dwl-p/gaps-padsafe.patch
     ./src/dwl-p/xwayland-handle-minimize.patch
     ./src/dwl-p/dwlb.patch
+    ./src/dwl-p/autostart-0.7.patch
     # ./src/dwl-p/hot-reload-0.7.patch
     # ./src/dwl-p/sedfix.patch
     ];
