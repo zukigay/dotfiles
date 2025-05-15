@@ -24,8 +24,12 @@ static int log_level = WLR_ERROR;
 static const Rule rules[] = {
 	/* app_id             title       tags mask     isfloating   monitor */
 	/* examples: */
-	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1 }, /* Start on currently visible tags floating, not tiled */
-	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           -1 }, /* Start on ONLY tag "9" */
+	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1, 0 }, /* Start on currently visible tags floating, not tiled */
+	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           -1, 0 }, /* Start on ONLY tag "9" */
+    /* scratchpads */
+	{ "kittypad",         "scratchpad", 0,            1,           -1,     's' },
+	{ "kittypad-blue",    "scratchpad", 0,            1,           -1,     'b' },
+	{ "kittypad-nc",      "scratchpad", 0,            1,           -1,     'n' },
 };
 
 /* layout(s) */
@@ -122,11 +126,19 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 static const char *termcmd[] = { "kitty", NULL };
 static const char *menucmd[] = { "fuzzel", NULL };
 
+/* first arg is just to match the rule in rules */
+static const char *scratchpadcmd[] = { "s", "kitty", "--class", "kittypad", "--title", "scratchpad", NULL };
+static const char *scratchpad_blue_cmd[] = { "b", "kitty", "--class", "kittypad-blue", "--title", "scratchpad", "-e", "bluetuith", NULL };
+static const char *scratchpad_nc_cmd[] = { "n", "kitty", "--class", "kittypad-nc", "--title", "scratchpad", "-e", "ncpamixer", NULL };
+
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
 	{ MODKEY,                    XKB_KEY_d,          spawn,          {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
+	{ MODKEY,                    XKB_KEY_a,          togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                    XKB_KEY_b,          togglescratch,  {.v = scratchpad_blue_cmd } },
+	{ MODKEY,                    XKB_KEY_v,          togglescratch,  {.v = scratchpad_nc_cmd } },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_h,          setmfact,       {.f = -0.05f} },

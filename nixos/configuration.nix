@@ -22,10 +22,10 @@ let
     patches = [ 
     ./src/dwl-p/warpcursor-nix.patch
     ./src/dwl-p/attachbottom.patch
+    ./src/dwl-p/namedscratchpads.patch
     # ./src/dwl-p/hot-reload-0.7.patch
     # ./src/dwl-p/sedfix.patch
     ];
-    # src = /home/zuki/.config/nixos/src/dwl;
   });
 in
 {
