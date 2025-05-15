@@ -1,0 +1,23 @@
+From 2828071323feb59f2f7b9befaf2a37099a01623c Mon Sep 17 00:00:00 2001
+From: Zuki Air <zukirust@gmail.com>
+Date: Thu, 15 May 2025 16:06:03 +0200
+Subject: [PATCH] dwlb
+
+---
+ dwl.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dwl.desktop b/dwl.desktop
+index e1380f7..416692f 100644
+--- a/dwl.desktop
++++ b/dwl.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+ Name=dwl
+ Comment=dwm for Wayland
+-Exec=dwl
++Exec=dwl -s dwlb
+ Type=Application
+-- 
+2.47.2
+
