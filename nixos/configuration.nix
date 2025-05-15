@@ -159,6 +159,7 @@ in
   };
 
   services.displayManager.ly.enable = true;
+  services.displayManager.ly.settings = { animation="doom"; };
   services.displayManager.sessionPackages = [ cdwl ];
 
   programs.firefox.enable = true;
