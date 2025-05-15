@@ -28,9 +28,10 @@ static const char *const autostart[] = {
         // "wbg", "/path/to/your/image", NULL,
         "systemctl", "--user", "import-environment", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP", NULL,
         "dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP=dwl", NULL,
-        "dwl-startup", NULL,
+        // "dwl-startup", NULL,
         "hyprpaper", NULL,
         "kanshi", NULL,
+        "dwlb-status", NULL,
         // "sh", "-c", "systemctl", "--user", "import-environment", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP", NULL
         NULL /* terminate */
 };
