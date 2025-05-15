@@ -18,15 +18,15 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim", tag='0.1.8',
     -- "https://github.com/tpope/vim-fugitive",
     -- "https://github.com/preservim/nerdtree",
-    "https://github.com/Xuyuanp/nerdtree-git-plugin",
-    "https://github.com/ThePrimeagen/vim-be-good",
-    {
-      "CRAG666/betterTerm.nvim",
-      opts = {
-        position = "bot",
-        size = 15,
-      },
-    },
+    -- "https://github.com/Xuyuanp/nerdtree-git-plugin",
+    -- "https://github.com/ThePrimeagen/vim-be-good",
+    -- {
+    --   "CRAG666/betterTerm.nvim",
+    --   opts = {
+    --     position = "bot",
+    --     size = 15,
+    --   },
+    -- },
     {
     'numToStr/Comment.nvim',
     opts = {
@@ -67,19 +67,19 @@ require("lazy").setup({
       -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
       lazy = false,
     },
-    {
-  "NeogitOrg/neogit",
-  dependencies = {
-    "nvim-lua/plenary.nvim",         -- required
-    "sindrets/diffview.nvim",        -- optional - Diff integration
+    -- {
+  -- "NeogitOrg/neogit",
+  -- dependencies = {
+    -- "nvim-lua/plenary.nvim",         -- required
+    -- "sindrets/diffview.nvim",        -- optional - Diff integration
 
     -- Only one of these is needed.
-    "nvim-telescope/telescope.nvim", -- optional
-    "ibhagwan/fzf-lua",              -- optional
-    "echasnovski/mini.pick",         -- optional
-  },
-  config = true
-}
+    -- "nvim-telescope/telescope.nvim", -- optional
+    -- "ibhagwan/fzf-lua",              -- optional
+    -- "echasnovski/mini.pick",         -- optional
+  -- },
+  -- config = true
+-- }
 })
 
 local builtin = require('telescope.builtin')
@@ -101,9 +101,11 @@ vim.keymap.set('n', '<leader>a', function()
 -- note <leader>w goes though a folder
 vim.keymap.set('n', '<leader>q', '<cmd>Oil<CR>')
 
-local betterTerm = require('betterTerm')
+-- local betterTerm = require('betterTerm')
 -- toggle firts term
 -- vim.keymap.set({"n", "t"}, "<C-;>", betterTerm.open, { desc = "Open terminal"})
-vim.keymap.set({"n", "t"}, "<leader>t", betterTerm.open, { desc = "Open terminal"})
+-- vim.keymap.set({"n", "t"}, "<leader>t", betterTerm.open, { desc = "Open terminal"})
 
+
+vim.g.zig_fmt_autosave = 0
 
