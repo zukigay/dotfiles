@@ -23,7 +23,9 @@ let
     ./src/dwl-p/warpcursor-nix.patch
     ./src/dwl-p/attachbottom.patch
     ./src/dwl-p/namedscratchpads.patch
-    ./src/dwl-p/gaps.patch
+    # ./src/dwl-p/gaps.patch
+    # padsafe is a modified gaps patch to play nice with the namedscratchpads patch
+    ./src/dwl-p/gaps-padsafe.patch
     # ./src/dwl-p/hot-reload-0.7.patch
     # ./src/dwl-p/sedfix.patch
     ];
