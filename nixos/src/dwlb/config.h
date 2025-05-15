@@ -17,7 +17,7 @@ static uint32_t vertical_padding = 1;
 // allow in-line color commands in status text
 static bool status_commands = true;
 // center title text
-static bool center_title = false;
+static bool center_title = true;
 // use title space as status text element
 static bool custom_title = false;
 // title color use active colors
