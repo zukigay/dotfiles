@@ -4,6 +4,8 @@
  imports = [
  ./fonts.nix
  ./steam.nix
+ ./wayenv.nix
+ ./waynvidiaenv.nix
  ];
 }
 

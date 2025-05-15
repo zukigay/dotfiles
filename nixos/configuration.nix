@@ -44,8 +44,12 @@ in
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # modules
   mod-font.enable = true;
   mod-steam.enable = true;
+  mod-wayenv.enable = true;
+  mod-waynvidiaenv.enable = true;
 
   networking.hostName = "zuki"; # Define your hostname.
   # Pick only one of the below networking options.
