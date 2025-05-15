@@ -16,8 +16,10 @@ let
     patches = previousAttrs.patches ++ [ ./vesktop-obs-share.patch ];
   });
 
-  dwlb = pkgs.dwlb.overrideAttrs (oldAttrs: {
-    configH = ./src/dwlb/config.h
+  cdwlb = pkgs.dwlb.overrideAttrs (oldAttrs: {
+    # no fucking idea why configH isn't working
+    src = ./src/dwlb;
+    # configH = ./src/dwlb/config.hq;
   });
 
 
@@ -157,12 +159,11 @@ in
 
     wl-clipboard
     thunderbird
-    dwlb
 
     # vesktop
 
     # waybar
-    ]) ++ ([vesktopShare cdwl]);
+    ]) ++ ([vesktopShare cdwl cdwlb]);
   };
 
   services.displayManager.ly.enable = true;
