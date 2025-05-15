@@ -23,6 +23,7 @@ let
     ./src/dwl-p/warpcursor-nix.patch
     ./src/dwl-p/attachbottom.patch
     ./src/dwl-p/namedscratchpads.patch
+    ./src/dwl-p/gaps.patch
     # ./src/dwl-p/hot-reload-0.7.patch
     # ./src/dwl-p/sedfix.patch
     ];
