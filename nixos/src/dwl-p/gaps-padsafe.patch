@@ -52,7 +52,6 @@ index dc0437e..dc851df 100644
 +static void togglegaps(const Arg *arg);
  static void toggletag(const Arg *arg);
  static void toggleview(const Arg *arg);
- static void unlocksession(struct wl_listener *listener, void *data);
 @@ -949,6 +951,8 @@ createmon(struct wl_listener *listener, void *data)
  
  	wlr_output_state_init(&state);
