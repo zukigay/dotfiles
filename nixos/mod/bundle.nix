@@ -7,6 +7,7 @@
  ./wayenv.nix
  ./waynvidiaenv.nix
  ./theme.nix
+ ./xdgenv.nix
  ];
 }
 

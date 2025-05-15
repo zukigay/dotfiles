@@ -52,6 +52,7 @@ in
   mod-wayenv.enable = true;
   mod-theme.enable = true;
   mod-waynvidiaenv.enable = true;
+  mod-xdgenv.enable = true;
 
   networking.hostName = "zuki"; # Define your hostname.
   # Pick only one of the below networking options.
