@@ -157,6 +157,8 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_v,          togglescratch,  {.v = scratchpad_nc_cmd } },
 	{ MODKEY,                    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_k,          focusstack,     {.i = -1} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_J,          pushdown,       0 },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_K,          pushup,         0 },
 	{ MODKEY,                    XKB_KEY_h,          setmfact,       {.f = -0.05f} },
 	{ MODKEY,                    XKB_KEY_l,          setmfact,       {.f = +0.05f} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_H,          incnmaster,     {.i = +1} },

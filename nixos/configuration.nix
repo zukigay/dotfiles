@@ -37,6 +37,9 @@ let
     ./src/dwl-p/xwayland-handle-minimize.patch
     ./src/dwl-p/dwlb.patch
     ./src/dwl-p/autostart-0.7.patch
+    ./src/dwl-p/push-0.7.patch
+
+
     # ./src/dwl-p/hot-reload-0.7.patch
     # ./src/dwl-p/sedfix.patch
     ];
