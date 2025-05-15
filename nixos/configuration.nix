@@ -61,6 +61,7 @@ in
 
   # modules
   mod-font.enable = true;
+  mod-pathenv.enable = true;
   mod-steam.enable = true;
   mod-wayenv.enable = true;
   mod-theme.enable = true;

@@ -8,6 +8,7 @@
  ./waynvidiaenv.nix
  ./theme.nix
  ./xdgenv.nix
+ ./pathenv.nix
  ];
 }
 
