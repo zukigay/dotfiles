@@ -166,6 +166,7 @@ in
 
     wl-clipboard
     thunderbird
+    gammastep
 
     # vesktop
 
