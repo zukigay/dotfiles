@@ -32,12 +32,12 @@ static char *tags_names[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // set 16-bit colors for bar
 // use either pixman_color_t struct or HEX_COLOR macro for 8-bit colors
 static pixman_color_t active_fg_color = HEX_COLOR(0xeeeeeeff);
-static pixman_color_t active_bg_color = HEX_COLOR(0x005577ff);
+static pixman_color_t active_bg_color = HEX_COLOR(0xffc0cbff);
 static pixman_color_t occupied_fg_color = HEX_COLOR(0xeeeeeeff);
 static pixman_color_t occupied_bg_color = HEX_COLOR(0x00000000);
 static pixman_color_t inactive_fg_color = HEX_COLOR(0xeeeeeeff);
 static pixman_color_t inactive_bg_color = HEX_COLOR(0x00000000);
 static pixman_color_t urgent_fg_color = HEX_COLOR(0x222222ff);
-static pixman_color_t urgent_bg_color = HEX_COLOR(0xeeeeeeff);
+static pixman_color_t urgent_bg_color = HEX_COLOR(0x722F37ff);
 static pixman_color_t middle_bg_color = HEX_COLOR(0x00000000);
 static pixman_color_t middle_bg_color_selected = HEX_COLOR(0x00000000);
