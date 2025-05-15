@@ -38,6 +38,7 @@ let
     ./src/dwl-p/dwlb.patch
     ./src/dwl-p/autostart-0.7.patch
     ./src/dwl-p/push-0.7.patch
+    ./src/dwl-p/alwayscenter.patch
     ./src/dwl-p/cursorsize30.patch
 
 
