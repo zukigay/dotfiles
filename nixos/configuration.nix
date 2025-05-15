@@ -16,6 +16,11 @@ let
     patches = previousAttrs.patches ++ [ ./vesktop-obs-share.patch ];
   });
 
+  dwlb = pkgs.dwlb.overrideAttrs (oldAttrs: {
+    configH = ./src/dwlb/config.h
+  });
+
+
   cdwl = pkgs.dwl.overrideAttrs (oldAttrs: {
     name = "cdwl";
     src = ./src/dwl;
