@@ -1,0 +1,23 @@
+From a6bc609133e197dae492958a30d283f0eb516dbb Mon Sep 17 00:00:00 2001
+From: Zuki Air <zukirust@gmail.com>
+Date: Fri, 16 May 2025 22:00:26 +0100
+Subject: [PATCH] dwlb+wlrestart
+
+---
+ nixos/src/dwl/dwl.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dwl.desktop b/dwl.desktop
+index e1380f7..23855f8 100644
+--- a/dwl.desktop
++++ b/dwl.desktop
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+ Name=dwl
+ Comment=dwm for Wayland
+-Exec=dwl
++Exec=wl-restart --env dwl -s dwlb
+ Type=Application
+-- 
+2.47.2
+

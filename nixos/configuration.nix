@@ -50,12 +50,14 @@ let
     # padsafe is a modified gaps patch to play nice with the namedscratchpads patch
     ./src/dwl-p/gaps-padsafe.patch
     ./src/dwl-p/xwayland-handle-minimize.patch
-    ./src/dwl-p/dwlb.patch
     ./src/dwl-p/autostart-0.7.patch
     ./src/dwl-p/push-0.7.patch
     ./src/dwl-p/alwayscenter.patch
     ./src/dwl-p/cursorsize30.patch
     ./src/dwl-p/chainkeys-noconfig.patch
+    ./src/dwl-p/wayland-socket-handover.patch
+    # ./src/dwl-p/dwlb.patch
+    ./src/dwl-p/dwlb+wlrestart.patch
 
 
     # ./src/dwl-p/hot-reload-0.7.patch
@@ -99,6 +101,7 @@ in
   environment.sessionVariables = {
     NIXOS_CONFIG="/home/zuki/.config/nixos/configuration.nix";
     FLAKE="/home/zuki/.config/nixos";
+    QT_WAYLAND_RECONNECT="1";
   };
 
   # Set your time zone.
@@ -231,6 +234,7 @@ in
     kakoune
     wget
     git
+    wl-restart
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
