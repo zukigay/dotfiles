@@ -55,6 +55,7 @@ let
     ./src/dwl-p/push-0.7.patch
     ./src/dwl-p/alwayscenter.patch
     ./src/dwl-p/cursorsize30.patch
+    ./src/dwl-p/chainkeys-noconfig.patch
 
 
     # ./src/dwl-p/hot-reload-0.7.patch
