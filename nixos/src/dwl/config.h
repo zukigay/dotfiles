@@ -143,6 +143,8 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 static const char *termcmd[] = { "kitty", NULL };
 static const char *menucmd[] = { "fuzzel", NULL };
 
+static const char *explodecmd[] = { "pkill", "-SIGKILL", "-x","dwl", NULL };
+
 /* first arg is just to match the rule in rules */
 static const char *scratchpadcmd[] = { "s", "kitty", "--class", "kittypad", "--title", "scratchpad", NULL };
 static const char *scratchpad_blue_cmd[] = { "b", "kitty", "--class", "kittypad-blue", "--title", "scratchpad", "-e", "bluetuith", NULL };
@@ -156,6 +158,7 @@ static const Key keys[] = {
 	{ MODKEY,         XKB_KEY_space,    XKB_KEY_a,          togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,         XKB_KEY_space,    XKB_KEY_b,          togglescratch,  {.v = scratchpad_blue_cmd } },
 	{ MODKEY,         XKB_KEY_space,    XKB_KEY_v,          togglescratch,  {.v = scratchpad_nc_cmd } },
+	{ MODKEY,         XKB_KEY_space,    XKB_KEY_r,          spawn,          {.v = explodecmd } },
 	{ MODKEY,                    -1,    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    -1,    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, -1,    XKB_KEY_J,          pushdown,       0 },
