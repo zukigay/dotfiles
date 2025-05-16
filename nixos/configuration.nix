@@ -97,6 +97,7 @@ in
   # environment.variables = {
   environment.sessionVariables = {
     NIXOS_CONFIG="/home/zuki/.config/nixos/configuration.nix";
+    FLAKE="/home/zuki/.config/nixos";
   };
 
   # Set your time zone.

@@ -35,7 +35,7 @@ alias disown-help="echo command '& disown'"
 alias sudo='sudo '
 
 # nix
-alias nr="sudo nixos-rebuild switch"
+alias nr="sudo nixos-rebuild --flake $FLAKE"
 alias ns="nix-search"
 alias ne="v $NIXOS_CONFIG"
 alias dwld="sudo nixos-rebuild --fast test && dwl"
