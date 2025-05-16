@@ -36,6 +36,9 @@ alias sudo='sudo '
 
 # nix
 alias nr="sudo nixos-rebuild --flake $FLAKE"
+alias nrs="nr switch"
+alias nrb="nr boot"
+alias nrt="nr test"
 alias ns="nix-search"
 alias ne="v $NIXOS_CONFIG"
 alias dwld="sudo nixos-rebuild --fast test && dwl"
