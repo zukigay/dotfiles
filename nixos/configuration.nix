@@ -21,11 +21,21 @@ let
   };
 
 
-  # cdwlb = pkgs.dwlb.overrideAttrs (oldAttrs: {
-    # no fucking idea why configH isn't working
-    # src = ./src/dwlb;
-    # configH = ./src/dwlb/config.hq;
-  # });
+  cdwlb-tray = cdwlb.overrideAttrs (oldAttrs: {
+    src = pkgs.fetchFromGitHub {
+        owner = "vetu104";
+        repo = "dwlb";
+        rev = "f19f1105ed8220e81fa89884fcba1a841175242f";
+        hash = "sha256-sWXTxLHk555PhC9qBTPE84/PoEFe8B1HHwXtbkCz9Mk=";
+    };
+    # src = ./src/dwlb-sys;
+    nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [
+        pkgs.gtk4-layer-shell
+        pkgs.gtk4
+    ];
+    # patches = oldAttrs.patches ++ [ ./src/dwlb-systray-nixos.patch ];
+    # patches = [ ./src/dwlb-systray-nixos.patch ];
+  });
 
 
   cdwl = pkgs.dwl.overrideAttrs (oldAttrs: {
