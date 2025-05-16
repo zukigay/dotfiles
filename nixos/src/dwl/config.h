@@ -153,9 +153,9 @@ static const Key keys[] = {
 	/* modifier                  chain  key                 function        argument */
 	{ MODKEY,                    -1,    XKB_KEY_d,          spawn,          {.v = menucmd} },
 	{ MODKEY,                    -1,    XKB_KEY_Return,     spawn,          {.v = termcmd} },
-	{ MODKEY,                    -1,    XKB_KEY_a,          togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,                    -1,    XKB_KEY_b,          togglescratch,  {.v = scratchpad_blue_cmd } },
-	{ MODKEY,                    -1,    XKB_KEY_v,          togglescratch,  {.v = scratchpad_nc_cmd } },
+	{ MODKEY,         XKB_KEY_space,    XKB_KEY_a,          togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,         XKB_KEY_space,    XKB_KEY_b,          togglescratch,  {.v = scratchpad_blue_cmd } },
+	{ MODKEY,         XKB_KEY_space,    XKB_KEY_v,          togglescratch,  {.v = scratchpad_nc_cmd } },
 	{ MODKEY,                    -1,    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    -1,    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, -1,    XKB_KEY_J,          pushdown,       0 },
