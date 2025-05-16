@@ -19,7 +19,7 @@ static bool status_commands = true;
 // center title text
 static bool center_title = true;
 // use title space as status text element
-static bool custom_title = false;
+static bool custom_title = true;
 // title color use active colors
 static bool active_color_title = false;
 // scale
