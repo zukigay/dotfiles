@@ -178,6 +178,7 @@ in
 
     bluetuith
     ncpamixer
+    btop
 
     wl-clipboard
     thunderbird
