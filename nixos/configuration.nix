@@ -200,6 +200,7 @@ in
   services.displayManager.sessionPackages = [ cdwl ];
 
   programs.firefox.enable = true;
+  programs.hyprlock.enable = true;
   programs.river.enable = true;
   programs.river.extraPackages = with pkgs; [ 
     kitty 
