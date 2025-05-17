@@ -4,7 +4,7 @@
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = DP-3
+    monitor = DP-5
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
