@@ -32,6 +32,7 @@ static const char *const autostart[] = {
         "hyprpaper", NULL,
         "kanshi", NULL,
         "dwlb-status", NULL,
+        "swayidle", NULL,
         // "sh", "-c", "systemctl", "--user", "import-environment", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP", NULL
         NULL /* terminate */
 };
