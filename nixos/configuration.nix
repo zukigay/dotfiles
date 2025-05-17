@@ -61,6 +61,7 @@ let
     ./src/dwl-p/wayland-socket-handover.patch
     # ./src/dwl-p/dwlb.patch
     ./src/dwl-p/dwlb+wlrestart.patch
+    ./src/dwl-p/restore-monitor.patch
 
 
     # ./src/dwl-p/hot-reload-0.7.patch
