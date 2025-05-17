@@ -226,6 +226,9 @@ in
     kanshi
     jq
 
+    # lock program of choice
+    swaylock
+    swayidle
   ];
 
   # List packages installed in system profile. To search, run:
