@@ -19,6 +19,9 @@ let
   cdwlb = pkgs.dwlb.override {
     configH = ./src/dwlb/config.h;
   };
+  btop = pkgs.btop.override {
+    cudaSupport = true;
+  };
 
 
   cdwlb-tray = cdwlb.overrideAttrs (oldAttrs: {
