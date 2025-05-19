@@ -177,6 +177,7 @@ in
     packages = (with pkgs; [
     arc-theme
     kitty
+    imv
     foot
     tmux
     mpv
