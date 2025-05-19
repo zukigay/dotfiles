@@ -29,6 +29,7 @@ static const char *const autostart[] = {
         "systemctl", "--user", "import-environment", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP", NULL,
         "dbus-update-activation-environment", "--systemd", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP=dwl", NULL,
         // "dwl-startup", NULL,
+        "playerctld", NULL,
         "hyprpaper", NULL,
         "kanshi", NULL,
         "dwlb-status", NULL,
@@ -153,6 +154,21 @@ static const char *rebootcmd[] = { "/bin/sh", "-c", "reboot", "||", "loginctl", 
 static const char *rebootfirmwarecmd[] = { "/bin/sh", "-c", "systemctl", "reboot", "--firmware" "||", "loginctl", "reboot", "--firmware", NULL };
 static const char *suspendcmd[] = { "/bin/sh", "-c", "suspend", "||", "loginctl", "suspend", NULL };
 
+/* media keys */
+/* wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+ * wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+ */
+static const char *volup[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "2.5%+", NULL};
+static const char *voldown[] = { "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "2.5%-", NULL};
+static const char *volmute[] = { "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle", NULL};
+
+/* playerctl */
+static const char *pctlPlayPause[] = { "playerctl", "play-pause", NULL };
+static const char *pctlPlay[] = { "playerctl", "play", NULL };
+static const char *pctlPause[] = { "playerctl", "pause", NULL };
+static const char *pctlPrevious[] = { "playerctl", "previous", NULL };
+static const char *pctlNext[] = { "playerctl", "next", NULL };
+
 /* first arg is just to match the rule in rules */
 static const char *scratchpadcmd[] = { "s", "kitty", "--class", "kittypad", "--title", "scratchpad", NULL };
 static const char *scratchpad_blue_cmd[] = { "b", "kitty", "--class", "kittypad-blue", "--title", "scratchpad", "-e", "bluetuith", NULL };
@@ -174,6 +190,19 @@ static const Key keys[] = {
 	{ MODKEY,             XKB_KEY_p,    XKB_KEY_r,          spawn,          {.v = rebootcmd } },
 	{ MODKEY,             XKB_KEY_p,    XKB_KEY_f,          spawn,          {.v = rebootfirmwarecmd } },
 	{ MODKEY,             XKB_KEY_p,    XKB_KEY_s,          spawn,          {.v = suspendcmd } },
+
+    /* media keys */
+	{ 0,                    -1,    XKB_KEY_XF86AudioRaiseVolume,     spawn,          {.v = volup} },
+	{ 0,                    -1,    XKB_KEY_XF86AudioLowerVolume,     spawn,          {.v = voldown} },
+	{ 0,                    -1,    XKB_KEY_XF86AudioMute,     spawn,          {.v = volmute} },
+    /* playerctl keys */
+	{ 0,                    -1,    XKB_KEY_XF86AudioMedia,     spawn,          {.v = pctlPlayPause} },
+	{ MODKEY,               -1,    XKB_KEY_XF86AudioMute,     spawn,          {.v = pctlPlayPause} },
+	{ 0,                    -1,    XKB_KEY_XF86AudioPlay,     spawn,          {.v = pctlPlay} },
+	{ 0,                    -1,    XKB_KEY_XF86AudioPause,     spawn,          {.v = pctlPause} },
+	{ 0,                    -1,    XKB_KEY_XF86AudioNext,     spawn,          {.v = pctlNext} },
+	{ 0,                    -1,    XKB_KEY_XF86AudioPrev,     spawn,          {.v = pctlPrevious} },
+
 
     /* back to normal binds */
 	{ MODKEY,                    -1,    XKB_KEY_j,          focusstack,     {.i = +1} },
