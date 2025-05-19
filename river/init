@@ -317,7 +317,8 @@ function init()
 end
 function riverctl(args)
     -- print(args)
-    os.execute("riverctl "..args)
+    os.execute("riverctl "..args .. "&")
+    -- os.execute("riverctl "..args)
 end
 main()
 -- in lua 5.3 they made os.execute return 3 args rather then just the exit code which is now the third returned argument.
