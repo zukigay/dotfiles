@@ -302,6 +302,7 @@ function init()
     os.execute('bluetoothctl power on &') -- guix won't turn bluetooth on automaticly so this is a dumb hack to get around that.
     os.execute('kanshi &')
     os.execute('spirefix')
+    os.execute('swayidle')
 
     -- os.execute('shepherd')
     -- os.execute('rm -r /tmp/riverPad') -- riverpad has been replaced for me by rivers own scratch pad system and some fancy binds
