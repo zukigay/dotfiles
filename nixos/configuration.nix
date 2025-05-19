@@ -209,6 +209,9 @@ in
 
     wev
 
+    itch
+
+    syncthing
 
     # vesktop
 
