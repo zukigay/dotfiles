@@ -176,6 +176,8 @@ in
     packages = (with pkgs; [
     arc-theme
     kitty
+    foot
+    tmux
     mpv
     # fuzzel
     keepassxc
