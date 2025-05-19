@@ -193,6 +193,9 @@ in
     thunderbird
     gammastep
 
+    
+    playerctl # used in river and dwl for media control
+
     # vesktop
 
     # waybar
