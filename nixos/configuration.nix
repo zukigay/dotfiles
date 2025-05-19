@@ -58,9 +58,9 @@ let
     ./src/dwl-p/alwayscenter.patch
     ./src/dwl-p/cursorsize30.patch
     ./src/dwl-p/chainkeys-noconfig.patch
-    ./src/dwl-p/wayland-socket-handover.patch
     # ./src/dwl-p/dwlb.patch
     ./src/dwl-p/dwlb+wlrestart.patch
+    ./src/dwl-p/wayland-socket-handover.patch
     ./src/dwl-p/restore-monitor.patch
 
 
