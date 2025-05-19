@@ -176,9 +176,9 @@ static const char *scratchpadcmd[] = { "s", "kitty", "--class", "kittypad", "--t
 static const char *scratchpad_blue_cmd[] = { "b", "kitty", "--class", "kittypad-blue", "--title", "scratchpad", "-e", "bluetuith", NULL };
 static const char *scratchpad_nc_cmd[] = { "n", "kitty", "--class", "kittypad-nc", "--title", "scratchpad", "-e", "ncpamixer", NULL };
 */ /* disable kitty scratchpads */
-static const char *scratchpadcmd[] = { "s", "footclient", "--class", "kittypad", "--app-id", "scratchpad", NULL };
-static const char *scratchpad_blue_cmd[] = { "b", "footclient", "--class", "kittypad-blue", "--app-id", "scratchpad", "-e", "bluetuith", NULL };
-static const char *scratchpad_nc_cmd[] = { "n", "footclient", "--class", "kittypad-nc", "--app-id", "scratchpad", "-e", "ncpamixer", NULL };
+static const char *scratchpadcmd[] = { "s", "footclient", "--app-id", "kittypad", "--title", "scratchpad", NULL };
+static const char *scratchpad_blue_cmd[] = { "b", "footclient", "--app-id", "kittypad-blue", "--title", "scratchpad", "-e", "bluetuith", NULL };
+static const char *scratchpad_nc_cmd[] = { "n", "footclient", "--app-id", "kittypad-nc", "--title", "scratchpad", "-e", "ncpamixer", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
