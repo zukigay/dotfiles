@@ -12,6 +12,7 @@
         XDG_BIN_HOME    = "$HOME/.local/bin";
         PATH = [ 
           "${XDG_BIN_HOME}"
+          "$HOME/.scripts"
         ];
         RENPY_PATH_TO_SAVES="${XDG_DATA_HOME}/renpy";
         CARGO_HOME="${XDG_DATA_HOME}/cargo";
