@@ -181,6 +181,7 @@ in
     foot
     tmux
     mpv
+    xorg.xprop
     # fuzzel
     keepassxc
     ranger
