@@ -89,7 +89,7 @@ end
 function keybinds()
 
     -- the bread a butter of this whole operation
-    riverctl(" map normal Super Return spawn kitty")
+    riverctl(" map normal Super Return spawn 'footclient tmux'")
     riverctl(" map normal Super D spawn fuzzel")
     riverctl(" map normal Super J focus-view next")
     riverctl(" map normal Super K focus-view previous")
@@ -289,6 +289,7 @@ end
 function init()
     os.execute(config_dir..'/gentoo_only/init &')
     os.execute(config_dir..'/guix_only/init &')
+    os.execute("foot --server &")
     -- systemd moment
     os.execute('systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP')
     os.execute("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river")
