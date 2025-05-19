@@ -300,6 +300,8 @@ function init()
     os.execute('hyprpaper &')
     os.execute('/usr/libexec/hyprpolkitagent &')
     os.execute('bluetoothctl power on &') -- guix won't turn bluetooth on automaticly so this is a dumb hack to get around that.
+    os.execute('kanshi &')
+
     -- os.execute('shepherd')
     -- os.execute('rm -r /tmp/riverPad') -- riverpad has been replaced for me by rivers own scratch pad system and some fancy binds
     
@@ -308,16 +310,6 @@ function init()
     -- riverctl("spawn 'guix shell --network --container --emulate-fhs which gcc-toolchain bash coreutils curl grep git gtk+ pango atk glib nss-certs luajit pkg-config --share=$HOME/Documents/rustHome=$HOME --share=/tmp --preserve='^WAYLAND_DISPLAY$' --preserve='^XDG_RUNTIME_DIR$' --share=$XDG_CONFIG_HOME/river-luatile/=$HOME/.config/river-luatile/ --share=$XDG_RUNTIME_DIR/=$XDG_RUNTIME_DIR -- ./river-luatile' ")
     -- riverctl(" spawn river-luatile")
     -- riverctl(" default-layout luatile")
-end
-function setDisplay()
-    os.execute('kanshi &')
-    -- os.execute('wlr-randr --output DP-5 --mode 2560x1440@164.938004 --pos 0,0')
-    -- os.execute('wlr-randr --output HDMI-A-4 --pos -1920,200')
-
-    -- this uses xrandr to set a output as primary since even though its wayland
-    -- games still use the xorg primary setting to determine the max resolution
-    -- note this is now set via a script in kanshi
-    -- os.execute('xrandr --output DP-5 --primary')
 end
 function riverctl(args)
     -- print(args)
