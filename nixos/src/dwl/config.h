@@ -163,6 +163,7 @@ static const Key keys[] = {
 	/* modifier                  chain  key                 function        argument */
 	{ MODKEY,                    -1,    XKB_KEY_d,          spawn,          {.v = menucmd} },
 	{ MODKEY,                    -1,    XKB_KEY_Return,     spawn,          {.v = termcmd} },
+    /* scratchpads&scripts */
 	{ MODKEY,         XKB_KEY_space,    XKB_KEY_a,          togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,         XKB_KEY_space,    XKB_KEY_b,          togglescratch,  {.v = scratchpad_blue_cmd } },
 	{ MODKEY,         XKB_KEY_space,    XKB_KEY_v,          togglescratch,  {.v = scratchpad_nc_cmd } },
@@ -174,6 +175,7 @@ static const Key keys[] = {
 	{ MODKEY,             XKB_KEY_p,    XKB_KEY_f,          spawn,          {.v = rebootfirmwarecmd } },
 	{ MODKEY,             XKB_KEY_p,    XKB_KEY_s,          spawn,          {.v = suspendcmd } },
 
+    /* back to normal binds */
 	{ MODKEY,                    -1,    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    -1,    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, -1,    XKB_KEY_J,          pushdown,       0 },
