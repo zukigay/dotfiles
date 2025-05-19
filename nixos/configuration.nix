@@ -240,6 +240,8 @@ in
     slurp 
     grim 
 
+    lswt
+
     # xrandr for setting a monitor as --primary
     # so that steam games won't cap the res
     # at the lowist active monitor.
