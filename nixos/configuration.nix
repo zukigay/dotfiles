@@ -196,6 +196,9 @@ in
     
     playerctl # used in river and dwl for media control
 
+    wev
+
+
     # vesktop
 
     # waybar
