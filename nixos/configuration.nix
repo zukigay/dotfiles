@@ -209,7 +209,7 @@ in
 
     wev
 
-    itch
+    # itch
 
     syncthing
 
