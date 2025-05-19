@@ -33,7 +33,7 @@ vim.cmd("noremap <Up> <Nop>")
 vim.cmd("noremap <Down> <Nop>")
 vim.cmd("noremap <Left> <Nop>")
 vim.cmd("noremap <Right> <Nop>")
-
+vim.cmd('autocmd VimLeave * set guicursor= | call chansend(v:stderr, "\x1b[ q")')
 
 -- add syntax highlighting to pico8 games
 vim.cmd("au BufRead,BufNewFile *.p8 set filetype=lua")
