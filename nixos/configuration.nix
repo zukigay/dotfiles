@@ -193,6 +193,8 @@ in
     thunderbird
     gammastep
 
+    obs-studio
+    obs-studio-plugins.obs-vkcapture
     
     playerctl # used in river and dwl for media control
 
