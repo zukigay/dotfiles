@@ -34,6 +34,7 @@ static const char *const autostart[] = {
         "kanshi", NULL,
         "dwlb-status", NULL,
         "swayidle", NULL,
+        "foot", "--server", NULL,
         // "sh", "-c", "systemctl", "--user", "import-environment", "WAYLAND_DISPLAY", "XDG_CURRENT_DESKTOP", NULL
         NULL /* terminate */
 };
@@ -142,7 +143,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[] = { "kitty", NULL };
+static const char *termcmd[] = { "footclient", "tmux", NULL };
 static const char *menucmd[] = { "fuzzel", NULL };
 
 static const char *lockcmd[] = { "swaylock", "-i", "~/.config/wallpaper", NULL };
@@ -152,7 +153,7 @@ static const char *explodecmd[] = { "pkill", "-SIGKILL", "-x","dwl", NULL };
 static const char *poweroffcmd[] = { "/bin/sh", "-c", "poweroff", "||", "loginctl", "poweroff", NULL };
 static const char *rebootcmd[] = { "/bin/sh", "-c", "reboot", "||", "loginctl", "reboot", NULL };
 static const char *rebootfirmwarecmd[] = { "/bin/sh", "-c", "systemctl", "reboot", "--firmware" "||", "loginctl", "reboot", "--firmware", NULL };
-static const char *suspendcmd[] = { "/bin/sh", "-c", "suspend", "||", "loginctl", "suspend", NULL };
+static const char *suspendcmd[] = { "/bin/sh", "-c", "systemctl suspend", "||", "loginctl", "suspend", NULL };
 
 /* media keys */
 /* wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
@@ -170,9 +171,14 @@ static const char *pctlPrevious[] = { "playerctl", "previous", NULL };
 static const char *pctlNext[] = { "playerctl", "next", NULL };
 
 /* first arg is just to match the rule in rules */
+/*
 static const char *scratchpadcmd[] = { "s", "kitty", "--class", "kittypad", "--title", "scratchpad", NULL };
 static const char *scratchpad_blue_cmd[] = { "b", "kitty", "--class", "kittypad-blue", "--title", "scratchpad", "-e", "bluetuith", NULL };
 static const char *scratchpad_nc_cmd[] = { "n", "kitty", "--class", "kittypad-nc", "--title", "scratchpad", "-e", "ncpamixer", NULL };
+*/ /* disable kitty scratchpads */
+static const char *scratchpadcmd[] = { "s", "footclient", "--class", "kittypad", "--app-id", "scratchpad", NULL };
+static const char *scratchpad_blue_cmd[] = { "b", "footclient", "--class", "kittypad-blue", "--app-id", "scratchpad", "-e", "bluetuith", NULL };
+static const char *scratchpad_nc_cmd[] = { "n", "footclient", "--class", "kittypad-nc", "--app-id", "scratchpad", "-e", "ncpamixer", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
