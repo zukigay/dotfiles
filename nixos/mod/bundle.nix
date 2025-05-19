@@ -9,6 +9,7 @@
  ./theme.nix
  ./xdgenv.nix
  ./pathenv.nix
+ ./scripts.nix
  ];
 }
 

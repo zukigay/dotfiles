@@ -91,6 +91,7 @@ in
   mod-theme.enable = true;
   mod-waynvidiaenv.enable = true;
   mod-xdgenv.enable = true;
+  mod-scripts.enable = true;
 
   networking.hostName = "zuki"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -181,7 +182,6 @@ in
     foot
     tmux
     mpv
-    xorg.xprop
     # fuzzel
     keepassxc
     ranger
@@ -241,7 +241,6 @@ in
     # to set monitors up
     wlr-randr
     kanshi
-    jq
 
     # lock program of choice
     swaylock
