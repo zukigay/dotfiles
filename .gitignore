@@ -1,6 +1,7 @@
 /*
 !swayidle/
 !nixos/
+!tmux/
 nixos/result
 !guix/
 !guix_only/
