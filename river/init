@@ -36,6 +36,8 @@ function main()
     riverctl("rule-add -app-id 'org.gnome.Calculator' float")
     riverctl("rule-add -app-id 'xdg-desktop-portal-gtk' float")
     riverctl("rule-add -app-id 'Zenity' float")
+    riverctl('rule-add -app-id somnaBuster float')
+    riverctl('rule-add -app-id somnaBuster dimensions 2560 1440')
     -- require all apps to use server side decorations')
     riverctl('rule-add ssd')
     -- except windowkill
