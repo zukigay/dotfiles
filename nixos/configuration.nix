@@ -192,6 +192,7 @@ in
     bluetuith
     ncpamixer
     btop
+    nix-search
 
     wl-clipboard
     thunderbird
