@@ -187,7 +187,12 @@ in
     mpv
     # fuzzel
     keepassxc
+
     ranger
+    # for ranger
+    atool
+    unzip
+
     lazygit
     fastfetch
     keepassxc
