@@ -13,6 +13,8 @@
     };
     programs.steam.extraPackages = with pkgs; [
     adwaita-icon-theme
+    wine
+    wine64
     ];
  };
 
