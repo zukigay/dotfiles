@@ -101,6 +101,10 @@ button:hover {
 #mode.normal {
     opacity: 0;
 }
+#idle_inhibitor {
+    padding-right: 8px;
+}
+
 
 box.horizontal.modules-right {
     padding-right: 0px;
