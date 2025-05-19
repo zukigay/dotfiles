@@ -169,10 +169,13 @@ in
   # services.libinput.enable = true;
   services.flatpak.enable = true;
 
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zuki = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd"]; # Enable ‘sudo’ for the user.
     # groups my gentoo instal user is in
     # lp wheel cron audio video libvirt users pipewire zuki
     packages = (with pkgs; [
