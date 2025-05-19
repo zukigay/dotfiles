@@ -148,6 +148,11 @@ static const char *lockcmd[] = { "swaylock", "-i", "~/.config/wallpaper", NULL }
 
 static const char *explodecmd[] = { "pkill", "-SIGKILL", "-x","dwl", NULL };
 
+static const char *poweroffcmd[] = { "/bin/sh", "-c", "poweroff", "||", "loginctl", "poweroff", NULL };
+static const char *rebootcmd[] = { "/bin/sh", "-c", "reboot", "||", "loginctl", "reboot", NULL };
+static const char *rebootfirmwarecmd[] = { "/bin/sh", "-c", "systemctl", "reboot", "--firmware" "||", "loginctl", "reboot", "--firmware", NULL };
+static const char *suspendcmd[] = { "/bin/sh", "-c", "suspend", "||", "loginctl", "suspend", NULL };
+
 /* first arg is just to match the rule in rules */
 static const char *scratchpadcmd[] = { "s", "kitty", "--class", "kittypad", "--title", "scratchpad", NULL };
 static const char *scratchpad_blue_cmd[] = { "b", "kitty", "--class", "kittypad-blue", "--title", "scratchpad", "-e", "bluetuith", NULL };
@@ -163,6 +168,12 @@ static const Key keys[] = {
 	{ MODKEY,         XKB_KEY_space,    XKB_KEY_v,          togglescratch,  {.v = scratchpad_nc_cmd } },
 	{ MODKEY,         XKB_KEY_space,    XKB_KEY_r,          spawn,          {.v = explodecmd } },
 	{ MODKEY,         XKB_KEY_space,    XKB_KEY_l,          spawn,          {.v = lockcmd } },
+    /* powermenu */
+	{ MODKEY,             XKB_KEY_p,    XKB_KEY_p,          spawn,          {.v = poweroffcmd } },
+	{ MODKEY,             XKB_KEY_p,    XKB_KEY_r,          spawn,          {.v = rebootcmd } },
+	{ MODKEY,             XKB_KEY_p,    XKB_KEY_f,          spawn,          {.v = rebootfirmwarecmd } },
+	{ MODKEY,             XKB_KEY_p,    XKB_KEY_s,          spawn,          {.v = suspendcmd } },
+
 	{ MODKEY,                    -1,    XKB_KEY_j,          focusstack,     {.i = +1} },
 	{ MODKEY,                    -1,    XKB_KEY_k,          focusstack,     {.i = -1} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, -1,    XKB_KEY_J,          pushdown,       0 },
