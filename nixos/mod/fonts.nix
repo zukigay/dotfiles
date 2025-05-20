@@ -11,10 +11,10 @@
     noto-fonts-cjk-sans
     noto-fonts-emoji
     font-awesome
-    # nerd-fonts.noto
-    # nerd-fonts.hack
+    nerd-fonts.noto
+    nerd-fonts.hack
 
-    nerdfonts
+    # nerdfonts
   ];
   
   fonts = {
