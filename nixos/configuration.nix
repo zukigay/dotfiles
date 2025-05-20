@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, unstable, qtileflake, ... }:
+{ config, lib, pkgs, unstable, ... }:
 let
   # helloBar = pkgs.hello.overrideAttrs (finalAttrs: previousAttrs: {
   #   pname = previousAttrs.pname + "-bar";
@@ -15,6 +15,70 @@ let
   vesktopShare = pkgs.vesktop.overrideAttrs (finalAttrs: previousAttrs: {
     patches = previousAttrs.patches ++ [ ./vesktop-obs-share.patch ];
   });
+  wlroots_0_19_git = pkgs.wlroots_0_18.overrideAttrs (finalAttrs: previousAttrs: {
+    version = "0.19";
+    # pname = "wlroots";
+    src = pkgs.fetchFromGitLab {
+        domain = "gitlab.freedesktop.org";
+        owner = "wlroots";
+        repo = "wlroots";
+        # rev = "0.19";
+        rev = finalAttrs.version;
+        hash = "sha256-I8z50yA/ukvXEC5TksG84+GrQpfC4drBJDRGw0R8RLk=";
+    };
+    nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [
+    # nativeBuildInputs = [
+        # pkgs.wayland
+  #       # unstable.wayland-protocols
+  #       # unstable.wayland-utils
+    ];
+
+  });
+  cwcwm = pkgs.stdenv.mkDerivation (finalAttrs: with pkgs; {
+      pname = "cwcwm";
+      version = "0.1";
+      passthru.providedSessions = [ "cwc" ];
+    
+      src = fetchFromGitHub {
+        owner = "Cudiph";
+        repo = "cwcwm";
+        rev = "eb0eb25ebefd76ee8275286a675ccd91f73219d3";
+        hash = "sha256-+G82XlyZluGk60mTkQQ48qQZ1dC1MDw4W3M2kTH6qeA=";
+      };
+      patches = [ ./src/cwcwm-drm-fourcc-include.patch ];
+      # src = ./src/cwcwm;
+      # buildInputs = [
+      #   meson ninja pkg-config wayland wayland-scanner git pkg-config hyprcursor cairo
+      #   libxkbcommon libinput xxHash luajit python3
+      #   libdrm xorg.libX11 xorg.xcbutilwm libevdev libinput
+      #   cmake
+      #    wayland-protocols
+      #    wlroots_0_19_git
+      # ];
+      nativeBuildInputs =  [
+        meson ninja pkg-config wayland wayland-scanner git pkg-config hyprcursor cairo
+        libxkbcommon libinput xxHash luajit python3
+        libdrm xorg.libX11 xorg.xcbutilwm libevdev libinput
+        cmake
+         wayland-protocols
+         wlroots_0_19_git
+            ];
+    installPhase = ''
+    mkdir -p $out/bin
+    mkdir -p $out/lib
+    mkdir -p $out/usr/share/wayland-sessions
+    mkdir -p $out/usr/
+    mkdir -p $out/usr/share/cwc
+    # ls --recursive ./../
+    mv ./../lib $out/usr/share/cwc
+    mv ./../defconfig $out/usr/share/cwc
+    mv ./../cwc.desktop $out/usr/share/wayland-sessions
+    mv ./../include $out/usr/include/
+    mv ./src/cwc $out/bin
+    mv ./../build/cwctl/cwctl $out/bin
+    # mv ./src/include/cwc $out/usr/include/
+    '';
+    });
 
   cdwlb = pkgs.dwlb.override {
     configH = ./src/dwlb/config.h;
@@ -25,6 +89,21 @@ let
   mangohud = pkgs.mangohud.override {
     gamescopeSupport = true;
   };
+  # cwcwm = import ./cpkgs/cwcwm.nix;
+
+
+  # qtile-unwrapped = pkgs.qtile-unwrapped.overrideAttrs (oldAttrs: {
+  #   nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [
+        # pkgs.wayland
+        # pkgs.wayland-scanner
+    # ];
+  #   src = pkgs.fetchFromGitHub {
+  #       owner = "jwijenbergh";
+  #       repo = "qtile";
+  #       rev = "6fbe6c58af5ceb2bc2287ce209bc48b531ba38af";
+  #       hash = "sha256-CVDsTqlRebNXCZWKSbLRUL8YJLg81FJ8R6EDgZYOwho=";
+  #   };
+  # });
 
 
   cdwlb-tray = cdwlb.overrideAttrs (oldAttrs: {
@@ -183,6 +262,8 @@ in
     # groups my gentoo instal user is in
     # lp wheel cron audio video libvirt users pipewire zuki
     packages = (with pkgs; [
+    cwcwm
+    # wlroots_0_19_git
     arc-theme
     kitty
     imv
@@ -235,7 +316,7 @@ in
   programs.firefox.enable = true;
   # services.xserver.windowManager.qtile.enable = true;
   # services.xserver.windowManager.qtile.package = qtileflake.packages.${pkgs.stdenv.hostPlatform.system}.qtile;
-  # services.xserver.windowManager.qtile.package = qtileflake.packages.${pkgs.system}.qtile;
+  # services.xserver.windowManager.qtile.package = qtile-unwrapped;
   # services.xserver.windowManager.qtile.package
   programs.river.enable = true;
   programs.river.extraPackages = with pkgs; [ 

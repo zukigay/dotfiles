@@ -1,0 +1,39 @@
+From f1716f509d78af57c25b723b0d6efc144193685a Mon Sep 17 00:00:00 2001
+From: Zuki Air <zukirust@gmail.com>
+Date: Tue, 20 May 2025 21:07:34 +0100
+Subject: [PATCH] fix drm_fourcc include
+
+---
+ src/input/cursor.c     | 2 +-
+ src/layout/container.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/input/cursor.c b/src/input/cursor.c
+index 71b2780..b8e9d7e 100644
+--- a/src/input/cursor.c
++++ b/src/input/cursor.c
+@@ -24,7 +24,7 @@
+  * @coreclassmod cwc.pointer
+  */
+ 
+-#include <drm_fourcc.h>
++#include <drm/drm_fourcc.h>
+ #include <hyprcursor/hyprcursor.h>
+ #include <lauxlib.h>
+ #include <linux/input-event-codes.h>
+diff --git a/src/layout/container.c b/src/layout/container.c
+index 54d9db1..584c7a5 100644
+--- a/src/layout/container.c
++++ b/src/layout/container.c
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include <cairo.h>
+-#include <drm_fourcc.h>
++#include <drm/drm_fourcc.h>
+ #include <limits.h>
+ #include <math.h>
+ #include <stdlib.h>
+-- 
+2.49.0
+
