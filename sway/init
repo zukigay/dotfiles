@@ -1,0 +1,45 @@
+#!/usr/bin/env lua
+term="foot"
+menu="fuzzel"
+function main()
+    print("starting lua init")
+
+    swaym('default_border pixel 3')
+    swaym('gaps inner 12')
+    swaym('gaps outer 8')
+
+    keybinds('Mod4')
+end
+function keybinds(mod)
+    bindsym(mod .. '+q kill')
+    bindsym(mod .. '+r reload ')
+    bindsym(mod .. '+return exec ' .. term .. " tmux")
+    bindsym(mod .. '+d exec ' .. menu)
+
+    workspaces(mod)
+end
+function workspaces(mod)
+    for i=1,9 do
+        bindsym(mod .. '+' .. i .. ' workspace number ' .. i)
+        bindsym(mod .. '+shift+' .. i .. ' move container to workspace number ' .. i)
+    end
+end
+function bindsym(args)
+    swaym('bindsym ' ..args)
+end
+function swaym(args)
+    print(args)
+    os.execute("swaymsg "..args.." &")
+end
+function init()
+    os.execute("notify-send init")
+end
+main()
+-- in lua 5.3 they made os.execute return 3 args rather then just the exit code which is now the third returned argument.
+-- disabled due to sway config being able to handle startup for us
+-- local _,_,exitCode = os.execute("pgrep hyprpaper")
+-- if exitCode ~= 0 then
+--     init()
+-- else
+--     os.execute("notify-send 'sway init' reloaded")
+-- end
