@@ -63,6 +63,7 @@ let
          wayland-protocols
          wlroots_0_19_git
             ];
+        # cmakeFlags = [ "-DCWC_DATADIR=\"/bin\"" ];
     installPhase = ''
     mkdir -p $out/bin
     mkdir -p $out/lib
@@ -262,7 +263,7 @@ in
     # groups my gentoo instal user is in
     # lp wheel cron audio video libvirt users pipewire zuki
     packages = (with pkgs; [
-    cwcwm
+    # cwcwm
     # wlroots_0_19_git
     arc-theme
     kitty
