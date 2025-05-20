@@ -41,7 +41,7 @@ kbd.bind({ MODKEY }, "Escape", function()
 end, { description = "reset leftover server state", group = "cwc" })
 
 for i = 1, 12 do
-    kbd.bind({ mod.CTRL, mod.ALT, mod.SHIFT, mod.LOGO }, "F" .. i, function()
+    kbd.bind({ mod.CTRL, mod.ALT }, "F" .. i, function()
         cwc.chvt(i)
     end)
 end
@@ -187,78 +187,106 @@ end, { description = "cycle prev to toplevel inside container", group = "client"
 kbd.bind({ MODKEY, mod.SHIFT }, "minus", function()
     local c = cwc.client.focused()
     if c then c.opacity = c.opacity - 0.1 end
-end, { description = "decrease opacity", group = "client" })
+end, { description = "decrease opacity", group = "client", repeated = true })
 
 kbd.bind({ MODKEY, mod.SHIFT }, "equal", function()
     local c = cwc.client.focused()
     if c then c.opacity = c.opacity + 0.1 end
-end, { description = "increase opacity", group = "client" })
+end, { description = "increase opacity", group = "client", repeated = true })
 
 ---------------- FLOATING WINDOW OPERATION -----------------
 
 ---------------- client movement
 local move_speed = 30
-kbd.bind(MODKEY, "Left", function()
+
+local function move_left()
     local c = cwc.client.focused()
     if not c or not c.floating then return end
 
     c:move(-move_speed, 0)
     local pos = c.geometry
     if pos.x < 0 then c:move_to(0, pos.y) end
-end, { description = "move client to the left", group = "client" })
+end
 
-kbd.bind(MODKEY, "Right", function()
+local function move_right()
     local c = cwc.client.focused()
     if not c or not c.floating then return end
 
     c:move(move_speed, 0)
-end, { description = "move client to the right", group = "client" })
+end
 
-kbd.bind(MODKEY, "Up", function()
+local function move_up()
     local c = cwc.client.focused()
     if not c or not c.floating then return end
 
     c:move(0, -move_speed)
     local pos = c.geometry
     if pos.y < 0 then c:move_to(pos.x, 0) end
-end, { description = "move client upward", group = "client" })
+end
 
-kbd.bind(MODKEY, "Down", function()
+local function move_down()
     local c = cwc.client.focused()
     if not c or not c.floating then return end
 
     c:move(0, move_speed)
-end, { description = "move client downward", group = "client" })
+end
+
+local move_left_opt = { description = "move client to the left", group = "client", repeated = true }
+local move_right_opt = { description = "move client to the right", group = "client", repeated = true }
+local move_up_opt = { description = "move client upward", group = "client", repeated = true }
+local move_down_opt = { description = "move client downward", group = "client", repeated = true }
+
+kbd.bind(MODKEY, "Left", move_left, move_left_opt)
+kbd.bind(MODKEY, "Right", move_right, move_right_opt)
+kbd.bind(MODKEY, "Up", move_up, move_up_opt)
+kbd.bind(MODKEY, "Down", move_down, move_down_opt)
 
 --------------------- client resize
 local size_interval = 20
-kbd.bind({ MODKEY, mod.SHIFT }, "Left", function()
+local function resize_left()
     local c = cwc.client.focused()
     if not c or not c.floating then return end
 
     c:resize(-size_interval, 0)
-end, { description = "reduce client width", group = "client" })
+end
 
-kbd.bind({ MODKEY, mod.SHIFT }, "Right", function()
+local function resize_right()
     local c = cwc.client.focused()
     if not c or not c.floating then return end
 
     c:resize(size_interval, 0)
-end, { description = "increase client width", group = "client" })
+end
 
-kbd.bind({ MODKEY, mod.SHIFT }, "Up", function()
+local function resize_up()
+    local c = cwc.client.focused()
+    if not c or not c.floating then return end
+
+    c:resize(size_interval, 0)
+end
+
+local function resize_up()
     local c = cwc.client.focused()
     if not c or not c.floating then return end
 
     c:resize(0, -size_interval)
-end, { description = "reduce client height", group = "client" })
+end
 
-kbd.bind({ MODKEY, mod.SHIFT }, "Down", function()
+local function resize_down()
     local c = cwc.client.focused()
     if not c or not c.floating then return end
 
     c:resize(0, size_interval)
-end, { description = "increase client height", group = "client" })
+end
+
+local resize_left_opt = { description = "reduce client width", group = "client", repeated = true }
+local resize_right_opt = { description = "increase client width", group = "client", repeated = true }
+local resize_up_opt = { description = "reduce client height", group = "client", repeated = true }
+local resize_down_opt = { description = "increase client height", group = "client", repeated = true }
+
+kbd.bind({ MODKEY, mod.SHIFT }, "Left", resize_left, resize_left_opt)
+kbd.bind({ MODKEY, mod.SHIFT }, "Right", resize_right, resize_right_opt)
+kbd.bind({ MODKEY, mod.SHIFT }, "Up", resize_up, resize_up_opt)
+kbd.bind({ MODKEY, mod.SHIFT }, "Down", resize_down, resize_down_opt)
 
 --------------------- SCREEN LAYOUT ------------------------
 
@@ -268,7 +296,6 @@ end, { description = "focus the next screen", group = "screen" })
 kbd.bind({ mod.LOGO, mod.ALT }, "k", function()
     cful.screen.focus_relative(-1)
 end, { description = "focus the previous screen", group = "screen" })
-
 
 ----------------- tag
 for i = 1, 9 do
@@ -315,24 +342,24 @@ end, { description = "view prev workspace/tag", group = "tag" })
 
 -- backtick/tilde key
 kbd.bind(MODKEY, "grave", cful.tag.history.restore,
-    { description = "activate last activated tag", group = "tag" })
+    { description = "activate last activated tags", group = "tag" })
 
 -------------------- tag config
 kbd.bind(MODKEY, "equal", function()
     cful.tag.incgap(1)
-end, { description = "increase gaps", group = "tag" })
+end, { description = "increase gaps", group = "tag", repeated = true })
 
 kbd.bind(MODKEY, "minus", function()
     cful.tag.incgap(-1)
-end, { description = "decrease gaps", group = "tag" })
+end, { description = "decrease gaps", group = "tag", repeated = true })
 
 kbd.bind({ mod.LOGO, mod.ALT }, "l", function()
     cful.tag.incmwfact(0.05)
-end, { description = "increase master width factor", group = "tag" })
+end, { description = "increase master width factor", group = "tag", repeated = true })
 
 kbd.bind({ mod.LOGO, mod.ALT }, "h", function()
     cful.tag.incmwfact(-0.05)
-end, { description = "decrease master width factor", group = "tag" })
+end, { description = "decrease master width factor", group = "tag", repeated = true })
 
 ----------------------- bsp hotkey
 kbd.bind(MODKEY, "e", function()
@@ -403,10 +430,10 @@ end, { description = "clipboard history", group = "launcher" })
 -- Screen brightness
 kbd.bind({}, "XF86MonBrightnessUp", function()
     cwc.spawn_with_shell("brightnessctl s 3%+")
-end)
+end, { exclusive = true, repeated = true })
 kbd.bind({}, "XF86MonBrightnessDown", function()
     cwc.spawn_with_shell("brightnessctl s 3%-")
-end)
+end, { exclusive = true, repeated = true })
 
 local function toggle_mon()
     cwc.spawn_with_shell("wlopm --toggle '*'")
@@ -424,31 +451,38 @@ kbd.bind({}, 0x10081245, toggle_mon)
 kbd.bind({}, "XF86AudioLowerVolume", function()
     local cmd = string.format("pactl set-sink-volume @DEFAULT_SINK@ %s%%", "-3")
     cwc.spawn_with_shell(cmd)
-end)
+end, { exclusive = true, repeated = true })
 kbd.bind({}, "XF86AudioRaiseVolume", function()
     local cmd = string.format("pactl set-sink-volume @DEFAULT_SINK@ %s%%", "+3")
     cwc.spawn_with_shell(cmd)
-end)
+end, { exclusive = true, repeated = true })
 kbd.bind({}, "XF86AudioMute", function()
     cwc.spawn_with_shell("pactl set-sink-mute @DEFAULT_SINK@ toggle")
-end)
+end, { exclusive = true })
 kbd.bind({}, "XF86AudioMicMute", function()
     cwc.spawn_with_shell("pactl set-source-mute @DEFAULT_SOURCE@ toggle")
-end)
+end, { exclusive = true })
 
 -------------- Media Player Keys
 kbd.bind({}, "XF86AudioPlay", function()
     cwc.spawn_with_shell("playerctl play-pause")
-end)
+end, { exclusive = true })
 kbd.bind({}, "XF86AudioNext", function()
     cwc.spawn_with_shell("playerctl next")
-end)
+end, { exclusive = true })
 kbd.bind({}, "XF86AudioPrev", function()
     cwc.spawn_with_shell("playerctl previous")
-end)
+end, { exclusive = true })
 kbd.bind({}, "XF86AudioStop", function()
     cwc.spawn_with_shell("playerctl stop")
-end)
+end, { exclusive = true })
+kbd.bind({}, "XF86AudioRewind", function()
+    cwc.spawn_with_shell("playerctl position 5-")
+end, { exclusive = true })
+kbd.bind({}, "XF86AudioForward", function()
+    cwc.spawn_with_shell("playerctl position 5+")
+end, { exclusive = true })
+
 
 ------------ Other Extra Keys
 kbd.bind({}, "XF86TouchpadToggle", function()
@@ -463,7 +497,7 @@ kbd.bind({}, "XF86TouchpadToggle", function()
             end
         end
     end
-end)
+end, { exclusive = true })
 kbd.bind({}, "XF86Calculator", function()
     cwc.spawn_with_shell(TERMINAL .. "-e python ")
 end)
@@ -486,12 +520,38 @@ kbd.bind({ mod.ALT }, "Tab", function() --
     if not cwc.cwcle then return end
 
     cwc.cwcle.next(mod.ALT)
-end, { description = "cycle next client", group = "client" })
+end, { description = "cycle next client", group = "client", repeated = true })
 kbd.bind({ mod.ALT, mod.SHIFT }, "Tab", function() --
     if not cwc.cwcle then return end
 
     cwc.cwcle.prev(mod.ALT)
-end, { description = "cycle previous client", group = "client" })
+end, { description = "cycle previous client", group = "client", repeated = true })
+
+----------------------------- CLIENT MANAGEMENT SUBMAP ---------------------------------
+
+-- Perform client management without holding the modkey
+local client_map = kbd.create_bindmap()
+client_map.active = false
+
+-- enter this submap by pressing MOD + W in the default map
+kbd.bind({ MODKEY }, "w", function()
+    client_map:active_only()
+end)
+
+-- exit this submap by pressing Esc
+client_map:bind({}, "Escape", function()
+    client_map.active = false
+end)
+
+client_map:bind({}, "h", move_left, move_left_opt)
+client_map:bind({}, "j", move_down, move_down_opt)
+client_map:bind({}, "k", move_up, move_up_opt)
+client_map:bind({}, "l", move_right, move_right_opt)
+
+client_map:bind({ mod.SHIFT }, "h", resize_left, resize_left_opt)
+client_map:bind({ mod.SHIFT }, "j", resize_down, resize_down_opt)
+client_map:bind({ mod.SHIFT }, "k", resize_up, resize_up_opt)
+client_map:bind({ mod.SHIFT }, "l", resize_right, resize_right_opt)
 
 -------------------- DEV ------------------------
 kbd.bind({ MODKEY }, "F11", function() --
@@ -508,4 +568,4 @@ kbd.bind({ MODKEY, mod.CTRL }, "slash", function()
     print(cwc.client.at(pos.x, pos.y))
     print(gears.debug.dump(c.geometry))
     print(s.active_tag, s.active_workspace)
-end, { description = "this just for debugging", group = "dev" })
+end, { description = "this just for debugging", group = "dev", exclusive = true, repeated = true })

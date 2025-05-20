@@ -18,6 +18,11 @@ end
 
 -- execute keybind script
 gears.protected_call(require, "keybind")
+local MODKEY = mod.LOGO
+local kbd = cwc.kbd
+kbd.bind(MODKEY, "Return", function()
+    cwc.spawn_with_shell("kitty || alacritty || wezterm || xterm || st")
+end, { description = "open a terminal", group = "launcher" })
 
 ---------------------------------- CONFIGURATION --------------------------------------
 -- A library for declarative configuration and per device configuration will be added later.
@@ -25,7 +30,10 @@ gears.protected_call(require, "keybind")
 -- `cwc.commit()``
 
 -- pointer config
-cwc.pointer.set_cursor_size(20)
+cwc.pointer.set_cursor_size(30)
+cwc.pointer.set_inactive_timeout(5)
+cwc.pointer.set_edge_threshold(32)
+cwc.pointer.set_edge_snapping_overlay_color(0.1, 0.2, 0.3, 0.05)
 
 -- keyboard config
 cwc.kbd.set_repeat_rate(30)
@@ -63,8 +71,20 @@ end)
 ------------------------------- SCREEN SETUP ------------------------------------
 cwc.connect_signal("screen::new", function(screen)
     -- screen settings
-    if screen.name == "DP-4" then
-        screen:set_position(0,0)
+    if screen.name == "DP-1" then
+        screen:set_position(0, 0)
+
+        screen:set_mode(1920, 1080, 60) -- width, height, refresh rate
+        screen:set_adaptive_sync(true)
+        screen:set_scale(1.2)
+        screen:set_transform(enum.output_transform.TRANSFORM_NORMAL)
+
+        -- by default the screen is not allowed to tear
+        screen.allow_tearing = true
+    end
+
+    if screen.name == "DP-2" then
+        screen:set_position(1920, 0)
     end
 
     -- don't apply if restored since it will reset whats manually changed
@@ -102,12 +122,20 @@ cwc.connect_signal("client::map", function(client)
     -- center the client from the screen workarea if its floating or in floating layout.
     if client.floating then client:center() end
 
+    -- don't pass focus when the focused client is fullscreen but allow if the parent is the focused
+    -- one. Useful when gaming where an app may restart itself and steal focus.
+    local focused = cwc.client.focused()
+    if focused and focused.fullscreen and client.parent ~= focused then
+        client:lower()
+        return
+    end
+
     client:raise()
     client:focus()
 
     -- the declarative rules isn't implemented yet so here is an example to do ruling.
     -- It'll move any firefox app to the workspace 2 and maximize it also we moving to tag 2.
-    if client.appid:match("firefox") then
+    if client.appid == "firefox" then
         client:move_to_tag(2)
         client.maximize = true
         client.screen.active_workspace = 2
@@ -159,4 +187,8 @@ cwc.connect_signal("container::insert", function(cont, client)
 
     -- focus to the newly inserted client
     client:focus()
+end)
+
+cwc.connect_signal("screen::mouse_enter", function(s)
+    s:focus()
 end)
