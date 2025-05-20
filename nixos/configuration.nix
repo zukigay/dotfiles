@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, unstable, qtileflake, ... }:
 let
   # helloBar = pkgs.hello.overrideAttrs (finalAttrs: previousAttrs: {
   #   pname = previousAttrs.pname + "-bar";
@@ -225,7 +225,7 @@ in
     # vesktop
 
     # waybar
-    ]) ++ ([vesktopShare cdwl cdwlb]);
+    ]) ++ ([vesktopShare cdwl cdwlb ]);
   };
 
   services.displayManager.ly.enable = true;
@@ -233,6 +233,10 @@ in
   services.displayManager.sessionPackages = [ cdwl ];
 
   programs.firefox.enable = true;
+  # services.xserver.windowManager.qtile.enable = true;
+  # services.xserver.windowManager.qtile.package = qtileflake.packages.${pkgs.stdenv.hostPlatform.system}.qtile;
+  # services.xserver.windowManager.qtile.package = qtileflake.packages.${pkgs.system}.qtile;
+  # services.xserver.windowManager.qtile.package
   programs.river.enable = true;
   programs.river.extraPackages = with pkgs; [ 
     kitty 
