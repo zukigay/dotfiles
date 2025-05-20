@@ -22,6 +22,9 @@ let
   btop = pkgs.btop.override {
     cudaSupport = true;
   };
+  mangohud = pkgs.mangohud.override {
+    gamescopeSupport = true;
+  };
 
 
   cdwlb-tray = cdwlb.overrideAttrs (oldAttrs: {
@@ -39,6 +42,7 @@ let
     # patches = oldAttrs.patches ++ [ ./src/dwlb-systray-nixos.patch ];
     # patches = [ ./src/dwlb-systray-nixos.patch ];
   });
+
 
 
   cdwl = pkgs.dwl.overrideAttrs (oldAttrs: {
@@ -241,6 +245,7 @@ in
     grim 
 
     lswt
+    mangohud
 
     # xrandr for setting a monitor as --primary
     # so that steam games won't cap the res
