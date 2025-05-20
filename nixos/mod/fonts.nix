@@ -12,6 +12,8 @@
     noto-fonts-emoji
     font-awesome
     # nerd-fonts.noto
+    # nerd-fonts.hack
+
     nerdfonts
   ];
   
