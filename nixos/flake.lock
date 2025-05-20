@@ -2,50 +2,6 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1747485343,
-        "narHash": "sha256-YbsZyuRE1tobO9sv0PUwg81QryYo3L1F3R3rF9bcG38=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "9b5ac7ad45298d58640540d0323ca217f32a6762",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-24.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "qtileflake": {
-      "inputs": {
-        "nixpkgs": [
-          "unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1741381863,
-        "narHash": "sha256-aBVIkyR906+vSLDNxvkmWu6DBujZHErSi+aZPVMRuCI=",
-        "owner": "qtile",
-        "repo": "qtile",
-        "rev": "8666bfc892d16adf45b72b9f1c4b119d58bcbad7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "qtile",
-        "ref": "v0.31.0",
-        "repo": "qtile",
-        "type": "github"
-      }
-    },
-    "root": {
-      "inputs": {
-        "nixpkgs": "nixpkgs",
-        "qtileflake": "qtileflake",
-        "unstable": "unstable"
-      }
-    },
-    "unstable": {
-      "locked": {
         "lastModified": 1747542820,
         "narHash": "sha256-GaOZntlJ6gPPbbkTLjbd8BMWaDYafhuuYRNrxCGnPJw=",
         "owner": "NixOS",
@@ -57,6 +13,11 @@
         "id": "nixpkgs",
         "ref": "nixos-unstable",
         "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
       }
     }
   },
