@@ -257,6 +257,7 @@ spawn-at-startup "foot" "--server"
 spawn-at-startup "kanshi"
 spawn-at-startup "hyprpaper"
 spawn-at-startup "gammastep"
+spawn-at-startup "waybar"
 
 // https://github.com/YaLTeR/niri/wiki/Xwayland
 spawn-at-startup "xwayland-satellite"
