@@ -176,6 +176,7 @@ in
   mod-waynvidiaenv.enable = true;
   mod-xdgenv.enable = true;
   mod-scripts.enable = true;
+  mod-keyboardfix.enable = true;
 
   networking.hostName = "zuki"; # Define your hostname.
   # Pick only one of the below networking options.
