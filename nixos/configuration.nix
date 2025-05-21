@@ -289,7 +289,9 @@ in
 
     bluetuith
     ncpamixer
+
     btop
+    nvtopPackages.full
     nix-search
 
     wl-clipboard
