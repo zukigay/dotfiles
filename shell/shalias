@@ -56,7 +56,7 @@ alias emup="emerge -vuDN @world" # same as emerge --ask --verbose --update --dee
 alias emsync="emaint -a sync"
 
 # pulseaudio/pipewire
-alias pamix="pulsemixer"
+alias pamix="ncpamixer"
 
 alias rewire="systemctl --user --now disable wireplumber && sleep 1 && systemctl --user --now enable wireplumber"
 # bluetooth
