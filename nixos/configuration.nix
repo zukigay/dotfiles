@@ -329,7 +329,8 @@ in
   programs.niri.enable = true;
   programs.hyprland.enable = true;
   programs.hyprland.plugins = [
-    pkgs.hyprlandPlugins.hyprbars
+    # pkgs.hyprlandPlugins.hyprbars
+    # hypr-darkwindow.packages.${pkgs.system}.Hypr-DarkWindow
   ];
   programs.river.enable = true;
   programs.river.extraPackages = with pkgs; [ 
