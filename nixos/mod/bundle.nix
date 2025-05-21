@@ -14,6 +14,7 @@
  ./fixkeyboardservice.nix
  ./hyprPlugins/module.nix
  ./hyprPlugins/plugins/hyprdark.nix
+ ./scrollpkg.nix 
  ];
   options = {
     mod-hyprPlugin.enable = 
