@@ -262,7 +262,9 @@ spawn-at-startup "waybar"
 // https://github.com/YaLTeR/niri/wiki/Xwayland
 spawn-at-startup "xwayland-satellite"
 environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
     DISPLAY ":0"
+
 }
 
 
