@@ -11,6 +11,7 @@
         // "river/layout",
         "hyprland/workspaces",
         "hyprland/submap",
+        "niri/workspaces",
     //    "hyprland/scratchpad",
         "custom/media"
     ],
