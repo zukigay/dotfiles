@@ -11,6 +11,7 @@
  ./pathenv.nix
  ./scripts.nix
  ./fixkeyboardservice.nix
+ ./hyprPlugins/module.nix
  ];
 }
 

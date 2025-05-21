@@ -324,6 +324,9 @@ in
   # services.xserver.windowManager.qtile.package
   programs.niri.enable = true;
   programs.hyprland.enable = true;
+  programs.hyprland.plugins = [
+    pkgs.hyprlandPlugins.hyprbars
+  ];
   programs.river.enable = true;
   programs.river.extraPackages = with pkgs; [ 
     kitty 
