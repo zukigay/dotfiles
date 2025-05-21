@@ -1,2 +1,0 @@
-#exec = hyprconf_make > /tmp/hyprland.conf
-source = /tmp/hyprland.conf
