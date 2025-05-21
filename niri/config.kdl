@@ -318,6 +318,8 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id="vesktop"
+
 
     block-out-from "screen-capture"
 
