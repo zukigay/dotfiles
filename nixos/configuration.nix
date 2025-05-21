@@ -323,6 +323,7 @@ in
   # services.xserver.windowManager.qtile.package = qtile-unwrapped;
   # services.xserver.windowManager.qtile.package
   programs.niri.enable = true;
+  programs.hyprland.enable = true;
   programs.river.enable = true;
   programs.river.extraPackages = with pkgs; [ 
     kitty 
