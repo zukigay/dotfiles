@@ -1,5 +1,6 @@
 {config, lib, ...}:
-
+# let
+# in
 {
  imports = [
  ./fonts.nix
@@ -14,5 +15,9 @@
  ./hyprPlugins/module.nix
  ./hyprPlugins/plugins/hyprdark.nix
  ];
+  options = {
+    mod-hyprPlugin.enable = 
+    	lib.mkEnableOption "changes hid apple to fn mode so that my keyboards fn keys work normally";
+  };
 }
 

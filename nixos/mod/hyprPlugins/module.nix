@@ -3,13 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
-# let
+}: 
+let
   inherit (pkgs.stdenv.hostPlatform) system;
   selflib = import ./lib.nix lib;
   # selflib = lib;
   cfg = config.programs.hyprland;
-in {
+# let
+in 
+{
   options = {
     programs.hyprland = {
       plugins = lib.mkOption {
@@ -111,16 +113,18 @@ in {
       };
     };
   };
-  config = lib.mkMerge [
-    {
-      programs.hyprland = {
-        # package = lib.mkDefault pkgs.packages.${system}.hyprland;
-        # portalPackage = lib.mkDefault pkgs.packages.${system}.xdg-desktop-portal-hyprland;
-        package = lib.mkDefault pkgs.hyprland;
-        portalPackage = lib.mkDefault pkgs.xdg-desktop-portal-hyprland;
-      };
-    }
-    (lib.mkIf cfg.enable {
+ # lib.mkIf config.mod-hyprPlugin.enable {
+  # config = lib.mkIf config.mod-hyprPlugin.enable {
+  config = lib.mkIf (config.mod-hyprPlugin.enable && cfg.enable) { 
+    # {
+    #   programs.hyprland = {
+    #     # package = lib.mkDefault pkgs.packages.${system}.hyprland;
+    #     # portalPackage = lib.mkDefault pkgs.packages.${system}.xdg-desktop-portal-hyprland;
+    #     package = lib.mkDefault pkgs.hyprland;
+    #     portalPackage = lib.mkDefault pkgs.xdg-desktop-portal-hyprland;
+    #   };
+    # }
+    # lib.mkIf cfg.enable {
       environment.etc."xdg/hypr/hyprland.conf" = let
         shouldGenerate = cfg.extraConfig != "" || cfg.settings != {} || cfg.plugins != [];
 
@@ -152,6 +156,6 @@ in {
               cfg.settings)
             + lib.optionalString (cfg.extraConfig != "") cfg.extraConfig;
         };
-    })
-  ];
+    # }
+  };
 }
