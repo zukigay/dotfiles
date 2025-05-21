@@ -10,6 +10,7 @@
  ./xdgenv.nix
  ./pathenv.nix
  ./scripts.nix
+ ./fixkeyboardservice.nix
  ];
 }
 
