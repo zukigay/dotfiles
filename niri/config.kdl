@@ -15,6 +15,7 @@ input {
             // For example:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            options "lv5:caps_switch"
         }
     }
 
@@ -515,8 +516,8 @@ binds {
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
-    Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+ISO_Level5_Shift+h  { consume-or-expel-window-left; }
+    Mod+ISO_Level5_Shift+l { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
