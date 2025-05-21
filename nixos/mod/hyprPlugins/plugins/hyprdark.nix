@@ -37,7 +37,13 @@ let
 # }
 in
 {
-  programs.hyprland.plugins = [
-  Hypr-DarkWindow
-  ];
+  options = {
+    mod-hyprPluginDarkWin.enable = 
+    	lib.mkEnableOption "switches to noto fonts and installs font-awesome";
+  };
+  config = lib.mkIf config.mod-hyprPluginDarkWin.enable {
+    programs.hyprland.plugins = [
+    Hypr-DarkWindow
+    ];
+  };
 }

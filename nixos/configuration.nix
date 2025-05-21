@@ -178,6 +178,7 @@ in
   mod-scripts.enable = true;
   mod-keyboardfix.enable = true;
   mod-hyprPlugin.enable = true;
+  mod-hyprPluginDarkWin.enable = true;
 
   networking.hostName = "zuki"; # Define your hostname.
   # Pick only one of the below networking options.
