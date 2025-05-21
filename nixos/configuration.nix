@@ -305,6 +305,8 @@ in
 
     syncthing
 
+    xwayland-satellite # used by niri because they didn't want to deal with xwayland
+
     # vesktop
 
     # waybar
@@ -320,6 +322,7 @@ in
   # services.xserver.windowManager.qtile.package = qtileflake.packages.${pkgs.stdenv.hostPlatform.system}.qtile;
   # services.xserver.windowManager.qtile.package = qtile-unwrapped;
   # services.xserver.windowManager.qtile.package
+  programs.niri.enable = true;
   programs.river.enable = true;
   programs.river.extraPackages = with pkgs; [ 
     kitty 
