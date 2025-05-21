@@ -1,5 +1,6 @@
-{pkgs,lib}:
-{
+{config, lib, pkgs, ...}:
+let
+# {
   Hypr-DarkWindow = pkgs.gcc14Stdenv.mkDerivation {
     pname = "Hypr-DarkWindow";
     version = "3.0.1";
@@ -33,4 +34,10 @@
     };
   # default = Hypr-DarkWindow;
   };
+# }
+in
+{
+  programs.hyprland.plugins = [
+  Hypr-DarkWindow
+  ];
 }

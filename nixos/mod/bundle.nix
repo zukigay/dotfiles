@@ -12,6 +12,7 @@
  ./scripts.nix
  ./fixkeyboardservice.nix
  ./hyprPlugins/module.nix
+ ./hyprPlugins/plugins/hyprdark.nix
  ];
 }
 
