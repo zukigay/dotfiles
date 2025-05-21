@@ -27,12 +27,25 @@ scroll = pkgs.sway-unwrapped.overrideAttrs (finalAttrs: previousAttrs: {
         rev = "515f638f0a0616f684a3ece29a56bd735b87350b";
         hash = "sha256-rktayVLLxVjtzBpYVvoeMRma2B4VfmvCevlLTCaf4Y4=";
     };
+    passthru.providedSessions = [ "scroll" ];
     patches = [];
     buildInputs = previousAttrs.buildInputs ++ [ wlroots_0_20-git ];
 });
 in
 {
-config.environment.systemPackages = [
-scroll
-];
+  options = {
+    # mod-scrollpkg.enable = 
+    # 	lib.mkEnableOption "install the scrollwm";
+    # mod-replace-sway-with-scroll.enable = 
+    # 	lib.mkEnableOption "replace the sway pkg with scroll";
+    mod-scroll.enable = 
+    	# lib.mkEnableOption "install the scrollwm";
+    	lib.mkEnableOption "replace the sway pkg with scroll";
+  };
+  # config = lib.mkIf config.mod-scroll.enable {
+  #   environment.systemPackages = [ scroll ]; };
+  config = lib.mkIf config.mod-scroll.enable {
+    programs.sway.package = scroll;
+  };
+
 }
