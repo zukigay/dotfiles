@@ -80,8 +80,8 @@ bindsym $mod+w fit_size h all equal
 
 bindsym $mod+Shift+q exit
 
-bindsym $mod+p pin end
-bindsym $mod+Shift+p pin beginning
+bindsym $mod+p pin beginning
+bindsym $mod+Shift+p pin end
 
 
 bindsym $mod+minus cycle_size h prev
