@@ -12,6 +12,7 @@
         "hyprland/workspaces",
         "hyprland/submap",
         "niri/workspaces",
+        "sway/workspaces",
     //    "hyprland/scratchpad",
         "custom/media"
     ],
