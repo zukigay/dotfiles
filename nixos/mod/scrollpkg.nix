@@ -24,8 +24,8 @@ scroll = pkgs.sway-unwrapped.overrideAttrs (finalAttrs: previousAttrs: {
     src = pkgs.fetchFromGitHub {
         owner = "dawsers";
         repo = "scroll";
-        rev = "c0cd304dcdfd251ecfedb387e28824d3cc372243";
-        hash = "sha256-vpSPhxYieaU2MVEkb8mhVQyIpYr89FRz7/aiXCMmhik=";
+        rev = "78456cb9be8d1583336a455b111db159945b99a8";
+        hash = "sha256-H/85WYLgVKttd3y9M8qO0vF13zKEJhnzVNMz2qQj3Gg=";
     };
     passthru.providedSessions = [ "scroll" ];
     patches = [];
