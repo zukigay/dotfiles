@@ -176,8 +176,9 @@ bindsym $mod+Shift+0 move container to workspace number 10
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec foot --server
-exec waybar
 exec hyprpaper
+exec gammastep
 exec kanshi
 exec swayidle
 exec_always kill -1 $(pidof kanshi)
+exec waybar
