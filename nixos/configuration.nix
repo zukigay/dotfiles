@@ -237,7 +237,7 @@ in
   };
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true; # Set to false to use the proprietary kernel module
-  hardware.nvidia.nvidiaPersistenced = true;
+  # hardware.nvidia.nvidiaPersistenced = true;
 
 
   
