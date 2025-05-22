@@ -26,6 +26,7 @@ set $term footclient
 
 
 #* binds
+floating_modifier $mod
 
 bindsym $mod+Return exec $term tmux
 bindsym $mod+d exec fuzzel
