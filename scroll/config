@@ -163,4 +163,5 @@ exec foot --server
 exec waybar
 exec hyprpaper
 exec kanshi
+exec swayidle
 exec_always kill -1 $(pidof kanshi)
