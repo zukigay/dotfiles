@@ -32,6 +32,30 @@ bindsym $mod+d exec fuzzel
 bindsym $mod+q kill
 bindsym $mod+r reload
 
+mode "selection" {
+
+bindsym s selection toggle
+
+bindsym h focus left
+bindsym j focus down
+bindsym k focus up
+bindsym l focus right
+
+bindsym Shift+h selection move left
+bindsym Shift+j selection move down
+bindsym Shift+k selection move up
+bindsym Shift+l selection move right
+
+bindsym r selection reset
+
+bindsym w selection workspace
+
+bindsym Escape mode "default"
+}
+
+# bindsym $mod+s selection toggle
+bindsym $mod+s mode selection
+
 # switch to diffrent modes
 bindsym $mod+v set_mode v
 bindsym $mod+c set_mode h
