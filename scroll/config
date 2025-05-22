@@ -68,6 +68,8 @@ bindsym $mod+c set_mode h
 bindsym $mod+y fit_size v all equal
 bindsym $mod+w fit_size h all equal
 
+bindsym $mond+Shift+q exit
+
 bindsym $mod+p pin end
 bindsym $mod+Shift+p pin beginning
 
