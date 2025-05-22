@@ -1,0 +1,119 @@
+
+#* built in vars
+seat * xcursor_theme default 30
+default_border pixel 3
+gaps inner 8
+gaps outer 12
+
+# colors
+set $bg #373b41
+#set $bg #280040
+set $bg #00000000
+set $br #4b576f
+set $br #6040a0
+set $fg #000000
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $br     $br     $fg     $br       $br
+client.focused_inactive $bg     $bg     $fg     $bg       $bg
+client.unfocused        $bg     $bg     $fg     $bg       $bg
+
+
+#* vars
+
+set $mod Mod4
+set $term footclient
+
+
+#* binds
+
+bindsym $mod+Return exec $term tmux
+bindsym $mod+d exec fuzzel
+bindsym $mod+q kill
+bindsym $mod+r reload
+
+# switch to diffrent modes
+bindsym $mod+v set_mode v
+bindsym $mod+c set_mode h
+
+bindsym $mod+y fit_size v all equal
+
+
+bindsym $mod+minus cycle_size h prev
+bindsym $mod+equal cycle_size h next
+bindsym $mod+Shift+minus cycle_size v prev
+bindsym $mod+Shift+equal cycle_size v next
+
+# mode "setsizeh" {
+#     bindsym 1 set_size h 0.125
+#     bindsym 2 set_size h 0.1666666667
+#     bindsym 3 set_size h 0.25
+#     bindsym 4 set_size h 0.333333333
+#     bindsym 5 set_size h 0.375
+#     bindsym 6 set_size h 0.5
+#     bindsym 7 set_size h 0.625
+#     bindsym 8 set_size h 0.6666666667
+#     bindsym 9 set_size h 0.75
+#     bindsym 0 set_size h 0.833333333
+#     bindsym minus set_size h 0.875
+#     bindsym equal set_size h 1.0
+#
+#     # Return to default mode
+#     bindsym Escape mode "default"
+# }
+# bindsym $mod+b mode "setsizeh"
+
+bindsym $mod+comma scale_content incr -0.05
+bindsym $mod+period scale_content incr 0.05
+bindsym $mod+Ctrl+period scale_content reset
+
+
+# layout_heights [0.33333333 0.5 0.666666667 ]
+
+# [0.33333333, 0.5, 0.66666667, 1.0]
+# layout_default_width 0.5
+
+
+# window focus and movement
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down 
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym --no-repeat $mod+slash jump
+
+# workspace binds
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+#* startup
+
+exec foot --server
+exec hyprpaper
+exec kanshi
+exec_always kill -1 $(pidof kanshi)
+exec waybar
