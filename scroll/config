@@ -34,6 +34,8 @@ bindsym $mod+d exec fuzzel
 bindsym $mod+q kill
 bindsym $mod+r reload
 
+bindsym $mod+f fullscreen
+
 bindsym $mod+a floating toggle
 
 bindsym $mod+z sticky toggle
