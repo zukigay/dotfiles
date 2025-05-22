@@ -20,6 +20,9 @@ set $fg #000000
 client.focused          $br     $br     $fg     $br       $br
 client.focused_inactive $bg     $bg     $fg     $bg       $bg
 client.unfocused        $bg     $bg     $fg     $bg       $bg
+# scroll only ones
+# client.pinned          #00000fff     $br     $fg     $br       $br
+# client.pinned_focused  #00000fff     $br     $fg     $br       $br
 
 
 #* vars
