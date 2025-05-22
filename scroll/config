@@ -21,8 +21,8 @@ client.focused          $br     $br     $fg     $br       $br
 client.focused_inactive $bg     $bg     $fg     $bg       $bg
 client.unfocused        $bg     $bg     $fg     $bg       $bg
 # scroll only ones
-# client.pinned          #00000fff     $br     $fg     $br       $br
-# client.pinned_focused  #00000fff     $br     $fg     $br       $br
+client.pinned          $bg     $br     $fg     $br       #3f0031
+client.pinned_focused  $bg     $br     $fg     $br       #a040a0
 
 
 #* vars
