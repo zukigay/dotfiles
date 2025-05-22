@@ -47,13 +47,14 @@ bindsym $mod+r reload
 
 bindsym $mod+f fullscreen
 
-bindsym $mod+a floating toggle
+bindsym $mod+s floating toggle
+bindsym $mod+Shift+s focus mode_toggle
 
 bindsym $mod+z sticky toggle
 
 bindsym $mod+c move position center
 
-bindsym $mod+Shift+s exec swaylock -f -i ~/.config/wallpaper  
+bindsym $mod+Mod3+s exec swaylock -f -i ~/.config/wallpaper  
 
 
 mode "selection" {
@@ -78,7 +79,8 @@ bindsym Escape mode "default"
 }
 
 # bindsym $mod+s selection toggle
-bindsym $mod+s mode selection
+# look mod+s makes more sense but im soo used to mod+s for floating its a hard habit to break for something so unused.
+bindsym $mod+a mode selection
 
 # switch to diffrent modes
 bindsym $mod+v set_mode v
