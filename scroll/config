@@ -24,6 +24,12 @@ client.unfocused        $bg     $bg     $fg     $bg       $bg
 client.pinned          $bg     $br     $fg     $br       #4c4d70
 client.pinned_focused  $bg     $br     $fg     $br       #5455a8
 
+input * {
+    # xkb_layout "us,de,ru"
+    # xkb_variant "colemak,,typewriter"
+    xkb_options "lv5:caps_switch"
+}
+
 
 #* vars
 
@@ -133,10 +139,10 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-bindsym $mod+Alt+h move left  nomode 
-bindsym $mod+Alt+j move down  nomode 
-bindsym $mod+Alt+k move up    nomode 
-bindsym $mod+Alt+l move right nomode 
+bindsym $mod+Mod3+h move left  nomode 
+bindsym $mod+Mod3+j move down  nomode 
+bindsym $mod+Mod3+k move up    nomode 
+bindsym $mod+Mod3+l move right nomode 
 
 bindsym --no-repeat $mod+slash jump
 
