@@ -42,6 +42,9 @@ bindsym $mod+z sticky toggle
 
 bindsym $mod+c move position center
 
+bindsym $mod+Shift+s exec swaylock -f -i ~/.config/wallpaper  
+
+
 mode "selection" {
 
 bindsym s selection toggle
