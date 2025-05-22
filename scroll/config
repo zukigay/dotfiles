@@ -62,6 +62,9 @@ bindsym $mod+c set_mode h
 
 bindsym $mod+y fit_size v all equal
 
+bindsym $mod+p pin end
+bindsym $mod+Shift+p pin beginning
+
 
 bindsym $mod+minus cycle_size h prev
 bindsym $mod+equal cycle_size h next
