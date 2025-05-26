@@ -273,6 +273,7 @@ in
     packages = (with pkgs; [
     # cwcwm
     # wlroots_0_19_git
+    aseprite
     arc-theme
     kitty
     imv
