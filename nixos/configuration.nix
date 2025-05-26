@@ -326,6 +326,18 @@ in
   services.displayManager.ly.enable = true;
   services.displayManager.ly.settings = { animation="doom"; };
   services.displayManager.sessionPackages = [ cdwl ];
+  networking.firewall = {
+          allowedTCPPorts = [
+        9757
+      ];
+      allowedUDPPorts = [
+      5353
+      9757
+      ];
+  };
+  # networking.firewall.enable = false;
+  services.wivrn.enable = true;
+
 
   programs.firefox.enable = true;
   # services.xserver.windowManager.qtile.enable = true;
