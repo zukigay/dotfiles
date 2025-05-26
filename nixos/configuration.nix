@@ -265,6 +265,8 @@ in
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
+  services.mullvad-vpn.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zuki = {
     isNormalUser = true;
