@@ -184,6 +184,7 @@ in
   mod-hyprPluginDarkWin.enable = true;
   mod-scroll.enable = true;
   programs.sway.enable = true;
+  mod-vr.enable = true;
 
   networking.hostName = "zuki"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -333,17 +334,6 @@ in
   services.displayManager.ly.enable = true;
   services.displayManager.ly.settings = { animation="doom"; };
   services.displayManager.sessionPackages = [ cdwl ];
-  networking.firewall = {
-          allowedTCPPorts = [
-        9757
-      ];
-      allowedUDPPorts = [
-      5353
-      9757
-      ];
-  };
-  # networking.firewall.enable = false;
-  services.wivrn.enable = true;
 
 
   programs.firefox.enable = true;
