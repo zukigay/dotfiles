@@ -286,6 +286,7 @@ in
     # fuzzel
     keepassxc
     odin
+    qbittorrent
 
     # pkgs-stable.odin
 
