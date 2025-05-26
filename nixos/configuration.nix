@@ -280,6 +280,8 @@ in
     foot
     tmux
     mpv
+    # pcmanfm
+    pcmanfm-qt
     # fuzzel
     keepassxc
 
