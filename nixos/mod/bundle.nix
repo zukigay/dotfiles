@@ -15,6 +15,7 @@
  ./hyprPlugins/module.nix
  ./hyprPlugins/plugins/hyprdark.nix
  ./scrollpkg.nix 
+ ./vr.nix
  ];
   options = {
     mod-hyprPlugin.enable = 
