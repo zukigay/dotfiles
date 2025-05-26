@@ -276,6 +276,7 @@ in
     # wlroots_0_19_git
     aseprite
     arc-theme
+    cosmic-icons
     kitty
     imv
     foot
