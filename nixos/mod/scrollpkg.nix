@@ -8,8 +8,8 @@ let
         owner = "wlroots";
         repo = "wlroots";
         # rev = "0.19";
-        rev = "170f7e070603f0ecdadc4527c65bc08b62073e58";
-        hash = "sha256-SMzz7J05LocbC7ROhScwPzhnh/l0rzCPMWN5owkwZ5Q=";
+        rev = "af43d3b9e7017d915dffe7bdeccea3adb8155774";
+        hash = "sha256-U3SIs9rd3bQKP8A+kJopaQ5NfYadLJC/Hfl81R7zgV4=";
     };
     nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [
     # nativeBuildInputs = [
