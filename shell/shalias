@@ -42,6 +42,7 @@ alias nrt="nr test"
 alias ns="nix-search"
 alias ne="v $NIXOS_CONFIG"
 alias dwld="sudo nixos-rebuild --fast test && dwl"
+alias nixsh='nix-shell'
 
 ## pacman
 alias pac="pacman"
