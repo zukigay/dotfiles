@@ -284,6 +284,11 @@ in
     pcmanfm-qt
     # fuzzel
     keepassxc
+    odin
+
+    # pkgs-stable.odin
+
+    mgba
 
     ranger
     # for ranger
