@@ -16,6 +16,7 @@ local smart_gaps = false
 local location_horizontal = "left"
 local location_vertical = "top"
 local monitorData = {}
+local pertag = true
 local barHeight = 30
 local barActive = true
 local count = 0
@@ -32,8 +33,18 @@ function handle_layout(args)
         monitorData[args.output] = {layout='normalTile',main_ratio=0.50,main_count=1,scroll=0}
     end
     local currentLayout = monitorData[args.output].layout
-    local main_ratio = monitorData[args.output].main_ratio
-    local main_count = monitorData[args.output].main_count
+    local main_ratio 
+    local main_count 
+    if pertag then
+        if monitorData[args.output][args.tags] == nil then
+            monitorData[args.output][args.tags] = {main_ratio=0.50,main_count=1}
+        end
+        main_ratio = monitorData[args.output][args.tags].main_ratio
+        main_count = monitorData[args.output][args.tags].main_count
+    else
+        main_ratio = monitorData[args.output].main_ratio
+        main_count = monitorData[args.output].main_count
+    end
     local scroll = monitorData[args.output].scroll
     -- local main_ratio 
     count = args.count
@@ -252,7 +263,11 @@ function increase_main()
     if monitorData[CMD_OUTPUT].layout == "paperwm" then
         monitorData[CMD_OUTPUT].scroll = monitorData[CMD_OUTPUT].scroll + 0.01
     elseif monitorData[CMD_OUTPUT].main_ratio < 0.9 then
-        monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio + 0.05
+        if pertag == true then
+            monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio = monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio + 0.05
+        else
+            monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio + 0.05
+        end
         -- main_ratio = main_ratio + 0.05
     end
 end
@@ -263,7 +278,11 @@ function decrease_main()
     if monitorData[CMD_OUTPUT].layout == "paperwm" then
         monitorData[CMD_OUTPUT].scroll = math.max(monitorData[CMD_OUTPUT].scroll - 0.01,0)
     elseif monitorData[CMD_OUTPUT].main_ratio > 0.1 then
-        monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio - 0.05
+        if pertag == true then
+            monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio = monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio - 0.05
+        else
+            monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio - 0.05
+        end
         -- main_ratio = main_ratio - 0.05
     end
 end
@@ -272,15 +291,25 @@ end
 -- Run with `riverctl send-layout-cmd luatile "increase_count()"`
 function increase_count()
     -- main_count = main_count + 1
-    monitorData[CMD_OUTPUT].main_count = monitorData[CMD_OUTPUT].main_count + 1
+    if pertag == true then
+        monitorData[CMD_OUTPUT][CMD_TAGS].main_count = monitorData[CMD_OUTPUT][CMD_TAGS].main_count + 1
+    else
+        monitorData[CMD_OUTPUT].main_count = monitorData[CMD_OUTPUT].main_count + 1
+    end
 end
 
 --- Decreases main count
 -- Run with `riverctl send-layout-cmd luatile "decrease_count()"`
 function decrease_count()
     -- if main_count >= 2 then
-    if monitorData[CMD_OUTPUT].main_count >= 2 then
-        -- main_count = main_count - 1
-        monitorData[CMD_OUTPUT].main_count = monitorData[CMD_OUTPUT].main_count - 1
+    if pertag == true then
+        if monitorData[CMD_OUTPUT][CMD_TAGS].main_count >= 2 then
+            monitorData[CMD_OUTPUT][CMD_TAGS].main_count = monitorData[CMD_OUTPUT][CMD_TAGS].main_count - 1
+        end
+    else
+        if monitorData[CMD_OUTPUT].main_count >= 2 then
+            -- main_count = main_count - 1
+            monitorData[CMD_OUTPUT].main_count = monitorData[CMD_OUTPUT].main_count - 1
+        end
     end
 end
