@@ -3,10 +3,10 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.05";
-    volare = {
-        url = "git+https://codeberg.org/raboof/volare";
-        inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # volare = {
+    #     url = "git+https://codeberg.org/raboof/volare";
+    #     inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # nixpkgs.url = "nixpkgs/nixos-unstable";
     # nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11";
     nixpkgs-stable.url = "nixpkgs/nixos-25.05";
@@ -34,7 +34,7 @@
 
   # outputs = { self, nixpkgs, unstable, ... }: {
   # outputs = { self, nixpkgs, unstable, qtileflake, ... }: 
-  outputs = { self, nixpkgs,  volare, ... }: 
+  outputs = { self, nixpkgs,  ... }: 
   let
     # pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     system = "x86_64-linux";
@@ -42,7 +42,7 @@
   in {
     nixosConfigurations.zuki = nixpkgs.lib.nixosSystem {
         specialArgs = { 
-            inherit volare;
+            # inherit volare;
         };
         modules = [
         # (_: { nixpkgs.overlays = [ qtileflake.overlays.default ]; })

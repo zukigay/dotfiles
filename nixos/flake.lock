@@ -33,28 +33,7 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "nixpkgs-stable": "nixpkgs-stable",
-        "volare": "volare"
-      }
-    },
-    "volare": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1738702184,
-        "narHash": "sha256-do01R1h9fJOC+KUHbsXjXjZgWIPmHQZvlNYgD0UULq4=",
-        "ref": "refs/heads/main",
-        "rev": "2111e778f829b2ad47339b6c8b2e642850ce01af",
-        "revCount": 7604,
-        "type": "git",
-        "url": "https://codeberg.org/raboof/volare"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/raboof/volare"
+        "nixpkgs-stable": "nixpkgs-stable"
       }
     }
   },

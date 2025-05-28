@@ -210,7 +210,7 @@ in
   mod-hyprPlugin.enable = true;
   mod-hyprPluginDarkWin.enable = true;
   # mod-scroll.enable = true;
-  mod-volare.enable = true;
+  # mod-volare.enable = true;
 
   mod-vr.enable = true;
 
