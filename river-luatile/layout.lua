@@ -184,7 +184,7 @@ function handle_layout(args)
             table.insert(layout,{outer_gap,outer_gap,args.width-outer_gap*2,args.height-outer_gap*2})
         end
     end,
-    paperwm = function() -- a bit silly made worse by the fact that i can't find out how to map the mouse wheel to a riverctl bind
+    paperwm = function() -- really silly because I had never used a scrolling wm when i made this layout lmao so its quite funcy
         local winCount = math.min(main_count,count)
         local width = args.width/winCount
         local x,y = width*scroll*-1,0
