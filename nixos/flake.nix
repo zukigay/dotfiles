@@ -3,11 +3,6 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.05";
-    newm = {
-        # slower upstream
-        url = "github:newm-next/newm-next";
-        # newer downstream
-        # url = "github:SEKAMISehi/newm-next";
         inputs.nixpkgs.follows = "nixpkgs";
     };
     # nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -37,7 +32,7 @@
 
   # outputs = { self, nixpkgs, unstable, ... }: {
   # outputs = { self, nixpkgs, unstable, qtileflake, ... }: 
-  outputs = { self, nixpkgs, nixpkgs-stable, newm, ... }: 
+  outputs = { self, nixpkgs,  volare, ... }: 
   let
     # pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     system = "x86_64-linux";
@@ -46,7 +41,6 @@
     nixosConfigurations.zuki = nixpkgs.lib.nixosSystem {
         specialArgs = { 
             # inherit pkgs-unstable;
-            inherit newm;
             inherit pkgs-stable;
         };
         modules = [
