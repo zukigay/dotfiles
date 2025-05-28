@@ -19,7 +19,7 @@ local monitorData = {}
 local pertag = true
 local barHeight = 30
 local barActive = true
-local count = 0
+-- local count = 0
 
 --- Layout generator
 --@param args: table{width, height, count, tags}
@@ -47,7 +47,7 @@ function handle_layout(args)
     end
     local scroll = monitorData[args.output].scroll
     -- local main_ratio 
-    count = args.count
+    local count = args.count
     -- if count < main_count then
     --     monitorData[args.output].main_count = count
     --     main_count = count
