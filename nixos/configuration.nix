@@ -34,6 +34,13 @@ let
     ];
 
   });
+  perlPackages.Apppapersway = pkgs.perlPackages.Apppapersway.overrideAttrs ( rec {
+    version = "2.001";
+    src = pkgs.fetchurl {
+      url = "mirror://cpan/authors/id/S/SP/SPWHITTON/App-papersway-${version}.tar.gz";
+      hash = "sha256-Jx8MJdyr/tfumMhuCofQX0r3vWcVuDzfJGpCjq2+Odw=";
+    };
+  });
 
 
 
@@ -182,9 +189,13 @@ in
   mod-keyboardfix.enable = true;
   mod-hyprPlugin.enable = true;
   mod-hyprPluginDarkWin.enable = true;
-  mod-scroll.enable = true;
-  programs.sway.enable = true;
+  # mod-scroll.enable = true;
   mod-vr.enable = true;
+
+  programs.sway.enable = true;
+  programs.sway.extraOptions = [
+  "--unsupported-gpu"
+  ];
 
   networking.hostName = "zuki"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -294,6 +305,7 @@ in
     # pkgs-stable.odin
 
     mgba
+    perlPackages.Apppapersway
 
     ranger
     # for ranger
