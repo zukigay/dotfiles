@@ -132,7 +132,22 @@ let
     # patches = oldAttrs.patches ++ [ ./src/dwlb-systray-nixos.patch ];
     # patches = [ ./src/dwlb-systray-nixos.patch ];
   });
-
+  cagebreak = pkgs.cagebreak.overrideAttrs ( oldAttrs: {
+    passthru.providedSessions = [ "cagebreak" ];
+    postInstall = let
+        cagebreakSession = ''
+        [Desktop Entry]
+        Name=cagebreak
+        Comment=a neat compositor
+        Exec=cagebreak
+        Type=Application
+        '';
+      in
+        ''
+    mkdir -p $out/share/wayland-sessions
+    echo "${cagebreakSession}" > $out/share/wayland-sessions/cagebreak.desktop
+        '';
+  });
 
 
   cdwl = pkgs.dwl.overrideAttrs (oldAttrs: {
@@ -353,7 +368,7 @@ in
 
   services.displayManager.ly.enable = true;
   services.displayManager.ly.settings = { animation="doom"; };
-  services.displayManager.sessionPackages = [ cdwl ];
+  services.displayManager.sessionPackages = [ cdwl cagebreak ];
 
 
   programs.firefox.enable = true;
@@ -407,7 +422,10 @@ in
     wget
     git
     wl-restart
+    cagebreak
   ];
+
+ 
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
