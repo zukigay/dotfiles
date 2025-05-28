@@ -42,7 +42,7 @@
   in {
     nixosConfigurations.zuki = nixpkgs.lib.nixosSystem {
         specialArgs = { 
-            # inherit pkgs-unstable;
+            inherit volare;
         };
         modules = [
         # (_: { nixpkgs.overlays = [ qtileflake.overlays.default ]; })
