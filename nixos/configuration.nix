@@ -45,7 +45,7 @@ let
   missingSessionFiles = pkgs.stdenv.mkDerivation (finalAttrs: with pkgs; { 
     pname = "missingSessionFiles";
     version = "0.1";
-    passthru.providedSessions = [ "cagebreak"];
+    passthru.providedSessions = [ "cagebreak" "dwlsrc" ];
     unpackPhase = "true";
     installPhase = let
         cagebreakSession = ''
@@ -55,11 +55,19 @@ let
         Exec=cagebreak
         Type=Application
         '';
+        dwlsrcSession = ''
+        [Desktop Entry]
+        Name=dwlsrc
+        Comment=dwl run from my src dir for convence
+        Exec=./src/dwl/dwl
+        Type=Application
+        '';
 
       in
         ''
     mkdir -p $out/share/wayland-sessions
     echo "${cagebreakSession}" > $out/share/wayland-sessions/cagebreak.desktop
+    echo "${dwlsrcSession}" > $out/share/wayland-sessions/dwlsrc.desktop
         '';
         });
 
