@@ -29,7 +29,7 @@ bindsym $mod+Shift+q exit
 
 # bindsym $mod+h focus left
 bindsym $mod+h exec papersway-msg focus left
-bindsym $mod+j exec papersway-msg focus focus down
+bindsym $mod+j focus down
 bindsym $mod+k focus up
 # bindsym $mod+l focus right
 bindsym $mod+l exec papersway-msg focus right
