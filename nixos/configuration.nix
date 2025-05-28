@@ -307,6 +307,9 @@ in
 
     mgba
     perlPackages.Apppapersway
+    melonDS
+    retroarch
+    pcsx2
 
     ranger
     # for ranger
