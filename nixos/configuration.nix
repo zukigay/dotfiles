@@ -45,7 +45,7 @@ let
   missingSessionFiles = pkgs.stdenv.mkDerivation (finalAttrs: with pkgs; { 
     pname = "newm-desktopfile";
     version = "0.1";
-    passthru.providedSessions = [ "newm" "cagebreak"];
+    passthru.providedSessions = [ "cagebreak"];
     unpackPhase = "true";
     installPhase = let
         cagebreakSession = ''
@@ -56,17 +56,16 @@ let
         Type=Application
         '';
 
-        newmSession = ''
-         [Desktop Entry]
-         Name=newm
-         Comment=newm
-         Exec=start-newm -d
-         Type=Application
-        '';
+        # newmSession = ''
+        #  [Desktop Entry]
+        #  Name=newm
+        #  Comment=newm
+        #  Exec=start-newm  -d
+        #  Type=Application
+        # '';
       in
         ''
     mkdir -p $out/share/wayland-sessions
-    echo "${newmSession}" > $out/share/wayland-sessions/newm.desktop
     echo "${cagebreakSession}" > $out/share/wayland-sessions/cagebreak.desktop
         '';
         });
@@ -436,7 +435,7 @@ in
     git
     wl-restart
     cagebreak
-    newm
+    # newm
     # newm-desktopfile
   ];
 

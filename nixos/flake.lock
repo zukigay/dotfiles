@@ -18,12 +18,10 @@
         "type": "github"
       }
     },
-    "newm": {
+    "newm-next": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs",
         "pywmpkg": "pywmpkg"
       },
       "locked": {
@@ -42,17 +40,18 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1748162331,
-        "narHash": "sha256-rqc2RKYTxP3tbjA+PB3VMRQNnjesrT0pEofXQTrMsS8=",
-        "owner": "NixOS",
+        "lastModified": 1683286087,
+        "narHash": "sha256-xseOd7W7xwF5GOF2RW8qhjmVGrKoBz+caBlreaNzoeI=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7c43f080a7f28b2774f3b3f43234ca11661bf334",
+        "rev": "3e313808bd2e0a0669430787fb22e43b2f4bf8bf",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-25.05",
-        "type": "indirect"
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-stable": {
@@ -70,14 +69,29 @@
         "type": "indirect"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1748162331,
+        "narHash": "sha256-rqc2RKYTxP3tbjA+PB3VMRQNnjesrT0pEofXQTrMsS8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "7c43f080a7f28b2774f3b3f43234ca11661bf334",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-25.05",
+        "type": "indirect"
+      }
+    },
     "pywmpkg": {
       "inputs": {
         "flake-utils": [
-          "newm",
+          "newm-next",
           "flake-utils"
         ],
         "nixpkgs": [
-          "newm",
+          "newm-next",
           "nixpkgs"
         ]
       },
@@ -97,8 +111,8 @@
     },
     "root": {
       "inputs": {
-        "newm": "newm",
-        "nixpkgs": "nixpkgs",
+        "newm-next": "newm-next",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable"
       }
     },
