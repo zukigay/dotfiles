@@ -39,6 +39,7 @@ window#waybar {
 }
 #workspaces button{
     border-bottom: 3px transparent;
+    opacity: 0; /* remove if not on sway */
 }
 #workspaces button.urgent { /* set urgent workspaces to red(wine) */
     border-bottom: 3px solid #722F37;
@@ -54,12 +55,27 @@ window#waybar {
     /* box-shadow: inset 0 -3px #ffffff; */
     border-bottom: 3px solid white;
 }
+/* #workspaces button.notactive{ */
+/*     opacity: 0; */
+/* } */
 #workspaces button:hover {
     border-color: transparent;
     border-bottom: 3px solid pink;
     /* background: inherit; */
     /* box-shadow: inset 0 -3px #ffffff; */
 }
+/* paper sway creates workspaces for hidding windows the following styling just shows only these workspaces */
+#workspaces button#sway-workspace-1{ opacity: 1; }  
+#workspaces button#sway-workspace-2{ opacity: 1; } 
+#workspaces button#sway-workspace-3{ opacity: 1; } 
+#workspaces button#sway-workspace-4{ opacity: 1; } 
+#workspaces button#sway-workspace-5{ opacity: 1; } 
+#workspaces button#sway-workspace-6{ opacity: 1; } 
+#workspaces button#sway-workspace-7{ opacity: 1; } 
+#workspaces button#sway-workspace-8{ opacity: 1; } 
+#workspaces button#sway-workspace-9{ opacity: 1; } 
+
+
 button:hover {
   box-shadow: none; /* Remove predefined box-shadow */
   text-shadow: none; /* Remove predefined text-shadow */
