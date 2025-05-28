@@ -38,12 +38,11 @@
   let
     # pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     system = "x86_64-linux";
-    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+    # pkgs-stable = nixpkgs-stable.legacyPackages.${system};
   in {
     nixosConfigurations.zuki = nixpkgs.lib.nixosSystem {
         specialArgs = { 
             # inherit pkgs-unstable;
-            inherit pkgs-stable;
         };
         modules = [
         # (_: { nixpkgs.overlays = [ qtileflake.overlays.default ]; })
