@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs,pkgs-stable, ... }:
+{ config, lib, pkgs, volare, ... }:
 let
   # helloBar = pkgs.hello.overrideAttrs (finalAttrs: previousAttrs: {
   #   pname = previousAttrs.pname + "-bar";
@@ -210,6 +210,8 @@ in
   mod-hyprPlugin.enable = true;
   mod-hyprPluginDarkWin.enable = true;
   # mod-scroll.enable = true;
+  mod-volare.enable = true;
+
   mod-vr.enable = true;
 
   programs.sway.enable = true;
