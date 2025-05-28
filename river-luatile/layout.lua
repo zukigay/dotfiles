@@ -195,7 +195,8 @@ function handle_layout(args)
     end,
     monocleGaps = function()
         for i = 1,count do
-            table.insert(layout,{outer_gap,outer_gap,args.width-outer_gap*2,args.height-outer_gap*2})
+            local gap = outer_gap + inner_gap
+            table.insert(layout,{gap,gap,args.width-gap*2,args.height-gap*2})
         end
     end,
     paperwm = function() -- really silly because I had never used a scrolling wm when i made this layout lmao so its quite funcy
