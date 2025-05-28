@@ -21,7 +21,7 @@ input * {
 bindsym $mod+Return exec $term tmux
 bindsym $mod+d exec fuzzel
 bindsym $mod+q kill
-bindsym $mod+r reload
+bindsym $mod+Shift+r reload
 bindsym $mod+Shift+q exit
 
 
@@ -38,7 +38,7 @@ bindsym $mod+l exec papersway-msg focus right
 bindsym $mod+f exec papersway-msg width toggle
 bindsym $mod+o exec papersway-msg other-column
 bindsym $mod+e exec papersway-msg absorb-expel left
-bindsym $mod+t exec papersway-msg absorb-expel right
+bindsym $mod+r exec papersway-msg absorb-expel right
 bindsym $mod+minus exec papersway-msg cols decr
 bindsym $mod+equal exec papersway-msg cols incr
 
