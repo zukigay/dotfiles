@@ -1,45 +1,5 @@
 {
   "nodes": {
-    "flake-utils": {
-      "inputs": {
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1681202837,
-        "narHash": "sha256-H+Rh19JDwRtpVPAWp64F+rlEtxUWBAQW28eAi3SRSzg=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "cfacdce06f30d2b68473a46042957675eebb3401",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "newm": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "pywmpkg": "pywmpkg"
-      },
-      "locked": {
-        "lastModified": 1735143406,
-        "narHash": "sha256-xhdIOzIGDJCdn9xqxMnlFx6+nO/iaUDk9RAhfuJ+HII=",
-        "owner": "newm-next",
-        "repo": "newm-next",
-        "rev": "dd9097fba89ce9d2906fbef0da805ce2a414b81e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "newm-next",
-        "repo": "newm-next",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1748162331,
@@ -70,36 +30,9 @@
         "type": "indirect"
       }
     },
-    "pywmpkg": {
-      "inputs": {
-        "flake-utils": [
-          "newm",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "newm",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1731608111,
-        "narHash": "sha256-wzT4tV/O2tCcf0ZJSFvPi2mrTguwWARBsX37NFrZt3g=",
-        "owner": "newm-next",
-        "repo": "pywm-next",
-        "rev": "c56e843ec95fcb04f07deab30dc43a51baa2a294",
-        "type": "github"
-      },
-      "original": {
-        "owner": "newm-next",
-        "repo": "pywm-next",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
-        "newm": "newm",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-stable": "nixpkgs-stable"
       }
     },
     "systems": {

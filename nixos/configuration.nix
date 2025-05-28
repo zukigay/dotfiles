@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs,pkgs-stable,newm, ... }:
+{ config, lib, pkgs,pkgs-stable, ... }:
 let
   # helloBar = pkgs.hello.overrideAttrs (finalAttrs: previousAttrs: {
   #   pname = previousAttrs.pname + "-bar";
@@ -43,9 +43,9 @@ let
   });
 
   missingSessionFiles = pkgs.stdenv.mkDerivation (finalAttrs: with pkgs; { 
-    pname = "newm-desktopfile";
+    pname = "missingSessionFiles";
     version = "0.1";
-    passthru.providedSessions = [ "newm" "cagebreak"];
+    passthru.providedSessions = [ "cagebreak"];
     unpackPhase = "true";
     installPhase = let
         cagebreakSession = ''
@@ -56,17 +56,9 @@ let
         Type=Application
         '';
 
-        newmSession = ''
-         [Desktop Entry]
-         Name=newm
-         Comment=newm
-         Exec=start-newm -d
-         Type=Application
-        '';
       in
         ''
     mkdir -p $out/share/wayland-sessions
-    echo "${newmSession}" > $out/share/wayland-sessions/newm.desktop
     echo "${cagebreakSession}" > $out/share/wayland-sessions/cagebreak.desktop
         '';
         });
@@ -436,8 +428,6 @@ in
     git
     wl-restart
     cagebreak
-    newm
-    # newm-desktopfile
   ];
 
  
