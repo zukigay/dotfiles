@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.05";
+    volare = {
+        url = "git+https://codeberg.org/raboof/volare";
         inputs.nixpkgs.follows = "nixpkgs";
     };
     # nixpkgs.url = "nixpkgs/nixos-unstable";

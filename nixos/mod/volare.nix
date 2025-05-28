@@ -12,7 +12,12 @@
   # config = lib.mkIf config.mod-scroll.enable {
   #   environment.systemPackages = [ scroll ]; };
   config = lib.mkIf config.mod-volare.enable {
-    programs.sway.package = volare.packages.x86_64-linux.default;
+        programs.sway = {
+        package = pkgs.sway.override {
+          sway-unwrapped = volare.packages.x86_64-linux.default;
+          
+        };
+    };
   };
 
 }
