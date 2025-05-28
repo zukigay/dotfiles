@@ -39,6 +39,9 @@ function handle_layout(args)
         if monitorData[args.output][args.tags] == nil then
             monitorData[args.output][args.tags] = {main_ratio=0.50,main_count=1}
         end
+        if args.count < monitorData[args.output][args.tags].main_count then
+            monitorData[args.output][args.tags].main_count = args.count
+        end
         main_ratio = monitorData[args.output][args.tags].main_ratio
         main_count = monitorData[args.output][args.tags].main_count
     else
