@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs,pkgs-stable, ... }:
+{ config, lib, pkgs,pkgs-stable,newm, ... }:
 let
   # helloBar = pkgs.hello.overrideAttrs (finalAttrs: previousAttrs: {
   #   pname = previousAttrs.pname + "-bar";
@@ -42,6 +42,25 @@ let
     };
   });
 
+  newm-desktopfile = pkgs.stdenv.mkDerivation (finalAttrs: with pkgs; { 
+    pname = "newm-desktopfile";
+    version = "0.1";
+    passthru.providedSessions = [ "newm" ];
+    unpackPhase = "true";
+    installPhase = let
+        newmSession = ''
+         [Desktop Entry]
+         Name=newm
+         Comment=newm
+         Exec=start-newm -d
+         Type=Application
+        '';
+      in
+        ''
+    mkdir -p $out/share/wayland-sessions
+    echo "${newmSession}" > $out/share/wayland-sessions/newm.desktop
+        '';
+        });
 
 
   cwcwm = pkgs.stdenv.mkDerivation (finalAttrs: with pkgs; {
@@ -368,7 +387,7 @@ in
 
   services.displayManager.ly.enable = true;
   services.displayManager.ly.settings = { animation="doom"; };
-  services.displayManager.sessionPackages = [ cdwl cagebreak ];
+  services.displayManager.sessionPackages = [ cdwl cagebreak newm-desktopfile ];
 
 
   programs.firefox.enable = true;
@@ -423,6 +442,8 @@ in
     git
     wl-restart
     cagebreak
+    newm
+    newm-desktopfile
   ];
 
  
