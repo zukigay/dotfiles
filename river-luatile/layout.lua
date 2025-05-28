@@ -216,10 +216,10 @@ function handle_layout(args)
         local master_pos 
         deck_pos = {x=gap,y=gap}
         master_pos = {x=(usable_width/2)+gap,y=gap}
+        table.insert(layout,{deck_pos.x,deck_pos.y,(usable_width*main_ratio)-inner_gap*2,args.height-gap*2})
         for i = 1,count-1 do
-            table.insert(layout,{deck_pos.x,deck_pos.y,(usable_width*main_ratio)-inner_gap*2,args.height-gap*2})
+            table.insert(layout,{master_pos.x*2*main_ratio,master_pos.y,(args.width*(1-main_ratio))-gap*2,args.height-gap*2})
         end
-        table.insert(layout,{master_pos.x*2*main_ratio,master_pos.y,(args.width*(1-main_ratio))-gap*2,args.height-gap*2})
     end,
     
     }
