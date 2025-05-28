@@ -15,7 +15,7 @@ let
   vesktopShare = pkgs.vesktop.overrideAttrs (finalAttrs: previousAttrs: {
     patches = previousAttrs.patches ++ [ ./vesktop-obs-share.patch ];
   });
-  wlroots_0_19 = pkgs.wlroots_0_18.overrideAttrs (finalAttrs: previousAttrs: {
+  wlroots_0_19-c = pkgs.wlroots_0_18.overrideAttrs (finalAttrs: previousAttrs: {
     version = "0.19";
     # pname = "wlroots";
     src = pkgs.fetchFromGitLab {
@@ -71,7 +71,7 @@ let
         libdrm xorg.libX11 xorg.xcbutilwm libevdev libinput
         cmake
          wayland-protocols
-         wlroots_0_19
+         wlroots_0_19-c
             ];
         # cmakeFlags = [ "-DCWC_DATADIR=\"/bin\"" ];
     installPhase = ''
