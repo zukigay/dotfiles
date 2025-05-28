@@ -17,6 +17,7 @@ local location_horizontal = "left"
 local location_vertical = "top"
 local monitorData = {}
 local pertag = true
+local pertagLayouts = true
 local barHeight = 30
 local barActive = true
 -- local count = 0
@@ -32,12 +33,14 @@ function handle_layout(args)
     if monitorData[args.output] == nil then
         monitorData[args.output] = {layout='normalTile',main_ratio=0.50,main_count=1,scroll=0}
     end
-    local currentLayout = monitorData[args.output].layout
+
+    local currentLayout 
+
     local main_ratio 
     local main_count 
     if pertag then
         if monitorData[args.output][args.tags] == nil then
-            monitorData[args.output][args.tags] = {main_ratio=0.50,main_count=1}
+            monitorData[args.output][args.tags] = {main_ratio=0.50,main_count=1,layout='normalTile'}
         end
         if args.count < monitorData[args.output][args.tags].main_count then
             monitorData[args.output][args.tags].main_count = args.count
@@ -48,6 +51,14 @@ function handle_layout(args)
         main_ratio = monitorData[args.output].main_ratio
         main_count = monitorData[args.output].main_count
     end
+
+    if pertagLayouts then
+        currentLayout = monitorData[args.output][args.tags].layout
+    else
+        currentLayout = monitorData[args.output].layout
+    end
+
+
     local scroll = monitorData[args.output].scroll
     -- local main_ratio 
     local count = args.count
@@ -245,7 +256,12 @@ function switchLayout(newLayout)
     end
     -- os.execute('notify-send targetOuput:' .. targetOutput .. " args.output:" .. thisOutput)
     -- monitorLayouts[targetOutput] = newLayout
-    monitorData[CMD_OUTPUT].layout = newLayout
+
+    if pertagLayouts then
+        monitorData[CMD_OUTPUT][CMD_TAGS].layout = newLayout
+    else
+        monitorData[CMD_OUTPUT].layout = newLayout
+    end
 end
 
 function flip()
@@ -295,6 +311,7 @@ end
 function increase_count()
     -- main_count = main_count + 1
     if pertag == true then
+        -- if monitorData[CMD_OUTPUT][CMD_TAGS].main_count <= 
         monitorData[CMD_OUTPUT][CMD_TAGS].main_count = monitorData[CMD_OUTPUT][CMD_TAGS].main_count + 1
     else
         monitorData[CMD_OUTPUT].main_count = monitorData[CMD_OUTPUT].main_count + 1
