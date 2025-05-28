@@ -289,6 +289,7 @@ in
     # wlroots_0_19_git
     aseprite
     arc-theme
+    file-roller
     cosmic-icons
     kitty
     imv
