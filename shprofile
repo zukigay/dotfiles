@@ -47,5 +47,5 @@ then
 	#pfetch | lolcat
 	fastfetch -l small
 fi
-shprofileloaded=1
+export shprofileloaded='1'
 fi
