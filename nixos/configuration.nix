@@ -42,12 +42,20 @@ let
     };
   });
 
-  newm-desktopfile = pkgs.stdenv.mkDerivation (finalAttrs: with pkgs; { 
+  missingSessionFiles = pkgs.stdenv.mkDerivation (finalAttrs: with pkgs; { 
     pname = "newm-desktopfile";
     version = "0.1";
-    passthru.providedSessions = [ "newm" ];
+    passthru.providedSessions = [ "newm" "cagebreak"];
     unpackPhase = "true";
     installPhase = let
+        cagebreakSession = ''
+        [Desktop Entry]
+        Name=cagebreak
+        Comment=a neat compositor
+        Exec=cagebreak
+        Type=Application
+        '';
+
         newmSession = ''
          [Desktop Entry]
          Name=newm
@@ -59,6 +67,7 @@ let
         ''
     mkdir -p $out/share/wayland-sessions
     echo "${newmSession}" > $out/share/wayland-sessions/newm.desktop
+    echo "${cagebreakSession}" > $out/share/wayland-sessions/cagebreak.desktop
         '';
         });
 
@@ -151,22 +160,7 @@ let
     # patches = oldAttrs.patches ++ [ ./src/dwlb-systray-nixos.patch ];
     # patches = [ ./src/dwlb-systray-nixos.patch ];
   });
-  cagebreak = pkgs.cagebreak.overrideAttrs ( oldAttrs: {
-    passthru.providedSessions = [ "cagebreak" ];
-    postInstall = let
-        cagebreakSession = ''
-        [Desktop Entry]
-        Name=cagebreak
-        Comment=a neat compositor
-        Exec=cagebreak
-        Type=Application
-        '';
-      in
-        ''
-    mkdir -p $out/share/wayland-sessions
-    echo "${cagebreakSession}" > $out/share/wayland-sessions/cagebreak.desktop
-        '';
-  });
+
 
 
   cdwl = pkgs.dwl.overrideAttrs (oldAttrs: {
@@ -387,7 +381,7 @@ in
 
   services.displayManager.ly.enable = true;
   services.displayManager.ly.settings = { animation="doom"; };
-  services.displayManager.sessionPackages = [ cdwl cagebreak newm-desktopfile ];
+  services.displayManager.sessionPackages = [ cdwl missingSessionFiles ];
 
 
   programs.firefox.enable = true;
@@ -443,7 +437,7 @@ in
     wl-restart
     cagebreak
     newm
-    newm-desktopfile
+    # newm-desktopfile
   ];
 
  
