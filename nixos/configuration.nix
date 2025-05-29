@@ -364,6 +364,8 @@ in
 
     obs-studio
     obs-studio-plugins.obs-vkcapture
+
+    mullvad-vpn # turns out the gui mullvad app is not included in mullvad.enable good to know.
     
     playerctl # used in river and dwl for media control
 
