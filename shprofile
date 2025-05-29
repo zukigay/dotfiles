@@ -33,14 +33,14 @@ fi
 #up to 20% preformace echo 'always' | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
 
 
-if [ -z "$WAYLAND_DISPLAY" ] && [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+# if [ -z "$WAYLAND_DISPLAY" ] && [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     #python ~/src/zukidisplay/zdm.py
 	#exec Hyprland
     #hyprconf_make > /tmp/hyprland.conf
     # exec dbus-launch --exit-with-session Hyprland
     # exec dbus-launch --exit-with-session river
-    exec ~/.config/river/start
-else
+    # exec ~/.config/river/start
+# else
 if [ -z "$shprofileloaded" ]
 then
 	# echo "$(tput setaf 5)TRANS $(tput setaf 4)RIGHTS $(tput setaf 7)HELL YEAH!!"
@@ -48,4 +48,4 @@ then
 	fastfetch -l small
 fi
 export shprofileloaded='1'
-fi
+# fi
