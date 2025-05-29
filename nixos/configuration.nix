@@ -59,7 +59,7 @@ let
         [Desktop Entry]
         Name=dwlsrc
         Comment=dwl run from my src dir for convence
-        Exec=./src/dwl/dwl
+        Exec=env XDG_CURRENT_DESKTOP=dwl ./src/dwl/dwl -s ./src/dwl/startup
         Type=Application
         '';
 
