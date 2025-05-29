@@ -163,9 +163,9 @@ let
 
 
 
-  cdwl = pkgs.dwl.overrideAttrs (oldAttrs: {
+  cdwlraw = pkgs.dwl.overrideAttrs (oldAttrs: {
     name = "cdwl";
-    src = ./src/dwl;
+    # src = ./src/dwl;
     passthru.providedSessions = [ "dwl" ];
     patches = [ 
     ./src/dwl-p/warpcursor-nix.patch
@@ -190,6 +190,9 @@ let
     # ./src/dwl-p/sedfix.patch
     ];
   });
+  cdwl = cdwlraw.override {
+    configH = ./src/dwl/config.h;
+  };
 in
 {
   imports =
