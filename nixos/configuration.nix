@@ -396,7 +396,7 @@ in
   # services.xserver.windowManager.qtile.package = qtileflake.packages.${pkgs.stdenv.hostPlatform.system}.qtile;
   # services.xserver.windowManager.qtile.package = qtile-unwrapped;
   # services.xserver.windowManager.qtile.package
-  programs.niri.enable = true;
+  # programs.niri.enable = true;
   programs.hyprland.enable = true;
   programs.hyprland.plugins = [
     # pkgs.hyprlandPlugins.hyprbars
