@@ -57,12 +57,12 @@
 readonly dwl_output_filename=/tmp/dwl-status                   # File to watch for dwl output
 # readonly labels=( "" "" "" "" "" "" "" "" "" )              # Number of lables must match dwl's config.h tagcount
 readonly labels=( "1" "2" "3" "4" "5" "6" "7" "8" "9" )              # Number of lables must match dwl's config.h tagcount
-pango_tag_default="<span                      foreground='#989710'>" # Pango span style for 'default' tags
-pango_tag_active="<span overline='single' overline_color='#fe8019'>" # Pango span style for 'active' tags
-pango_tag_selected="<span                     foreground='#458588'>" # Pango span style for 'selected' tags
+pango_tag_default="<span                      foreground='#ffffff'>" # Pango span style for 'default' tags
+pango_tag_active="<span overline='single' overline_color='#FFC0CB'>" # Pango span style for 'active' tags
+pango_tag_selected="<span                     foreground='#c892ef'>" # Pango span style for 'selected' tags
 pango_tag_urgent="<span                       background='#fb4934'>" # Pango span style for 'urgent' tags
-pango_layout="<span                           foreground='#fe8019'>" # Pango span style for 'layout' character
-pango_title="<span                            foreground='#458588'>" # Pango span style for 'title' monitor
+pango_layout="<span                           foreground='#FFC0CB'>" # Pango span style for 'layout' character
+pango_title="<span                            foreground='#ffffff'>" # Pango span style for 'title' monitor
 pango_inactive="<span                         foreground='#928374'>" # Pango span style for elements on an INACTIVE monitor
 hide_unused_tags=false                                               # Set to 'true' to hide unused tags, 'false' to show all tags
 ############### USER: MODIFY THESE VARIABLES ###############
@@ -91,6 +91,7 @@ _cycle() {
 		fi
 		# Wrap component in the applicable nestable pango spans
 		if (( "${activetags}"   & mask )) 2>/dev/null; then tag_text="${pango_tag_active}${tag_text}</span>"; fi
+		if (( "${activetags}"   & mask )) 2>/dev/null; then tag_text="${pango_tag_active}${tag_text}</span>"; fi
 		if (( "${urgenttags}"   & mask )) 2>/dev/null; then tag_text="${pango_tag_urgent}${tag_text}</span>"; fi
 		if (( "${selectedtags}" & mask )) 2>/dev/null; then tag_text="${pango_tag_selected}${tag_text}</span>"
 		else
@@ -102,7 +103,8 @@ _cycle() {
 		    output_text+="${pango_layout}${layout} </span>"
 		;;
 	    title)
-		    output_text+="${pango_title}${title}</span>"
+            # commented out to hide title
+		    # output_text+="${pango_title}${title}</span>"
 		;;
 	    *)
 		output_text+="?" # If a "?" is visible on this module, something happened that shouldn't have happened
