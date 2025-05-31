@@ -371,6 +371,8 @@ in
 
     kdePackages.kdenlive
 
+    ripdrag
+
     xorg.xeyes
 
     mullvad-vpn # turns out the gui mullvad app is not included in mullvad.enable good to know.
