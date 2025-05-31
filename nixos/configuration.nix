@@ -42,6 +42,7 @@ let
     };
   });
 
+
   missingSessionFiles = pkgs.stdenv.mkDerivation (finalAttrs: with pkgs; { 
     pname = "missingSessionFiles";
     version = "0.1";
@@ -368,6 +369,7 @@ in
     obs-studio
     obs-studio-plugins.obs-vkcapture
 
+    kdePackages.kdenlive
 
     xorg.xeyes
 
