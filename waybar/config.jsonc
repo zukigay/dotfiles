@@ -7,6 +7,8 @@
     "spacing": 8, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
+        // "custom/dwl",
+        "custom/dwl#DP-5",
         "river/tags",
         // "river/layout",
         "hyprland/workspaces",
@@ -369,4 +371,14 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
+    "custom/dwl#DP-5": {
+ 	    "exec":                    "$XDG_CONFIG_HOME/waybar/waybar-dwl.sh 'DP-5'",
+ 	    "format":                  "{}",
+ 	    "return-type":             "json"
+    },
+    // "custom/dwl": {
+    //     "format": "{}",
+    //     "exec": "$XDG_CONFIG_HOME/waybar/dwlstatus",
+    //     "exec-if":"pgrep dwl"
+    // },
 }
