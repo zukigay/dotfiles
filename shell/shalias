@@ -18,13 +18,10 @@ alias gi=lazygit
 
 ## vim aliases
 alias v=nvim
-alias vi=nvim
-alias vim=nvim
 alias vconf="nvim ~/.config/nvim/init.vim"
 alias vhypr="nvim $XDG_CONFIG_HOME/hypr/hyprland.conf"
 alias vriv="nvim $XDG_CONFIG_HOME/river/init"
 alias sv="sudoedit "
-alias vt='nvim "-c Telescope find_files"'
 
 
 
