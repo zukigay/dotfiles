@@ -14,6 +14,7 @@
         xorg.xprop
         python3
         libnotify
+        inotify-tools
     ];
  };
 }
