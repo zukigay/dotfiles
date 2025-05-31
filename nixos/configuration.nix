@@ -418,6 +418,10 @@ in
     slurp 
     grim 
 
+    # split into video editing module or even "big package" module to not slow down new installs and such
+    davinci-resolve
+    ffmpeg
+
     lswt
     mangohud
 
