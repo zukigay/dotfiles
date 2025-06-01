@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": [
         // "custom/dwl",
-        "custom/dwl#DP-5",
+        // "custom/dwl#DP-5",
         "river/tags",
         // "river/layout",
         "hyprland/workspaces",
