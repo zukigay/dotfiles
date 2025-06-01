@@ -34,6 +34,8 @@ let
     ];
 
   });
+
+  # sent patch for papersway 2.001 upstream and its been merged yay!
   perlPackages.Apppapersway = pkgs.perlPackages.Apppapersway.overrideAttrs ( rec {
     version = "2.001";
     src = pkgs.fetchurl {
