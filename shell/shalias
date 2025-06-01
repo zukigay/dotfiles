@@ -41,6 +41,11 @@ alias ne="v $NIXOS_CONFIG"
 alias dwld="sudo nixos-rebuild --fast test && dwl"
 alias nixsh='nix-shell'
 
+# nixshells
+while read nixsh ; do 
+    alias $nixsh="nix-shell $XDG_CONFIG_HOME/nixshells/$nixsh"
+done < <(ls $XDG_CONFIG_HOME/nixshells/)
+
 alias or_doc="v $(dirname $(dirname $(readlink $(which odin))))/share/vendor/raylib/raylib.odin"
 
 ## pacman
