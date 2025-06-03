@@ -380,6 +380,9 @@ in
 
     tiled
 
+    # qalculate-gtk
+    qalculate-qt
+
     # split into video editing module or even "big package" module to not slow down new installs and such
     kdePackages.kdenlive
     davinci-resolve
