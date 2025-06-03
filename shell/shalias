@@ -46,7 +46,10 @@ while read nixsh ; do
     alias $nixsh="nix-shell $XDG_CONFIG_HOME/nixshells/$nixsh"
 done < <(ls $XDG_CONFIG_HOME/nixshells/)
 
+# need to add check if nixos or not
 alias or_doc="v $(dirname $(dirname $(readlink $(which odin))))/share/vendor/raylib/raylib.odin"
+
+alias or="odin run ."
 
 ## pacman
 alias pac="pacman"
