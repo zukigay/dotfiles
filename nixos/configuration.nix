@@ -342,10 +342,11 @@ in
     # pkgs-stable.odin
 
     mgba
-    perlPackages.Apppapersway
     melonDS
     retroarch
     pcsx2
+
+    perlPackages.Apppapersway
 
     ranger
     # for ranger
