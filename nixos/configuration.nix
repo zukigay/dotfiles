@@ -341,9 +341,12 @@ in
 
     # pkgs-stable.odin
 
+    # lite emualtors
+    retroarch
     mgba
     melonDS
-    retroarch
+
+    # heavy emulators
     pcsx2
 
     perlPackages.Apppapersway
