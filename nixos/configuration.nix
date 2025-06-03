@@ -347,7 +347,10 @@ in
     melonDS
 
     # heavy emulators
+    ares
     pcsx2
+    cemu
+    azahar
 
     perlPackages.Apppapersway
 
