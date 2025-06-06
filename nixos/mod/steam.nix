@@ -4,6 +4,11 @@
     mod-steam.enable = lib.mkEnableOption "setup steam";
  };
  config = lib.mkIf config.mod-steam.enable {
+    
+    environment.systemPackages = with pkgs; [
+        # only really use mangohud with steam so might as well put this here.
+        mangohud
+    ];
     programs.steam = {
         enable = true;
         remotePlay.openFirewall = true;
