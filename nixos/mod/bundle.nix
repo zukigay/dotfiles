@@ -21,6 +21,7 @@
  ./localeTime.nix
  ];
   options = {
+  localeTime.enable = lib.mkDefault true;
   };
 }
 
