@@ -389,6 +389,7 @@ in
     kdePackages.kdenlive
     davinci-resolve
     ffmpeg
+    gimp3
 
     ripdrag
 
