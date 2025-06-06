@@ -363,7 +363,9 @@ in
 
     lazygit
     fastfetch
+
     keepassxc
+
     rnnoise-plugin
 
     bluetuith
@@ -379,6 +381,8 @@ in
 
     obs-studio
     obs-studio-plugins.obs-vkcapture
+
+    gallery-dl
 
     tiled
 
