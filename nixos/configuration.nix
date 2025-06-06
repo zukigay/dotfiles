@@ -211,6 +211,8 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.consoleMode = "max";
 
+  services.udisks2.enable = true;
+
   # modules
   mod-font.enable = true;
   mod-pathenv.enable = false;
