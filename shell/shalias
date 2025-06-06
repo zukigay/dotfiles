@@ -37,7 +37,7 @@ alias nrs="nr switch"
 alias nrb="nr boot"
 alias nrt="nr test"
 alias ns="nix-search"
-alias ne="v $NIXOS_CONFIG"
+alias ne="cd $(dirname $NIXOS_CONFIG)"
 alias dwld="sudo nixos-rebuild --fast test && dwl"
 alias nixsh='nix-shell'
 
