@@ -226,6 +226,7 @@ in
   mod-hyprPlugin.enable = true;
   mod-hyprPluginDarkWin.enable = true;
   mod-heavyEmu.enable = true;
+  mod-riverwm.enable = true;
   mod-localeTime.enable = true;
   # mod-scroll.enable = true;
   # mod-volare.enable = true;
@@ -415,38 +416,6 @@ in
   programs.hyprland.plugins = [
     # pkgs.hyprlandPlugins.hyprbars
     # hypr-darkwindow.packages.${pkgs.system}.Hypr-DarkWindow
-  ];
-  programs.river.enable = true;
-  programs.river.extraPackages = with pkgs; [ 
-    kitty 
-    waybar 
-    fuzzel 
-    lua5_3 
-    river-luatile 
-    hyprpaper 
-    slurp 
-    grim 
-
-
-    lswt
-    mangohud
-
-    # xrandr for setting a monitor as --primary
-    # so that steam games won't cap the res
-    # at the lowist active monitor.
-    xorg.xrandr
-
-    # for notifcations
-    dunst
-    libnotify
-
-    # to set monitors up
-    wlr-randr
-    kanshi
-
-    # lock program of choice
-    swaylock
-    swayidle
   ];
 
   # List packages installed in system profile. To search, run:
