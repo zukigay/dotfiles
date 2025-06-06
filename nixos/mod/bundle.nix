@@ -18,6 +18,7 @@
  ./volare.nix
  ./vr.nix
  ./heavyEmu.nix
+ ./localeTime.nix
  ];
   options = {
     mod-hyprPlugin.enable = 

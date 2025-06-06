@@ -226,6 +226,7 @@ in
   mod-hyprPlugin.enable = true;
   mod-hyprPluginDarkWin.enable = true;
   mod-heavyEmu.enable = true;
+  mod-localeTime.enable = true;
   # mod-scroll.enable = true;
   # mod-volare.enable = true;
 
@@ -253,7 +254,6 @@ in
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/London";
   nixpkgs.config.allowUnfree = true;
 
   # Configure network proxy if necessary
@@ -262,18 +262,6 @@ in
 
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
-  i18n.defaultLocale = "en_GB.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_GB.UTF-8";
-    LC_IDENTIFICATION = "en_GB.UTF-8";
-    LC_MEASUREMENT = "en_GB.UTF-8";
-    LC_MONETARY = "en_GB.UTF-8";
-    LC_NAME = "en_GB.UTF-8";
-    LC_NUMERIC = "en_GB.UTF-8";
-    LC_PAPER = "en_GB.UTF-8";
-    LC_TELEPHONE = "en_GB.UTF-8";
-    LC_TIME = "en_GB.UTF-8";
-  };
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
