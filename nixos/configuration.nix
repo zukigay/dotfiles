@@ -365,6 +365,7 @@ in
 
     obs-studio
     obs-studio-plugins.obs-vkcapture
+    mangohud
 
     gallery-dl
 
