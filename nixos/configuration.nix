@@ -128,9 +128,9 @@ let
   btop = pkgs.btop.override {
     cudaSupport = true;
   };
-  mangohud = pkgs.mangohud.override {
-    gamescopeSupport = true;
-  };
+  # mangohud = pkgs.mangohud.override {
+  #   gamescopeSupport = true;
+  # };
   # cwcwm = import ./cpkgs/cwcwm.nix;
 
 
