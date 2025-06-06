@@ -22,7 +22,7 @@
  ];
   options = {
     mod-hyprPlugin.enable = 
-    	lib.mkEnableOption "changes hid apple to fn mode so that my keyboards fn keys work normally";
+    	lib.mkEnableOption "enable hyprplugin module which is a tweaked 'nix home module' to work without nix home";
   };
 }
 
