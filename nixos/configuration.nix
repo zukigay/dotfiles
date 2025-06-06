@@ -225,6 +225,7 @@ in
   mod-keyboardfix.enable = true;
   mod-hyprPlugin.enable = true;
   mod-hyprPluginDarkWin.enable = true;
+  mod-heavyEmu.enable = true;
   # mod-scroll.enable = true;
   # mod-volare.enable = true;
 
@@ -347,12 +348,6 @@ in
     retroarch
     mgba
     melonDS
-
-    # heavy emulators
-    ares
-    pcsx2
-    cemu
-    azahar
 
     perlPackages.Apppapersway
 

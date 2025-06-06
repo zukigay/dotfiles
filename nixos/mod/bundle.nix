@@ -17,6 +17,7 @@
  ./scrollpkg.nix 
  ./volare.nix
  ./vr.nix
+ ./heavyEmu.nix
  ];
   options = {
     mod-hyprPlugin.enable = 
