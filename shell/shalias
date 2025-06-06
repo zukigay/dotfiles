@@ -32,13 +32,18 @@ alias disown-help="echo command '& disown'"
 alias sudo='sudo '
 
 # nix
+if [ "$distro" == "nixos" ] ; then
 alias nr="sudo nixos-rebuild --flake $FLAKE"
 alias nrs="nr switch"
 alias nrb="nr boot"
 alias nrt="nr test"
-alias ns="nix-search"
-alias ne="cd $(dirname $NIXOS_CONFIG)"
 alias dwld="sudo nixos-rebuild --fast test && dwl"
+
+
+alias or_doc="v $(dirname $(dirname $(readlink $(which odin))))/share/vendor/raylib/raylib.odin"
+fi
+alias ne="cd $(dirname $NIXOS_CONFIG)"
+alias ns="nix-search"
 alias nixsh='nix-shell'
 
 # nixshells
@@ -46,8 +51,6 @@ while read nixsh ; do
     alias $nixsh="nix-shell $XDG_CONFIG_HOME/nixshells/$nixsh"
 done < <(ls $XDG_CONFIG_HOME/nixshells/)
 
-# need to add check if nixos or not
-alias or_doc="v $(dirname $(dirname $(readlink $(which odin))))/share/vendor/raylib/raylib.odin"
 
 alias or="odin run ."
 

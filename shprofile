@@ -10,6 +10,15 @@ then
 nvimpath="$(command -v nvim)"
 fi
 
+distro=""
+kernelv="$(set -- $(uname -v);echo $1)"
+case $kernelv in
+    '#1-NixOS')
+        distro="nixos"
+        # echo "nixos in use"
+
+esac
+
 ## source shex for shell exports to clean up this file
 . "$shellfol"/shex
 ## source shalias for shell alias
