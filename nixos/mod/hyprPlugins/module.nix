@@ -13,6 +13,8 @@ let
 in 
 {
   options = {
+    mod-hyprPlugin.enable = 
+    	lib.mkEnableOption "enable hyprplugin module which is a tweaked 'nix home module' to work without nix home";
     programs.hyprland = {
       plugins = lib.mkOption {
         type = with lib.types; listOf (either package path);
