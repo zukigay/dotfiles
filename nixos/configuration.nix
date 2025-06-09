@@ -239,7 +239,7 @@ in
   programs.sway.extraOptions = [
   "--unsupported-gpu"
   ];
-  services.desktopManager.cosmic.enable = true;
+  # services.desktopManager.cosmic.enable = true;
 
 
   networking.hostName = "zuki"; # Define your hostname.
@@ -249,7 +249,7 @@ in
   # hardware.enableRedistributableFirmware = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = false; # disabled this because i both don't use it and when testing cosmic it was fucking with my networking.
   hardware.bluetooth.enable = true;
 
   # environment.variables = {
