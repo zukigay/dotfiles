@@ -56,7 +56,9 @@ bindsym $mod+Shift+s focus mode_toggle
 floating_modifier $mod
 bindsym $mod+z sticky toggle
 # neat to haves
-bindsym $mod+c move position center
+bindsym $mod+a move position center
+bindsym $mod+Shift+c exec grimSlurp
+bindsym $mod+c exec grim
 
 # workspace binds
 bindsym $mod+1 workspace number 1
