@@ -211,6 +211,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.consoleMode = "max";
 
+
   services.udisks2.enable = true;
 
   # modules
@@ -237,6 +238,8 @@ in
   programs.sway.extraOptions = [
   "--unsupported-gpu"
   ];
+  services.desktopManager.cosmic.enable = true;
+
 
   networking.hostName = "zuki"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -245,6 +248,7 @@ in
   # hardware.enableRedistributableFirmware = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
   hardware.bluetooth.enable = true;
 
   # environment.variables = {
