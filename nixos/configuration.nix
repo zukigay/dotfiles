@@ -211,6 +211,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.consoleMode = "max";
 
+  system.rebuild.enableNg = true;
 
   services.udisks2.enable = true;
 
