@@ -60,6 +60,8 @@ bindsym $mod+a move position center
 bindsym $mod+Shift+c exec grimSlurp
 bindsym $mod+c exec grim
 
+bindsym $mod+p exec fuzzelHyprPowerMenu
+
 # workspace binds
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
