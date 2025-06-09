@@ -1,0 +1,9 @@
+(
+    output: "all",
+    source: Path("/home/zuki/Sync/wallpapers/ISAT Wallpapers/1920x1080/Act 3 Onwards/loopquest_1_1920x1080.png"),
+    filter_by_theme: true,
+    rotation_frequency: 300,
+    filter_method: Lanczos,
+    scaling_mode: Zoom,
+    sampling_method: Alphanumeric,
+)
