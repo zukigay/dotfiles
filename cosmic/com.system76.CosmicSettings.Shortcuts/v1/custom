@@ -15,6 +15,11 @@
         modifiers: [
             Super,
         ],
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
         key: "d",
         description: Some("fuzzel launch"),
     ): Spawn("fuzzel"),
@@ -22,5 +27,6 @@
         modifiers: [
             Super,
         ],
-    ): Disable,
+        key: "s",
+    ): ToggleWindowFloating,
 }
