@@ -20,6 +20,7 @@
  ./heavyEmu.nix
  ./localeTime.nix
  ./riverwm.nix
+ ./intelSlow.nix
  ];
   options = {
   localeTime.enable = lib.mkDefault true;
