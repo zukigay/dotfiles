@@ -24,6 +24,14 @@ client.unfocused        $bg     $bg     $fg     $bg       $bg
 client.pinned          $bg     $br     $fg     $br       #4c4d70
 client.pinned_focused  $bg     $br     $fg     $br       #5455a8
 
+animations {
+# disable animations
+    default no 
+    window_open no 
+    window_move no 
+    window_size no 
+}
+
 input * {
     # xkb_layout "us,de,ru"
     # xkb_variant "colemak,,typewriter"
