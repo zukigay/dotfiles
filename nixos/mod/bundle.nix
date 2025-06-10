@@ -21,6 +21,7 @@
  ./localeTime.nix
  ./riverwm.nix
  ./intelSlow.nix
+ ./non-steam.nix
  ];
   options = {
   localeTime.enable = lib.mkDefault true;

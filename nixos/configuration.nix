@@ -233,6 +233,7 @@ in
   # mod-scroll.enable = true;
   mod-intelNoTurbo.enable = true;
   # mod-volare.enable = true;
+  mod-nonSteam.enable = true;
 
   mod-vr.enable = true;
 
