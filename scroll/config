@@ -53,6 +53,9 @@ bindsym $mod+d exec fuzzel
 bindsym $mod+q kill
 bindsym $mod+Shift+r reload
 
+# bindsym $mod+e move left  nomode 
+# bindsym $mod+r move right nomode 
+
 bindsym $mod+f fullscreen
 
 bindsym $mod+s floating toggle
@@ -94,8 +97,8 @@ bindsym $mod+a mode selection
 bindsym $mod+v set_mode v
 bindsym $mod+b set_mode h
 
-bindsym $mod+y fit_size v all equal
-bindsym $mod+w fit_size h all equal
+bindsym $mod+e fit_size v all equal
+bindsym $mod+r fit_size h all equal
 
 bindsym $mod+Shift+q exit
 
