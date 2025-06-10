@@ -26,10 +26,10 @@ client.pinned_focused  $bg     $br     $fg     $br       #5455a8
 
 animations {
 # disable animations
-    default no 
+    # default no 
     window_open no 
     window_move no 
-    window_size no 
+    # window_size no 
 }
 
 input * {
