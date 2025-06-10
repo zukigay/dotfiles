@@ -230,7 +230,7 @@ in
   mod-heavyEmu.enable = true;
   mod-riverwm.enable = true;
   mod-localeTime.enable = true;
-  # mod-scroll.enable = true;
+  mod-scroll.enable = true;
   # mod-volare.enable = true;
 
   mod-vr.enable = true;
