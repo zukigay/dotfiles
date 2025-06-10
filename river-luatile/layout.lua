@@ -294,11 +294,11 @@ function increase_main()
     -- if main_ratio < 0.9 then
     if monitorData[CMD_OUTPUT].layout == "paperwm" then
         monitorData[CMD_OUTPUT].scroll = monitorData[CMD_OUTPUT].scroll + 0.01
-    elseif monitorData[CMD_OUTPUT].main_ratio < 0.9 then
-        if pertag == true then
-            monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio = monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio + 0.05
-        else
+    elseif pertag == false and monitorData[CMD_OUTPUT].main_ratio < 0.9 then
             monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio + 0.05
+    elseif pertag == true then
+        if monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio < 0.9 then
+            monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio = monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio + 0.05
         end
         -- main_ratio = main_ratio + 0.05
     end
@@ -309,11 +309,11 @@ end
 function decrease_main()
     if monitorData[CMD_OUTPUT].layout == "paperwm" then
         monitorData[CMD_OUTPUT].scroll = math.max(monitorData[CMD_OUTPUT].scroll - 0.01,0)
-    elseif monitorData[CMD_OUTPUT].main_ratio > 0.1 then
-        if pertag == true then
-            monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio = monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio - 0.05
-        else
+    elseif pertag == false and monitorData[CMD_OUTPUT].main_ratio > 0.1 then
             monitorData[CMD_OUTPUT].main_ratio = monitorData[CMD_OUTPUT].main_ratio - 0.05
+    elseif pertag == true then
+        if monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio > 0.1 then
+            monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio = monitorData[CMD_OUTPUT][CMD_TAGS].main_ratio - 0.05
         end
         -- main_ratio = main_ratio - 0.05
     end
