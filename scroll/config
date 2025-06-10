@@ -57,6 +57,8 @@ bindsym $mod+Shift+r reload
 # bindsym $mod+r move right nomode 
 
 bindsym $mod+f fullscreen
+bindsym $mod+Shift+f set_size h 1;set_size v 1 # make a window take up half the screen
+# bindsym $mod+Shift+f set_size v 1 # make a window take up half the screen
 
 bindsym $mod+s floating toggle
 bindsym $mod+Shift+s focus mode_toggle
@@ -99,6 +101,7 @@ bindsym $mod+b set_mode h
 
 bindsym $mod+e fit_size v all equal
 bindsym $mod+r fit_size h all equal
+bindsym $mod+t set_size h 0.5 # make a window take up half the screen
 
 bindsym $mod+Shift+q exit
 
