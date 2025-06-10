@@ -21,7 +21,8 @@ function main()
     print("starting lua init")
 
     -- keyboard things
-    riverctl('keyboard-layout -options caps:hyper us')
+    -- riverctl('keyboard-layout -options caps:hyper us')
+    riverctl('keyboard-layout -options lv5:caps_switch us')
     riverctl('set-repeat 35 700')
 
     riverctl('default-attach-mode bottom')
@@ -73,7 +74,8 @@ function luatile()
     riverctl(" map -repeat normal Super L send-layout-cmd luatile 'increase_main()'")
     riverctl(" map normal Super+Shift H send-layout-cmd luatile 'increase_count()'")
     riverctl(" map normal Super+Shift L send-layout-cmd luatile 'decrease_count()'")
-    riverctl(" map normal Super Hyper_L enter-mode layoutpick")
+    -- riverctl(" map normal Super+Mod3 None enter-mode layoutpick")
+    riverctl(" map normal Super ISO_Level5_Shift enter-mode layoutpick")
     riverctl(" map layoutpick None b send-layout-cmd luatile 'toggleBorderWidth()'")
     riverctl(" map layoutpick None w send-layout-cmd luatile 'toggleWaybar()'")
 
@@ -237,6 +239,12 @@ function globalkeys()
         riverctl(" map " .. mode .. " None XF86AudioPause  spawn 'playerctl pause'")
         riverctl(" map " .. mode .. " None XF86AudioPrev  spawn 'playerctl previous'")
         riverctl(" map " .. mode .. " None XF86AudioNext  spawn 'playerctl next'")
+
+        -- use Mod3(what caps lock has been switched to) for extra playerctl binds
+        riverctl(" map " .. mode .. " Mod3 Delete spawn 'playerctl play-pause'")
+        riverctl(" map " .. mode .. " Mod3 Piror  spawn 'playerctl previous'")
+        riverctl(" map " .. mode .. " Mod3 Next  spawn 'playerctl next'")
+
         -- Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
         riverctl(" map " .. mode .. " None XF86MonBrightnessUp   spawn 'brightnessctl set +5%'")
         riverctl(" map " .. mode .. " None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'")
